@@ -8,15 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var path: NavigationPath = NavigationPath()
     var body: some View {
-        VStack {
-            SportChips()
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack(path: $path) {
+            ScrollView {
+                SportChips()
+                    .padding(.vertical, 10)
+                EventList()
+            }
+            .safeAreaPadding()
         }
-        .padding()
     }
 }
 

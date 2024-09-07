@@ -10,7 +10,7 @@ import SwiftUI
 struct SportChip: View {
     var title: String
     var image: String
-    @State var favourited: Bool = true
+    @State var favourited: Bool = false
     @State var selected: Bool = false
     var body: some View {
         Button(action: {
@@ -22,6 +22,7 @@ struct SportChip: View {
                 Image(systemName: image)
                     .symbolEffect(.bounce, value: selected)
                 Text(title)
+                    .fixedSize(horizontal: false, vertical: true)
                 if favourited {
                     Image(systemName: "star.fill")
                         .foregroundStyle(.yellow)
