@@ -32,7 +32,7 @@ struct SportChip: View {
                 .padding(.horizontal, 14)
                 .padding(.vertical, 8)
                 .background {
-                    Capsule().fill(selected ? .blue : .white)
+                    Capsule().fill(selected ? .primaryUTM : .white)
                         .stroke(.quaternary, lineWidth: 2)
                 }
         }

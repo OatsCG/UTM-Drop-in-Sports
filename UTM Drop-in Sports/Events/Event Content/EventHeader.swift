@@ -17,7 +17,8 @@ struct EventHeader: View {
                 .font(.title .bold())
             Spacer()
         }
-        .foregroundStyle(Color(red: 0.06666666666666667, green: 0.14901960784313725, blue: 0.29411764705882354))
+        .foregroundStyle(.blueUTM)
+        //.foregroundStyle(Color(red: 0.06666666666666667, green: 0.14901960784313725, blue: 0.29411764705882354))
         //.foregroundStyle(Color(hue: 0.67, saturation: 0.05, brightness: 1.0))
         
         .padding(.bottom, 10)
@@ -31,16 +32,38 @@ struct EventHeader: View {
                 Spacer()
             }
             .font(.subheadline .bold())
-            .padding(.bottom, 2)
+            .padding(.bottom, 4)
             HStack {
-                Image(systemName: "clock")
-                    .symbolRenderingMode(.hierarchical)
-                Text("9:00am - 10:00am")
+                VStack(alignment: .leading) {
+                    HStack {
+                        Image(systemName: "clock")
+                            .symbolRenderingMode(.hierarchical)
+                        Text("9:00am - 10:00am")
+                    }
+                    HStack {
+                        Image(systemName: "clock")
+                            .symbolRenderingMode(.hierarchical)
+                            .opacity(0)
+                        Text("In 1 hour")
+                            .foregroundStyle(.secondary)
+                    }
+                }
                 Spacer()
-                Image(systemName: "calendar")
-                    .foregroundStyle(.secondary)
-                Text("Tuesday Sept 2")
-                    .foregroundStyle(.secondary)
+                VStack(alignment: .leading) {
+                    HStack {
+                        Image(systemName: "calendar")
+                            .foregroundStyle(.secondary)
+                        Text("Tuesday Sept 2")
+                            .foregroundStyle(.secondary)
+                    }
+                    HStack {
+                        Image(systemName: "calendar")
+                            .foregroundStyle(.secondary)
+                            .opacity(0)
+                        Text("Today")
+                            .foregroundStyle(.tertiary)
+                    }
+                }
             }
             .font(.footnote)
             .foregroundStyle(.primary)

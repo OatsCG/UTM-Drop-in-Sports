@@ -17,8 +17,9 @@ struct EventCardContent: View {
                     .font(.title3 .bold())
                 Spacer()
             }
+            .foregroundStyle(.blueUTM)
             //.foregroundStyle(Color(red: 0.06666666666666667, green: 0.14901960784313725, blue: 0.29411764705882354))
-            .foregroundStyle(Color(hue: 0.6055555556, saturation: 0.63, brightness: 0.15))
+            //.foregroundStyle(Color(hue: 0.6055555556, saturation: 0.63, brightness: 0.15))
             Spacer()
             VStack {
                 HStack {
