@@ -11,7 +11,6 @@ struct SportChips: View {
     @Environment(\.colorScheme) private var colorScheme
     @Binding var categoryParser: CategoryParser
     @State var organizedCategories: [[Category]] = []
-    @State var width: CGFloat = 100
     @State var maxRows: Int = 3
     @State var isExpanded: Bool = false
     @State var maxWidth: CGFloat = 300

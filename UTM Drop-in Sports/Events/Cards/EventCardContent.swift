@@ -70,7 +70,8 @@ struct EventCardContent: View {
         }
         .padding(15)
         .background {
-            RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous).fill(.clear)
+            RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous)
+                .fill(.clear)
                 .stroke(.tertiary, lineWidth: 2)
         }
         .contentShape(RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous))

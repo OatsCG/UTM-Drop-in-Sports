@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct DayEvents: Hashable {
     static func == (lhs: DayEvents, rhs: DayEvents) -> Bool {
         return lhs.id == rhs.id
@@ -32,8 +31,7 @@ class AllEvents {
     
     init(events: [Event]) {
         var dayEventsList: [DayEvents] = []
-            
-            // Helper to get just the day from a Date
+        
         let calendar = Calendar.current
         
         var currentDayEvents: DayEvents?
@@ -42,10 +40,8 @@ class AllEvents {
             let eventDate = calendar.startOfDay(for: event.relativeTimeDate.startDate)
             
             if let currentDay = currentDayEvents?.date, currentDay == eventDate {
-                // Add event to the current DayEvents if it's the same day
                 currentDayEvents?.events.append(event)
             } else {
-                // Close off the previous DayEvents, if any, and start a new one
                 if let currentDayEvents = currentDayEvents {
                     dayEventsList.append(currentDayEvents)
                 }
@@ -53,7 +49,6 @@ class AllEvents {
             }
         }
         
-        // Add the final DayEvents object if there are remaining events
         if let currentDayEvents = currentDayEvents {
             dayEventsList.append(currentDayEvents)
         }
