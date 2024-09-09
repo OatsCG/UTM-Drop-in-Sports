@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct Event: Hashable {
+struct Event1: Hashable {
     let id: UUID = UUID()
     let name: String
     let date: Date
@@ -26,11 +26,11 @@ struct Event: Hashable {
 struct DayEvents: Hashable {
     let id: UUID = UUID()
     let date: Date
-    let events: [Event]
+    let events: [Event1]
     
     init() {
         self.date = Date()
-        self.events = [Event(), Event(), Event()]
+        self.events = [Event1(), Event1(), Event1()]
     }
 }
 

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EventCard: View {
-    var event: Event = Event()
+    var event: Event1 = Event1()
     @State var showingSheet: Bool = false
     @Namespace var animation
     var body: some View {

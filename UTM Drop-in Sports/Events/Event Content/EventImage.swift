@@ -9,6 +9,9 @@ import SwiftUI
 
 struct EventImage: View {
     @State var img: URL = URL(string: "https://calsaas-production.s3.amazonaws.com/uploads/sites/78972/2024/08/dropin-sports-25.png")!
+    
+    // if image exists, height is always 674px
+    
     var body: some View {
         AsyncImage(
             url: img,

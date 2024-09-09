@@ -8,17 +8,46 @@
 import SwiftUI
 
 struct SportChips: View {
+    @State var categoryParser: CategoryParser = CategoryParser()
+    @State var organizedCategories: [[Category]] = []
+    @State var width: CGFloat = 100
+    @State var maxRows: Int = 3
+    @State var maxWidth: CGFloat = 300
     var body: some View {
-        VStack {
-            ForEach(0..<3) { index in
+        ZStack {
+            VStack {
+                FlexView(data: $categoryParser.categories, maxRows: $maxRows) { category in
+                    SportChip(category: category)
+                }
+                .padding(.bottom, 2)
                 HStack {
-                    ForEach(0..<2) { index in
-                        SportChip(title: generateRandomString(), image: "soccerball")
-                        
+                    Button(action: {
+                        if maxRows == 3 {
+                            withAnimation {
+                                maxRows = .max
+                            }
+                        } else {
+                            withAnimation {
+                                maxRows = 3
+                            }
+                        }
+                    }) {
+                        Text(maxRows == 3 ? "Show More..." : "Show Less...")
+                            .font(.footnote)
                     }
                     Spacer()
                 }
             }
+//            GeometryReader { geo in
+//                HStack {
+//                    Spacer()
+//                    Color.clear
+//                    Spacer()
+//                }
+//                .onChange(of: geo.size) {
+//                    self.maxWidth = geo.size.width
+//                }
+//            }
         }
     }
 }
@@ -27,9 +56,4 @@ struct SportChips: View {
     ScrollView {
         SportChips()
     }
-}
-
-func generateRandomString() -> String {
-    let options: [String] = ["Soccer", "Basketball", "Tennis", "Golf", "Swimming", "Baseball", "Hockey", "Lacrosse", "Volleyball", "Water Polo", "Biking", "Running", "Skating", "Cycling", "Swimming", "Basketball", "Tennis", "Golf", "Swimming", "Baseball", "Hockey", "Lacrosse", "Volleyball", "Water Polo", "Biking", "Running", "Skating", "Cycling"]
-    return options.randomElement()!
 }
