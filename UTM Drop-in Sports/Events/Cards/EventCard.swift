@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct EventCard: View {
-    var event: Event1 = Event1()
+    var event: Event
     @State var showingSheet: Bool = false
     @Namespace var animation
     var body: some View {
         Button(action: {
             showingSheet = true
         }) {
-            EventCardContent()
+            EventCardContent(event: event)
                 .matchedTransitionSource(id: event.id, in: animation)
         }
         .buttonStyle(PlainButtonStyle())

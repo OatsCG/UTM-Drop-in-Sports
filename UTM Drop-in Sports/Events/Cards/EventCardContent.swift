@@ -8,25 +8,24 @@
 import SwiftUI
 
 struct EventCardContent: View {
+    var event: Event
     var body: some View {
         VStack(alignment: .leading) {
             HStack(alignment: .center) {
-                Image(systemName: "soccerball")
+                Image(systemName: event.symbol)
                     .font(.title)
-                Text("Drop-in Soccer")
+                Text(event.title)
                     .font(.title3 .bold())
                 Spacer()
             }
             .foregroundStyle(.blueUTM)
-            //.foregroundStyle(Color(red: 0.06666666666666667, green: 0.14901960784313725, blue: 0.29411764705882354))
-            //.foregroundStyle(Color(hue: 0.6055555556, saturation: 0.63, brightness: 0.15))
             Spacer()
             VStack {
                 HStack {
                     HStack {
                         Image(systemName: "mappin")
                             .symbolRenderingMode(.hierarchical)
-                        Text("Gym A/B")
+                        Text(event.venue)
                     }
                     Spacer()
                 }
@@ -35,11 +34,11 @@ struct EventCardContent: View {
                 HStack {
                     Image(systemName: "clock")
                         .symbolRenderingMode(.hierarchical)
-                    Text("9:00am - 10:00am")
+                    Text(event.relativeTimeDate.timeString)
                     Spacer()
                     Image(systemName: "calendar")
                         .foregroundStyle(.secondary)
-                    Text("Tuesday Sept 2")
+                    Text(event.relativeTimeDate.dateString)
                         .foregroundStyle(.secondary)
                 }
                     .font(.footnote)

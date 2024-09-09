@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct EventBody: View {
+    var event: Event
     var body: some View {
-        Text("Body description of event, which is super long and will wrap to multiple lines if needed (this is a test) and will be truncated to 100 characters if it is longer than that (this is a test) and will be truncated to 100 characters if it is longer than that (this is a test) and will be truncated to 100 characters if it is longer than that (this is a test) and will be truncated to 100 characters if it is longer than that (this is a test) and will be truncated to 100 characters if it is longer than that (this is a test) and will be truncated to 100 characters if it.")
+        Text(event.description)
             .padding(.bottom, 30)
         
         HStack {
@@ -17,19 +18,19 @@ struct EventBody: View {
                 
             }) {
                 // UTM Event Website
-                Text("UTM Event Website")
+                
+            }
+            if let url = URL(string: event.url) {
+                Link(destination: url) {
+                    Text("UTM Event Website")
+                }
             }
             Spacer()
-            Button(action: {
-                
-            }) {
-                // Event Admission status (none, book now, reserve your spot)
-                Text("Book now!")
+            if let url = URL(string: event.ticket_url) {
+                Link(destination: url) {
+                    Text(event.ticket_label)
+                }
             }
         }
     }
-}
-
-#Preview {
-    EventBody()
 }

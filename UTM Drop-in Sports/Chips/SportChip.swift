@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SportChip: View {
     @Environment(\.colorScheme) private var colorScheme
+    @Binding var categoryParser: CategoryParser
     var category: Category
     @State var favourited: Bool = false
     var body: some View {
@@ -16,6 +17,7 @@ struct SportChip: View {
             withAnimation(.interactiveSpring) {
                 category.selected.toggle()
             }
+            categoryParser.updateDisplayEvents()
         }) {
             HStack {
                 Image(systemName: category.symbol)

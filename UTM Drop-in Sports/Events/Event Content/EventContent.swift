@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EventContent: View {
     @Binding var showingSheet: Bool
-    var event: Event1
+    var event: Event
     var body: some View {
         VStack {
             Button(action: {
@@ -25,19 +25,15 @@ struct EventContent: View {
             
             ScrollView {
                 VStack {
-                    EventImage()
+                    EventImage(event: event)
                         .padding(.bottom, 18)
-                    EventHeader()
+                    EventHeader(event: event)
                     Divider()
                         .padding(.vertical, 15)
-                    EventBody()
+                    EventBody(event: event)
                 }
                 .safeAreaPadding()
             }
         }
     }
-}
-
-#Preview {
-    EventContent(showingSheet: .constant(true), event: Event1())
 }

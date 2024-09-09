@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct EventHeader: View {
+    var event: Event
     var body: some View {
         HStack(alignment: .center) {
             // soccerball of color #11264b
-            Image(systemName: "soccerball")
+            Image(systemName: event.symbol)
                 .font(.largeTitle)
-            Text("Drop-in Soccer")
+            Text(event.title)
                 .font(.title .bold())
             Spacer()
         }
@@ -27,7 +28,7 @@ struct EventHeader: View {
                 HStack {
                     Image(systemName: "mappin")
                         .symbolRenderingMode(.hierarchical)
-                    Text("Gym A/B")
+                    Text(event.venue)
                 }
                 Spacer()
             }
@@ -38,29 +39,26 @@ struct EventHeader: View {
                     HStack {
                         Image(systemName: "clock")
                             .symbolRenderingMode(.hierarchical)
-                        Text("9:00am - 10:00am")
+                        Text(event.relativeTimeDate.timeString)
                     }
                     HStack {
                         Image(systemName: "clock")
                             .symbolRenderingMode(.hierarchical)
                             .opacity(0)
-                        Text("In 1 hour")
+                        Text(event.relativeTimeDate.timeLeftString)
                             .foregroundStyle(.secondary)
                     }
                 }
                 Spacer()
-                VStack(alignment: .leading) {
+                VStack(alignment: .trailing) {
                     HStack {
                         Image(systemName: "calendar")
                             .foregroundStyle(.secondary)
-                        Text("Tuesday Sept 2")
+                        Text(event.relativeTimeDate.dateString)
                             .foregroundStyle(.secondary)
                     }
                     HStack {
-                        Image(systemName: "calendar")
-                            .foregroundStyle(.secondary)
-                            .opacity(0)
-                        Text("Today")
+                        Text(event.relativeTimeDate.daysLeftString)
                             .foregroundStyle(.tertiary)
                     }
                 }
@@ -74,5 +72,5 @@ struct EventHeader: View {
 }
 
 #Preview {
-    EventHeader()
+    ContentView()
 }
