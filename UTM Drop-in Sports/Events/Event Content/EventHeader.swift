@@ -40,9 +40,14 @@ struct EventHeader: View {
                     }
                     if event.relativeTimeDate.isOngoing {
                         HStack {
-                            Image(systemName: "record.circle")
-                                .font(.caption2)
-                                .symbolEffect(.pulse .byLayer, options: .repeat(.continuous))
+                            if #available(iOS 18.0, *) {
+                                Image(systemName: "record.circle")
+                                    .font(.caption2)
+                                    .symbolEffect(.pulse .byLayer, options: .repeat(.continuous))
+                            } else {
+                                Image(systemName: "record.circle")
+                                    .font(.caption2)
+                            }
                             Text("Ongoing")
                         }
                         .foregroundStyle(.green)

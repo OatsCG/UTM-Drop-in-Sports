@@ -15,13 +15,21 @@ struct EventCard: View {
         Button(action: {
             showingSheet = true
         }) {
-            EventCardContent(event: event)
-                .matchedTransitionSource(id: event.id, in: animation)
+            if #available(iOS 18.0, *) {
+                EventCardContent(event: event)
+                    .matchedTransitionSource(id: event.id, in: animation)
+            } else {
+                EventCardContent(event: event)
+            }
         }
         .buttonStyle(PlainButtonStyle())
         .sheet(isPresented: $showingSheet) {
-            EventContent(showingSheet: $showingSheet, event: event)
-            .navigationTransition(.zoom(sourceID: event.id, in: animation))
+            if #available(iOS 18.0, *) {
+                EventContent(showingSheet: $showingSheet, event: event)
+                    .navigationTransition(.zoom(sourceID: event.id, in: animation))
+            } else {
+                EventContent(showingSheet: $showingSheet, event: event)
+            }
         }
     }
 }
