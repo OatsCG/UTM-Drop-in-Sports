@@ -15,6 +15,7 @@ class CategoryParser {
     var categories: [Category] = []
     var events: [Event] = []
     var groupedEvents: AllEvents = AllEvents(events: [])
+    var isUpdating: Bool = true
     
     var onlyWomens: Bool = false
     
@@ -68,6 +69,7 @@ class CategoryParser {
             }
         }
         withAnimation {
+            self.isUpdating = false
             self.groupedEvents = AllEvents(events: self.events)
         }
     }

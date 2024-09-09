@@ -54,7 +54,7 @@ struct EventCardContent: View {
         }
         .contentShape(RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous))
         .clipShape(RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous))
-        .frame(height: 120)
+        //.frame(height: 120)
     }
 }
 

@@ -14,7 +14,7 @@ struct ContentView: View {
     var body: some View {
         NavigationStack(path: $path) {
             ScrollView {
-                if categoryParser.groupedEvents.days.isEmpty {
+                if categoryParser.isUpdating {
                     VStack {
                         Spacer()
                         HStack {
