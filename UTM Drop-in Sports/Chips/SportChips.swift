@@ -22,7 +22,7 @@ struct SportChips: View {
                     SportChip(categoryParser: $categoryParser, category: category)
                 }
                 .padding(.bottom, 2)
-                if !isExpanded {
+                if isExpanded {
                     HStack {
                         Button(action: {
                             categoryParser.onlyWomens.toggle()
@@ -44,7 +44,7 @@ struct SportChips: View {
                                 } else {
                                     RoundedRectangle(cornerRadius: 8)
                                         .fill(categoryParser.onlyWomens ? .blueUTMlight : .white)
-                                        .stroke(.blueUTM, lineWidth: 2)
+                                        .stroke(.blueUTMlight, lineWidth: 2)
                                 }
                             }
                         }
