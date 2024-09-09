@@ -14,9 +14,23 @@ struct ContentView: View {
     var body: some View {
         NavigationStack(path: $path) {
             ScrollView {
-                SportChips(categoryParser: $categoryParser)
-                    .padding(.vertical, 10)
-                EventList(categoryParser: $categoryParser)
+                if categoryParser.groupedEvents.days.isEmpty {
+                    VStack {
+                        Spacer()
+                        HStack {
+                            Spacer()
+                            ProgressView()
+                            Spacer()
+                        }
+                        Spacer()
+                    }
+                } else {
+                    VStack {
+                        SportChips(categoryParser: $categoryParser)
+                            .padding(.vertical, 10)
+                        EventList(categoryParser: $categoryParser)
+                    }
+                }
             }
             .safeAreaPadding(.horizontal)
             .navigationTitle(Text("UTM Drop-Ins"))
