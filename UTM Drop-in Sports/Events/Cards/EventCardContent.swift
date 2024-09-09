@@ -23,7 +23,7 @@ struct EventCardContent: View {
             VStack {
                 HStack {
                     HStack {
-                        Image(systemName: "mappin")
+                        Image(systemName: "map")
                             .symbolRenderingMode(.hierarchical)
                         Text(event.venue)
                     }

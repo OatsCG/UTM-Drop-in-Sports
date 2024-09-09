@@ -19,10 +19,7 @@ struct ContentView: View {
                 EventList(categoryParser: $categoryParser)
             }
             .safeAreaPadding(.horizontal)
-//            .padding(.top)
-//                .safeAreaInset(edge: .top, spacing: 0) {
-//                    Color.clear.frame(height: 0) // Ensures content starts below the status bar
-//                }
+            .navigationTitle(Text("UTM Drop-Ins"))
         }
         .searchable(text: $searchField)
         .onChange(of: searchField) { _, _ in
