@@ -19,22 +19,43 @@ struct EventCardContent: View {
                 Spacer()
             }
             .foregroundStyle(.blueUTM)
-            Spacer()
+            .padding(.bottom, 6)
             VStack {
                 HStack {
                     HStack {
-                        Image(systemName: "map")
+                        Image(systemName: "mappin.and.ellipse")
                             .symbolRenderingMode(.hierarchical)
                         Text(event.venue)
                     }
                     Spacer()
                 }
                     .font(.subheadline .bold())
-                    .padding(.bottom, 2)
-                HStack {
-                    Image(systemName: "clock")
-                        .symbolRenderingMode(.hierarchical)
-                    Text(event.relativeTimeDate.timeString)
+                    .padding(.bottom, 6)
+                HStack(alignment: .top) {
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Image(systemName: event.relativeTimeDate.daySymbol)
+                                .foregroundStyle(event.relativeTimeDate.daySymbolColor.gradient)
+                            Text(event.relativeTimeDate.timeString)
+                        }
+                        if event.relativeTimeDate.isOngoing {
+                            HStack {
+                                Image(systemName: "record.circle")
+                                    .font(.caption2)
+                                    .symbolEffect(.pulse .byLayer, options: .repeat(.continuous))
+                                Text("Ongoing")
+                            }
+                            .foregroundStyle(.green)
+                        } else {
+                            HStack {
+                                Image(systemName: "clock")
+                                    .symbolRenderingMode(.hierarchical)
+                                    .opacity(0)
+                                Text(event.relativeTimeDate.timeLeftString)
+                                    .foregroundStyle(event.relativeTimeDate.timeLeftString == "Soon" ? .orange : .secondary)
+                            }
+                        }
+                    }
                     Spacer()
                     Image(systemName: "calendar")
                         .foregroundStyle(.secondary)
@@ -54,7 +75,6 @@ struct EventCardContent: View {
         }
         .contentShape(RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous))
         .clipShape(RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous))
-        //.frame(height: 120)
     }
 }
 

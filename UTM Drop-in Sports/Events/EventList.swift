@@ -11,12 +11,16 @@ struct EventList: View {
     @Binding var categoryParser: CategoryParser
 
     var body: some View {
-        LazyVStack(alignment: .leading, pinnedViews: [.sectionHeaders]) {
-            ForEach(categoryParser.groupedEvents.days, id: \.self) { day in
-                Section(header: EventDayHeader(day: day)) {
-                    ForEach(day.events, id: \.self) { event in
-                        EventCard(event: event)
-                            .transition(.blurReplace)
+        if (categoryParser.events.isEmpty) {
+            ContentUnavailableView("No events found.", systemImage: "flag.2.crossed", description: Text("Try selecting less filters."))
+        } else {
+            LazyVStack(alignment: .leading, pinnedViews: [.sectionHeaders]) {
+                ForEach(categoryParser.groupedEvents.days, id: \.date) { day in
+                    Section(header: EventDayHeader(day: day)) {
+                        ForEach(day.events, id: \.id) { event in
+                            EventCard(event: event)
+                                .transition(.blurReplace)
+                        }
                     }
                 }
             }

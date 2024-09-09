@@ -38,13 +38,25 @@ struct SportChips: View {
                             .padding(.vertical, 8)
                             .background {
                                 if colorScheme == .dark {
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .fill(categoryParser.onlyWomens ? .blueUTMlight : .white.opacity(0.05))
-                                        .stroke(.blueUTMlight, lineWidth: categoryParser.onlyWomens ? 2 : 1)
+                                    if categoryParser.onlyWomens {
+                                        RoundedRectangle(cornerRadius: 8)
+                                            .fill(.blueUTMlight.gradient)
+                                            .stroke(.blueUTMlight, lineWidth: 2)
+                                    } else {
+                                        RoundedRectangle(cornerRadius: 8)
+                                            .fill(.white.opacity(0.05))
+                                            .stroke(.blueUTMlight, lineWidth: 1)
+                                    }
                                 } else {
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .fill(categoryParser.onlyWomens ? .blueUTMlight : .white)
-                                        .stroke(.blueUTMlight, lineWidth: 2)
+                                    if categoryParser.onlyWomens {
+                                        RoundedRectangle(cornerRadius: 8)
+                                            .fill(.blueUTMlight.gradient)
+                                            .stroke(.blueUTMlight, lineWidth: 2)
+                                    } else {
+                                        RoundedRectangle(cornerRadius: 8)
+                                            .fill(.white)
+                                            .stroke(.blueUTMlight, lineWidth: 2)
+                                    }
                                 }
                             }
                         }
@@ -66,7 +78,21 @@ struct SportChips: View {
                             }
                         }
                     }) {
-                        Text(isExpanded ? "Show Less..." : "Show More...")
+                        HStack {
+                            if isExpanded {
+                                Text("Show Less...")
+                            } else {
+                                Text("Show More...")
+                                ForEach(categoryParser.categories.filter({ $0.selected }), id: \.self) { category in
+                                    Image(systemName: category.symbol)
+                                }
+                                    
+                                if (categoryParser.onlyWomens) {
+                                    Image(systemName: "figure.stand.dress")
+                                        .foregroundStyle(.blueUTMlight)
+                                }
+                            }
+                        }
                             .font(.footnote)
                     }
                     Spacer()

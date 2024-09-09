@@ -11,7 +11,6 @@ struct EventHeader: View {
     var event: Event
     var body: some View {
         HStack(alignment: .center) {
-            // soccerball of color #11264b
             Image(systemName: event.symbol)
                 .font(.largeTitle)
             Text(event.title)
@@ -19,10 +18,8 @@ struct EventHeader: View {
             Spacer()
         }
         .foregroundStyle(.blueUTM)
-        //.foregroundStyle(Color(red: 0.06666666666666667, green: 0.14901960784313725, blue: 0.29411764705882354))
-        //.foregroundStyle(Color(hue: 0.67, saturation: 0.05, brightness: 1.0))
-        
         .padding(.bottom, 10)
+        
         VStack {
             HStack {
                 HStack {
@@ -33,20 +30,30 @@ struct EventHeader: View {
                 Spacer()
             }
             .font(.subheadline .bold())
-            .padding(.bottom, 4)
-            HStack {
+            .padding(.bottom, 6)
+            HStack(alignment: .top) {
                 VStack(alignment: .leading) {
                     HStack {
-                        Image(systemName: "clock")
-                            .symbolRenderingMode(.hierarchical)
+                        Image(systemName: event.relativeTimeDate.daySymbol)
+                            .foregroundStyle(event.relativeTimeDate.daySymbolColor.gradient)
                         Text(event.relativeTimeDate.timeString)
                     }
-                    HStack {
-                        Image(systemName: "clock")
-                            .symbolRenderingMode(.hierarchical)
-                            .opacity(0)
-                        Text(event.relativeTimeDate.timeLeftString)
-                            .foregroundStyle(.secondary)
+                    if event.relativeTimeDate.isOngoing {
+                        HStack {
+                            Image(systemName: "record.circle")
+                                .font(.caption2)
+                                .symbolEffect(.pulse .byLayer, options: .repeat(.continuous))
+                            Text("Ongoing")
+                        }
+                        .foregroundStyle(.green)
+                    } else {
+                        HStack {
+                            Image(systemName: "clock")
+                                .symbolRenderingMode(.hierarchical)
+                                .opacity(0)
+                            Text(event.relativeTimeDate.timeLeftString)
+                                .foregroundStyle(event.relativeTimeDate.timeLeftString == "Soon" ? .orange : .secondary)
+                        }
                     }
                 }
                 Spacer()
@@ -65,7 +72,6 @@ struct EventHeader: View {
             }
             .font(.footnote)
             .foregroundStyle(.primary)
-            
         }
         .padding(.leading, 10)
     }

@@ -34,23 +34,31 @@ struct SportChip: View {
                 .padding(.vertical, 8)
                 .background {
                     if colorScheme == .dark {
-                        Capsule()
-                            .fill(category.selected ? .primaryUTM : .white.opacity(0.05))
-                            .stroke(.quaternary, lineWidth: category.selected ? 2 : 1)
+                        if category.selected {
+                            Capsule()
+                                .fill(.primaryUTM)
+                                .stroke(.quaternary, lineWidth: 2)
+                        } else {
+                            Capsule()
+                                .fill(.white.opacity(0.05))
+                                .stroke(.quaternary, lineWidth: 1)
+                        }
                     } else {
-                        Capsule()
-                            .fill(category.selected ? .primaryUTM : .white)
-                            .stroke(.quaternary, lineWidth: 2)
+                        if category.selected {
+                            Capsule()
+                                .fill(.primaryUTM)
+                                .stroke(.quaternary, lineWidth: 2)
+                        } else {
+                            Capsule()
+                                .fill(.white)
+                                .stroke(.quaternary, lineWidth: 2)
+                        }
                     }
                 }
         }
         .buttonStyle(.plain)
     }
 }
-
-//#Preview {
-//    SportChip(category: )
-//}
 
 #Preview {
     ContentView()

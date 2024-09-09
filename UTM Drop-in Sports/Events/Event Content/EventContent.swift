@@ -15,7 +15,6 @@ struct EventContent: View {
             Button(action: {
                 showingSheet = false
             }) {
-                // down chevron sfsymbol
                 Image(systemName: "chevron.compact.down")
                     .foregroundStyle(.tertiary)
                     .font(.title)

@@ -5,7 +5,7 @@
 //  Created by Charlie Giannis on 2024-09-08.
 //
 
-import Foundation
+import SwiftUI
 
 func loadEventJSON() -> EventJSON? {
     guard let fileURL = Bundle.main.url(forResource: "events", withExtension: "json") else {
@@ -54,6 +54,7 @@ class Category: Decodable, Hashable {
     let title: String
     let symbol: String
     var selected: Bool = false
+    var shown: Bool = false
 }
 
 @Observable
@@ -67,6 +68,7 @@ class Event: Decodable, Hashable {
     
     required init(from decoder:Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
+        id = try values.decode(Int.self, forKey: .id)
         url = try values.decode(String.self, forKey: .url)
         title = try values.decode(String.self, forKey: .title)
         description = try values.decode(String.self, forKey: .description)
@@ -83,6 +85,7 @@ class Event: Decodable, Hashable {
     }
     
     private enum CodingKeys: String, CodingKey {
+        case id
         case url
         case title
         case description
@@ -97,8 +100,8 @@ class Event: Decodable, Hashable {
         case womens
     }
   
-    var id: UUID = UUID()
     var relativeTimeDate: RelativeTimeDate
+    var id: Int
     let url: String
     let title: String
     let description: String
@@ -124,6 +127,8 @@ struct RelativeTimeDate {
     let timeLeftString: String
     let isOngoing: Bool
     let isEventOver: Bool
+    let daySymbol: String
+    let daySymbolColor: Color
 }
 
 func formatDateRange(startDate: String, endDate: String) -> RelativeTimeDate {
@@ -132,7 +137,7 @@ func formatDateRange(startDate: String, endDate: String) -> RelativeTimeDate {
     
     guard let start = dateFormatter.date(from: startDate),
           let end = dateFormatter.date(from: endDate) else {
-        return RelativeTimeDate(startDate: Date(), timeString: "", dateString: "", daysLeftString: "", timeLeftString: "", isOngoing: false, isEventOver: false)
+        return RelativeTimeDate(startDate: Date(), timeString: "", dateString: "", daysLeftString: "", timeLeftString: "", isOngoing: false, isEventOver: false, daySymbol: "", daySymbolColor: .primary)
     }
     
     let now = Date()
@@ -151,19 +156,24 @@ func formatDateRange(startDate: String, endDate: String) -> RelativeTimeDate {
     // Days Left String (e.g., "Today", "Tomorrow", "")
     let calendar = Calendar.current
     let daysLeftString: String
-    let timeLeftString: String
+    let hoursLeft: Int = Int(round(start.timeIntervalSince(now) / 3600))
+    var timeLeftString: String = ""
+    if hoursLeft >= 0 {
+        if hoursLeft <= 1 {
+            timeLeftString = "Soon"
+        } else if hoursLeft <= 24 {
+            timeLeftString = "In \(hoursLeft) hours"
+        }
+    }
+    
+    //let timeLeftString = hoursLeft <= 5 ? "\(hoursLeft) \(hoursLeft == 1 ? "hour" : "hours") left" : ""
     
     if calendar.isDateInToday(start) {
         daysLeftString = "Today"
-        timeLeftString = "" // No time left string for today
     } else if calendar.isDateInTomorrow(start) {
         daysLeftString = "Tomorrow"
-        let hoursLeft = Int(start.timeIntervalSince(now) / 3600)
-        timeLeftString = hoursLeft <= 5 ? "\(hoursLeft) \(hoursLeft == 1 ? "hour" : "hours") left" : ""
     } else {
         daysLeftString = ""
-        let hoursLeft = Int(start.timeIntervalSince(now) / 3600)
-        timeLeftString = hoursLeft <= 5 ? "\(hoursLeft) \(hoursLeft == 1 ? "hour" : "hours") left" : ""
     }
     
     // isOngoing
@@ -172,5 +182,43 @@ func formatDateRange(startDate: String, endDate: String) -> RelativeTimeDate {
     // isEventOver
     let isEventOver = now > end
     
-    return RelativeTimeDate(startDate: start, timeString: timeString, dateString: dateString, daysLeftString: daysLeftString, timeLeftString: timeLeftString, isOngoing: isOngoing, isEventOver: isEventOver)
+    return RelativeTimeDate(startDate: start, timeString: timeString, dateString: dateString, daysLeftString: daysLeftString, timeLeftString: timeLeftString, isOngoing: isOngoing, isEventOver: isEventOver, daySymbol: getDaySection(start, end), daySymbolColor: getDayColor(start, end))
+}
+
+func getDaySection(_ startDate: Date, _ endDate: Date) -> String {
+    let middleDate = startDate.addingTimeInterval(endDate.timeIntervalSince(startDate) / 2)
+    
+    let calendar = Calendar.current
+    let hour = calendar.component(.hour, from: middleDate)
+
+    switch hour {
+    case 6..<12:
+        return "sunrise"
+    case 12..<18:
+        return "sun.max"
+    default:
+        return "moon"
+    }
+}
+
+func getDayColor(_ startDate: Date, _ endDate: Date) -> Color {
+    let middleDate = startDate.addingTimeInterval(endDate.timeIntervalSince(startDate) / 2)
+    
+    let calendar = Calendar.current
+    let hour = calendar.component(.hour, from: middleDate)
+
+    switch hour {
+    case 6..<12:
+        return .orange
+    case 12..<18:
+        return .yellow
+    default:
+        return .blue
+    }
+}
+
+
+
+#Preview {
+    ContentView()
 }

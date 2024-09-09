@@ -14,12 +14,6 @@ struct EventBody: View {
             .padding(.bottom, 30)
         
         HStack {
-            Button(action: {
-                
-            }) {
-                // UTM Event Website
-                
-            }
             if let url = URL(string: event.url) {
                 Link(destination: url) {
                     Text("UTM Event Website")
