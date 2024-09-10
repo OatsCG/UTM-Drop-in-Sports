@@ -81,9 +81,15 @@ struct EventCardContent: View {
         }
         .padding(15)
         .background {
-            RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous)
-                .fill(.clear)
-                .stroke(.tertiary, lineWidth: 2)
+            if #available(iOS 17.0, *) {
+                RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous)
+                    .fill(.clear)
+                    .stroke(.tertiary, lineWidth: 2)
+            } else {
+                RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous)
+                    .strokeBorder(.tertiary, lineWidth: 2)
+                    .background(RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous).fill(.clear))
+            }
         }
         .contentShape(RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous))
         .clipShape(RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous))

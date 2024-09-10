@@ -23,15 +23,26 @@ struct EventContent: View {
             .padding()
             
             ScrollView {
-                VStack {
-                    EventImage(event: event)
-                        .padding(.bottom, 18)
-                    EventHeader(event: event)
-                    Divider()
-                        .padding(.vertical, 15)
-                    EventBody(event: event)
+                if #available(iOS 17.0, *) {
+                    VStack {
+                        EventImage(event: event)
+                            .padding(.bottom, 18)
+                        EventHeader(event: event)
+                        Divider()
+                            .padding(.vertical, 15)
+                        EventBody(event: event)
+                    }
+                    .safeAreaPadding()
+                } else {
+                    VStack {
+                        EventImage(event: event)
+                            .padding(.bottom, 18)
+                        EventHeader(event: event)
+                        Divider()
+                            .padding(.vertical, 15)
+                        EventBody(event: event)
+                    }
                 }
-                .safeAreaPadding()
             }
         }
     }

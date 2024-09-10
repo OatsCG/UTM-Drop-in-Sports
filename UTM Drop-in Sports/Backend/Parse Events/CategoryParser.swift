@@ -7,16 +7,15 @@
 
 import SwiftUI
 
-@Observable
-class CategoryParser {
+class CategoryParser: ObservableObject {
     private var allEvents: [Event] = []
     
-    var categories: [Category] = []
-    var events: [Event] = []
-    var groupedEvents: AllEvents = AllEvents(events: [])
-    var isUpdating: Bool = true
+    @Published var categories: [Category] = []
+    @Published var events: [Event] = []
+    @Published var groupedEvents: AllEvents = AllEvents(events: [])
+    @Published var isUpdating: Bool = true
     
-    var onlyWomens: Bool = false
+    @Published var onlyWomens: Bool = false
     
     var searchField: String = ""
     
@@ -28,8 +27,8 @@ class CategoryParser {
                 await MainActor.run {
                     withAnimation {
                         self.categories = eventJSON.categories
-                        self.allEvents = eventJSON.events
                     }
+                    self.allEvents = eventJSON.events
                     self.updateDisplayEvents()
                 }
             }

@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct UTM_Drop_in_SportsApp: App {
+    @StateObject var categoryParser: CategoryParser = CategoryParser()
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(categoryParser)
         }
     }
 }

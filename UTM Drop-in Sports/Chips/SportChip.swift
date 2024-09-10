@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SportChip: View {
     @Environment(\.colorScheme) private var colorScheme
-    @Binding var categoryParser: CategoryParser
+    @EnvironmentObject var categoryParser: CategoryParser
     var category: Category
     @State var favourited: Bool = false
     var body: some View {
@@ -20,8 +20,12 @@ struct SportChip: View {
             categoryParser.updateDisplayEvents()
         }) {
             HStack {
-                Image(systemName: category.symbol)
-                    .symbolEffect(.bounce, value: category.selected)
+                if #available(iOS 17.0, *) {
+                    Image(systemName: category.symbol)
+                        .symbolEffect(.bounce, value: category.selected)
+                } else {
+                    Image(systemName: category.symbol)
+                }
                 Text(category.title)
                     .fixedSize(horizontal: false, vertical: true)
                 if favourited {
@@ -36,22 +40,22 @@ struct SportChip: View {
                     if colorScheme == .dark {
                         if category.selected {
                             Capsule()
-                                .fill(.primaryUTM)
-                                .stroke(.quaternary, lineWidth: 2)
+                                .strokeBorder(.quaternary, lineWidth: 2)
+                                .background(Capsule().fill(.primaryUTM))
                         } else {
                             Capsule()
-                                .fill(.white.opacity(0.05))
-                                .stroke(.quaternary, lineWidth: 1)
+                                .strokeBorder(.quaternary, lineWidth: 1)
+                                .background(Capsule().fill(.white.opacity(0.05)))
                         }
                     } else {
                         if category.selected {
                             Capsule()
-                                .fill(.primaryUTM)
-                                .stroke(.quaternary, lineWidth: 2)
+                                .strokeBorder(.quaternary, lineWidth: 2)
+                                .background(Capsule().fill(.primaryUTM))
                         } else {
                             Capsule()
-                                .fill(.white)
-                                .stroke(.quaternary, lineWidth: 2)
+                                .strokeBorder(.quaternary, lineWidth: 2)
+                                .background(Capsule().fill(.white))
                         }
                     }
                 }

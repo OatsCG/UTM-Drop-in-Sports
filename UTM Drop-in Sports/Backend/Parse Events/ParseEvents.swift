@@ -31,8 +31,7 @@ class EventJSON: Decodable {
 }
 
 
-@Observable
-class Category: Decodable, Hashable {
+class Category: Decodable, Hashable, ObservableObject {
     static func == (lhs: Category, rhs: Category) -> Bool {
         return lhs.id == rhs.id
     }
@@ -54,11 +53,11 @@ class Category: Decodable, Hashable {
     var id: UUID = UUID()
     let title: String
     let symbol: String
-    var selected: Bool = false
-    var shown: Bool = false
+    @Published var selected: Bool = false
+    @Published var shown: Bool = false
 }
 
-@Observable
+
 class Event: Decodable, Hashable {
     static func == (lhs: Event, rhs: Event) -> Bool {
         return lhs.id == rhs.id

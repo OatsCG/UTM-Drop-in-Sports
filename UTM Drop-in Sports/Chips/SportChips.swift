@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SportChips: View {
     @Environment(\.colorScheme) private var colorScheme
-    @Binding var categoryParser: CategoryParser
+    @EnvironmentObject var categoryParser: CategoryParser
     @State var organizedCategories: [[Category]] = []
     @State var maxRows: Int = 3
     @State var isExpanded: Bool = false
@@ -18,7 +18,7 @@ struct SportChips: View {
         ZStack {
             VStack {
                 FlexView(data: $categoryParser.categories, maxRows: $maxRows) { category in
-                    SportChip(categoryParser: $categoryParser, category: category)
+                    SportChip(category: category)
                 }
                 .padding(.bottom, 2)
                 if isExpanded {
@@ -29,8 +29,12 @@ struct SportChips: View {
                         }) {
                             HStack {
                                 Text("Women's Only")
-                                Image(systemName: categoryParser.onlyWomens ? "checkmark.square" : "square")
-                                    .contentTransition(.symbolEffect(.replace.offUp))
+                                if #available(iOS 17.0, *) {
+                                    Image(systemName: categoryParser.onlyWomens ? "checkmark.square" : "square")
+                                        .contentTransition(.symbolEffect(.replace.offUp))
+                                } else {
+                                    Image(systemName: categoryParser.onlyWomens ? "checkmark.square" : "square")
+                                }
                             }
                             .foregroundStyle(categoryParser.onlyWomens ? .black : (colorScheme == .dark ? .white : .black))
                             .padding(.horizontal, 14)
@@ -39,22 +43,22 @@ struct SportChips: View {
                                 if colorScheme == .dark {
                                     if categoryParser.onlyWomens {
                                         RoundedRectangle(cornerRadius: 8)
-                                            .fill(.blueUTMlight.gradient)
-                                            .stroke(.blueUTMlight, lineWidth: 2)
+                                            .strokeBorder(.blueUTMlight, lineWidth: 2)
+                                            .background(RoundedRectangle(cornerRadius: 8).fill(.blueUTMlight.gradient))
                                     } else {
                                         RoundedRectangle(cornerRadius: 8)
-                                            .fill(.white.opacity(0.05))
-                                            .stroke(.blueUTMlight, lineWidth: 1)
+                                            .strokeBorder(.blueUTMlight, lineWidth: 1)
+                                            .background(RoundedRectangle(cornerRadius: 8).fill(.white.opacity(0.05)))
                                     }
                                 } else {
                                     if categoryParser.onlyWomens {
                                         RoundedRectangle(cornerRadius: 8)
-                                            .fill(.blueUTMlight.gradient)
-                                            .stroke(.blueUTMlight, lineWidth: 2)
+                                            .strokeBorder(.blueUTMlight, lineWidth: 2)
+                                            .background(RoundedRectangle(cornerRadius: 8).fill(.blueUTMlight.gradient))
                                     } else {
                                         RoundedRectangle(cornerRadius: 8)
-                                            .fill(.white)
-                                            .stroke(.blueUTMlight, lineWidth: 2)
+                                            .strokeBorder(.blueUTMlight, lineWidth: 2)
+                                            .background(RoundedRectangle(cornerRadius: 8).fill(.white))
                                     }
                                 }
                             }

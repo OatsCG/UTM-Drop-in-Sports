@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EventList: View {
-    @Binding var categoryParser: CategoryParser
+    @EnvironmentObject var categoryParser: CategoryParser
     var body: some View {
         if categoryParser.events.isEmpty {
             VStack {
@@ -28,8 +28,12 @@ struct EventList: View {
                 ForEach(categoryParser.groupedEvents.days, id: \.date) { day in
                     Section(header: EventDayHeader(day: day)) {
                         ForEach(day.events, id: \.id) { event in
-                            EventCard(event: event)
-                                .transition(.blurReplace)
+                            if #available(iOS 17.0, *) {
+                                EventCard(event: event)
+                                    .transition(.blurReplace)
+                            } else {
+                                EventCard(event: event)
+                            }
                         }
                     }
                 }
@@ -60,8 +64,9 @@ struct EventDayHeader: View {
             .padding(.vertical, 10)
         }
         .background {
-            Rectangle().fill(.background)
-                .stroke(.quinary, lineWidth: 1)
+            Rectangle()
+                .strokeBorder(.quinary, lineWidth: 1)
+                .background(Rectangle().fill(.background))
                 .ignoresSafeArea()
                 .shadow(color: .black.opacity(0.05), radius: 5, y: -5)
         }
