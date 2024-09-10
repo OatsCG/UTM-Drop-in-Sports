@@ -42,9 +42,15 @@ struct SportChips: View {
                             .background {
                                 if colorScheme == .dark {
                                     if categoryParser.onlyWomens {
-                                        RoundedRectangle(cornerRadius: 8)
-                                            .strokeBorder(.blueUTMlight, lineWidth: 2)
-                                            .background(RoundedRectangle(cornerRadius: 8).fill(.blueUTMlight.gradient))
+                                        if #available(iOS 16.0, *) {
+                                            RoundedRectangle(cornerRadius: 8)
+                                                .strokeBorder(.blueUTMlight, lineWidth: 2)
+                                                .background(RoundedRectangle(cornerRadius: 8).fill(.blueUTMlight.gradient))
+                                        } else {
+                                            RoundedRectangle(cornerRadius: 8)
+                                                .strokeBorder(.blueUTMlight, lineWidth: 2)
+                                                .background(RoundedRectangle(cornerRadius: 8).fill(.blueUTMlight))
+                                        }
                                     } else {
                                         RoundedRectangle(cornerRadius: 8)
                                             .strokeBorder(.blueUTMlight, lineWidth: 1)
@@ -52,9 +58,15 @@ struct SportChips: View {
                                     }
                                 } else {
                                     if categoryParser.onlyWomens {
-                                        RoundedRectangle(cornerRadius: 8)
-                                            .strokeBorder(.blueUTMlight, lineWidth: 2)
-                                            .background(RoundedRectangle(cornerRadius: 8).fill(.blueUTMlight.gradient))
+                                        if #available(iOS 16.0, *) {
+                                            RoundedRectangle(cornerRadius: 8)
+                                                .strokeBorder(.blueUTMlight, lineWidth: 2)
+                                                .background(RoundedRectangle(cornerRadius: 8).fill(.blueUTMlight.gradient))
+                                        } else {
+                                            RoundedRectangle(cornerRadius: 8)
+                                                .strokeBorder(.blueUTMlight, lineWidth: 2)
+                                                .background(RoundedRectangle(cornerRadius: 8).fill(.blueUTMlight))
+                                        }
                                     } else {
                                         RoundedRectangle(cornerRadius: 8)
                                             .strokeBorder(.blueUTMlight, lineWidth: 2)

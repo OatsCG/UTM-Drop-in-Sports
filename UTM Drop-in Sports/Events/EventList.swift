@@ -64,8 +64,15 @@ struct EventDayHeader: View {
             .padding(.vertical, 10)
         }
         .background {
-            Rectangle()
-                .strokeBorder(.quinary, lineWidth: 1)
+            Group {
+                if #available(iOS 16.0, *) {
+                    Rectangle()
+                        .strokeBorder(.quinary, lineWidth: 1)
+                } else {
+                    Rectangle()
+                        .strokeBorder(.quaternary, lineWidth: 1)
+                }
+            }
                 .background(Rectangle().fill(.background))
                 .ignoresSafeArea()
                 .shadow(color: .black.opacity(0.05), radius: 5, y: -5)
