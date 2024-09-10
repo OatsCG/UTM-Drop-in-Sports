@@ -70,7 +70,7 @@ struct EventDayHeader: View {
                         .strokeBorder(.quinary, lineWidth: 1)
                 } else {
                     Rectangle()
-                        .strokeBorder(.quaternary, lineWidth: 1)
+                        .strokeBorder(.clear, lineWidth: 1)
                 }
             }
                 .background(Rectangle().fill(.background))

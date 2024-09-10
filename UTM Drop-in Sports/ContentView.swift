@@ -83,29 +83,42 @@ struct MainScrollView: View {
     @Binding var showNetworkAlert: Bool
     var body: some View {
         ScrollView {
-            if categoryParser.isUpdating {
-                VStack {
+            if #available(iOS 17.0, *) {
+                MainScrollContentView(showNetworkAlert: $showNetworkAlert)
+            } else {
+                MainScrollContentView(showNetworkAlert: $showNetworkAlert)
+                    .padding(.horizontal)
+            }
+        }
+    }
+}
+
+struct MainScrollContentView: View {
+    @EnvironmentObject var categoryParser: CategoryParser
+    @Binding var showNetworkAlert: Bool
+    var body: some View {
+        if categoryParser.isUpdating {
+            VStack {
+                Spacer()
+                HStack {
                     Spacer()
-                    HStack {
-                        Spacer()
-                        VStack {
-                            ProgressView()
-                            if showNetworkAlert {
-                                Text("Check your network connection to download the schedule. You only need to do this once.")
-                                    .multilineTextAlignment(.center)
-                                    .font(.caption2)
-                            }
+                    VStack {
+                        ProgressView()
+                        if showNetworkAlert {
+                            Text("Check your network connection to download the schedule. You only need to do this once.")
+                                .multilineTextAlignment(.center)
+                                .font(.caption2)
                         }
-                        Spacer()
                     }
                     Spacer()
                 }
-            } else {
-                VStack {
-                    SportChips()
-                        .padding(.vertical, 10)
-                    EventList()
-                }
+                Spacer()
+            }
+        } else {
+            VStack {
+                SportChips()
+                    .padding(.vertical, 10)
+                EventList()
             }
         }
     }
