@@ -19,7 +19,20 @@ class CategoryParser: ObservableObject {
     
     var searchField: String = ""
     
+    var lastUpdated: Date? = nil
+    
     init() {
+        self.refreshContent()
+    }
+    
+    func refreshContent() {
+        if let lastUpdated = self.lastUpdated {
+            if areDatesWithinTenMinutes(Date(), lastUpdated) {
+                return
+            }
+        } else {
+            return
+        }
         Task {
             await self.eventFileFetcher()
             let eventJSON: EventJSON? = loadEventJSON()
@@ -29,10 +42,16 @@ class CategoryParser: ObservableObject {
                         self.categories = eventJSON.categories
                     }
                     self.allEvents = eventJSON.events
+                    self.lastUpdated = Date()
                     self.updateDisplayEvents()
                 }
             }
         }
+    }
+    
+    func areDatesWithinTenMinutes(_ date1: Date, _ date2: Date) -> Bool {
+        let timeInterval = abs(date1.timeIntervalSince(date2))
+        return timeInterval <= 600 // 600 seconds = 10 minutes
     }
 
     func eventFileFetcher() async {
@@ -46,7 +65,7 @@ class CategoryParser: ObservableObject {
             config.timeoutIntervalForRequest = 3 // 3 seconds timeout
             let session = URLSession(configuration: config)
             
-            var data: (Data, URLResponse)? = try? await session.data(from: versionURL)
+            let data: (Data, URLResponse)? = try? await session.data(from: versionURL)
             let versionData: Data? = data?.0
             
             let storedVersion = userDefaults.string(forKey: "version.txt")
@@ -131,3 +150,4 @@ class CategoryParser: ObservableObject {
         }
     }
 }
+

@@ -105,7 +105,7 @@ struct MainScrollContentView: View {
                     VStack {
                         ProgressView()
                         if showNetworkAlert {
-                            Text("Check your network connection to download the schedule. You only need to do this once.")
+                            Text("Check your network connection to update the schedule.")
                                 .multilineTextAlignment(.center)
                                 .font(.caption2)
                         }
