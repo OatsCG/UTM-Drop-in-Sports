@@ -39,8 +39,13 @@ struct EventCardContent: View {
                                     //.symbolVariant(.fill)
                                     .foregroundStyle(event.relativeTimeDate.daySymbolColor.mix(with: .primary, by: 0.1))
                             } else {
-                                Image(systemName: event.relativeTimeDate.daySymbol)
-                                    .foregroundStyle(.primary)
+                                if #available(iOS 16.0, *) {
+                                    Image(systemName: event.relativeTimeDate.daySymbol)
+                                        .foregroundStyle(event.relativeTimeDate.daySymbolColor.gradient)
+                                } else {
+                                    Image(systemName: event.relativeTimeDate.daySymbol)
+                                        .foregroundStyle(event.relativeTimeDate.daySymbolColor)
+                                }
                             }
                             Text(event.relativeTimeDate.timeString)
                         }

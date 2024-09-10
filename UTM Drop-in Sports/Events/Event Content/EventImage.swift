@@ -18,12 +18,12 @@ struct EventImage: View {
                 content: { image in
                     image
                         .resizable()
-                        .frame(height: 100)
+//                        .frame(height: 100)
                         .aspectRatio(contentMode: .fit)
                 },
                 placeholder: {
                     ProgressView()
-                        .frame(height: 150)
+//                        .frame(height: 150)
                 }
             )
             .ignoresSafeArea()
