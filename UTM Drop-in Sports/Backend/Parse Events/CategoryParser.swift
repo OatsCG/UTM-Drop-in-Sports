@@ -42,11 +42,31 @@ class CategoryParser: ObservableObject {
         
         // Fetch version.txt content from the remote server
         do {
-            let (versionData, _) = try await URLSession.shared.data(from: versionURL)
-            guard let fetchedVersion = String(data: versionData, encoding: .utf8) else { return }
+            let config = URLSessionConfiguration.default
+            config.timeoutIntervalForRequest = 3 // 3 seconds timeout
+            let session = URLSession(configuration: config)
+            
+            var data: (Data, URLResponse)? = try? await session.data(from: versionURL)
+            let versionData: Data? = data?.0
+            
+            let storedVersion = userDefaults.string(forKey: "version.txt")
+            var fetchedVersion: String
+            
+            if let versionData = versionData {
+                if let decodedVersion = String(data: versionData, encoding: .utf8) {
+                    fetchedVersion = decodedVersion
+                } else {
+                    return
+                }
+            } else {
+                if let storedVersion = storedVersion {
+                    fetchedVersion = storedVersion
+                } else {
+                    return
+                }
+            }
             
             // Compare with stored version
-            let storedVersion = userDefaults.string(forKey: "version.txt")
             if storedVersion == fetchedVersion {
                 // Versions match, do nothing and return
                 return

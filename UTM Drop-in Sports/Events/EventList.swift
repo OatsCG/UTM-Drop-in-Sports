@@ -65,7 +65,7 @@ struct EventDayHeader: View {
         }
         .background {
             Group {
-                if #available(iOS 16.0, *) {
+                if #available(iOS 17.0, *) {
                     Rectangle()
                         .strokeBorder(.quinary, lineWidth: 1)
                 } else {
