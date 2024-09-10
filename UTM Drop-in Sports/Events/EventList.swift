@@ -57,13 +57,13 @@ struct EventDayHeader: View {
                     }
                 }
             }
-            .padding(.vertical)
+            .padding(.vertical, 10)
         }
         .background {
             Rectangle().fill(.background)
                 .stroke(.quinary, lineWidth: 1)
                 .ignoresSafeArea()
-                .shadow(color: .black.opacity(0.05), radius: 5, y: 5)
+                .shadow(color: .black.opacity(0.05), radius: 5, y: -5)
         }
     }
 }

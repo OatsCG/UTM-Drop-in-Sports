@@ -53,6 +53,6 @@ class AllEvents {
             dayEventsList.append(currentDayEvents)
         }
         
-        self.days = dayEventsList
+        self.days = Array(dayEventsList.prefix(14))
     }
 }

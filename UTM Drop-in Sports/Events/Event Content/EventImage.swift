@@ -16,14 +16,22 @@ struct EventImage: View {
             AsyncImage(
                 url: img,
                 content: { image in
-                    image.resizable()
+                    image
+                        .resizable()
+                        .frame(height: 100)
                         .aspectRatio(contentMode: .fit)
                 },
                 placeholder: {
                     ProgressView()
+                        .frame(height: 150)
                 }
             )
             .ignoresSafeArea()
         }
     }
+}
+
+
+#Preview {
+    ContentView()
 }

@@ -34,8 +34,14 @@ struct EventCardContent: View {
                 HStack(alignment: .top) {
                     VStack(alignment: .leading) {
                         HStack {
-                            Image(systemName: event.relativeTimeDate.daySymbol)
-                                .foregroundStyle(event.relativeTimeDate.daySymbolColor.gradient)
+                            if #available(iOS 18.0, *) {
+                                Image(systemName: event.relativeTimeDate.daySymbol)
+                                    //.symbolVariant(.fill)
+                                    .foregroundStyle(event.relativeTimeDate.daySymbolColor.mix(with: .primary, by: 0.1))
+                            } else {
+                                Image(systemName: event.relativeTimeDate.daySymbol)
+                                    .foregroundStyle(.primary)
+                            }
                             Text(event.relativeTimeDate.timeString)
                         }
                         if event.relativeTimeDate.isOngoing {
