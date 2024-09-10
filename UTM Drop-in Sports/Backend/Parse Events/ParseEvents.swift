@@ -8,19 +8,20 @@
 import SwiftUI
 
 func loadEventJSON() -> EventJSON? {
-    guard let fileURL = Bundle.main.url(forResource: "events", withExtension: "json") else {
-        print("File not found: events.json")
-        return nil
+    let fileManager = FileManager.default
+    if let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first {
+        let eventsFileURL = documentsDirectory.appendingPathComponent("events.json")
+        
+        do {
+            let data = try Data(contentsOf: eventsFileURL)
+            let decoder = JSONDecoder()
+            let eventJSON = try decoder.decode(EventJSON.self, from: data)
+            return eventJSON
+        } catch {
+            print("Error loading or decoding events.json: \(error)")
+        }
     }
-    do {
-        let data = try Data(contentsOf: fileURL)
-        let decoder = JSONDecoder()
-        let decodedData = try decoder.decode(EventJSON.self, from: data)
-        return decodedData
-    } catch {
-        print("Error reading or parsing file: \(error)")
-        return nil
-    }
+    return nil
 }
 
 

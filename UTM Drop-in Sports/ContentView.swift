@@ -11,6 +11,7 @@ struct ContentView: View {
     @State var categoryParser: CategoryParser = CategoryParser()
     @State var path: NavigationPath = NavigationPath()
     @State var searchField: String = ""
+    @State var showNetworkAlert: Bool = false
     var body: some View {
         NavigationStack(path: $path) {
             ScrollView {
@@ -19,7 +20,14 @@ struct ContentView: View {
                         Spacer()
                         HStack {
                             Spacer()
-                            ProgressView()
+                            VStack {
+                                ProgressView()
+                                if showNetworkAlert {
+                                    Text("Check your network connection to download the schedule. You only need to do this once.")
+                                        .multilineTextAlignment(.center)
+                                        .font(.caption2)
+                                }
+                            }
                             Spacer()
                         }
                         Spacer()
@@ -39,6 +47,18 @@ struct ContentView: View {
         .onChange(of: searchField) { _, _ in
             categoryParser.searchField = searchField
             categoryParser.updateDisplayEvents()
+        }
+        .onAppear {
+            Task {
+                try? await Task.sleep(for: .seconds(5))
+                await MainActor.run {
+                    if (categoryParser.isUpdating) {
+                        withAnimation {
+                            showNetworkAlert = true
+                        }
+                    }
+                }
+            }
         }
     }
 }

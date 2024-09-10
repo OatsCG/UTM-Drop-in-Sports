@@ -22,6 +22,7 @@ class CategoryParser {
     
     init() {
         Task {
+            await self.eventFileFetcher()
             let eventJSON: EventJSON? = loadEventJSON()
             if let eventJSON = eventJSON {
                 await MainActor.run {
@@ -34,6 +35,44 @@ class CategoryParser {
             }
         }
     }
+
+    func eventFileFetcher() async {
+        let userDefaults = UserDefaults.standard
+        let versionURL = URL(string: "https://raw.githubusercontent.com/OatsCG/UTM-Drop-Ins-Schedule/main/version.txt")!
+        let eventsURL = URL(string: "https://raw.githubusercontent.com/OatsCG/UTM-Drop-Ins-Schedule/main/events.json")!
+        
+        // Fetch version.txt content from the remote server
+        do {
+            let (versionData, _) = try await URLSession.shared.data(from: versionURL)
+            guard let fetchedVersion = String(data: versionData, encoding: .utf8) else { return }
+            
+            // Compare with stored version
+            let storedVersion = userDefaults.string(forKey: "version.txt")
+            if storedVersion == fetchedVersion {
+                // Versions match, do nothing and return
+                return
+            }
+            // Fetch events.json content from the remote server
+            let (eventsData, _) = try await URLSession.shared.data(from: eventsURL)
+            
+            // Save events.json locally
+            let fileManager = FileManager.default
+            if let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first {
+                let eventsFileURL = documentsDirectory.appendingPathComponent("events.json")
+                do {
+                    try eventsData.write(to: eventsFileURL)
+                    
+                    // Update UserDefaults with the new version
+                    userDefaults.setValue(fetchedVersion, forKey: "version.txt")
+                } catch {
+                    print("Error saving events.json: \(error)")
+                }
+            }
+        } catch {
+            print("Error fetching data: \(error)")
+        }
+    }
+
     
     func updateDisplayEvents() {
         let notOverEvents: [Event] = self.allEvents.filter { $0.relativeTimeDate.isEventOver == false }

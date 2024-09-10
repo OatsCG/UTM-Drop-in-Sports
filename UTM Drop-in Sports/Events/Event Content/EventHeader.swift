@@ -23,7 +23,7 @@ struct EventHeader: View {
         VStack {
             HStack {
                 HStack {
-                    Image(systemName: "map")
+                    Image(systemName: "mappin.and.ellipse")
                         .symbolRenderingMode(.hierarchical)
                     Text(event.venue)
                 }
