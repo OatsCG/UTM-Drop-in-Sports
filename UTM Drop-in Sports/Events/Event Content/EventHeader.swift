@@ -11,8 +11,13 @@ struct EventHeader: View {
     var event: Event
     var body: some View {
         HStack(alignment: .center) {
-            Image(systemName: event.symbol)
-                .font(.largeTitle)
+            if #available (iOS 17.0, *) {
+                Image(systemName: event.symbol)
+                    .font(.largeTitle)
+            } else {
+                Image(event.symbol)
+                    .font(.largeTitle)
+            }
             Text(event.title)
                 .font(.title .bold())
             Spacer()

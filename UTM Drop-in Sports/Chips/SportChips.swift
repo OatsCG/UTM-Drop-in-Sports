@@ -99,11 +99,15 @@ struct SportChips: View {
                             } else {
                                 Text("Show More...")
                                 ForEach(categoryParser.categories.filter({ $0.selected }), id: \.self) { category in
-                                    Image(systemName: category.symbol)
+                                    if #available(iOS 17.0, *) {
+                                        Image(systemName: category.symbol)
+                                    } else {
+                                        Image(category.symbol)
+                                    }
                                 }
                                     
                                 if (categoryParser.onlyWomens) {
-                                    Image(systemName: "figure.stand.dress")
+                                    Image("figure.stand.dress")
                                         .foregroundStyle(.blueUTMlight)
                                 }
                             }

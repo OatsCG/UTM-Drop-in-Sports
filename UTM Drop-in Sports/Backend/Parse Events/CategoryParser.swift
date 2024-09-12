@@ -14,25 +14,26 @@ class CategoryParser: ObservableObject {
     @Published var events: [Event] = []
     @Published var groupedEvents: AllEvents = AllEvents(events: [])
     @Published var isUpdating: Bool = true
-    
     @Published var onlyWomens: Bool = false
-    
     var searchField: String = ""
-    
     var lastUpdated: Date? = nil
+    private var isUpdatingPrivate: Bool = false
+    private var timer: DispatchSourceTimer?
     
     init() {
-        self.refreshContent()
+        self.tryRefreshContent()
     }
     
-    func refreshContent() {
+    func tryRefreshContent() {
         if let lastUpdated = self.lastUpdated {
             if areDatesWithinTenMinutes(Date(), lastUpdated) {
                 return
             }
-        } else {
+        }
+        if self.isUpdatingPrivate {
             return
         }
+        self.isUpdatingPrivate = true
         Task {
             await self.eventFileFetcher()
             let eventJSON: EventJSON? = loadEventJSON()
@@ -44,10 +45,33 @@ class CategoryParser: ObservableObject {
                     self.allEvents = eventJSON.events
                     self.lastUpdated = Date()
                     self.updateDisplayEvents()
+                    self.isUpdatingPrivate = false
                 }
             }
         }
     }
+    
+    func startTimerLoop() {
+            // Cancel any existing timer
+            timer?.cancel()
+
+            // Create a new timer
+            timer = DispatchSource.makeTimerSource()
+            timer?.schedule(deadline: .now(), repeating: 5.0)
+
+            timer?.setEventHandler { [weak self] in
+                self?.tryRefreshContent()
+            }
+
+            // Start the timer
+            timer?.resume()
+        }
+
+        func stopTimerLoop() {
+            // Cancel the timer when stopping
+            timer?.cancel()
+            timer = nil
+        }
     
     func areDatesWithinTenMinutes(_ date1: Date, _ date2: Date) -> Bool {
         let timeInterval = abs(date1.timeIntervalSince(date2))

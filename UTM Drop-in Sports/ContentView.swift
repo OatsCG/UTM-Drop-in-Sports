@@ -124,6 +124,8 @@ struct MainScrollContentView: View {
     }
 }
 
-#Preview {
-    ContentView()
-}
+//#Preview {
+//    @State var c = CategoryParser()
+//    return ContentView()
+//        .environmentObject(c)
+//}

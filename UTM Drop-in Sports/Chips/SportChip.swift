@@ -24,7 +24,7 @@ struct SportChip: View {
                     Image(systemName: category.symbol)
                         .symbolEffect(.bounce, value: category.selected)
                 } else {
-                    Image(systemName: category.symbol)
+                    Image(category.symbol)
                 }
                 Text(category.title)
                     .fixedSize(horizontal: false, vertical: true)

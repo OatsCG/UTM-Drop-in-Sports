@@ -12,8 +12,13 @@ struct EventCardContent: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack(alignment: .center) {
-                Image(systemName: event.symbol)
-                    .font(.title)
+                if #available (iOS 17.0, *) {
+                    Image(systemName: event.symbol)
+                        .font(.title)
+                } else {
+                    Image(event.symbol)
+                        .font(.title)
+                }
                 Text(event.title)
                     .font(.title3 .bold())
                 Spacer()
@@ -88,12 +93,12 @@ struct EventCardContent: View {
         .background {
             if #available(iOS 17.0, *) {
                 RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous)
-                    .fill(.clear)
+                    .fill(.white.opacity(0.05))
                     .stroke(.tertiary, lineWidth: 2)
             } else {
                 RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous)
                     .strokeBorder(.tertiary, lineWidth: 2)
-                    .background(RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous).fill(.clear))
+                    .background(RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous).fill(.white.opacity(0.05)))
             }
         }
         .contentShape(RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous))
@@ -102,5 +107,7 @@ struct EventCardContent: View {
 }
 
 #Preview {
-    ContentView()
+    @State var c = CategoryParser()
+    return ContentView()
+        .environmentObject(c)
 }
