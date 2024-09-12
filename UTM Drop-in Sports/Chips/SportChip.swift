@@ -17,7 +17,7 @@ struct SportChip: View {
             withAnimation(.interactiveSpring) {
                 category.selected.toggle()
             }
-            categoryParser.updateDisplayEvents()
+            categoryParser.updateDisplayEvents(maxDays: 14)
         }) {
             HStack {
                 if #available(iOS 17.0, *) {

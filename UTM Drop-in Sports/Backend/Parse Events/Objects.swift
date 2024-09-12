@@ -29,7 +29,7 @@ class AllEvents {
     var days: [DayEvents] = []
     
     
-    init(events: [Event]) {
+    init(events: [Event], maxDays: Int?) {
         var dayEventsList: [DayEvents] = []
         
         let calendar = Calendar.current
@@ -52,7 +52,10 @@ class AllEvents {
         if let currentDayEvents = currentDayEvents {
             dayEventsList.append(currentDayEvents)
         }
-        
-        self.days = Array(dayEventsList.prefix(14))
+        if let maxDays = maxDays {
+            self.days = Array(dayEventsList.prefix(maxDays))
+        } else {
+            self.days = dayEventsList
+        }
     }
 }

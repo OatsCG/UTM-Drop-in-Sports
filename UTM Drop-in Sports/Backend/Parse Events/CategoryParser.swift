@@ -12,9 +12,10 @@ class CategoryParser: ObservableObject {
     
     @Published var categories: [Category] = []
     @Published var events: [Event] = []
-    @Published var groupedEvents: AllEvents = AllEvents(events: [])
+    @Published var groupedEvents: AllEvents = AllEvents(events: [], maxDays: nil)
     @Published var isUpdating: Bool = true
     @Published var onlyWomens: Bool = false
+    @Published var isEventsExpandedToMax: Bool = false
     var searchField: String = ""
     var lastUpdated: Date? = nil
     private var isUpdatingPrivate: Bool = false
@@ -44,7 +45,7 @@ class CategoryParser: ObservableObject {
                     }
                     self.allEvents = eventJSON.events
                     self.lastUpdated = Date()
-                    self.updateDisplayEvents()
+                    self.updateDisplayEvents(maxDays: 14)
                     self.isUpdatingPrivate = false
                 }
             }
@@ -136,7 +137,7 @@ class CategoryParser: ObservableObject {
     }
 
     
-    func updateDisplayEvents() {
+    func updateDisplayEvents(maxDays: Int?) {
         let notOverEvents: [Event] = self.allEvents.filter { $0.relativeTimeDate.isEventOver == false }
         let womensRespectedEvents: [Event] = notOverEvents.filter { !self.onlyWomens || $0.womens }
         var searchedEvents: [Event] = []
@@ -170,7 +171,13 @@ class CategoryParser: ObservableObject {
         }
         withAnimation {
             self.isUpdating = false
-            self.groupedEvents = AllEvents(events: self.events)
+            if let maxDays = maxDays {
+                self.groupedEvents = AllEvents(events: self.events, maxDays: maxDays)
+                self.isEventsExpandedToMax = false
+            } else {
+                self.groupedEvents = AllEvents(events: self.events, maxDays: nil)
+                self.isEventsExpandedToMax = true
+            }
         }
     }
 }

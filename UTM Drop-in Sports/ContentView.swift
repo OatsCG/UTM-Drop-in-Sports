@@ -22,7 +22,7 @@ struct ContentView: View {
         .searchable(text: $searchField)
         .onChange(of: searchField) { _ in
             categoryParser.searchField = searchField
-            categoryParser.updateDisplayEvents()
+            categoryParser.updateDisplayEvents(maxDays: 14)
         }
         .onAppear {
             Task {
@@ -119,10 +119,32 @@ struct MainScrollContentView: View {
                 SportChips()
                     .padding(.vertical, 10)
                 EventList()
+                LoadMoreEventsButton()
+                    .padding(.top, 10)
+                    .padding(.bottom, 30)
             }
         }
     }
 }
+
+struct LoadMoreEventsButton: View {
+    @EnvironmentObject var categoryParser: CategoryParser
+    var body: some View {
+        HStack {
+            if !categoryParser.isEventsExpandedToMax {
+                Spacer()
+                Button(action: {
+                    categoryParser.updateDisplayEvents(maxDays: nil)
+                }) {
+                    Text("Load More Events...")
+                }
+                Spacer()
+            }
+        }
+    }
+}
+
+
 
 //#Preview {
 //    @State var c = CategoryParser()
