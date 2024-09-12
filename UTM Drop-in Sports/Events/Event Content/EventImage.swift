@@ -15,17 +15,17 @@ struct EventImage: View {
         if let img = URL(string: event.image) {
             AsyncImage(
                 url: img,
-                content: { image in
+                transaction: Transaction(animation: .default)
+            ) { phase in
+                switch phase {
+                case .success(let image):
                     image
                         .resizable()
-//                        .frame(height: 100)
                         .aspectRatio(contentMode: .fit)
-                },
-                placeholder: {
+                default:
                     ProgressView()
-//                        .frame(height: 150)
                 }
-            )
+            }
             .ignoresSafeArea()
         }
     }
