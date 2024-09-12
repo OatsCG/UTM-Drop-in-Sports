@@ -39,23 +39,23 @@ struct SportChip: View {
                 .background {
                     if colorScheme == .dark {
                         if category.selected {
-                            Capsule()
+                            Capsule(style: .circular)
                                 .strokeBorder(.quaternary, lineWidth: 2)
-                                .background(Capsule().fill(.primaryUTM))
+                                .background(Capsule(style: .circular).fill(.primaryUTM))
                         } else {
-                            Capsule()
+                            Capsule(style: .circular)
                                 .strokeBorder(.quaternary, lineWidth: 1)
-                                .background(Capsule().fill(.white.opacity(0.05)))
+                                .background(Capsule(style: .circular).fill(.white.opacity(0.05)))
                         }
                     } else {
                         if category.selected {
-                            Capsule()
+                            Capsule(style: .circular)
                                 .strokeBorder(.quaternary, lineWidth: 2)
-                                .background(Capsule().fill(.primaryUTM))
+                                .background(Capsule(style: .circular).fill(.primaryUTM))
                         } else {
-                            Capsule()
+                            Capsule(style: .circular)
                                 .strokeBorder(.quaternary, lineWidth: 2)
-                                .background(Capsule().fill(.white))
+                                .background(Capsule(style: .circular).fill(.white))
                         }
                     }
                 }

@@ -24,7 +24,9 @@ struct SportChips: View {
                 if isExpanded {
                     HStack {
                         Button(action: {
-                            categoryParser.onlyWomens.toggle()
+                            withAnimation(.interactiveSpring) {
+                                categoryParser.onlyWomens.toggle()
+                            }
                             categoryParser.updateDisplayEvents()
                         }) {
                             HStack {
