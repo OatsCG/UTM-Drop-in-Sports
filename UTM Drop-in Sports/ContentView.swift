@@ -131,7 +131,7 @@ struct LoadMoreEventsButton: View {
     @EnvironmentObject var categoryParser: CategoryParser
     var body: some View {
         HStack {
-            if !categoryParser.isEventsExpandedToMax {
+            if !categoryParser.isEventsExpandedToMax && categoryParser.events.count > 0 {
                 Spacer()
                 Button(action: {
                     categoryParser.updateDisplayEvents(maxDays: nil)

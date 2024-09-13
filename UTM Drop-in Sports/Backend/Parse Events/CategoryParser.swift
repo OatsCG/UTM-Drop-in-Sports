@@ -142,7 +142,10 @@ class CategoryParser: ObservableObject {
         let womensRespectedEvents: [Event] = notOverEvents.filter { !self.onlyWomens || $0.womens }
         var searchedEvents: [Event] = []
         for event in womensRespectedEvents {
-            if event.title.lowercased().contains(self.searchField.lowercased()) || event.description.lowercased().contains(self.searchField.lowercased()) || self.searchField == "" {
+            if event.title.lowercased().contains(self.searchField.lowercased()) ||
+                event.description.lowercased().contains(self.searchField.lowercased()) ||
+                event.venue.lowercased().contains(self.searchField.lowercased()) ||
+                self.searchField == "" {
                 searchedEvents.append(event)
             }
         }
