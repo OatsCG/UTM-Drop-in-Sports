@@ -158,5 +158,5 @@ func getCurrentDatePlusFiveSeconds() -> Date {
 
 
 func eventDateMinus30Minutes(date: Date) -> Date {
-    return Date().addingTimeInterval(-1800)
+    return date.addingTimeInterval(-1800)
 }
