@@ -34,7 +34,7 @@ struct EventBody: View {
             .padding(.bottom, 30)
         } else {
             Button(action: {
-                notificationManager.scheduleNotification(event: event, date: Date())
+                notificationManager.scheduleNotification(event: event)
             }) {
                 Text("Remind me of this event!")
                     .foregroundStyle(.black)

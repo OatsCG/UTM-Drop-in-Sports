@@ -64,7 +64,7 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate, Observabl
     /// - Parameters:
     ///   - event: The `Event` object for the notification.
     ///   - date: The date and time when the notification should be delivered.
-    func scheduleNotification(event: Event, date: Date) {
+    func scheduleNotification(event: Event) {
         // Guard against scheduling if the event is already scheduled
         if isScheduled(event: event) {
             print("Event \(event.id) is already scheduled.")
@@ -87,7 +87,7 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate, Observabl
         // Create trigger based on the specified date minus 30 minutes
         let triggerDate = Calendar.current.dateComponents(
             [.year, .month, .day, .hour, .minute, .second],
-            from: eventDateMinus30Minutes(date: date) // 30 minutes before the event
+            from: eventDateMinus30Minutes(date: event.relativeTimeDate.startDate) // 30 minutes before the event
         )
         let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
         
