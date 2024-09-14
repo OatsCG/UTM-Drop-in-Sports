@@ -21,11 +21,16 @@ struct EventImage: View {
                 case .success(let image):
                     image
                         .resizable()
-                        .aspectRatio(contentMode: .fit)
+                        .aspectRatio(1494/674, contentMode: .fit)
                 default:
-                    ProgressView()
+                    Color.clear
+                        .overlay {
+                            ProgressView()
+                        }
+                        .aspectRatio(1494/674, contentMode: .fit)
                 }
             }
+            .aspectRatio(1494/674, contentMode: .fit)
             .ignoresSafeArea()
         }
     }
@@ -33,5 +38,17 @@ struct EventImage: View {
 
 
 #Preview {
-    ContentView()
+    VStack {
+        Text("1")
+        HStack {
+            Text("3")
+            Color.clear
+                .overlay {
+                    ProgressView()
+                }
+                .aspectRatio(1494/674, contentMode: .fit)
+            Text("4")
+        }
+        Text("2")
+    }
 }
