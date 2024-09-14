@@ -11,6 +11,8 @@ See all sports, workouts, recreational walks, and pool activities happening righ
   - Sort by Workouts, Cardio, Mind & Body, Pool, various sports and more!
 - Filter by "Women's Only" events
   - Learn about private workouts for female-identifying individuals
+- Schedule notifications for events
+  - Get reminded of events 30 minutes before they start
 - Search by title, description, or location
 
 ### Compatible on iPhone and iPad, iOS 15 - iOS 18
