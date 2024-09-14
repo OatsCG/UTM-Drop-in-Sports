@@ -10,9 +10,11 @@ import SwiftUI
 @main
 struct UTM_Drop_in_SportsApp: App {
     @StateObject var categoryParser: CategoryParser = CategoryParser()
+    @StateObject var notificationManager: NotificationManager = NotificationManager()
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(notificationManager)
                 .environmentObject(categoryParser)
         }
     }

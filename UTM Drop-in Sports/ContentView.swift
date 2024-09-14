@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.scenePhase) var scenePhase
     @EnvironmentObject var categoryParser: CategoryParser
+    @EnvironmentObject var notificationManager: NotificationManager
     @State var searchField: String = ""
     @State var showNetworkAlert: Bool = false
     var body: some View {
@@ -23,6 +25,16 @@ struct ContentView: View {
         .onChange(of: searchField) { _ in
             categoryParser.searchField = searchField
             categoryParser.updateDisplayEvents(maxDays: 14)
+        }
+        .onChange(of: scenePhase) { newPhase in
+            if newPhase == .active {
+                print("Active")
+                notificationManager.clearNotificationBadges()
+            } else if newPhase == .inactive {
+                print("Inactive")
+            } else if newPhase == .background {
+                print("Background")
+            }
         }
         .onAppear {
             Task {

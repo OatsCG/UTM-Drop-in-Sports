@@ -106,8 +106,8 @@ struct EventCardContent: View {
     }
 }
 
-#Preview {
-    @State var c = CategoryParser()
-    return ContentView()
-        .environmentObject(c)
-}
+//#Preview {
+//    @State var c = CategoryParser()
+//    return ContentView()
+//        .environmentObject(c)
+//}
