@@ -7,8 +7,8 @@ See all sports, workouts, recreational walks, and pool activities happening righ
 ## Features:
 - View drop-in sports, workouts, and trainings at UTM
   - See the time, location, and live time updates for current and upcoming sessions
-- Filter by certain sports or activities
-  - Includes Workouts, Cardio, Mind & Body, Pool, various sports and more!
+- Filter certain sports or activities
+  - Sort by Workouts, Cardio, Mind & Body, Pool, various sports and more!
 - Filter by "Women's Only" events
   - Learn about private workouts for female-identifying individuals
 - Search by title, description, or location
