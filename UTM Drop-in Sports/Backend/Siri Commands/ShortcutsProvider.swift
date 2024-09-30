@@ -57,33 +57,33 @@ struct GetNextSportInfo: AppIntent {
     }
 }
 
-@available(iOS 16.0, *)
-struct SportEntity: AppEntity {
-    var id: UUID
-    var name: String
-
-    var displayRepresentation: DisplayRepresentation {
-        DisplayRepresentation(title: "\(name)")
-    }
-    static var typeDisplayRepresentation: TypeDisplayRepresentation {
-        TypeDisplayRepresentation(name: "Sport")
-    }
-
-    static var defaultQuery = SportQuery()
-}
+//@available(iOS 16.0, *)
+//struct SportEntity: AppEntity {
+//    var id: UUID
+//    var name: String
+//
+//    var displayRepresentation: DisplayRepresentation {
+//        DisplayRepresentation(title: "\(name)")
+//    }
+//    static var typeDisplayRepresentation: TypeDisplayRepresentation {
+//        TypeDisplayRepresentation(name: "Sport")
+//    }
+//
+//    static var defaultQuery = SportQuery()
+//}
 
 // Define the query to fetch available sports
-@available(iOS 16.0, *)
-struct SportQuery: EntityQuery {
-    func entities(for identifiers: [UUID]) async throws -> [SportEntity] {
-        let allSports = [
-            SportEntity(id: UUID(), name: "Basketball"),
-            SportEntity(id: UUID(), name: "Soccer"),
-            SportEntity(id: UUID(), name: "Volleyball")
-        ]
-        return allSports.filter { identifiers.contains($0.id) }
-    }
-}
+//@available(iOS 16.0, *)
+//struct SportQuery: EntityQuery {
+//    func entities(for identifiers: [UUID]) async throws -> [SportEntity] {
+//        let allSports = [
+//            SportEntity(id: UUID(), name: "Basketball"),
+//            SportEntity(id: UUID(), name: "Soccer"),
+//            SportEntity(id: UUID(), name: "Volleyball")
+//        ]
+//        return allSports.filter { identifiers.contains($0.id) }
+//    }
+//}
 
 func formattedDateString(from dateString: String) -> String {
     // Date formatter for the input date string
