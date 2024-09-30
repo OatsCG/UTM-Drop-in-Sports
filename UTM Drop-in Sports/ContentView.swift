@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AppIntents
 
 struct ContentView: View {
     @Environment(\.scenePhase) var scenePhase
@@ -91,10 +92,15 @@ struct MainNavigationViewLegacy: View {
 
 
 struct MainScrollView: View {
+    @AppStorage("isTipVisible") var isTipVisible: Bool = true
     @EnvironmentObject var categoryParser: CategoryParser
     @Binding var showNetworkAlert: Bool
     var body: some View {
         ScrollView {
+            if #available(iOS 16.0, *) {
+                SiriTipView(intent: GetNextSportInfo(), isVisible: $isTipVisible)
+                    .siriTipViewStyle(.automatic)
+            }
             if #available(iOS 17.0, *) {
                 MainScrollContentView(showNetworkAlert: $showNetworkAlert)
             } else {

@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		E57085B82CAAF9FF00CE03AE /* Intent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57085B72CAAF9FF00CE03AE /* Intent.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		E5FF24462C8964B700AFCCE9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -24,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E57085B72CAAF9FF00CE03AE /* Intent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intent.swift; sourceTree = "<group>"; };
 		E5FF24342C8964B500AFCCE9 /* UTM Drop-in Sports.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UTM Drop-in Sports.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5FF24452C8964B700AFCCE9 /* UTM Drop-in SportsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UTM Drop-in SportsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5FF244F2C8964B700AFCCE9 /* UTM Drop-in SportsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UTM Drop-in SportsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +80,7 @@
 		E5FF242B2C8964B500AFCCE9 = {
 			isa = PBXGroup;
 			children = (
+				E57085B72CAAF9FF00CE03AE /* Intent.swift */,
 				E5FF24362C8964B500AFCCE9 /* UTM Drop-in Sports */,
 				E5FF24482C8964B700AFCCE9 /* UTM Drop-in SportsTests */,
 				E5FF24522C8964B700AFCCE9 /* UTM Drop-in SportsUITests */,
@@ -238,6 +244,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E57085B82CAAF9FF00CE03AE /* Intent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,6 +405,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "UTM-Drop-in-Sports-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "UTM Sports";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -440,6 +448,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "UTM-Drop-in-Sports-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "UTM Sports";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;

@@ -25,6 +25,10 @@ class CategoryParser: ObservableObject {
         self.tryRefreshContent()
     }
     
+    init() async {
+        await self.tryRefreshContentAsync()
+    }
+    
     func tryRefreshContent() {
         if let lastUpdated = self.lastUpdated {
             if areDatesWithinTenMinutes(Date(), lastUpdated) {
