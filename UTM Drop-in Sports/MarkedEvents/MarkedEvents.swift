@@ -11,25 +11,26 @@ struct SavedEvents: View {
     @EnvironmentObject var categoryParser: CategoryParser
     var body: some View {
         VStack {
-            HStack {
-                Text("Marked Events")
-                Image(systemName: "bookmark")
-                Spacer()
-            }
-            .font(.title .bold())
-            VStack {
-                if let e = categoryParser.events.first {
-                    EventCard(event: e)
+            if categoryParser.savedEvents != [] {
+                HStack {
+                    Text("Marked Events")
+                    Image(systemName: "bookmark")
+                    Spacer()
                 }
-//                categoryParser.events.first?
+                .font(.title .bold())
+                ForEach(categoryParser.savedEvents, id: \.id) { event in
+                    if #available(iOS 17.0, *) {
+                        EventCard(event: event)
+                            .transition(.blurReplace)
+                    } else {
+                        EventCard(event: event)
+                    }
+                }
             }
         }
     }
 }
 
-#Preview {
-    SavedEvents()
-}
 
 #Preview {
     @State var nm = NotificationManager()

@@ -82,6 +82,7 @@ class Event: Decodable, Hashable {
         symbol = try values.decode(String.self, forKey: .symbol)
         womens = try values.decode(Bool.self, forKey: .womens)
         relativeTimeDate = formatDateRange(startDate: start_date, endDate: end_date)
+        saved = false
     }
     
     private enum CodingKeys: String, CodingKey {
@@ -101,6 +102,7 @@ class Event: Decodable, Hashable {
     }
   
     var relativeTimeDate: RelativeTimeDate
+    var saved: Bool
     var id: Int
     let url: String
     let title: String

@@ -17,7 +17,7 @@ struct EventBody: View {
         
         if notificationManager.currentlyScheduledEvents.contains(event.id) {
             Button(action: {
-                categoryParser.saveEvent(event: event)
+                categoryParser.unsaveEvent(event: event)
                 notificationManager.cancelNotification(event: event)
             }) {
                 VStack(alignment: .center) {
@@ -39,6 +39,7 @@ struct EventBody: View {
             .padding(.bottom, 30)
         } else {
             Button(action: {
+                categoryParser.saveEvent(event: event)
                 notificationManager.scheduleNotification(event: event)
             }) {
                 HStack {

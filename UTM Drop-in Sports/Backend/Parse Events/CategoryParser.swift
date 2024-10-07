@@ -105,7 +105,7 @@ class CategoryParser: ObservableObject {
     
     func areDatesWithinTenMinutes(_ date1: Date, _ date2: Date) -> Bool {
         let timeInterval = abs(date1.timeIntervalSince(date2))
-        return timeInterval <= 600 // 600 seconds = 10 minutes
+        return timeInterval <= 300 // 300 seconds = 5 minutes
     }
 
     func eventFileFetcher() async {
@@ -175,6 +175,7 @@ class CategoryParser: ObservableObject {
                 event.description.lowercased().contains(self.searchField.lowercased()) ||
                 event.venue.lowercased().contains(self.searchField.lowercased()) ||
                 self.searchField == "" {
+                
                 searchedEvents.append(event)
             }
         }
@@ -217,18 +218,46 @@ class CategoryParser: ObservableObject {
         // save the event. when app is launched after saved time, show Award sheet.
         //UserDefaults.
         // get userDefaults SavedEventIDs
+        let savedEventIDs: String = UserDefaults.standard.string(forKey: "SavedEventIDs") ?? ""
         // split via <SEP> -> [String] of event ids
+        var splitSavedEventIDs: [String] = savedEventIDs.components(separatedBy: "<SEP>")
+        // remove event.id
+        splitSavedEventIDs.removeAll(where: { $0 == String(event.id) })
         // append event.id
+        splitSavedEventIDs.append(String(event.id))
         // combine with <SEP>
+        let combinedSavedEventIDs: String = splitSavedEventIDs.joined(separator: "<SEP>")
         // save to userDefaults SavedEventIDs
+        UserDefaults.standard.set(combinedSavedEventIDs, forKey: "SavedEventIDs")
+        
+        self.updateSavedEvents()
+    }
+    
+    func unsaveEvent(event: Event) {
+        // save the event. when app is launched after saved time, show Award sheet.
+        let savedEventIDs: String = UserDefaults.standard.string(forKey: "SavedEventIDs") ?? ""
+        var splitSavedEventIDs: [String] = savedEventIDs.components(separatedBy: "<SEP>")
+        splitSavedEventIDs.removeAll(where: { $0 == String(event.id) })
+        let combinedSavedEventIDs: String = splitSavedEventIDs.joined(separator: "<SEP>")
+        // save to userDefaults SavedEventIDs
+        UserDefaults.standard.set(combinedSavedEventIDs, forKey: "SavedEventIDs")
+        
+        self.updateSavedEvents()
     }
     
     func updateSavedEvents() {
-        // get userDefaults SavedEventIDs
-        
-        // split via <SEP> -> [String] of event ids
-        // get events that match savedIDs -> [Event]
-        // write to 
+        let savedEventIDs: String = UserDefaults.standard.string(forKey: "SavedEventIDs") ?? ""
+        let splitSavedEventIDs: [String] = savedEventIDs.components(separatedBy: "<SEP>")
+        var matchingEvents: [Event] = []
+        for savedEventID in splitSavedEventIDs {
+            if let matchingEvent = self.events.first(where: { $0.id == Int(savedEventID) }) {
+                matchingEvents.append(matchingEvent)
+            }
+        }
+        withAnimation {
+            self.savedEvents = matchingEvents
+        }
+        print("update saved: \(self.savedEvents)")
     }
 }
 
