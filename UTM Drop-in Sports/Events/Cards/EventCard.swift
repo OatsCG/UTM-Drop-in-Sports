@@ -143,13 +143,10 @@ struct EventCardContentSiri: View {
     }
 }
 
-//#Preview {
-//    @State var c = CategoryParser()
-//    return ContentView()
-//        .environmentObject(c)
-//}
-
-
 #Preview {
-    ContentView()
+    @State var nm = NotificationManager()
+    @State var c = CategoryParser()
+    return ContentView()
+        .environmentObject(c)
+        .environmentObject(nm)
 }

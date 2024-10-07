@@ -136,6 +136,7 @@ struct MainScrollContentView: View {
             VStack {
                 SportChips()
                     .padding(.vertical, 10)
+                SavedEvents()
                 EventList()
                 LoadMoreEventsButton()
                     .padding(.top, 10)

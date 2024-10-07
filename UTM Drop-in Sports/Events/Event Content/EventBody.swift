@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct EventBody: View {
+    @EnvironmentObject var categoryParser: CategoryParser
     @EnvironmentObject var notificationManager: NotificationManager
     var event: Event
     var body: some View {
@@ -16,11 +17,15 @@ struct EventBody: View {
         
         if notificationManager.currentlyScheduledEvents.contains(event.id) {
             Button(action: {
+                categoryParser.saveEvent(event: event)
                 notificationManager.cancelNotification(event: event)
             }) {
                 VStack(alignment: .center) {
-                    Text("Cancel Notification")
-                    Text("Scheduled for 30 minutes before")
+                    HStack {
+                        Text("Event Saved")
+                        Image(systemName: "bookmark.fill")
+                    }
+                    Text("We'll notify you 30 minutes before it starts")
                         .font(.caption2)
                         .foregroundStyle(.secondary)
                 }
@@ -36,7 +41,10 @@ struct EventBody: View {
             Button(action: {
                 notificationManager.scheduleNotification(event: event)
             }) {
-                Text("Remind me of this event!")
+                HStack {
+                    Text("Save This Event")
+                    Image(systemName: "bookmark")
+                }
                     .foregroundStyle(.black)
                     .padding(.vertical, 6)
                     .padding(.horizontal, 12)
@@ -65,15 +73,21 @@ struct EventBody: View {
 
 #Preview {
     VStack {
-        Text("Remind me of this event!")
+        HStack {
+            Text("Save This Event")
+            Image(systemName: "bookmark")
+        }
             .foregroundStyle(.black)
             .padding(.vertical, 6)
             .padding(.horizontal, 12)
             .background(.blueUTMlight)
             .clipShape(RoundedRectangle(cornerRadius: 10))
         VStack(alignment: .center) {
-            Text("Cancel Notification")
-            Text("Scheduled for 30 minutes before")
+            HStack {
+                Text("Event Saved")
+                Image(systemName: "bookmark.fill")
+            }
+            Text("We'll notify you 30 minutes before it starts")
                 .font(.caption)
                 .foregroundStyle(.secondary)
         }

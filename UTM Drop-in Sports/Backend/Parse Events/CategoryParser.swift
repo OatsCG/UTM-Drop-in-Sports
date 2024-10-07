@@ -12,6 +12,7 @@ class CategoryParser: ObservableObject {
     
     @Published var categories: [Category] = []
     @Published var events: [Event] = []
+    @Published var savedEvents: [Event] = []
     @Published var groupedEvents: AllEvents = AllEvents(events: [], maxDays: nil)
     @Published var isUpdating: Bool = true
     @Published var onlyWomens: Bool = false
@@ -50,6 +51,7 @@ class CategoryParser: ObservableObject {
                     self.allEvents = eventJSON.events
                     self.lastUpdated = Date()
                     self.updateDisplayEvents(maxDays: 14)
+                    self.updateSavedEvents()
                     self.isUpdatingPrivate = false
                     self.startTimerLoop()
                 }
@@ -74,6 +76,7 @@ class CategoryParser: ObservableObject {
             self.allEvents = eventJSON.events
             self.lastUpdated = Date()
             self.updateDisplayEvents(maxDays: 14)
+            self.updateSavedEvents()
             self.isUpdatingPrivate = false
         }
     }
@@ -208,6 +211,24 @@ class CategoryParser: ObservableObject {
                 self.isEventsExpandedToMax = true
             }
         }
+    }
+    
+    func saveEvent(event: Event) {
+        // save the event. when app is launched after saved time, show Award sheet.
+        //UserDefaults.
+        // get userDefaults SavedEventIDs
+        // split via <SEP> -> [String] of event ids
+        // append event.id
+        // combine with <SEP>
+        // save to userDefaults SavedEventIDs
+    }
+    
+    func updateSavedEvents() {
+        // get userDefaults SavedEventIDs
+        
+        // split via <SEP> -> [String] of event ids
+        // get events that match savedIDs -> [Event]
+        // write to 
     }
 }
 
