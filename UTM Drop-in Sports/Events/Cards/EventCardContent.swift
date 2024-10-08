@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EventCardContent: View {
-    var event: Event
+    @Binding var event: Event
     var body: some View {
         VStack(alignment: .leading) {
             HStack(alignment: .center) {
@@ -22,6 +22,10 @@ struct EventCardContent: View {
                 Text(event.title)
                     .font(.title3 .bold())
                 Spacer()
+                if event.saved {
+                    Image(systemName: "bookmark.fill")
+                        .font(.title2)
+                }
             }
             .foregroundStyle(.blueUTM)
             .padding(.bottom, 6)
@@ -92,13 +96,27 @@ struct EventCardContent: View {
         .padding(15)
         .background {
             if #available(iOS 17.0, *) {
-                RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous)
-                    .fill(.white.opacity(0.05))
-                    .stroke(.tertiary, lineWidth: 2)
+                if event.saved && event.relativeTimeDate.isOngoing {
+                    RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous)
+                        .fill(
+                            .blueUTMbg.gradient.opacity(0.3)
+                        )
+                        .stroke(.tertiary, lineWidth: 2)
+                } else {
+                    RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous)
+                        .fill(.white.opacity(0.05))
+                        .stroke(.tertiary, lineWidth: 2)
+                }
             } else {
-                RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous)
-                    .strokeBorder(.tertiary, lineWidth: 2)
-                    .background(RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous).fill(.white.opacity(0.05)))
+                if event.saved && event.relativeTimeDate.isOngoing {
+                    RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous)
+                        .strokeBorder(.tertiary, lineWidth: 2)
+                        .background(RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous).fill(.blueUTMbg.opacity(0.3)))
+                } else {
+                    RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous)
+                        .strokeBorder(.tertiary, lineWidth: 2)
+                        .background(RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous).fill(.white.opacity(0.05)))
+                }
             }
         }
         .contentShape(RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous))

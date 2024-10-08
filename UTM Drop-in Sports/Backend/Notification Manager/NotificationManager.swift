@@ -44,6 +44,7 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate, Observabl
                 // Assuming the identifier is the string representation of the event ID
                 return Int(request.identifier)
             }
+            print("Good schedule ids: \(eventIDs)")
             DispatchQueue.main.async {
                 withAnimation {
                     self.currentlyScheduledEvents = eventIDs

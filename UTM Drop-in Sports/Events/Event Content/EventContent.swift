@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EventContent: View {
     @Binding var showingSheet: Bool
-    var event: Event
+    @Binding var event: Event
     var body: some View {
         VStack {
             Button(action: {

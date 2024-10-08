@@ -60,12 +60,23 @@ struct ContentView: View {
 struct MainNavigationView: View {
     @State var path: NavigationPath = NavigationPath()
     @Binding var showNetworkAlert: Bool
+
     var body: some View {
         NavigationStack(path: $path) {
             if #available(iOS 17.0, *) {
                 MainScrollView(showNetworkAlert: $showNetworkAlert)
                     .navigationTitle(Text("UTM Drop-Ins"))
                     .safeAreaPadding(.horizontal)
+                    .toolbar {
+                        if #available(iOS 18.0, *) {
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                NavigationLink(destination: DisplayCase()) {
+                                    Image(systemName: "medal")
+                                        .foregroundColor(.primary)
+                                }
+                            }
+                        }
+                    }
             } else {
                 MainScrollView(showNetworkAlert: $showNetworkAlert)
                     .navigationTitle(Text("UTM Drop-Ins"))
@@ -74,18 +85,53 @@ struct MainNavigationView: View {
     }
 }
 
+struct DisplayCase: View {
+    @State var maxRows: Int = .max
+    @State var size: CGFloat = 120
+    @EnvironmentObject var categoryParser: CategoryParser
+    var body: some View {
+        ScrollView {
+            if categoryParser.medalsCollected == [] {
+                VStack {
+                    Image(systemName: "flag.2.crossed")
+                        .foregroundStyle(.secondary)
+                        .imageScale(.large)
+                        .font(.largeTitle)
+                    Text("No medals collected.")
+                        .font(.title2 .bold())
+                    Text("Save events and participate to earn medals.")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                }
+            } else {
+                FlexView(data: $categoryParser.medalsCollected, alignment: .center, maxRows: $maxRows) { medal in
+                    Group {
+                        if medal.type == .none {
+                            SportMedallionEmptyDisplay(size: $size, medal: medal)
+                        } else {
+                            SportMedallionDisplay(size: $size, medal: medal)
+                        }
+                    }
+                    .padding(.bottom, 10)
+                }
+                Text("Participate in events to earn more medals!")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                    .padding(.top, 15)
+            }
+        }
+        .navigationTitle("Medals")
+    }
+}
+
+
+
 struct MainNavigationViewLegacy: View {
     @Binding var showNetworkAlert: Bool
     var body: some View {
         NavigationView {
-            if #available(iOS 17.0, *) {
-                MainScrollView(showNetworkAlert: $showNetworkAlert)
-                    .navigationTitle(Text("UTM Drop-Ins"))
-                    .safeAreaPadding(.horizontal)
-            } else {
-                MainScrollView(showNetworkAlert: $showNetworkAlert)
-                    .navigationTitle(Text("UTM Drop-Ins"))
-            }
+            MainScrollView(showNetworkAlert: $showNetworkAlert)
+                .navigationTitle(Text("UTM Drop-Ins"))
         }
     }
 }

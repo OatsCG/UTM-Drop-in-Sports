@@ -11,15 +11,24 @@ class CategoryParser: ObservableObject {
     private var allEvents: [Event] = []
     
     @Published var categories: [Category] = []
+    
     @Published var events: [Event] = []
     @Published var savedEvents: [Event] = []
+    @Published var savedOngoingEvents: [Event] = []
     @Published var groupedEvents: AllEvents = AllEvents(events: [], maxDays: nil)
+    
     @Published var isUpdating: Bool = true
     @Published var onlyWomens: Bool = false
+    @Published var onlySaved: Bool = false
+    
     @Published var isEventsExpandedToMax: Bool = false
+    
+    @Published var medalsCollected: [Medal] = []
+    
     var searchField: String = ""
     var lastUpdated: Date? = nil
     private var isUpdatingPrivate: Bool = false
+    
     private var timer: DispatchSourceTimer?
     
     init() {
@@ -50,8 +59,9 @@ class CategoryParser: ObservableObject {
                     }
                     self.allEvents = eventJSON.events
                     self.lastUpdated = Date()
-                    self.updateDisplayEvents(maxDays: 14)
                     self.updateSavedEvents()
+                    self.updateDisplayEvents(maxDays: 14)
+                    self.updateMedalsCollected()
                     self.isUpdatingPrivate = false
                     self.startTimerLoop()
                 }
@@ -75,8 +85,9 @@ class CategoryParser: ObservableObject {
             self.categories = eventJSON.categories
             self.allEvents = eventJSON.events
             self.lastUpdated = Date()
-            self.updateDisplayEvents(maxDays: 14)
             self.updateSavedEvents()
+            self.updateDisplayEvents(maxDays: 14)
+            self.updateMedalsCollected()
             self.isUpdatingPrivate = false
         }
     }
@@ -168,7 +179,8 @@ class CategoryParser: ObservableObject {
     
     func updateDisplayEvents(maxDays: Int?) {
         let notOverEvents: [Event] = self.allEvents.filter { $0.relativeTimeDate.isEventOver == false }
-        let womensRespectedEvents: [Event] = notOverEvents.filter { !self.onlyWomens || $0.womens }
+        let savedRespectedEvents: [Event] = self.onlySaved ? self.savedEvents : notOverEvents
+        let womensRespectedEvents: [Event] = savedRespectedEvents.filter { !self.onlyWomens || $0.womens }
         var searchedEvents: [Event] = []
         for event in womensRespectedEvents {
             if event.title.lowercased().contains(self.searchField.lowercased()) ||
@@ -238,6 +250,7 @@ class CategoryParser: ObservableObject {
         let savedEventIDs: String = UserDefaults.standard.string(forKey: "SavedEventIDs") ?? ""
         var splitSavedEventIDs: [String] = savedEventIDs.components(separatedBy: "<SEP>")
         splitSavedEventIDs.removeAll(where: { $0 == String(event.id) })
+        event.saved = false
         let combinedSavedEventIDs: String = splitSavedEventIDs.joined(separator: "<SEP>")
         // save to userDefaults SavedEventIDs
         UserDefaults.standard.set(combinedSavedEventIDs, forKey: "SavedEventIDs")
@@ -250,14 +263,46 @@ class CategoryParser: ObservableObject {
         let splitSavedEventIDs: [String] = savedEventIDs.components(separatedBy: "<SEP>")
         var matchingEvents: [Event] = []
         for savedEventID in splitSavedEventIDs {
-            if let matchingEvent = self.events.first(where: { $0.id == Int(savedEventID) }) {
+            if let matchingEvent = self.allEvents.first(where: { $0.id == Int(savedEventID) }) {
+                matchingEvent.saved = true
                 matchingEvents.append(matchingEvent)
             }
         }
         withAnimation {
             self.savedEvents = matchingEvents
+            self.savedOngoingEvents = matchingEvents.filter { $0.relativeTimeDate.isOngoing || $0.relativeTimeDate.isEventOver }
         }
         print("update saved: \(self.savedEvents)")
+    }
+    
+    func addMedal(event: Event) {
+        // add Medal struct to UserDefaults
+        let medal: CompletedEvent = CompletedEvent(id: event.id, sport: event.title, category: event.sortCategory, icon: event.symbol, date: event.relativeTimeDate.startDate)
+        let medalString: String = UserDefaults.standard.string(forKey: "Medals") ?? ""
+        var splitMedalString: [String] = medalString.components(separatedBy: "<SEP>")
+        splitMedalString.append(medal.toString())
+        let joinedMedalString: String = splitMedalString.joined(separator: "<SEP>")
+        UserDefaults.standard.set(joinedMedalString, forKey: "Medals")
+    }
+    
+    func updateMedalsCollected() {
+        let medalsFetched = UserDefaults.standard.string(forKey: "Medals") ?? ""
+        let splitMedals: [String] = medalsFetched.components(separatedBy: "<SEP>")
+        var completedEvents: [CompletedEvent] = []
+        splitMedals.forEach { medalString in
+            let completedEvent: CompletedEvent? = try? CompletedEvent(from: medalString)
+            if let completedEvent = completedEvent {
+                completedEvents.append(completedEvent)
+            }
+        }
+        
+        // add all medals
+        var medals: [Medal] = []
+        for i in self.categories {
+            medals.append(Medal(category: i.title, icon: i.symbol, possibleEvents: completedEvents))
+        }
+        
+        self.medalsCollected = medals
     }
 }
 

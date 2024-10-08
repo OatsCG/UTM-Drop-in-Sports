@@ -25,14 +25,14 @@ struct EventList: View {
             
         } else {
             LazyVStack(alignment: .leading, pinnedViews: [.sectionHeaders]) {
-                ForEach(categoryParser.groupedEvents.days, id: \.date) { day in
+                ForEach($categoryParser.groupedEvents.days, id: \.date) { $day in
                     Section(header: EventDayHeader(day: day)) {
-                        ForEach(day.events, id: \.id) { event in
+                        ForEach($day.events, id: \.id) { $event in
                             if #available(iOS 17.0, *) {
-                                EventCard(event: event)
+                                EventCard(event: $event)
                                     .transition(.blurReplace)
                             } else {
-                                EventCard(event: event)
+                                EventCard(event: $event)
                             }
                         }
                     }

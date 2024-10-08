@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EventCard: View {
-    var event: Event
+    @Binding var event: Event
     @State var showingSheet: Bool = false
     @Namespace var animation
     var body: some View {
@@ -16,19 +16,19 @@ struct EventCard: View {
             showingSheet = true
         }) {
             if #available(iOS 18.0, *) {
-                EventCardContent(event: event)
+                EventCardContent(event: $event)
                     .matchedTransitionSource(id: event.id, in: animation)
             } else {
-                EventCardContent(event: event)
+                EventCardContent(event: $event)
             }
         }
         .buttonStyle(PlainButtonStyle())
         .sheet(isPresented: $showingSheet) {
             if #available(iOS 18.0, *) {
-                EventContent(showingSheet: $showingSheet, event: event)
+                EventContent(showingSheet: $showingSheet, event: $event)
                     .navigationTransition(.zoom(sourceID: event.id, in: animation))
             } else {
-                EventContent(showingSheet: $showingSheet, event: event)
+                EventContent(showingSheet: $showingSheet, event: $event)
             }
         }
     }

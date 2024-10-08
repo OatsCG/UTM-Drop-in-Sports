@@ -15,7 +15,7 @@ struct EventBody: View {
         Text(event.description)
             .padding(.bottom, 10)
         
-        if notificationManager.currentlyScheduledEvents.contains(event.id) {
+        if event.saved {
             Button(action: {
                 categoryParser.unsaveEvent(event: event)
                 notificationManager.cancelNotification(event: event)
@@ -25,9 +25,15 @@ struct EventBody: View {
                         Text("Event Saved")
                         Image(systemName: "bookmark.fill")
                     }
-                    Text("We'll notify you 30 minutes before it starts")
-                        .font(.caption2)
-                        .foregroundStyle(.secondary)
+                    if notificationManager.currentlyScheduledEvents.contains(event.id) {
+                        Text("We'll notify you 30 minutes before it starts")
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
+                    } else {
+                        Text("Have Fun!")
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
+                    }
                 }
                     .foregroundStyle(.white)
                     .multilineTextAlignment(.center)
