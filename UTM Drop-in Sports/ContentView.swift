@@ -68,18 +68,24 @@ struct MainNavigationView: View {
                     .navigationTitle(Text("UTM Drop-Ins"))
                     .safeAreaPadding(.horizontal)
                     .toolbar {
-                        if #available(iOS 18.0, *) {
-                            ToolbarItem(placement: .navigationBarTrailing) {
-                                NavigationLink(destination: DisplayCase()) {
-                                    Image(systemName: "medal")
-                                        .foregroundColor(.primary)
-                                }
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            NavigationLink(destination: DisplayCase()) {
+                                Image(systemName: "medal")
+                                    .foregroundColor(.primary)
                             }
                         }
                     }
             } else {
                 MainScrollView(showNetworkAlert: $showNetworkAlert)
                     .navigationTitle(Text("UTM Drop-Ins"))
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            NavigationLink(destination: DisplayCase()) {
+                                Image(systemName: "medal")
+                                    .foregroundColor(.primary)
+                            }
+                        }
+                    }
             }
         }
     }
@@ -125,14 +131,23 @@ struct DisplayCase: View {
 }
 
 
-
+@available(iOS 15.0, *)
 struct MainNavigationViewLegacy: View {
     @Binding var showNetworkAlert: Bool
     var body: some View {
         NavigationView {
             MainScrollView(showNetworkAlert: $showNetworkAlert)
                 .navigationTitle(Text("UTM Drop-Ins"))
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        NavigationLink(destination: DisplayCase()) {
+                            Image(systemName: "medal")
+                                .foregroundColor(.primary)
+                        }
+                    }
+                }
         }
+        .navigationViewStyle(.stack)
     }
 }
 
@@ -182,7 +197,6 @@ struct MainScrollContentView: View {
             VStack {
                 SportChips()
                     .padding(.vertical, 10)
-                SavedEvents()
                 EventList()
                 LoadMoreEventsButton()
                     .padding(.top, 10)
@@ -201,7 +215,11 @@ struct LoadMoreEventsButton: View {
                 Button(action: {
                     categoryParser.updateDisplayEvents(maxDays: nil)
                 }) {
-                    Text("Load More Events...")
+                    VStack {
+                        Text("Load More Events...")
+                        Text("Schedule Version: \(UserDefaults.standard.string(forKey: "version.txt") ?? "Unknown")")
+                            .font(.caption2)
+                    }
                 }
                 Spacer()
             }

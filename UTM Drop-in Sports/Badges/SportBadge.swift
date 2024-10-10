@@ -47,12 +47,10 @@ struct SportMedalRotation: View {
                     try? await Task.sleep(nanoseconds: 100_000_000)
                     DispatchQueue.main.async {
                         withAnimation(.interpolatingSpring(duration: 1.4)) {
-                            rotation = 360 * 1.5
+                            rotation += 360 * 1.5
                         }
                     }
                     try? await Task.sleep(nanoseconds: 400_000_000)
-//                    await self.startIncrementingAnimation()
-//                    try? await Task.sleep(nanoseconds: 200_000_000)
                     DispatchQueue.main.async {
                         self.timeOfLiftoff = Date()
                         withAnimation(.linear(duration: 4).repeatForever(autoreverses: false)) {
@@ -143,10 +141,10 @@ struct SportMedalGlisten: View {
                         }
                     }
                     .onAppear {
-                        poses = (0..<300).map { _ in CGPoint(x: CGFloat.random(in: 0...size), y: CGFloat.random(in: 0...size)) }
+                        poses = (0..<100).map { _ in CGPoint(x: CGFloat.random(in: 0...size), y: CGFloat.random(in: 0...size)) }
                     }
                     .onChange(of: size) { _ in
-                        poses = (0..<300).map { _ in CGPoint(x: CGFloat.random(in: 0...size), y: CGFloat.random(in: 0...size)) }
+                        poses = (0..<100).map { _ in CGPoint(x: CGFloat.random(in: 0...size), y: CGFloat.random(in: 0...size)) }
                     }
                     .clipShape(Circle())
                 }

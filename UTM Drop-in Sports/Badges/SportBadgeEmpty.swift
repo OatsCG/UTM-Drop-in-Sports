@@ -15,7 +15,7 @@ struct SportMedalEmpty: View {
     @Namespace var animation
     var body: some View {
         Circle()
-            .strokeBorder(style: StrokeStyle(lineWidth: 5, lineCap: .round, lineJoin: .miter, miterLimit: 0, dash: [((size - 5) * CGFloat.pi / 20)], dashPhase: 0))
+            .strokeBorder(style: StrokeStyle(lineWidth: (size * 0.03), lineCap: .round, lineJoin: .miter, miterLimit: 0, dash: [((size - (size * 0.03)) * CGFloat.pi / 20)], dashPhase: 0))
             .foregroundColor(.primary.opacity(0.2))
             .frame(width: size, height: size)
             .background(

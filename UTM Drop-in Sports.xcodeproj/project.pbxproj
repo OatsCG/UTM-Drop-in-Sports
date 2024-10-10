@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E53560AD2CB78B1600D334C5 /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = E53560AC2CB78B1600D334C5 /* ConfettiSwiftUI */; };
 		E57085B82CAAF9FF00CE03AE /* Intent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57085B72CAAF9FF00CE03AE /* Intent.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E53560AD2CB78B1600D334C5 /* ConfettiSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,6 +120,7 @@
 			);
 			name = "UTM Drop-in Sports";
 			packageProductDependencies = (
+				E53560AC2CB78B1600D334C5 /* ConfettiSwiftUI */,
 			);
 			productName = "UTM Drop-in Sports";
 			productReference = E5FF24342C8964B500AFCCE9 /* UTM Drop-in Sports.app */;
@@ -202,6 +205,7 @@
 			mainGroup = E5FF242B2C8964B500AFCCE9;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
+				E53560AB2CB78B1600D334C5 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = E5FF24352C8964B500AFCCE9 /* Products */;
@@ -610,6 +614,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E53560AB2CB78B1600D334C5 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/simibac/ConfettiSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E53560AC2CB78B1600D334C5 /* ConfettiSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E53560AB2CB78B1600D334C5 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */;
+			productName = ConfettiSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E5FF242C2C8964B500AFCCE9 /* Project object */;
 }

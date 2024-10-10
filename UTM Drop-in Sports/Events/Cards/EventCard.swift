@@ -143,9 +143,10 @@ struct EventCardContentSiri: View {
     }
 }
 
+@available(iOS 17.0, *)
 #Preview {
-    @State var nm = NotificationManager()
-    @State var c = CategoryParser()
+    @Previewable @State var nm = NotificationManager()
+    @Previewable @State var c = CategoryParser()
     return ContentView()
         .environmentObject(c)
         .environmentObject(nm)

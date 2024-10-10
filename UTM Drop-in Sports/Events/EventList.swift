@@ -25,17 +25,32 @@ struct EventList: View {
             
         } else {
             LazyVStack(alignment: .leading, pinnedViews: [.sectionHeaders]) {
+                SavedEvents()
                 ForEach($categoryParser.groupedEvents.days, id: \.date) { $day in
-                    Section(header: EventDayHeader(day: day)) {
-                        ForEach($day.events, id: \.id) { $event in
-                            if #available(iOS 17.0, *) {
-                                EventCard(event: $event)
-                                    .transition(.blurReplace)
-                            } else {
-                                EventCard(event: $event)
-                            }
-                        }
-                    }
+                    EventDaySection(day: $day)
+                }
+            }
+        }
+    }
+}
+
+struct EventDaySection: View {
+    @Binding var day: DayEvents
+    @State var isExpanded: Bool = true
+    var body: some View {
+        if #available(iOS 17.0, *) {
+            Section(isExpanded: $isExpanded) {
+                ForEach($day.events, id: \.id) { $event in
+                    EventCard(event: $event)
+                        .transition(.blurReplace)
+                }
+            } header: {
+                EventDayHeader(isExpanded: $isExpanded, day: day)
+            }
+        } else {
+            Section(header: EventDayHeader(isExpanded: $isExpanded, day: day)) {
+                ForEach($day.events, id: \.id) { $event in
+                    EventCard(event: $event)
                 }
             }
         }
@@ -43,14 +58,30 @@ struct EventList: View {
 }
 
 struct EventDayHeader: View {
+    @Binding var isExpanded: Bool
     var day: DayEvents
     var body: some View {
         VStack {
             VStack {
                 HStack {
-                    Text(relativeDateString(day.date))
-                        .font(.title.bold())
-                    Spacer()
+                    Button(action: {
+                        withAnimation {
+                            isExpanded.toggle()
+                        }
+                    }) {
+                        HStack {
+                            Text(relativeDateString(day.date))
+                                .font(.title.bold())
+                            Spacer()
+                            if #available(iOS 17.0, *) {
+                                Image(systemName: isExpanded ? "chevron.up.circle" : "chevron.down.circle")
+                                    .font(.title2)
+                                    .foregroundStyle(.secondary)
+                            }
+                        }
+                        .contentShape(Rectangle())
+                    }
+                    .buttonStyle(.plain)
                 }
                 if relativeDaysUntilString(day.date) != "" {
                     HStack {

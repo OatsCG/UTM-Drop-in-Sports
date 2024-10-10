@@ -61,6 +61,13 @@ struct EventHeader: View {
                             Text("Ongoing")
                         }
                         .foregroundStyle(.green)
+                    } else if event.relativeTimeDate.isEventOver {
+                        HStack {
+                            Image(systemName: "clock")
+                                .font(.caption2)
+                            Text("Event Over")
+                        }
+                        .foregroundStyle(.red)
                     } else {
                         HStack {
                             Image(systemName: "clock")

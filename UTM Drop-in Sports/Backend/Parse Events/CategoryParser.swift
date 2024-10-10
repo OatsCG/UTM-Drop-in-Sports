@@ -280,29 +280,37 @@ class CategoryParser: ObservableObject {
         let medal: CompletedEvent = CompletedEvent(id: event.id, sport: event.title, category: event.sortCategory, icon: event.symbol, date: event.relativeTimeDate.startDate)
         let medalString: String = UserDefaults.standard.string(forKey: "Medals") ?? ""
         var splitMedalString: [String] = medalString.components(separatedBy: "<SEP>")
+        let thisMedal: String = medal.toString()
+        if splitMedalString.contains(thisMedal) { return }
         splitMedalString.append(medal.toString())
         let joinedMedalString: String = splitMedalString.joined(separator: "<SEP>")
         UserDefaults.standard.set(joinedMedalString, forKey: "Medals")
+        self.updateMedalsCollected()
     }
     
     func updateMedalsCollected() {
-        let medalsFetched = UserDefaults.standard.string(forKey: "Medals") ?? ""
-        let splitMedals: [String] = medalsFetched.components(separatedBy: "<SEP>")
-        var completedEvents: [CompletedEvent] = []
-        splitMedals.forEach { medalString in
-            let completedEvent: CompletedEvent? = try? CompletedEvent(from: medalString)
-            if let completedEvent = completedEvent {
-                completedEvents.append(completedEvent)
+        Task.detached {
+            let medalsFetched = UserDefaults.standard.string(forKey: "Medals") ?? ""
+            let splitMedals: [String] = medalsFetched.components(separatedBy: "<SEP>")
+            var completedEvents: [CompletedEvent] = []
+            splitMedals.forEach { medalString in
+                let completedEvent: CompletedEvent? = try? CompletedEvent(from: medalString)
+                if let completedEvent = completedEvent {
+                    // dismiss if completedEvents doesnt contain completedEvent.id
+                    if !completedEvents.contains(where: { $0.id == completedEvent.id }) {
+                        completedEvents.append(completedEvent)
+                    }
+                }
+            }
+            // add all medals
+            var medals: [Medal] = []
+            for i in self.categories {
+                medals.append(Medal(category: i.title, icon: i.symbol, possibleEvents: completedEvents))
+            }
+            DispatchQueue.main.async {
+                self.medalsCollected = medals
             }
         }
-        
-        // add all medals
-        var medals: [Medal] = []
-        for i in self.categories {
-            medals.append(Medal(category: i.title, icon: i.symbol, possibleEvents: completedEvents))
-        }
-        
-        self.medalsCollected = medals
     }
 }
 
