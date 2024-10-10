@@ -160,11 +160,7 @@ struct SportMedalSingleGlisten: View {
     @State var opac: Double = 0
     var body: some View {
         Circle()
-            .fill(
-                .white.opacity(
-                    opac
-                )
-            )
+            .fill(.white.opacity(opac))
             .onAppear {
                 peak = Double.random(in: 0..<360)
             }
@@ -299,14 +295,7 @@ struct SportMedalMedallion: View {
             SportMedalBG(colorPrimary: colorPrimary, colorSecondary: colorSecondary)
                 .overlay(alignment: .center) {
                     SportMedalSymbol(size: $size, symbol: symbol)
-                        .foregroundStyle(
-                            LinearGradient(
-                                colors: [
-                                    colorPrimary
-                                ],
-                                startPoint: .bottomLeading,
-                                endPoint: .topTrailing)
-                        )
+                        .foregroundStyle(colorPrimary)
                         .overlay {
                             SportMedalSymbol(size: $size, symbol: symbol)
                                 .foregroundStyle(
@@ -323,15 +312,7 @@ struct SportMedalMedallion: View {
                 }
                 .padding(size * 0.04)
                 .background(
-                    Circle().fill(
-                        LinearGradient(
-                            colors: [
-                                colorPrimary
-                            ],
-                            startPoint: .bottomLeading,
-                            endPoint: .topTrailing
-                        )
-                    )
+                    Circle().fill(colorPrimary)
                     .overlay {
                         Circle().fill(
                             LinearGradient(

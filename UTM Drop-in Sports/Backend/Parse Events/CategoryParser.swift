@@ -312,5 +312,10 @@ class CategoryParser: ObservableObject {
             }
         }
     }
+    
+    func clearAllMedals() {
+        UserDefaults.standard.set("", forKey: "Medals")
+        self.updateMedalsCollected()
+    }
 }
 

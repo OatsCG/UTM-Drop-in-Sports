@@ -94,6 +94,8 @@ struct MainNavigationView: View {
 struct DisplayCase: View {
     @State var maxRows: Int = .max
     @State var size: CGFloat = 120
+    @State var showingClearAlert: Bool = false
+    @State var showingClearConfirmAlert: Bool = false
     @EnvironmentObject var categoryParser: CategoryParser
     var body: some View {
         ScrollView {
@@ -127,6 +129,31 @@ struct DisplayCase: View {
             }
         }
         .navigationTitle("Medals")
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: {
+                    showingClearAlert = true
+                }) {
+                    Image(systemName: "minus.circle")
+                        .foregroundColor(.red)
+                }
+            }
+        }
+        .alert("Remove all medals?", isPresented: $showingClearAlert) {
+            Button("Delete", role: .destructive) {
+                showingClearConfirmAlert = true
+            }
+            Button("Cancel", role: .cancel) {  }
+        } message: {
+            Text("This will clear all your progress. This cannot be undone.")
+        }
+        .alert("Are you sure you want to remove all progress?", isPresented: $showingClearConfirmAlert) {
+            Button("Yes, Delete", role: .destructive) {
+                categoryParser.clearAllMedals()
+            }
+            Button("No, Cancel", role: .cancel) {  }
+        }
+
     }
 }
 

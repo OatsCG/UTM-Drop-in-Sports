@@ -102,7 +102,7 @@ struct Medal: Equatable, Hashable {
         } else {
             self.type = .none
         }
-//        self.type = MedalType.allCases.randomElement()!
+        self.type = MedalType.allCases.randomElement()!
         
     }
 }
