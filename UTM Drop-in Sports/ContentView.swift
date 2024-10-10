@@ -140,7 +140,7 @@ struct DisplayCase: View {
             }
         }
         .alert("Remove all medals?", isPresented: $showingClearAlert) {
-            Button("Delete", role: .destructive) {
+            Button("Delete...", role: .destructive) {
                 showingClearConfirmAlert = true
             }
             Button("Cancel", role: .cancel) {  }
