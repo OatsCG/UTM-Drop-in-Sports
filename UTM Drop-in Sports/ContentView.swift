@@ -93,7 +93,7 @@ struct MainNavigationView: View {
 
 struct DisplayCase: View {
     @State var maxRows: Int = .max
-    @State var size: CGFloat = 120
+    @State var size: CGFloat = 110
     @State var showingClearAlert: Bool = false
     @State var showingClearConfirmAlert: Bool = false
     @EnvironmentObject var categoryParser: CategoryParser
@@ -112,7 +112,7 @@ struct DisplayCase: View {
                         .foregroundStyle(.secondary)
                 }
             } else {
-                FlexView(data: $categoryParser.medalsCollected, alignment: .center, maxRows: $maxRows) { medal in
+                FlexView(data: $categoryParser.medalsCollected, spacing: 10, alignment: .center, maxRows: $maxRows) { medal in
                     Group {
                         if medal.type == .none {
                             SportMedallionEmptyDisplay(size: $size, medal: medal)
@@ -237,7 +237,7 @@ struct LoadMoreEventsButton: View {
     @EnvironmentObject var categoryParser: CategoryParser
     var body: some View {
         HStack {
-            if !categoryParser.isEventsExpandedToMax && categoryParser.events.count > 0 {
+            if !categoryParser.isEventsExpandedToMax && categoryParser.events.count > 0 && categoryParser.groupedEvents.days.count == 14 {
                 Spacer()
                 Button(action: {
                     categoryParser.updateDisplayEvents(maxDays: nil)
