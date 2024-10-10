@@ -274,7 +274,7 @@ class CategoryParser: ObservableObject {
             self.savedEvents = matchingEvents
             self.savedOngoingEvents = matchingEvents.filter { $0.relativeTimeDate.isOngoing || $0.relativeTimeDate.isEventOver }
         }
-        print("update saved: \(self.savedEvents)")
+//        print("update saved: \(self.savedEvents)")
     }
     
     func addMedal(event: Event) {
