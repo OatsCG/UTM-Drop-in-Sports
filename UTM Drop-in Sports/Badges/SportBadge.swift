@@ -84,7 +84,6 @@ struct SportMedalRotation: View {
                                 rotation = lastRotation + (value.predictedEndTranslation.width * 0.4)
                             }
                         }
-                        print("ended: \(rotation)")
                         lastRotation = value.predictedEndTranslation.width
                         if value.velocity.width > 0 {
                             self.rotationDirection = 1
@@ -101,10 +100,8 @@ struct SportMedalRotation: View {
     }
     func calculateDegreesSinceLiftoff() -> Double {
         let timeInterval = Date().timeIntervalSince(timeOfLiftoff)
-        print("interval: \(timeInterval)")
         let deg = 360 * (timeInterval / 4)
         let r = rotationDirection * Double(Int(deg.rounded()) % 360)
-        print("r: \(r)")
         return r
     }
 //    func startIncrementingAnimation() {
@@ -362,7 +359,6 @@ struct SportMedalCalc: View {
                     let geoWidth: CGFloat = geo.size.width
                     let geoHeight: CGFloat = geo.size.height
                     let g = sqrt(pow(geoWidth, 2) + pow(geoHeight, 2)) + (size * 0.12)
-                    print("Pca: \(geo.size.width), \(geo.size.height)")
                     let a = geoHeight / geoWidth
                     // calcing v
                     let num = pow(g - size, 2)
@@ -370,14 +366,12 @@ struct SportMedalCalc: View {
                     let v = sqrt(num / den) / 2
                     let h = v / a
                     let p = max(v, h)
-                    print("Pa: \(p)")
                     imgPadding = p
                 }
                 .onChange(of: geo.size) { _ in
                     let geoWidth: CGFloat = geo.size.width
                     let geoHeight: CGFloat = geo.size.height
                     let g = sqrt(pow(geoWidth, 2) + pow(geoHeight, 2)) + (size * 0.12)
-                    print("Pcg: \(geo.size.width), \(geo.size.height)")
                     let a = geoHeight / geoWidth
                     // calcing v
                     let num = pow(g - size, 2)
@@ -386,7 +380,6 @@ struct SportMedalCalc: View {
                     let h = v / a
                     let p = max(v, h)
                     DispatchQueue.main.async {
-                        print("Pc: \(p)")
                         imgPadding = p
                     }
                 }
