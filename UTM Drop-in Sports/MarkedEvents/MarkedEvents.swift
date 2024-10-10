@@ -14,7 +14,7 @@ struct SavedEvents: View {
     @State var isExpanded: Bool = true
     var body: some View {
         VStack {
-            if categoryParser.savedOngoingEvents != [] {
+            if !categoryParser.savedOngoingEvents.isEmpty {
                 if #available(iOS 17.0, *) {
                     Section(isExpanded: $isExpanded) {
                         ForEach($categoryParser.savedOngoingEvents, id: \.id) { $event in

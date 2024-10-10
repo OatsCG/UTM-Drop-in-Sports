@@ -99,7 +99,7 @@ struct DisplayCase: View {
     @EnvironmentObject var categoryParser: CategoryParser
     var body: some View {
         ScrollView {
-            if categoryParser.medalsCollected == [] {
+            if categoryParser.medalsCollected.isEmpty {
                 VStack {
                     Image(systemName: "flag.2.crossed")
                         .foregroundStyle(.secondary)

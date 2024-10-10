@@ -54,8 +54,10 @@ class CategoryParser: ObservableObject {
             let eventJSON: EventJSON? = loadEventJSON()
             if let eventJSON = eventJSON {
                 await MainActor.run {
-                    withAnimation {
-                        self.categories = eventJSON.categories
+                    if self.categories.isEmpty {
+                        withAnimation {
+                            self.categories = eventJSON.categories
+                        }
                     }
                     self.allEvents = eventJSON.events
                     self.lastUpdated = Date()
