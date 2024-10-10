@@ -158,7 +158,9 @@ struct EventCardContentActive: View {
         EventCardContentActiveBody(event: $event, showingMedalAcceptance: $showingMedalAcceptance)
             .sheet(isPresented: $showingMedalAcceptance) {
                 print("dismissed! didAccept: \(didAccept)")
-                categoryParser.unsaveEvent(event: event)
+                if didAccept {
+                    categoryParser.unsaveEvent(event: event)
+                }
             } content: {
                 if let $medal = $categoryParser.medalsCollected.first(where: { $0.category.wrappedValue == event.sortCategory }) {
                     MedalAcceptanceSheet(event: $event, showingMedalAcceptance: $showingMedalAcceptance, medal: $medal, didAccept: $didAccept)
@@ -367,7 +369,7 @@ struct EventCardContentActiveBody: View {
                 } else if event.relativeTimeDate.isEventOver {
                     RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous)
                         .strokeBorder(.tertiary, lineWidth: 2)
-                        .background(RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous).fill(.green.opacity(0.3)))
+                        .background(RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous).fill(.white.opacity(0.05)))
                 } else {
                     RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous)
                         .strokeBorder(.tertiary, lineWidth: 2)
@@ -446,7 +448,7 @@ struct MedalAcceptanceSheet: View {
                             } else {
                                 RoundedRectangle(cornerRadius: 8)
                                     .strokeBorder(.tertiary, lineWidth: 1)
-                                    .background(RoundedRectangle(cornerRadius: 8).fill(.blueUTMbg))
+                                    .background(RoundedRectangle(cornerRadius: 8).fill(didAccept ? .clear : .blueUTMbg))
                             }
                         }
                         .padding(20)

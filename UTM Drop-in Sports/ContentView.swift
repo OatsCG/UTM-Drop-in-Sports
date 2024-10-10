@@ -70,7 +70,7 @@ struct MainNavigationView: View {
                     .toolbar {
                         ToolbarItem(placement: .navigationBarTrailing) {
                             NavigationLink(destination: DisplayCase()) {
-                                Image(systemName: "medal")
+                                Image(.medal)
                                     .foregroundColor(.primary)
                             }
                         }
@@ -81,7 +81,7 @@ struct MainNavigationView: View {
                     .toolbar {
                         ToolbarItem(placement: .navigationBarTrailing) {
                             NavigationLink(destination: DisplayCase()) {
-                                Image(systemName: "medal")
+                                Image(.medal)
                                     .foregroundColor(.primary)
                             }
                         }
@@ -139,9 +139,9 @@ struct MainNavigationViewLegacy: View {
             MainScrollView(showNetworkAlert: $showNetworkAlert)
                 .navigationTitle(Text("UTM Drop-Ins"))
                 .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
+                    ToolbarItem(placement: .navigationBarTrailing) {
                         NavigationLink(destination: DisplayCase()) {
-                            Image(systemName: "medal")
+                            Image(.medal)
                                 .foregroundColor(.primary)
                         }
                     }

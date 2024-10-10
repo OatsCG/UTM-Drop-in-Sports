@@ -116,7 +116,7 @@ class CategoryParser: ObservableObject {
     
     func areDatesWithinTenMinutes(_ date1: Date, _ date2: Date) -> Bool {
         let timeInterval = abs(date1.timeIntervalSince(date2))
-        return timeInterval <= 300 // 300 seconds = 5 minutes
+        return timeInterval <= 60 // 300 seconds = 1 minute
     }
 
     func eventFileFetcher() async {
