@@ -27,6 +27,7 @@ struct CompletedEvent: Equatable, Hashable {
     init (from formatted: String) throws {
         let separated = formatted.components(separatedBy: "<MSEP>")
         guard separated.count == 5 else {
+            print("WHAT THE FUCK ERROR HERE")
             throw NSError()
         }
         if let id = Int(separated[0]) {

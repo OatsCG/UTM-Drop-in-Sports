@@ -40,9 +40,13 @@ struct EventDaySection: View {
     var body: some View {
         if #available(iOS 17.0, *) {
             Section(isExpanded: $isExpanded) {
-                ForEach($day.events, id: \.id) { $event in
-                    EventCard(event: $event)
-                        .transition(.blurReplace)
+                LazyVGrid(columns: [.init(spacing: 10), .init(spacing: 10)]) {
+                    ForEach($day.events, id: \.id) { $event in
+                        EventCard(event: $event)
+                            .transition(.blurReplace)
+                            .frame(minHeight: 150)
+                            .lineLimit(1)
+                    }
                 }
             } header: {
                 EventDayHeader(isExpanded: $isExpanded, day: day)

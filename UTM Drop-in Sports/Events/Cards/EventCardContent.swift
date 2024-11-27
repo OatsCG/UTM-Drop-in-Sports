@@ -29,6 +29,7 @@ struct EventCardContent: View {
             }
             .foregroundStyle(.blueUTM)
             .padding(.bottom, 6)
+            Spacer()
             VStack {
                 HStack {
                     HStack {
