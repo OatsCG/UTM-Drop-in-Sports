@@ -57,10 +57,10 @@ struct SportMedallionEmptyDisplay: View {
         .buttonStyle(.plain)
         .sheet(isPresented: $showingSheet) {
             if #available(iOS 18.0, *) {
-                SportMedalSheet(medal: medal, colorPrimary: medal.colorPrimary, colorSecondary: medal.colorSecondary)
+                SportMedalSheet(medal: medal, colorPrimary: medal.colorPrimary, colorSecondary: medal.colorSecondary, showingSheet: $showingSheet)
                     .navigationTransition(.zoom(sourceID: medal.id, in: animation))
             } else {
-                SportMedalSheet(medal: medal, colorPrimary: medal.colorPrimary, colorSecondary: medal.colorSecondary)
+                SportMedalSheet(medal: medal, colorPrimary: medal.colorPrimary, colorSecondary: medal.colorSecondary, showingSheet: $showingSheet)
             }
         }
     }

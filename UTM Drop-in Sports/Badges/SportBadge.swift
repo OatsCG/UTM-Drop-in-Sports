@@ -222,10 +222,10 @@ struct SportMedallionDisplay: View {
         .buttonStyle(.plain)
         .sheet(isPresented: $showingSheet) {
             if #available(iOS 18.0, *) {
-                SportMedalSheet(medal: medal, colorPrimary: medal.colorPrimary, colorSecondary: medal.colorSecondary)
+                SportMedalSheet(medal: medal, colorPrimary: medal.colorPrimary, colorSecondary: medal.colorSecondary, showingSheet: $showingSheet)
                     .navigationTransition(.zoom(sourceID: medal.id, in: animation))
             } else {
-                SportMedalSheet(medal: medal, colorPrimary: medal.colorPrimary, colorSecondary: medal.colorSecondary)
+                SportMedalSheet(medal: medal, colorPrimary: medal.colorPrimary, colorSecondary: medal.colorSecondary, showingSheet: $showingSheet)
             }
         }
     }
@@ -237,6 +237,7 @@ struct SportMedalSheet: View {
     @State var rotation: Double = 0
     var colorPrimary: Color
     var colorSecondary: Color
+    @Binding var showingSheet: Bool
     var body: some View {
         VStack {
             GeometryReader { geo in
@@ -250,33 +251,47 @@ struct SportMedalSheet: View {
             }
             .padding(50)
             .overlay {
-                VStack {
-                    if medal.type == .none {
-                        SportMedalEmpty(size: $size, medal: medal)
-                            .padding(.bottom, 15)
-                        Text(medal.category)
-                            .font(.largeTitle .bold())
-                        Text("Sessions: \(medal.events.count)")
-                            .font(.title2 .bold())
-                            .padding(.bottom, 25)
-                        Text("Complete a \(medal.category) event to earn this medal.\n**Save \(Image(systemName: "bookmark"))**  a future event to participate.")
-                    } else {
-                        SportMedalRotation(size: $size, rotation: $rotation, symbol: ImageResource(name: medal.icon, bundle: .main), colorPrimary: colorPrimary, colorSecondary: colorSecondary)
-                            .padding(.bottom, 15)
-                        Text(medal.category)
-                            .font(.largeTitle .bold())
-                        Text("Sessions: \(medal.events.count)")
-                            .font(.title2 .bold())
-                            .padding(.bottom, 25)
-                        if medal.type == .bronze {
-                            Text("Complete 5 events to earn a **Silver** medal.")
-                        } else if medal.type == .silver {
-                            Text("Complete 10 events to earn a **Gold** medal.")
+                ZStack {
+                    VStack {
+                        Button(action: {
+                            showingSheet = false
+                        }) {
+                            Image(systemName: "chevron.compact.down")
+                                .foregroundStyle(.secondary)
+                                .font(.title)
+                        }
+                        .buttonStyle(.plain)
+                        .padding(.top, 15)
+                        Spacer()
+                    }
+                    VStack {
+                        if medal.type == .none {
+                            SportMedalEmpty(size: $size, medal: medal)
+                                .padding(.bottom, 15)
+                            Text(medal.category)
+                                .font(.largeTitle .bold())
+                            Text("Sessions: \(medal.events.count)")
+                                .font(.title2 .bold())
+                                .padding(.bottom, 25)
+                            Text("Complete a \(medal.category) event to earn this medal.\n**Save \(Image(systemName: "bookmark"))**  a future event to participate.")
+                        } else {
+                            SportMedalRotation(size: $size, rotation: $rotation, symbol: ImageResource(name: medal.icon, bundle: .main), colorPrimary: colorPrimary, colorSecondary: colorSecondary)
+                                .padding(.bottom, 15)
+                            Text(medal.category)
+                                .font(.largeTitle .bold())
+                            Text("Sessions: \(14)")
+                                .font(.title2 .bold())
+                                .padding(.bottom, 25)
+                            if medal.type == .bronze {
+                                Text("Complete 5 events to earn a **Silver** medal.")
+                            } else if medal.type == .silver {
+                                Text("Complete 10 events to earn a **Gold** medal.")
+                            }
                         }
                     }
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 20)
                 }
-                .multilineTextAlignment(.center)
-                .padding(.horizontal, 20)
             }
         }
     }
