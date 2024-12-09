@@ -56,18 +56,31 @@ struct ContentView: View {
     }
 }
 
+
+enum ScheduleSchool: String, CaseIterable {
+    case mississauga = "Mississauga", stgeorge = "St. George", scarborough = "Scarborough"
+}
+
 @available(iOS 16.0, *)
 struct MainNavigationView: View {
+    @AppStorage("scheduleSchool") var scheduleSchool: String = "Mississauga"
     @State var path: NavigationPath = NavigationPath()
     @Binding var showNetworkAlert: Bool
-
     var body: some View {
         NavigationStack(path: $path) {
             if #available(iOS 17.0, *) {
                 MainScrollView(showNetworkAlert: $showNetworkAlert)
-                    .navigationTitle(Text("UTM Drop-Ins"))
                     .safeAreaPadding(.horizontal)
+                    .navigationTitle(Text("UTM Drop-Ins"))
+//                    .navigationBarTitleDisplayMode(.inline)
                     .toolbar {
+//                        ToolbarTitleMenu {
+//                            Picker("Picker", selection: $scheduleSchool) {
+//                                ForEach(ScheduleSchool.allCases, id: \.self) { school in
+//                                    Text(school.rawValue)
+//                                }
+//                            }
+//                        }
                         ToolbarItem(placement: .navigationBarTrailing) {
                             NavigationLink(destination: DisplayCase()) {
                                 Image(.medal)
@@ -90,6 +103,7 @@ struct MainNavigationView: View {
         }
     }
 }
+
 
 struct DisplayCase: View {
     @State var maxRows: Int = .max
@@ -129,16 +143,6 @@ struct DisplayCase: View {
             }
         }
         .navigationTitle("Medals")
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: {
-                    showingClearAlert = true
-                }) {
-                    Image(systemName: "minus.circle")
-                        .foregroundColor(.red)
-                }
-            }
-        }
         .alert("Remove all medals?", isPresented: $showingClearAlert) {
             Button("Delete...", role: .destructive) {
                 showingClearConfirmAlert = true
@@ -253,11 +257,3 @@ struct LoadMoreEventsButton: View {
         }
     }
 }
-
-
-
-//#Preview {
-//    @State var c = CategoryParser()
-//    return ContentView()
-//        .environmentObject(c)
-//}

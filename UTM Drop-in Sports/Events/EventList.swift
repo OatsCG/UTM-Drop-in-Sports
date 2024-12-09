@@ -40,14 +40,11 @@ struct EventDaySection: View {
     var body: some View {
         if #available(iOS 17.0, *) {
             Section(isExpanded: $isExpanded) {
-                LazyVGrid(columns: [.init(spacing: 10), .init(spacing: 10)]) {
-                    ForEach($day.events, id: \.id) { $event in
-                        EventCard(event: $event)
-                            .transition(.blurReplace)
-                            .frame(minHeight: 150)
-                            .lineLimit(1)
-                    }
-                }
+                DynamicGridViewEC(day: $day)
+//                ForEach($day.events, id: \.id) { $event in
+//                    EventCard(event: $event)
+//                        .transition(.blurReplace)
+//                }
             } header: {
                 EventDayHeader(isExpanded: $isExpanded, day: day)
             }
@@ -60,6 +57,47 @@ struct EventDaySection: View {
         }
     }
 }
+
+@available(iOS 17.0, *)
+struct DynamicGridViewEC: View {
+    @Binding var day: DayEvents
+    
+    let minCellWidth: CGFloat = 350
+    let maxCellWidth: CGFloat = 400
+    
+    @State var columns: [GridItem] = [.init(spacing: 10)]
+    
+    var body: some View {
+        LazyVGrid(columns: columns) {
+            ForEach($day.events, id: \.id) { $event in
+                EventCard(event: $event)
+//                    .transition(.blurReplace)
+                    .frame(minHeight: 150)
+                    .lineLimit(1)
+            }
+        }
+        .overlay {
+            GeometryReader { geometry in
+                Rectangle().fill(.clear)
+                    .onAppear {
+                        updateColumns(geometry.size.width)
+                    }
+                    .onChange(of: geometry.size.width) { newValue in
+                        updateColumns(geometry.size.width)
+                    }
+            }
+        }
+    }
+    func updateColumns(_ geowidth: CGFloat) {
+        let totalWidth: CGFloat = geowidth
+        let numberOfColumns: Int = max(1, Int(totalWidth / minCellWidth))
+        let adjustedColumns: Int = Int(totalWidth / maxCellWidth) >= numberOfColumns ? numberOfColumns : max(1, numberOfColumns - 1)
+        
+        let gridItems: [GridItem] = Array(repeating: .init(spacing: 10), count: adjustedColumns)
+        self.columns = gridItems
+    }
+}
+
 
 struct EventDayHeader: View {
     @Binding var isExpanded: Bool
@@ -148,6 +186,6 @@ func relativeDaysUntilString(_ date: Date) -> String {
 }
 
 
-//#Preview {
-//    ContentView()
-//}
+#Preview {
+    ContentView()
+}
