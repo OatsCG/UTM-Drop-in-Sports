@@ -9,13 +9,12 @@ import Foundation
 
 struct DayEvents: Hashable {
     static func == (lhs: DayEvents, rhs: DayEvents) -> Bool {
-        return lhs.id == rhs.id
+        return lhs.date == rhs.date
     }
     func hash(into hasher: inout Hasher) {
-        hasher.combine(self.id)
+        hasher.combine(self.date)
     }
     
-    let id: UUID = UUID()
     let date: Date
     var events: [Event]
     
@@ -25,18 +24,17 @@ struct DayEvents: Hashable {
     }
 }
 
-class AllEvents {
-    var days: [DayEvents] = []
+class AllEvents: ObservableObject {
+    @Published var days: [DayEvents] = []
     
-    
-    init(events: [Event], maxDays: Int?) {
+    init(events: [Event], maxEvents: Int?) {
         var dayEventsList: [DayEvents] = []
         
         let calendar = Calendar.current
         
         var currentDayEvents: DayEvents?
         
-        for event in events {
+        for event in events.prefix(maxEvents ?? 1000) {
             let eventDate = calendar.startOfDay(for: event.relativeTimeDate.startDate)
             
             if let currentDay = currentDayEvents?.date, currentDay == eventDate {
@@ -52,10 +50,28 @@ class AllEvents {
         if let currentDayEvents = currentDayEvents {
             dayEventsList.append(currentDayEvents)
         }
-        if let maxDays = maxDays {
-            self.days = Array(dayEventsList.prefix(maxDays))
-        } else {
-            self.days = dayEventsList
+        self.days = dayEventsList
+    }
+}
+
+
+class DynamicRow: Hashable {
+    var id: Int
+    var events: [Event]
+    
+    init(events: [Event]) {
+        self.id = 0
+        for event in events {
+            self.id += event.id
         }
+        self.events = events
+    }
+    
+    static func ==(lhs: DynamicRow, rhs: DynamicRow) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(self.id)
     }
 }

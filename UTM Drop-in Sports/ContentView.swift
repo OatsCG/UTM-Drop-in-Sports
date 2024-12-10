@@ -25,7 +25,7 @@ struct ContentView: View {
         .searchable(text: $searchField)
         .onChange(of: searchField) { _ in
             categoryParser.searchField = searchField
-            categoryParser.updateDisplayEvents(maxDays: 14)
+            categoryParser.updateDisplayEvents(maxEvents: 50)
         }
         .onChange(of: scenePhase) { newPhase in
             if newPhase == .active {
@@ -244,7 +244,7 @@ struct LoadMoreEventsButton: View {
             if !categoryParser.isEventsExpandedToMax && categoryParser.events.count > 0 && categoryParser.groupedEvents.days.count == 14 {
                 Spacer()
                 Button(action: {
-                    categoryParser.updateDisplayEvents(maxDays: nil)
+                    categoryParser.updateDisplayEvents(maxEvents: nil)
                 }) {
                     VStack {
                         Text("Load More Events...")

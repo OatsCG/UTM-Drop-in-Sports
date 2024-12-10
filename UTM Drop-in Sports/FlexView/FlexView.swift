@@ -19,8 +19,15 @@ public struct FlexView<Data: Collection & Equatable, Content: View>: View where 
 
     public var body: some View {
         ZStack(alignment: Alignment(horizontal: alignment, vertical: .center)) {
-            Rectangle().foregroundColor(Color.clear).frame(height: 0).readSize { size in
-                availableWidth = size.width
+            GeometryReader { geo in
+                Rectangle().foregroundColor(.clear).frame(height: 0)
+                    .onChange(of: geo.size.width) { width in
+                        availableWidth = width
+                    }
+                    .onAppear {
+                        availableWidth = geo.size.width
+                    }
+                    .frame(width: geo.size.width)
             }
             _FlexView(
                 availableWidth: $availableWidth,

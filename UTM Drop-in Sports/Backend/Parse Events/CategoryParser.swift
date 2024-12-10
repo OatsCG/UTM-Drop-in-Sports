@@ -15,7 +15,7 @@ class CategoryParser: ObservableObject {
     @Published var events: [Event] = []
     @Published var savedEvents: [Event] = []
     @Published var savedOngoingEvents: [Event] = []
-    @Published var groupedEvents: AllEvents = AllEvents(events: [], maxDays: nil)
+    @Published var groupedEvents: AllEvents = AllEvents(events: [], maxEvents: nil)
     
     @Published var isUpdating: Bool = true
     @Published var onlyWomens: Bool = false
@@ -62,7 +62,7 @@ class CategoryParser: ObservableObject {
                     self.allEvents = eventJSON.events
                     self.lastUpdated = Date()
                     self.updateSavedEvents()
-                    self.updateDisplayEvents(maxDays: 14)
+                    self.updateDisplayEvents(maxEvents: 50)
                     self.updateMedalsCollected()
                     self.isUpdatingPrivate = false
                     self.startTimerLoop()
@@ -88,7 +88,7 @@ class CategoryParser: ObservableObject {
             self.allEvents = eventJSON.events
             self.lastUpdated = Date()
             self.updateSavedEvents()
-            self.updateDisplayEvents(maxDays: 14)
+            self.updateDisplayEvents(maxEvents: 50)
             self.updateMedalsCollected()
             self.isUpdatingPrivate = false
         }
@@ -179,7 +179,8 @@ class CategoryParser: ObservableObject {
     }
 
     
-    func updateDisplayEvents(maxDays: Int?) {
+    func updateDisplayEvents(maxEvents: Int?) {
+        print("UPDATING DISPLAY EVENTS")
         let notOverEvents: [Event] = self.allEvents.filter { $0.relativeTimeDate.isEventOver == false }
         let savedRespectedEvents: [Event] = self.onlySaved ? self.savedEvents : notOverEvents
         let womensRespectedEvents: [Event] = savedRespectedEvents.filter { !self.onlyWomens || $0.womens }
@@ -218,11 +219,11 @@ class CategoryParser: ObservableObject {
         }
         withAnimation {
             self.isUpdating = false
-            if let maxDays = maxDays {
-                self.groupedEvents = AllEvents(events: self.events, maxDays: maxDays)
+            if let maxEvents = maxEvents {
+                self.groupedEvents = AllEvents(events: self.events, maxEvents: maxEvents)
                 self.isEventsExpandedToMax = false
             } else {
-                self.groupedEvents = AllEvents(events: self.events, maxDays: nil)
+                self.groupedEvents = AllEvents(events: self.events, maxEvents: nil)
                 self.isEventsExpandedToMax = true
             }
         }

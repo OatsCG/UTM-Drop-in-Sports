@@ -27,7 +27,7 @@ struct SportChips: View {
                             withAnimation(.interactiveSpring) {
                                 categoryParser.onlyWomens.toggle()
                             }
-                            categoryParser.updateDisplayEvents(maxDays: 14)
+                            categoryParser.updateDisplayEvents(maxEvents: 50)
                         }) {
                             HStack {
                                 Text("Women's Only")
@@ -83,7 +83,7 @@ struct SportChips: View {
                             withAnimation(.interactiveSpring) {
                                 categoryParser.onlySaved.toggle()
                             }
-                            categoryParser.updateDisplayEvents(maxDays: 14)
+                            categoryParser.updateDisplayEvents(maxEvents: 50)
                         }) {
                             HStack {
                                 Text("Saved")

@@ -24,7 +24,7 @@ struct EventList: View {
             }
             
         } else {
-            LazyVStack(alignment: .leading, pinnedViews: [.sectionHeaders]) {
+            VStack(alignment: .leading) {
                 SavedEvents()
                 ForEach($categoryParser.groupedEvents.days, id: \.date) { $day in
                     EventDaySection(day: $day)
@@ -65,20 +65,15 @@ struct DynamicGridViewEC: View {
     let minCellWidth: CGFloat = 350
     let maxCellWidth: CGFloat = 400
     
+    @State var columnCount: Int = 1
     @State var columns: [GridItem] = [.init(spacing: 10)]
+    @State var cellWidth: CGFloat?
     
     var body: some View {
-        LazyVGrid(columns: columns) {
-            ForEach($day.events, id: \.id) { $event in
-                EventCard(event: $event)
-//                    .transition(.blurReplace)
-                    .frame(minHeight: 150)
-                    .lineLimit(1)
-            }
-        }
-        .overlay {
+        ZStack {
+            DynamicGridForEach(columnCount: $columnCount, cellWidth: $cellWidth, day: $day)
             GeometryReader { geometry in
-                Rectangle().fill(.clear)
+                Rectangle().fill(.red.opacity(0.4))
                     .onAppear {
                         updateColumns(geometry.size.width)
                     }
@@ -89,12 +84,119 @@ struct DynamicGridViewEC: View {
         }
     }
     func updateColumns(_ geowidth: CGFloat) {
-        let totalWidth: CGFloat = geowidth
-        let numberOfColumns: Int = max(1, Int(totalWidth / minCellWidth))
-        let adjustedColumns: Int = Int(totalWidth / maxCellWidth) >= numberOfColumns ? numberOfColumns : max(1, numberOfColumns - 1)
-        
-        let gridItems: [GridItem] = Array(repeating: .init(spacing: 10), count: adjustedColumns)
-        self.columns = gridItems
+        print("UPDATING COLUMNS")
+        Task.detached {
+            let totalWidth: CGFloat = geowidth
+            let numberOfColumns: Int = max(1, Int(totalWidth / minCellWidth))
+            let adjustedColumns: Int = Int(totalWidth / maxCellWidth) >= numberOfColumns ? numberOfColumns : max(1, numberOfColumns - 1)
+            
+            let gridItems: [GridItem] = Array(repeating: .init(spacing: 10), count: adjustedColumns)
+            
+//            let adjWidth: CGFloat = totalWidth - (10 * (CGFloat(adjustedColumns) - 1))
+            
+            let cellWidth: CGFloat = totalWidth / CGFloat(adjustedColumns) - 10
+            
+            await MainActor.run {
+                self.columnCount = adjustedColumns
+                self.columns = gridItems
+                self.cellWidth = cellWidth
+            }
+        }
+    }
+}
+
+@available(iOS 17.0, *)
+struct DynamicGridForEachLazy: View {
+    @Binding var columnCount: Int
+    @Binding var cellWidth: CGFloat?
+    @Binding var day: DayEvents
+    
+    var body: some View {
+        LazyVGrid(columns: Array(repeating: .init(spacing: 10), count: columnCount)) {
+            ForEach($day.events, id: \.id) { $event in
+                EventCard(event: $event)
+                    .transition(.blurReplace)
+                    .frame(minHeight: 150)
+                    .lineLimit(1)
+            }
+        }
+    }
+}
+
+@available(iOS 17.0, *)
+struct DynamicGridForEach: View {
+    @Binding var columnCount: Int
+    @Binding var cellWidth: CGFloat?
+    @Binding var day: DayEvents
+    
+    @State var rows: [DynamicRow] = []
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            ForEach($rows, id: \.self) { $row in
+                DGFERow(row: $row, cellWidth: $cellWidth)
+//                .transition(.blurReplace)
+            }
+        }
+        .onAppear {
+            self.updateRows()
+        }
+        .onChange(of: columnCount) { newValue in
+            self.updateRows()
+        }
+        .onChange(of: day) { newValue in
+            self.updateRows()
+        }
+        .onChange(of: day.events) { newValue in
+            self.updateRows()
+        }
+    }
+    
+    private func updateRows() {
+        print("UDPATING ROWS...")
+        var rows: [DynamicRow] = []
+        for rowIndex in 0..<rowsCount() {
+            // create DynamicRow with this row's events
+            var thisRowsEvents: [Event] = []
+            let startIndex = rowIndex * columnCount
+            let endIndex = startIndex + columnCount
+            for eventIndex in startIndex..<endIndex {
+                guard eventIndex < day.events.count else { break }
+                thisRowsEvents.append(day.events[eventIndex])
+            }
+            rows.append(.init(events: thisRowsEvents))
+        }
+        print("WRITING!")
+        withAnimation {
+            self.rows = rows
+        }
+    }
+    
+    private func rowsCount() -> Int {
+        (day.events.count + columnCount - 1) / columnCount
+    }
+    
+    private func eventAt(row: Int, column: Int) -> Binding<Event>? {
+        let index = row * columnCount + column
+        guard index < day.events.count else { return nil }
+        return $day.events[index]
+    }
+}
+
+@available(iOS 17.0, *)
+struct DGFERow: View {
+    @Binding var row: DynamicRow
+    @Binding var cellWidth: CGFloat?
+    
+    var body: some View {
+        HStack(spacing: 10) {
+            ForEach($row.events, id: \.self) { $event in
+                EventCard(event: $event)
+                    .transition(.blurReplace)
+                    .frame(maxWidth: cellWidth, minHeight: 150)
+                    .lineLimit(1)
+            }
+        }
     }
 }
 
