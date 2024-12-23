@@ -46,32 +46,32 @@ struct SportChips: View {
                                     if categoryParser.onlyWomens {
                                         if #available(iOS 16.0, *) {
                                             RoundedRectangle(cornerRadius: 8)
-                                                .strokeBorder(.blueUTMlight, lineWidth: 2)
-                                                .background(RoundedRectangle(cornerRadius: 8).fill(.blueUTMlight.gradient))
+                                                .strokeBorder(.pinkUTMlight, lineWidth: 2)
+                                                .background(RoundedRectangle(cornerRadius: 8).fill(.pinkUTMlight.gradient))
                                         } else {
                                             RoundedRectangle(cornerRadius: 8)
-                                                .strokeBorder(.blueUTMlight, lineWidth: 2)
-                                                .background(RoundedRectangle(cornerRadius: 8).fill(.blueUTMlight))
+                                                .strokeBorder(.pinkUTMlight, lineWidth: 2)
+                                                .background(RoundedRectangle(cornerRadius: 8).fill(.pinkUTMlight))
                                         }
                                     } else {
                                         RoundedRectangle(cornerRadius: 8)
-                                            .strokeBorder(.blueUTMlight, lineWidth: 1)
+                                            .strokeBorder(.pinkUTMlight, lineWidth: 1)
                                             .background(RoundedRectangle(cornerRadius: 8).fill(.white.opacity(0.05)))
                                     }
                                 } else {
                                     if categoryParser.onlyWomens {
                                         if #available(iOS 16.0, *) {
                                             RoundedRectangle(cornerRadius: 8)
-                                                .strokeBorder(.blueUTMlight, lineWidth: 2)
-                                                .background(RoundedRectangle(cornerRadius: 8).fill(.blueUTMlight.gradient))
+                                                .strokeBorder(.pinkUTMlight, lineWidth: 2)
+                                                .background(RoundedRectangle(cornerRadius: 8).fill(.pinkUTMlight.gradient))
                                         } else {
                                             RoundedRectangle(cornerRadius: 8)
-                                                .strokeBorder(.blueUTMlight, lineWidth: 2)
-                                                .background(RoundedRectangle(cornerRadius: 8).fill(.blueUTMlight))
+                                                .strokeBorder(.pinkUTMlight, lineWidth: 2)
+                                                .background(RoundedRectangle(cornerRadius: 8).fill(.pinkUTMlight))
                                         }
                                     } else {
                                         RoundedRectangle(cornerRadius: 8)
-                                            .strokeBorder(.blueUTMlight, lineWidth: 2)
+                                            .strokeBorder(.pinkUTMlight, lineWidth: 2)
                                             .background(RoundedRectangle(cornerRadius: 8).fill(.white))
                                     }
                                 }

@@ -78,7 +78,7 @@ struct EventBody: View {
         HStack {
             if let url = URL(string: event.url) {
                 Link(destination: url) {
-                    Text("UTM Event Website")
+                    Text("View Event in Browser")
                 }
             }
             Spacer()
