@@ -52,6 +52,7 @@ struct _FlexView<Data: Collection & Equatable, Content: View>: View where Data.E
             computeRows(maxRows: self.maxRows, animate: false)
         }
         .onChange(of: availableWidth) { _ in
+            print("change width")
             print(availableWidth)
             computeRows(maxRows: self.maxRows, animate: false)
         }

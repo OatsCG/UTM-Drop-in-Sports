@@ -51,15 +51,17 @@ struct EventCardContentSiri: View {
                 if #available (iOS 17.0, *) {
                     Image(systemName: event.symbol)
                         .font(.title)
+                        .foregroundStyle(event.womens ? .pinkUTM : .blueUTM)
                 } else {
                     Image(event.symbol)
                         .font(.title)
+                        .foregroundStyle(event.womens ? .pinkUTM : .blueUTM)
                 }
                 Text(event.title)
                     .font(.title3 .bold())
+                    .foregroundStyle(.blueUTM)
                 Spacer()
             }
-            .foregroundStyle(.blueUTM)
             .padding(.bottom, 6)
             VStack {
                 HStack {

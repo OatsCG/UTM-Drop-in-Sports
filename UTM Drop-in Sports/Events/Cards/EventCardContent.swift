@@ -15,19 +15,23 @@ struct EventCardContent: View {
                 if #available (iOS 17.0, *) {
                     Image(systemName: event.symbol)
                         .font(.title)
+                        .foregroundStyle(event.womens ? .pinkUTM : .blueUTM)
                 } else {
                     Image(event.symbol)
                         .font(.title)
+                        .foregroundStyle(event.womens ? .pinkUTM : .blueUTM)
                 }
                 Text(event.title)
                     .font(.title3 .bold())
+                    .foregroundStyle(.blueUTM)
                 Spacer()
                 if event.saved {
                     Image(systemName: "bookmark.fill")
                         .font(.title2)
+                        .foregroundStyle(.blueUTM)
                 }
             }
-            .foregroundStyle(.blueUTM)
+            
             .padding(.bottom, 6)
             Spacer()
             VStack {

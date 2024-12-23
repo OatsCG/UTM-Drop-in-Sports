@@ -9,6 +9,14 @@ import SwiftUI
 
 struct EventList: View {
     @EnvironmentObject var categoryParser: CategoryParser
+    
+    let minCellWidth: CGFloat = 380
+    let maxCellWidth: CGFloat = 450
+    
+    @State var columnCount: Int = 1
+    @State var columns: [GridItem] = [.init(spacing: 10)]
+    @State var cellWidth: CGFloat?
+    
     var body: some View {
         if categoryParser.events.isEmpty {
             VStack {
@@ -24,11 +32,44 @@ struct EventList: View {
             }
             
         } else {
-            VStack(alignment: .leading) {
-                SavedEvents()
-                ForEach($categoryParser.groupedEvents.days, id: \.date) { $day in
-                    EventDaySection(day: $day)
+            ZStack {
+                LazyVStack(alignment: .leading) {
+                    SavedEvents()
+                    ForEach($categoryParser.groupedEvents.days, id: \.date) { $day in
+                        EventDaySection(day: $day, columnCount: $columnCount, columns: $columns, cellWidth: $cellWidth)
+                    }
                 }
+                GeometryReader { geometry in
+                    Rectangle().fill(.clear)
+                        .onAppear {
+                            updateColumns(geometry.size.width)
+                        }
+                        .onChange(of: geometry.size.width) { newValue in
+                            updateColumns(geometry.size.width)
+                        }
+                }
+            }
+        }
+    }
+    
+    func updateColumns(_ geowidth: CGFloat) {
+        print("UPDATED")
+        Task.detached {
+            let totalWidth: CGFloat = geowidth
+            let numberOfColumns: Int = max(1, Int(totalWidth / minCellWidth))
+            let adjustedNumColumns: Int = Int(totalWidth / maxCellWidth) >= numberOfColumns ? numberOfColumns : max(1, numberOfColumns - 1)
+            
+            let gridItems: [GridItem] = Array(repeating: .init(spacing: 10), count: adjustedNumColumns)
+            
+            let adjustedTotalWidth: CGFloat = totalWidth - CGFloat((10 * (adjustedNumColumns - 1)))
+            
+            let cellWidth: CGFloat = adjustedTotalWidth / CGFloat(adjustedNumColumns)
+            
+            
+            await MainActor.run {
+                self.columnCount = adjustedNumColumns
+                self.columns = gridItems
+                self.cellWidth = cellWidth
             }
         }
     }
@@ -37,14 +78,19 @@ struct EventList: View {
 struct EventDaySection: View {
     @Binding var day: DayEvents
     @State var isExpanded: Bool = true
+    
+    @Binding var columnCount: Int
+    @Binding var columns: [GridItem]
+    @Binding var cellWidth: CGFloat?
+    
     var body: some View {
         if #available(iOS 17.0, *) {
             Section(isExpanded: $isExpanded) {
-                DynamicGridViewEC(day: $day)
-//                ForEach($day.events, id: \.id) { $event in
-//                    EventCard(event: $event)
-//                        .transition(.blurReplace)
-//                }
+//                DynamicGridViewEC(day: $day, columnCount: $columnCount, columns: $columns, cellWidth: $cellWidth)
+                ForEach($day.events, id: \.id) { $event in
+                    EventCard(event: $event)
+                        .transition(.blurReplace)
+                }
             } header: {
                 EventDayHeader(isExpanded: $isExpanded, day: day)
             }
@@ -62,46 +108,12 @@ struct EventDaySection: View {
 struct DynamicGridViewEC: View {
     @Binding var day: DayEvents
     
-    let minCellWidth: CGFloat = 350
-    let maxCellWidth: CGFloat = 400
-    
-    @State var columnCount: Int = 1
-    @State var columns: [GridItem] = [.init(spacing: 10)]
-    @State var cellWidth: CGFloat?
+    @Binding var columnCount: Int
+    @Binding var columns: [GridItem]
+    @Binding var cellWidth: CGFloat?
     
     var body: some View {
-        ZStack {
-            DynamicGridForEach(columnCount: $columnCount, cellWidth: $cellWidth, day: $day)
-            GeometryReader { geometry in
-                Rectangle().fill(.red.opacity(0.4))
-                    .onAppear {
-                        updateColumns(geometry.size.width)
-                    }
-                    .onChange(of: geometry.size.width) { newValue in
-                        updateColumns(geometry.size.width)
-                    }
-            }
-        }
-    }
-    func updateColumns(_ geowidth: CGFloat) {
-        print("UPDATING COLUMNS")
-        Task.detached {
-            let totalWidth: CGFloat = geowidth
-            let numberOfColumns: Int = max(1, Int(totalWidth / minCellWidth))
-            let adjustedColumns: Int = Int(totalWidth / maxCellWidth) >= numberOfColumns ? numberOfColumns : max(1, numberOfColumns - 1)
-            
-            let gridItems: [GridItem] = Array(repeating: .init(spacing: 10), count: adjustedColumns)
-            
-//            let adjWidth: CGFloat = totalWidth - (10 * (CGFloat(adjustedColumns) - 1))
-            
-            let cellWidth: CGFloat = totalWidth / CGFloat(adjustedColumns) - 10
-            
-            await MainActor.run {
-                self.columnCount = adjustedColumns
-                self.columns = gridItems
-                self.cellWidth = cellWidth
-            }
-        }
+        DynamicGridForEach(columnCount: $columnCount, cellWidth: $cellWidth, day: $day)
     }
 }
 
@@ -132,8 +144,10 @@ struct DynamicGridForEach: View {
     @State var rows: [DynamicRow] = []
     
     var body: some View {
+        // TODO: CRASH HERE - LazyVStack crashes (NO ERROR CODE), but VStack causes lag!?
+        // Crash happens rarely, but lag happens everywhere (window size change, category change, etc). Which do I prioritize??
         VStack(alignment: .leading, spacing: 10) {
-            ForEach($rows, id: \.self) { $row in
+            ForEach($rows, id: \.id) { $row in
                 DGFERow(row: $row, cellWidth: $cellWidth)
 //                .transition(.blurReplace)
             }
@@ -142,7 +156,7 @@ struct DynamicGridForEach: View {
             self.updateRows()
         }
         .onChange(of: columnCount) { newValue in
-            self.updateRows()
+            self.updateRows(animate: false)
         }
         .onChange(of: day) { newValue in
             self.updateRows()
@@ -152,7 +166,7 @@ struct DynamicGridForEach: View {
         }
     }
     
-    private func updateRows() {
+    private func updateRows(animate: Bool = true) {
         print("UDPATING ROWS...")
         var rows: [DynamicRow] = []
         for rowIndex in 0..<rowsCount() {
@@ -167,7 +181,11 @@ struct DynamicGridForEach: View {
             rows.append(.init(events: thisRowsEvents))
         }
         print("WRITING!")
-        withAnimation {
+        if animate {
+            withAnimation {
+                self.rows = rows
+            }
+        } else {
             self.rows = rows
         }
     }
@@ -190,7 +208,7 @@ struct DGFERow: View {
     
     var body: some View {
         HStack(spacing: 10) {
-            ForEach($row.events, id: \.self) { $event in
+            ForEach($row.events, id: \.id) { $event in
                 EventCard(event: $event)
                     .transition(.blurReplace)
                     .frame(maxWidth: cellWidth, minHeight: 150)
