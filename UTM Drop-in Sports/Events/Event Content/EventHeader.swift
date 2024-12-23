@@ -14,15 +14,17 @@ struct EventHeader: View {
             if #available (iOS 17.0, *) {
                 Image(systemName: event.symbol)
                     .font(.largeTitle)
+                    .foregroundStyle(event.womens ? .pinkUTM : .blueUTM)
             } else {
                 Image(event.symbol)
                     .font(.largeTitle)
+                    .foregroundStyle(event.womens ? .pinkUTM : .blueUTM)
             }
             Text(event.title)
                 .font(.title .bold())
+                .foregroundStyle(.blueUTM)
             Spacer()
         }
-        .foregroundStyle(.blueUTM)
         .padding(.bottom, 10)
         
         VStack {

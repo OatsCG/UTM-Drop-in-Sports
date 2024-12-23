@@ -167,7 +167,7 @@ struct SportChips: View {
                                 }
                                 if (categoryParser.onlyWomens) {
                                     Image("figure.stand.dress")
-                                        .foregroundStyle(.blueUTM)
+                                        .foregroundStyle(.pinkUTM)
                                 }
                                 if (categoryParser.onlySaved) {
                                     Image(systemName: "bookmark.fill")

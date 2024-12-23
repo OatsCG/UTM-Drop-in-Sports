@@ -12,8 +12,21 @@ struct EventBody: View {
     @EnvironmentObject var notificationManager: NotificationManager
     var event: Event
     var body: some View {
-        Text(event.description)
-            .padding(.bottom, 10)
+        VStack(alignment: .leading) {
+            Text(event.description)
+                .padding(.bottom, 10)
+            if event.womens {
+                HStack(alignment: .top) {
+                    Image("figure.stand.dress")
+                        .foregroundStyle(.pinkUTM)
+                    Text("This session is reserved for female-identifying students only.")
+                        .multilineTextAlignment(.leading)
+                        .foregroundStyle(.secondary)
+                }
+                    .font(.footnote)
+                    .padding(.bottom, 10)
+            }
+        }
         
         if event.saved {
             Button(action: {
