@@ -156,7 +156,7 @@ struct SportChips: View {
                                 Text("Show Less...")
                             } else {
                                 Text("Show More...")
-                                ForEach(categoryParser.categories.filter({ $0.selected }), id: \.self) { category in
+                                ForEach(categoryParser.categories.filter({ $0.selected }), id: \.id) { category in
                                     if #available(iOS 17.0, *) {
                                         Image(systemName: category.symbol)
                                             .foregroundStyle(.blueUTM)

@@ -34,7 +34,8 @@ struct Announcements: View {
                             .font(.headline)
                         Spacer()
                         Image(systemName: isExpanded ? "chevron.up.circle.fill" : "chevron.down.circle.fill")
-                            .symbolRenderingMode(.hierarchical)
+                            .symbolRenderingMode(.palette)
+                            .foregroundStyle(.white, .quaternary)
                             .font(.title3)
                     }
                     .padding(.horizontal, 10)
@@ -59,6 +60,7 @@ struct Announcements: View {
             .padding(.top, 10)
             .padding(.bottom, 6)
             Divider()
+                .padding(.bottom, 6)
         }
     }
 }
@@ -96,12 +98,12 @@ struct AnnouncementView: View {
             VStack(alignment: .leading) {
                 HStack {
                     Image(systemName: "exclamationmark.circle.fill")
-                        .symbolRenderingMode(.hierarchical)
+                        .symbolRenderingMode(.palette)
                         .font(.headline)
                     Text(announcement.title.uppercased())
-                        .foregroundStyle(.white)
                     Spacer()
                 }
+                .foregroundStyle(.white, .quaternary)
                 .font(.callout.bold())
                 .padding(.horizontal, 8)
                 .padding(.vertical, 8)

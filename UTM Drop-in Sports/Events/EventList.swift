@@ -220,6 +220,7 @@ struct DGFERow: View {
 
 
 struct EventDayHeader: View {
+    @Environment(\.colorScheme) private var colorScheme
     @Binding var isExpanded: Bool
     var day: DayEvents
     var body: some View {
@@ -259,11 +260,21 @@ struct EventDayHeader: View {
         .background {
             Group {
                 if #available(iOS 17.0, *) {
-                    Rectangle()
-                        .strokeBorder(.quinary, lineWidth: 1)
+                    if colorScheme == .dark {
+                        Rectangle()
+                            .fill(.white.opacity(0.05))
+                    } else {
+                        Rectangle()
+                            .strokeBorder(.quinary, lineWidth: 1)
+                    }
                 } else {
-                    Rectangle()
-                        .strokeBorder(.clear, lineWidth: 1)
+                    if colorScheme == .dark {
+                        Rectangle()
+                            .fill(.white.opacity(0.05))
+                    } else {
+                        Rectangle()
+                            .strokeBorder(.clear, lineWidth: 1)
+                    }
                 }
             }
                 .background(Rectangle().fill(.background))
