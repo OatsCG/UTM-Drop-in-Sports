@@ -142,6 +142,7 @@ class CategoryParser: ObservableObject {
             var fetchedVersion: String
             
             if let versionData = versionData {
+                print("Fetched Version: \(versionData)")
                 if let decodedVersion = String(data: versionData, encoding: .utf8) {
                     fetchedVersion = decodedVersion
                 } else {

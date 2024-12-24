@@ -67,7 +67,7 @@ struct EventHeader: View {
                         HStack {
                             Image(systemName: "clock")
                                 .font(.caption2)
-                            Text("Event Over")
+                            Text("Session Over")
                         }
                         .foregroundStyle(.red)
                     } else {

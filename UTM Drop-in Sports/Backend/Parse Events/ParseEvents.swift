@@ -51,7 +51,7 @@ class Announcement: Decodable, Hashable, ObservableObject {
         title = try values.decode(String.self, forKey: .title)
         body = try values.decode(String.self, forKey: .body)
         seen = false
-        if false {
+        if UserDefaults.standard.bool(forKey: "\(id)") {
             seen = true
         }
     }
@@ -60,6 +60,11 @@ class Announcement: Decodable, Hashable, ObservableObject {
         case id
         case title
         case body
+    }
+    
+    func markAsSeen() {
+        self.seen = true
+        UserDefaults.standard.set(true, forKey: "\(id)")
     }
 }
 

@@ -184,7 +184,7 @@ struct MainNavigationViewLegacy: View {
 
 
 struct MainScrollView: View {
-    /*@AppStorage("isTipVisible") */ @State var isTipVisible: Bool = true
+    @AppStorage("isTipVisible") var isTipVisible: Bool = true
     @EnvironmentObject var categoryParser: CategoryParser
     @Binding var showNetworkAlert: Bool
     var body: some View {

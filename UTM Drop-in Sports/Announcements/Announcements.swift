@@ -17,11 +17,19 @@ struct Announcements: View {
         if !categoryParser.announcements.isEmpty {
             VStack(spacing: 0) {
                 Button(action: {
+                    for announcement in categoryParser.announcements {
+                        announcement.markAsSeen()
+                    }
                     withAnimation {
                         isExpanded.toggle()
                     }
                 }) {
                     HStack {
+                        if !categoryParser.announcements.allSatisfy({$0.seen}) {
+                            Image(systemName: "circle.fill")
+                                .foregroundStyle(.red)
+                                .font(.caption)
+                        }
                         Text("Announcements")
                             .font(.headline)
                         Spacer()
@@ -49,7 +57,8 @@ struct Announcements: View {
             }
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .padding(.top, 10)
-            .padding(.bottom, 8)
+            .padding(.bottom, 6)
+            Divider()
         }
     }
 }
@@ -63,7 +72,7 @@ struct AnnouncementsList: View {
                 AnnouncementView(announcement: $announcement)
             }
         }
-        .padding(.top, 8)
+        .padding(.vertical, 10)
         .background {
             if colorScheme == .dark {
                 Rectangle()
@@ -89,7 +98,7 @@ struct AnnouncementView: View {
                     Image(systemName: "exclamationmark.circle.fill")
                         .symbolRenderingMode(.hierarchical)
                         .font(.headline)
-                    Text(announcement.title.capitalized)
+                    Text(announcement.title.uppercased())
                         .foregroundStyle(.white)
                     Spacer()
                 }
@@ -103,7 +112,6 @@ struct AnnouncementView: View {
                     .padding(.top, 5)
                     .padding(.bottom, 16)
             }
-            //        .background(.primary.opacity(0.04))
             .background {
                 if colorScheme == .dark {
                     Rectangle()
@@ -114,7 +122,7 @@ struct AnnouncementView: View {
                 }
             }
             .cornerRadius(16)
-            .padding(.horizontal, 5)
+            .padding(.horizontal, 10)
         }
     }
 }

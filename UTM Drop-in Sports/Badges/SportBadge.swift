@@ -273,7 +273,7 @@ struct SportMedalSheet: View {
                             Text("Sessions: \(medal.events.count)")
                                 .font(.title2 .bold())
                                 .padding(.bottom, 25)
-                            Text("Complete a \(medal.category) event to earn this medal.\n**Save \(Image(systemName: "bookmark"))**  a future event to participate.")
+                            Text("Participate in a \(medal.category) session to earn this medal.\n**Save \(Image(systemName: "bookmark"))**  a future session to participate.")
                         } else {
                             SportMedalRotation(size: $size, rotation: $rotation, symbol: ImageResource(name: medal.icon, bundle: .main), colorPrimary: colorPrimary, colorSecondary: colorSecondary)
                                 .padding(.bottom, 15)
@@ -283,9 +283,9 @@ struct SportMedalSheet: View {
                                 .font(.title2 .bold())
                                 .padding(.bottom, 25)
                             if medal.type == .bronze {
-                                Text("Complete 5 events to earn a **Silver** medal.")
+                                Text("Complete 5 sessions to earn a **Silver** medal.")
                             } else if medal.type == .silver {
-                                Text("Complete 10 events to earn a **Gold** medal.")
+                                Text("Complete 10 sessions to earn a **Gold** medal.")
                             }
                         }
                     }

@@ -35,7 +35,7 @@ struct EventBody: View {
             }) {
                 VStack(alignment: .center) {
                     HStack {
-                        Text("Event Saved")
+                        Text("Session Saved")
                         Image(systemName: "bookmark.fill")
                     }
                     if notificationManager.currentlyScheduledEvents.contains(event.id) {
@@ -62,7 +62,7 @@ struct EventBody: View {
                 notificationManager.scheduleNotification(event: event)
             }) {
                 HStack {
-                    Text("Save This Event")
+                    Text("Save This Session")
                     Image(systemName: "bookmark")
                 }
                     .foregroundStyle(.black)
@@ -78,7 +78,7 @@ struct EventBody: View {
         HStack {
             if let url = URL(string: event.url) {
                 Link(destination: url) {
-                    Text("View Event in Browser")
+                    Text("View Session in Browser")
                 }
             }
             Spacer()
@@ -94,7 +94,7 @@ struct EventBody: View {
 #Preview {
     VStack {
         HStack {
-            Text("Save This Event")
+            Text("Save This Session")
             Image(systemName: "bookmark")
         }
             .foregroundStyle(.black)
@@ -104,7 +104,7 @@ struct EventBody: View {
             .clipShape(RoundedRectangle(cornerRadius: 10))
         VStack(alignment: .center) {
             HStack {
-                Text("Event Saved")
+                Text("Session Saved")
                 Image(systemName: "bookmark.fill")
             }
             Text("We'll notify you 30 minutes before it starts")

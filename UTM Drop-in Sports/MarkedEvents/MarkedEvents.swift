@@ -59,13 +59,13 @@ struct SavedEvents: View {
                             }
                             .padding(.bottom, 8)
                             .font(.callout)
-                            Text("Save events to participate and earn medals!")
+                            Text("Save sessions to participate and earn medals!")
                                 .foregroundStyle(.secondary)
                                 .multilineTextAlignment(.center)
                                 .font(.callout)
                                 .padding(.bottom, 5)
                                 .padding(.horizontal, 8)
-                            Text("Active Events will show here. When a saved event ends, mark it as complete to collect your medal.")
+                            Text("Active Sessions will show here. When a saved session ends, mark it as complete to collect your medal.")
                                 .foregroundStyle(.secondary)
                                 .multilineTextAlignment(.center)
                                 .font(.caption)
@@ -92,7 +92,7 @@ struct SavedEventsHeader: View {
             HStack {
                 HStack {
                     Image(systemName: "bookmark")
-                    Text("Active Events")
+                    Text("Active Sessions")
                 }
                 .font(.title .bold())
                 Spacer()
