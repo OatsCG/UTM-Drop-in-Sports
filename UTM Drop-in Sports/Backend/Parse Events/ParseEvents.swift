@@ -28,8 +28,40 @@ func loadEventJSON() -> EventJSON? {
 class EventJSON: Decodable {
     let categories: [Category]
     let events: [Event]
+    let announcements: [Announcement]
 }
 
+
+class Announcement: Decodable, Hashable, ObservableObject {
+    var id: Int
+    var title: String
+    var body: String
+    var seen: Bool
+    
+    static func == (lhs: Announcement, rhs: Announcement) -> Bool {
+        return lhs.id == rhs.id
+    }
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(self.id)
+    }
+    
+    required init(from decoder:Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        id = try values.decode(Int.self, forKey: .id)
+        title = try values.decode(String.self, forKey: .title)
+        body = try values.decode(String.self, forKey: .body)
+        seen = false
+        if false {
+            seen = true
+        }
+    }
+    
+    private enum CodingKeys: String, CodingKey {
+        case id
+        case title
+        case body
+    }
+}
 
 class Category: Decodable, Hashable, ObservableObject {
     static func == (lhs: Category, rhs: Category) -> Bool {
