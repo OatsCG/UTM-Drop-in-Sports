@@ -47,9 +47,9 @@ struct EventList: View {
                         .onAppear {
                             updateColumns(geometry.size.width)
                         }
-//                        .onChange(of: geometry.size.width) { newValue in
-//                            updateColumns(geometry.size.width)
-//                        }
+                        .onChange(of: geometry.size.width) { newValue in
+                            updateColumns(geometry.size.width)
+                        }
                 }
             }
         }
@@ -70,9 +70,10 @@ struct EventList: View {
             
             
             await MainActor.run {
-                self.columnCount = adjustedNumColumns
+                self.categoryParser.columnCount = adjustedNumColumns
                 self.columns = gridItems
                 self.cellWidth = cellWidth
+                self.categoryParser.updateDisplayEvents(maxEvents: 50)
             }
         }
     }
@@ -143,75 +144,15 @@ struct DynamicGridForEach: View {
     @Binding var cellWidth: CGFloat?
     @Binding var day: DayEvents
     
-    @State var rows: [DynamicRow] = []
-    
     var body: some View {
         // TODO: CRASH HERE - LazyVStack crashes (NO ERROR CODE), but VStack causes lag!?
         // Crash happens rarely, but lag happens everywhere (window size change, category change, etc). Which do I prioritize??
         LazyVStack(alignment: .leading, spacing: 10) {
-            ForEach($rows, id: \.id) { $row in
+            ForEach($day.rows, id: \.id) { $row in
                 DGFERow(row: $row, cellWidth: $cellWidth)
-//                Text("Row should be here!!")
-//                .transition(.blurReplace)
+                    .transition(.blurReplace)
             }
         }
-        .onAppear {
-            Task {
-                await MainActor.run {
-                    self.updateRows(day.events)
-                }
-            }
-        }
-        .onChange(of: columnCount) { newValue in
-            self.updateRows(day.events, animate: false)
-        }
-        .onChange(of: day) { newValue in
-            self.updateRows(newValue.events)
-        }
-        .onChange(of: day.events) { newValue in
-            print("\nROWSCOUNT START")
-            print("ROWSCOUNT PRE a: \(newValue)")
-            self.updateRows(newValue)
-        }
-    }
-    
-    private func updateRows(_ dayEvents: [Event], animate: Bool = true) {
-        print("UDPATING ROWS...")
-        var rows: [DynamicRow] = []
-        for rowIndex in 0..<rowsCount(dayEvents) {
-            // create DynamicRow with this row's events
-            var thisRowsEvents: [Event] = []
-            let startIndex = rowIndex * columnCount
-            let endIndex = startIndex + columnCount
-            for eventIndex in startIndex..<endIndex {
-                guard eventIndex < dayEvents.count else { break }
-                thisRowsEvents.append(dayEvents[eventIndex])
-            }
-            rows.append(.init(events: thisRowsEvents))
-        }
-        print("WRITING!")
-        Task {
-            await MainActor.run {
-                if animate {
-                    withAnimation {
-                        self.rows = rows
-                    }
-                } else {
-                    self.rows = rows
-                }
-                print("WROTE")
-            }
-        }
-    }
-    
-    private func rowsCount(_ dayEvents: [Event]) -> Int {
-        return (dayEvents.count + columnCount - 1) / columnCount
-    }
-    
-    private func eventAt(row: Int, column: Int) -> Binding<Event>? {
-        let index = row * columnCount + column
-        guard index < day.events.count else { return nil }
-        return $day.events[index]
     }
 }
 
@@ -225,7 +166,7 @@ struct DGFERow: View {
             ForEach($row.events, id: \.id) { $event in
                 EventCard(event: $event)
                     .transition(.blurReplace)
-                    .frame(maxWidth: cellWidth, minHeight: 150)
+                    .frame(maxWidth: cellWidth, idealHeight: 150)
             }
         }
     }

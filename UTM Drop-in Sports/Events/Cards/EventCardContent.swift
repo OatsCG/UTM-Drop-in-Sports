@@ -33,6 +33,7 @@ struct EventCardContent: View {
                 }
             }
             .padding(.bottom, 6)
+            Spacer()
             VStack {
                 HStack {
                     HStack {

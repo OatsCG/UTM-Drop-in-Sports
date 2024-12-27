@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class DayEvents: ObservableObject, Hashable {
     static func == (lhs: DayEvents, rhs: DayEvents) -> Bool {
@@ -17,17 +18,46 @@ class DayEvents: ObservableObject, Hashable {
     
     @Published var date: Date
     @Published var events: [Event]
+    @Published var rows: [DynamicRow]
     
-    init(date: Date, events: [Event]) {
+    init(date: Date, events: [Event], columnCount: Int) {
         self.date = date
         self.events = events
+        self.rows = []
+        self.updateRows(columnCount: columnCount)
+    }
+    
+    func updateRows(columnCount: Int, animate: Bool = true) {
+        var rows: [DynamicRow] = []
+        for rowIndex in 0..<rowsCount(columnCount: columnCount) {
+            var thisRowsEvents: [Event] = []
+            let startIndex = rowIndex * columnCount
+            let endIndex = startIndex + columnCount
+            print("COUNT: \(self.events.count)")
+            for eventIndex in startIndex..<endIndex {
+                guard eventIndex < self.events.count else { break }
+                thisRowsEvents.append(self.events[eventIndex])
+            }
+            rows.append(.init(events: thisRowsEvents))
+        }
+        if animate {
+            withAnimation {
+                self.rows = rows
+            }
+        } else {
+            self.rows = rows
+        }
+    }
+    
+    private func rowsCount(columnCount: Int) -> Int {
+        return (self.events.count + columnCount - 1) / columnCount
     }
 }
 
 class AllEvents: ObservableObject {
     @Published var days: [DayEvents] = []
     
-    init(events: [Event], maxEvents: Int?) {
+    init(events: [Event], maxEvents: Int?, columnCount: Int) {
         var dayEventsList: [DayEvents] = []
         
         let calendar = Calendar.current
@@ -41,13 +71,15 @@ class AllEvents: ObservableObject {
                 currentDayEvents?.events.append(event)
             } else {
                 if let currentDayEvents = currentDayEvents {
+                    currentDayEvents.updateRows(columnCount: columnCount)
                     dayEventsList.append(currentDayEvents)
                 }
-                currentDayEvents = DayEvents(date: eventDate, events: [event])
+                currentDayEvents = DayEvents(date: eventDate, events: [event], columnCount: columnCount)
             }
         }
         
         if let currentDayEvents = currentDayEvents {
+            currentDayEvents.updateRows(columnCount: columnCount)
             dayEventsList.append(currentDayEvents)
         }
         self.days = dayEventsList

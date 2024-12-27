@@ -17,7 +17,8 @@ class CategoryParser: ObservableObject {
     @Published var events: [Event] = []
     @Published var savedEvents: [Event] = []
     @Published var savedOngoingEvents: [Event] = []
-    @Published var groupedEvents: AllEvents = AllEvents(events: [], maxEvents: nil)
+    @Published var groupedEvents: AllEvents = AllEvents(events: [], maxEvents: nil, columnCount: 1)
+    @Published var columnCount: Int = 1
     
     @Published var isUpdating: Bool = true
     @Published var onlyWomens: Bool = false
@@ -224,10 +225,10 @@ class CategoryParser: ObservableObject {
         withAnimation {
             self.isUpdating = false
             if let maxEvents = maxEvents {
-                self.groupedEvents = AllEvents(events: self.events, maxEvents: maxEvents)
+                self.groupedEvents = AllEvents(events: self.events, maxEvents: maxEvents, columnCount: self.columnCount)
                 self.isEventsExpandedToMax = false
             } else {
-                self.groupedEvents = AllEvents(events: self.events, maxEvents: nil)
+                self.groupedEvents = AllEvents(events: self.events, maxEvents: nil, columnCount: self.columnCount)
                 self.isEventsExpandedToMax = true
             }
         }
