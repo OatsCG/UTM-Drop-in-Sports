@@ -19,6 +19,7 @@ class CategoryParser: ObservableObject {
     @Published var savedOngoingEvents: [Event] = []
     @Published var groupedEvents: AllEvents = AllEvents(events: [], maxEvents: nil, columnCount: 1)
     @Published var columnCount: Int = 1
+    private var updateDisplayEventsID: UUID = UUID()
     
     @Published var isUpdating: Bool = true
     @Published var onlyWomens: Bool = false
@@ -186,50 +187,57 @@ class CategoryParser: ObservableObject {
     
     func updateDisplayEvents(maxEvents: Int?) {
         print("UPDATING DISPLAY EVENTS")
-        let notOverEvents: [Event] = self.allEvents.filter { $0.relativeTimeDate.isEventOver == false }
-        let savedRespectedEvents: [Event] = self.onlySaved ? self.savedEvents : notOverEvents
-        let womensRespectedEvents: [Event] = savedRespectedEvents.filter { !self.onlyWomens || $0.womens }
-        var searchedEvents: [Event] = []
-        for event in womensRespectedEvents {
-            if event.title.lowercased().contains(self.searchField.lowercased()) ||
-                event.description.lowercased().contains(self.searchField.lowercased()) ||
-                event.venue.lowercased().contains(self.searchField.lowercased()) ||
-                self.searchField == "" {
-                
-                searchedEvents.append(event)
-            }
-        }
-        
-        
-        var selectedCategories: [Category] = []
-        for category in self.categories {
-            if category.selected {
-                selectedCategories.append(category)
-            }
-        }
-        if selectedCategories.count == 0 {
-            withAnimation {
-                self.events = searchedEvents
-            }
-        } else {
-            var allowedEvents: [Event] = []
-            for event in searchedEvents {
-                if selectedCategories.contains(where: { $0.title == event.sortCategory }) {
-                    allowedEvents.append(event)
+        let udeID: UUID = UUID()
+        self.updateDisplayEventsID = udeID
+        Task.detached {
+            let notOverEvents: [Event] = self.allEvents.filter { $0.relativeTimeDate.isEventOver == false }
+            let savedRespectedEvents: [Event] = self.onlySaved ? self.savedEvents : notOverEvents
+            let womensRespectedEvents: [Event] = savedRespectedEvents.filter { !self.onlyWomens || $0.womens }
+            var searchedEvents: [Event] = []
+            for event in womensRespectedEvents {
+                if event.title.lowercased().contains(self.searchField.lowercased()) ||
+                    event.description.lowercased().contains(self.searchField.lowercased()) ||
+                    event.venue.lowercased().contains(self.searchField.lowercased()) ||
+                    self.searchField == "" {
+                    
+                    searchedEvents.append(event)
                 }
             }
-            withAnimation {
-                self.events = allowedEvents
+            
+            
+            var selectedCategories: [Category] = []
+            for category in self.categories {
+                if category.selected {
+                    selectedCategories.append(category)
+                }
             }
-        }
-        withAnimation {
-            self.isUpdating = false
-            if let maxEvents = maxEvents {
-                self.groupedEvents = AllEvents(events: self.events, maxEvents: maxEvents, columnCount: self.columnCount)
-                self.isEventsExpandedToMax = false
+            let selfevents: [Event]
+            if selectedCategories.count == 0 {
+                selfevents = searchedEvents
             } else {
-                self.groupedEvents = AllEvents(events: self.events, maxEvents: nil, columnCount: self.columnCount)
-                self.isEventsExpandedToMax = true
+                var allowedEvents: [Event] = []
+                for event in searchedEvents {
+                    if selectedCategories.contains(where: { $0.title == event.sortCategory }) {
+                        allowedEvents.append(event)
+                    }
+                }
+                selfevents = allowedEvents
+            }
+            await MainActor.run {
+                if self.updateDisplayEventsID == udeID {
+                    withAnimation {
+                        self.events = selfevents
+                        self.isUpdating = false
+                        if let maxEvents = maxEvents {
+                            self.groupedEvents = AllEvents(events: self.events, maxEvents: maxEvents, columnCount: self.columnCount)
+                            self.isEventsExpandedToMax = false
+                        } else {
+                            self.groupedEvents = AllEvents(events: self.events, maxEvents: nil, columnCount: self.columnCount)
+                            self.isEventsExpandedToMax = true
+                        }
+                    }
+                    print("done!")
+                }
             }
         }
     }

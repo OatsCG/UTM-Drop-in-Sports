@@ -24,16 +24,18 @@ class DayEvents: ObservableObject, Hashable {
         self.date = date
         self.events = events
         self.rows = []
-        self.updateRows(columnCount: columnCount)
+//        self.updateRows(columnCount: columnCount)
     }
     
     func updateRows(columnCount: Int, animate: Bool = true) {
+        return
+        
         var rows: [DynamicRow] = []
         for rowIndex in 0..<rowsCount(columnCount: columnCount) {
             var thisRowsEvents: [Event] = []
             let startIndex = rowIndex * columnCount
             let endIndex = startIndex + columnCount
-            print("COUNT: \(self.events.count)")
+//            print("COUNT: \(self.events.count)")
             for eventIndex in startIndex..<endIndex {
                 guard eventIndex < self.events.count else { break }
                 thisRowsEvents.append(self.events[eventIndex])

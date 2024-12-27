@@ -33,7 +33,7 @@ struct EventList: View {
             
         } else {
             ZStack {
-                VStack(alignment: .leading) {
+                LazyVStack(alignment: .leading) {
                     SavedEvents()
                     // TODO: INDEX ERROR IS HEREEE
                     // AHHHHHH
@@ -45,18 +45,17 @@ struct EventList: View {
                 GeometryReader { geometry in
                     Rectangle().fill(.clear)
                         .onAppear {
-                            updateColumns(geometry.size.width)
+//                            updateColumns(geometry.size.width)
                         }
-                        .onChange(of: geometry.size.width) { newValue in
-                            updateColumns(geometry.size.width)
-                        }
+//                        .onChange(of: geometry.size.width) { newValue in
+//                            updateColumns(geometry.size.width)
+//                        }
                 }
             }
         }
     }
     
     func updateColumns(_ geowidth: CGFloat) {
-        print("UPDATED")
         Task.detached {
             let totalWidth: CGFloat = geowidth
             let numberOfColumns: Int = max(1, Int(totalWidth / minCellWidth))
@@ -73,7 +72,7 @@ struct EventList: View {
                 self.categoryParser.columnCount = adjustedNumColumns
                 self.columns = gridItems
                 self.cellWidth = cellWidth
-                self.categoryParser.updateDisplayEvents(maxEvents: 50)
+//                self.categoryParser.updateDisplayEvents(maxEvents: 50)
             }
         }
     }
@@ -90,11 +89,11 @@ struct EventDaySection: View {
     var body: some View {
         if #available(iOS 17.0, *) {
             Section(isExpanded: $isExpanded) {
-                DynamicGridViewEC(day: $day, columnCount: $columnCount, columns: $columns, cellWidth: $cellWidth)
-//                ForEach($day.events, id: \.id) { $event in
-//                    EventCard(event: $event)
-//                        .transition(.blurReplace)
-//                }
+//                DynamicGridViewEC(day: $day, columnCount: $columnCount, columns: $columns, cellWidth: $cellWidth)
+                ForEach($day.events, id: \.id) { $event in
+                    EventCard(event: $event)
+                        .transition(.blurReplace)
+                }
             } header: {
                 EventDayHeader(isExpanded: $isExpanded, day: day)
             }
