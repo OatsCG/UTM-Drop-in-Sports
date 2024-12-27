@@ -41,7 +41,22 @@ struct SportMedallionEmptyDisplay: View {
         }) {
             if #available(iOS 18.0, *) {
                 VStack(alignment: .center) {
-                    SportMedalEmpty(size: $size, medal: medal)
+                    ZStack {
+                        SportMedalEmpty(size: $size, medal: medal)
+                            .padding(.bottom, 10)
+                            .background(alignment: .bottom) {
+                                VStack(spacing: 0) {
+                                    Trapezoid(topWidthRatio: 0.7)
+                                        .stroke(.white.opacity(0.2), lineWidth: 1)
+                                        .fill(LinearGradient(gradient: Gradient(colors: [Color.white.opacity(0.08), Color.white.opacity(0.38)]), startPoint: .top, endPoint: .bottom))
+                                        .frame(height: 14)
+                                    Rectangle()
+                                        .stroke(.white.opacity(0.2), lineWidth: 1)
+                                        .fill(.white.opacity(0.4))
+                                        .frame(height: 5)
+                                }
+                            }
+                    }
                     Text(medal.category)
                         .font(.body .bold())
                 }

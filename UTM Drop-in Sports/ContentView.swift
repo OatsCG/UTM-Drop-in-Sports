@@ -127,11 +127,13 @@ struct DisplayCase: View {
                 }
             } else {
                 FlexView(data: $categoryParser.medalsCollected, spacing: 10, alignment: .center, maxRows: $maxRows) { medal in
-                    Group {
-                        if medal.type == .none {
-                            SportMedallionEmptyDisplay(size: $size, medal: medal)
-                        } else {
-                            SportMedallionDisplay(size: $size, medal: medal)
+                    VStack {
+                        Group {
+                            if medal.type == .none {
+                                SportMedallionEmptyDisplay(size: $size, medal: medal)
+                            } else {
+                                SportMedallionDisplay(size: $size, medal: medal)
+                            }
                         }
                     }
                     .padding(.bottom, 10)

@@ -206,7 +206,22 @@ struct SportMedallionDisplay: View {
         }) {
             if #available(iOS 18.0, *) {
                 VStack(alignment: .center) {
-                    SportMedalMedallion(size: $size, symbol: ImageResource(name: medal.icon, bundle: .main), colorPrimary: medal.colorPrimary, colorSecondary: medal.colorSecondary)
+                    ZStack {
+                        SportMedalMedallion(size: $size, symbol: ImageResource(name: medal.icon, bundle: .main), colorPrimary: medal.colorPrimary, colorSecondary: medal.colorSecondary)
+                            .padding(.bottom, 10)
+                            .background(alignment: .bottom) {
+                                VStack(spacing: 0) {
+                                    Trapezoid(topWidthRatio: 0.7)
+                                        .stroke(.white.opacity(0.2), lineWidth: 1)
+                                        .fill(LinearGradient(gradient: Gradient(colors: [Color.white.opacity(0.08), Color.white.opacity(0.38)]), startPoint: .top, endPoint: .bottom))
+                                        .frame(height: 14)
+                                    Rectangle()
+                                        .stroke(.white.opacity(0.2), lineWidth: 1)
+                                        .fill(.white.opacity(0.4))
+                                        .frame(height: 5)
+                                }
+                            }
+                    }
                     Text(medal.category)
                         .font(.body .bold())
                 }
@@ -228,6 +243,24 @@ struct SportMedallionDisplay: View {
                 SportMedalSheet(medal: medal, colorPrimary: medal.colorPrimary, colorSecondary: medal.colorSecondary, showingSheet: $showingSheet)
             }
         }
+    }
+}
+
+struct Trapezoid: Shape {
+    var topWidthRatio: CGFloat // Ratio of the top width to the rectangle's total width.
+    
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        let topWidth = rect.width * topWidthRatio
+        let offsetX = (rect.width - topWidth) / 2
+        
+        path.move(to: CGPoint(x: offsetX, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.maxX - offsetX, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
+        path.closeSubpath()
+        
+        return path
     }
 }
 
