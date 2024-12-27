@@ -33,8 +33,11 @@ struct EventList: View {
             
         } else {
             ZStack {
-                LazyVStack(alignment: .leading) {
+                VStack(alignment: .leading) {
                     SavedEvents()
+                    // TODO: INDEX ERROR IS HEREEE
+                    // AHHHHHH
+                    //
                     ForEach($categoryParser.groupedEvents.days, id: \.date) { $day in
                         EventDaySection(day: $day, columnCount: $columnCount, columns: $columns, cellWidth: $cellWidth)
                     }
@@ -44,9 +47,9 @@ struct EventList: View {
                         .onAppear {
                             updateColumns(geometry.size.width)
                         }
-                        .onChange(of: geometry.size.width) { newValue in
-                            updateColumns(geometry.size.width)
-                        }
+//                        .onChange(of: geometry.size.width) { newValue in
+//                            updateColumns(geometry.size.width)
+//                        }
                 }
             }
         }
@@ -86,11 +89,11 @@ struct EventDaySection: View {
     var body: some View {
         if #available(iOS 17.0, *) {
             Section(isExpanded: $isExpanded) {
-//                DynamicGridViewEC(day: $day, columnCount: $columnCount, columns: $columns, cellWidth: $cellWidth)
-                ForEach($day.events, id: \.id) { $event in
-                    EventCard(event: $event)
-                        .transition(.blurReplace)
-                }
+                DynamicGridViewEC(day: $day, columnCount: $columnCount, columns: $columns, cellWidth: $cellWidth)
+//                ForEach($day.events, id: \.id) { $event in
+//                    EventCard(event: $event)
+//                        .transition(.blurReplace)
+//                }
             } header: {
                 EventDayHeader(isExpanded: $isExpanded, day: day)
             }
@@ -128,8 +131,7 @@ struct DynamicGridForEachLazy: View {
             ForEach($day.events, id: \.id) { $event in
                 EventCard(event: $event)
                     .transition(.blurReplace)
-                    .frame(minHeight: 150)
-                    .lineLimit(1)
+//                    .frame(minHeight: 150)
             }
         }
     }
@@ -146,52 +148,64 @@ struct DynamicGridForEach: View {
     var body: some View {
         // TODO: CRASH HERE - LazyVStack crashes (NO ERROR CODE), but VStack causes lag!?
         // Crash happens rarely, but lag happens everywhere (window size change, category change, etc). Which do I prioritize??
-        VStack(alignment: .leading, spacing: 10) {
+        LazyVStack(alignment: .leading, spacing: 10) {
             ForEach($rows, id: \.id) { $row in
                 DGFERow(row: $row, cellWidth: $cellWidth)
+//                Text("Row should be here!!")
 //                .transition(.blurReplace)
             }
         }
         .onAppear {
-            self.updateRows()
+            Task {
+                await MainActor.run {
+                    self.updateRows(day.events)
+                }
+            }
         }
         .onChange(of: columnCount) { newValue in
-            self.updateRows(animate: false)
+            self.updateRows(day.events, animate: false)
         }
         .onChange(of: day) { newValue in
-            self.updateRows()
+            self.updateRows(newValue.events)
         }
         .onChange(of: day.events) { newValue in
-            self.updateRows()
+            print("\nROWSCOUNT START")
+            print("ROWSCOUNT PRE a: \(newValue)")
+            self.updateRows(newValue)
         }
     }
     
-    private func updateRows(animate: Bool = true) {
+    private func updateRows(_ dayEvents: [Event], animate: Bool = true) {
         print("UDPATING ROWS...")
         var rows: [DynamicRow] = []
-        for rowIndex in 0..<rowsCount() {
+        for rowIndex in 0..<rowsCount(dayEvents) {
             // create DynamicRow with this row's events
             var thisRowsEvents: [Event] = []
             let startIndex = rowIndex * columnCount
             let endIndex = startIndex + columnCount
             for eventIndex in startIndex..<endIndex {
-                guard eventIndex < day.events.count else { break }
-                thisRowsEvents.append(day.events[eventIndex])
+                guard eventIndex < dayEvents.count else { break }
+                thisRowsEvents.append(dayEvents[eventIndex])
             }
             rows.append(.init(events: thisRowsEvents))
         }
         print("WRITING!")
-        if animate {
-            withAnimation {
-                self.rows = rows
+        Task {
+            await MainActor.run {
+                if animate {
+                    withAnimation {
+                        self.rows = rows
+                    }
+                } else {
+                    self.rows = rows
+                }
+                print("WROTE")
             }
-        } else {
-            self.rows = rows
         }
     }
     
-    private func rowsCount() -> Int {
-        (day.events.count + columnCount - 1) / columnCount
+    private func rowsCount(_ dayEvents: [Event]) -> Int {
+        return (dayEvents.count + columnCount - 1) / columnCount
     }
     
     private func eventAt(row: Int, column: Int) -> Binding<Event>? {
@@ -212,7 +226,6 @@ struct DGFERow: View {
                 EventCard(event: $event)
                     .transition(.blurReplace)
                     .frame(maxWidth: cellWidth, minHeight: 150)
-                    .lineLimit(1)
             }
         }
     }

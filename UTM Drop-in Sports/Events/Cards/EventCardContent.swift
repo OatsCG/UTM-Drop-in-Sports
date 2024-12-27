@@ -24,6 +24,7 @@ struct EventCardContent: View {
                 Text(event.title)
                     .font(.title3 .bold())
                     .foregroundStyle(.blueUTM)
+                    .lineLimit(1)
                 Spacer()
                 if event.saved {
                     Image(systemName: "bookmark.fill")
@@ -38,6 +39,7 @@ struct EventCardContent: View {
                         Image(systemName: "mappin.and.ellipse")
                             .symbolRenderingMode(.hierarchical)
                         Text(event.venue)
+                            .lineLimit(1)
                     }
                     Spacer()
                 }

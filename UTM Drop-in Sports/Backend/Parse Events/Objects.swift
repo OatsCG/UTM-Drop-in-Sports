@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DayEvents: Hashable {
+class DayEvents: ObservableObject, Hashable {
     static func == (lhs: DayEvents, rhs: DayEvents) -> Bool {
         return lhs.date == rhs.date
     }
@@ -15,8 +15,8 @@ struct DayEvents: Hashable {
         hasher.combine(self.date)
     }
     
-    let date: Date
-    var events: [Event]
+    @Published var date: Date
+    @Published var events: [Event]
     
     init(date: Date, events: [Event]) {
         self.date = date
@@ -55,16 +55,17 @@ class AllEvents: ObservableObject {
 }
 
 
-class DynamicRow: Hashable {
-    var id: Int
-    var events: [Event]
+class DynamicRow: ObservableObject, Hashable {
+    @Published var id: Int
+    @Published var events: [Event]
     
     init(events: [Event]) {
-        self.id = 0
-        for event in events {
-            self.id += event.id
-        }
+        var tempid: Int = 0
         self.events = events
+        for event in events {
+            tempid += event.id
+        }
+        self.id = tempid
     }
     
     static func ==(lhs: DynamicRow, rhs: DynamicRow) -> Bool {

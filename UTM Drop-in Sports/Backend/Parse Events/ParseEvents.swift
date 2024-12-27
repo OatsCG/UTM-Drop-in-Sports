@@ -95,7 +95,7 @@ class Category: Decodable, Hashable, ObservableObject {
 }
 
 
-class Event: Decodable, Hashable {
+class Event: ObservableObject, Decodable, Hashable {
     static func == (lhs: Event, rhs: Event) -> Bool {
         return lhs.id == rhs.id
     }
@@ -138,8 +138,8 @@ class Event: Decodable, Hashable {
         case womens
     }
   
-    var relativeTimeDate: RelativeTimeDate
-    var saved: Bool
+    @Published var relativeTimeDate: RelativeTimeDate
+    @Published var saved: Bool
     var id: Int
     let url: String
     let title: String
