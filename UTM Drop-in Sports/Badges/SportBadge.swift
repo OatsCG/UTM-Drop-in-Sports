@@ -196,6 +196,7 @@ func glistenCalc(x: Double, peak: Double) -> Double {
 
 
 struct SportMedallionDisplay: View {
+    @Environment(\.colorScheme) private var colorScheme
     @Binding var size: CGFloat
     var medal: Medal
     @State var showingSheet: Bool = false
@@ -212,20 +213,21 @@ struct SportMedallionDisplay: View {
                             .background(alignment: .bottom) {
                                 VStack(spacing: 0) {
                                     Trapezoid(topWidthRatio: 0.7)
-                                        .stroke(.white.opacity(0.2), lineWidth: 1)
-                                        .fill(LinearGradient(gradient: Gradient(colors: [Color.white.opacity(0.08), Color.white.opacity(0.38)]), startPoint: .top, endPoint: .bottom))
+                                        .stroke(.primary.opacity(0.2), lineWidth: 1)
+                                        .fill(LinearGradient(gradient: Gradient(colors: [.primary.opacity(0.08), .primary.opacity(0.38)]), startPoint: .top, endPoint: .bottom))
                                         .frame(height: 14)
                                     Rectangle()
-                                        .stroke(.white.opacity(0.2), lineWidth: 1)
-                                        .fill(.white.opacity(0.4))
+                                        .stroke(.primary.opacity(0.2), lineWidth: 1)
+                                        .fill(.primary.opacity(0.4))
                                         .frame(height: 5)
                                 }
+                                .opacity(colorScheme == .dark ? 1 : 0.5)
                             }
                     }
                     Text(medal.category)
                         .font(.body .bold())
                 }
-                .matchedTransitionSource(id: medal.id, in: animation)
+                .matchedTransitionSource(id: medal.category, in: animation)
             } else {
                 VStack(alignment: .center) {
                     SportMedalMedallion(size: $size, symbol: ImageResource(name: medal.icon, bundle: .main), colorPrimary: medal.colorPrimary, colorSecondary: medal.colorSecondary)
@@ -238,7 +240,7 @@ struct SportMedallionDisplay: View {
         .sheet(isPresented: $showingSheet) {
             if #available(iOS 18.0, *) {
                 SportMedalSheet(medal: medal, colorPrimary: medal.colorPrimary, colorSecondary: medal.colorSecondary, showingSheet: $showingSheet)
-                    .navigationTransition(.zoom(sourceID: medal.id, in: animation))
+                    .navigationTransition(.zoom(sourceID: medal.category, in: animation))
             } else {
                 SportMedalSheet(medal: medal, colorPrimary: medal.colorPrimary, colorSecondary: medal.colorSecondary, showingSheet: $showingSheet)
             }
@@ -312,7 +314,7 @@ struct SportMedalSheet: View {
                                 .padding(.bottom, 15)
                             Text(medal.category)
                                 .font(.largeTitle .bold())
-                            Text("Sessions: \(14)")
+                            Text("Sessions: \(medal.events.count)")
                                 .font(.title2 .bold())
                                 .padding(.bottom, 25)
                             if medal.type == .bronze {

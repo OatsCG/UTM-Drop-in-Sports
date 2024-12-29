@@ -51,7 +51,6 @@ struct CompletedEvent: Equatable, Hashable {
 
 
 struct Medal: Equatable, Hashable {
-    var id: UUID
     var type: MedalType
     var category: String
     var icon: String
@@ -83,7 +82,6 @@ struct Medal: Equatable, Hashable {
     }
     
     init(category: String, icon: String, possibleEvents: [CompletedEvent]) {
-        self.id = UUID()
         self.type = .none
         self.category = category
         self.icon = icon
