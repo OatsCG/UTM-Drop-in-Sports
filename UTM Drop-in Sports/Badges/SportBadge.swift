@@ -221,7 +221,7 @@ struct SportMedallionDisplay: View {
                                         .fill(.primary.opacity(0.4))
                                         .frame(height: 5)
                                 }
-                                .opacity(colorScheme == .dark ? 1 : 0.5)
+                                .opacity(colorScheme == .dark ? 1 : 0.35)
                             }
                     }
                     Text(medal.category)
