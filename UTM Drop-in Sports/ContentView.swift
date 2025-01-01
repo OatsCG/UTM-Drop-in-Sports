@@ -205,9 +205,14 @@ struct MainScrollView: View {
     }
 }
 
+enum ScrollPicks: String, CaseIterable {
+    case pick1, pick2, pick3
+}
+
 struct MainScrollContentView: View {
     @EnvironmentObject var categoryParser: CategoryParser
     @Binding var showNetworkAlert: Bool
+    @State var scrollPick: Bool = false
     var body: some View {
         if categoryParser.isUpdating {
             VStack {

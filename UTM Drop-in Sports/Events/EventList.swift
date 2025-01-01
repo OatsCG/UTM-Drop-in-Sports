@@ -212,18 +212,24 @@ struct EventDayHeader: View {
         }
         .background {
             Group {
-                if #available(iOS 17.0, *) {
-                    if colorScheme == .dark {
-                        Rectangle()
-                            .fill(.white.opacity(0.05))
-                    } else {
+                if colorScheme == .dark {
+                    Rectangle()
+                        .fill(
+                            LinearGradient(
+                                colors: [
+                                    .white.opacity(0.08),
+                                    .white.opacity(0.05),
+                                    .white.opacity(0.03),
+                                ],
+                                startPoint: .top,
+                                endPoint: .bottom
+                            )
+                        )
+//                        .fill(.white.opacity(0.08))
+                } else {
+                    if #available(iOS 17.0, *) {
                         Rectangle()
                             .strokeBorder(.quinary, lineWidth: 1)
-                    }
-                } else {
-                    if colorScheme == .dark {
-                        Rectangle()
-                            .fill(.white.opacity(0.05))
                     } else {
                         Rectangle()
                             .strokeBorder(.clear, lineWidth: 1)
