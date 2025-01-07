@@ -23,6 +23,7 @@ class CategoryParser: ObservableObject {
     
     @Published var isUpdating: Bool = true
     @Published var onlyWomens: Bool = false
+    @Published var onlyLGBT: Bool = false
     @Published var onlySaved: Bool = false
     
     @Published var isEventsExpandedToMax: Bool = false
@@ -192,7 +193,8 @@ class CategoryParser: ObservableObject {
         Task.detached {
             let notOverEvents: [Event] = self.allEvents.filter { $0.relativeTimeDate.isEventOver == false }
             let savedRespectedEvents: [Event] = self.onlySaved ? self.savedEvents : notOverEvents
-            let womensRespectedEvents: [Event] = savedRespectedEvents.filter { !self.onlyWomens || $0.womens }
+            let lgbtRespectedEvents: [Event] = savedRespectedEvents.filter { !self.onlyLGBT || $0.lgbt }
+            let womensRespectedEvents: [Event] = lgbtRespectedEvents.filter { !self.onlyWomens || $0.womens }
             var searchedEvents: [Event] = []
             for event in womensRespectedEvents {
                 if event.title.lowercased().contains(self.searchField.lowercased()) ||

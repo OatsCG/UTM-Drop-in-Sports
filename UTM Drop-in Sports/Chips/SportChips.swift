@@ -22,62 +22,12 @@ struct SportChips: View {
                 }
                 .padding(.bottom, 2)
                 if isExpanded {
-                    HStack {
-                        Button(action: {
-                            withAnimation(.interactiveSpring) {
-                                categoryParser.onlyWomens.toggle()
-                            }
-                            categoryParser.updateDisplayEvents(maxEvents: 50)
-                        }) {
-                            HStack {
-                                Text("Women's Only")
-                                if #available(iOS 17.0, *) {
-                                    Image(systemName: categoryParser.onlyWomens ? "checkmark.square" : "square")
-                                        .contentTransition(.symbolEffect(.replace.offUp))
-                                } else {
-                                    Image(systemName: categoryParser.onlyWomens ? "checkmark.square" : "square")
-                                }
-                            }
-                            .foregroundStyle(categoryParser.onlyWomens ? .black : (colorScheme == .dark ? .white : .black))
-                            .padding(.horizontal, 14)
-                            .padding(.vertical, 8)
-                            .background {
-                                if colorScheme == .dark {
-                                    if categoryParser.onlyWomens {
-                                        if #available(iOS 16.0, *) {
-                                            RoundedRectangle(cornerRadius: 8)
-                                                .strokeBorder(.pinkUTMlight, lineWidth: 2)
-                                                .background(RoundedRectangle(cornerRadius: 8).fill(.pinkUTMlight.gradient))
-                                        } else {
-                                            RoundedRectangle(cornerRadius: 8)
-                                                .strokeBorder(.pinkUTMlight, lineWidth: 2)
-                                                .background(RoundedRectangle(cornerRadius: 8).fill(.pinkUTMlight))
-                                        }
-                                    } else {
-                                        RoundedRectangle(cornerRadius: 8)
-                                            .strokeBorder(.pinkUTMlight, lineWidth: 1)
-                                            .background(RoundedRectangle(cornerRadius: 8).fill(.white.opacity(0.05)))
-                                    }
-                                } else {
-                                    if categoryParser.onlyWomens {
-                                        if #available(iOS 16.0, *) {
-                                            RoundedRectangle(cornerRadius: 8)
-                                                .strokeBorder(.pinkUTMlight, lineWidth: 2)
-                                                .background(RoundedRectangle(cornerRadius: 8).fill(.pinkUTMlight.gradient))
-                                        } else {
-                                            RoundedRectangle(cornerRadius: 8)
-                                                .strokeBorder(.pinkUTMlight, lineWidth: 2)
-                                                .background(RoundedRectangle(cornerRadius: 8).fill(.pinkUTMlight))
-                                        }
-                                    } else {
-                                        RoundedRectangle(cornerRadius: 8)
-                                            .strokeBorder(.pinkUTMlight, lineWidth: 2)
-                                            .background(RoundedRectangle(cornerRadius: 8).fill(.white))
-                                    }
-                                }
-                            }
+                    VStack(alignment: .leading) {
+                        HStack {
+                            WomensOnlyButton()
+                            PrideOnlyButton()
+                            Spacer()
                         }
-                            .buttonStyle(.plain)
                         
                         Button(action: {
                             withAnimation(.interactiveSpring) {
@@ -134,7 +84,7 @@ struct SportChips: View {
                             }
                         }
                             .buttonStyle(.plain)
-                        Spacer()
+//                        Spacer()
                     }
                 }
                 HStack {
@@ -181,6 +131,126 @@ struct SportChips: View {
                 }
             }
         }
+    }
+}
+
+struct WomensOnlyButton: View {
+    @Environment(\.colorScheme) private var colorScheme
+    @EnvironmentObject var categoryParser: CategoryParser
+    var body: some View {
+        Button(action: {
+            withAnimation(.interactiveSpring) {
+                categoryParser.onlyWomens.toggle()
+            }
+            categoryParser.updateDisplayEvents(maxEvents: 50)
+        }) {
+            HStack {
+                Text("Women's Only")
+                if #available(iOS 17.0, *) {
+                    Image(systemName: categoryParser.onlyWomens ? "checkmark.square" : "square")
+                        .contentTransition(.symbolEffect(.replace.offUp))
+                } else {
+                    Image(systemName: categoryParser.onlyWomens ? "checkmark.square" : "square")
+                }
+            }
+            .foregroundStyle(categoryParser.onlyWomens ? .black : (colorScheme == .dark ? .white : .black))
+            .padding(.horizontal, 14)
+            .padding(.vertical, 8)
+            .background {
+                if colorScheme == .dark {
+                    if categoryParser.onlyWomens {
+                        if #available(iOS 16.0, *) {
+                            RoundedRectangle(cornerRadius: 8)
+                                .strokeBorder(.pinkUTMlight, lineWidth: 2)
+                                .background(RoundedRectangle(cornerRadius: 8).fill(.pinkUTMlight.gradient))
+                        } else {
+                            RoundedRectangle(cornerRadius: 8)
+                                .strokeBorder(.pinkUTMlight, lineWidth: 2)
+                                .background(RoundedRectangle(cornerRadius: 8).fill(.pinkUTMlight))
+                        }
+                    } else {
+                        RoundedRectangle(cornerRadius: 8)
+                            .strokeBorder(.pinkUTMlight, lineWidth: 1)
+                            .background(RoundedRectangle(cornerRadius: 8).fill(.white.opacity(0.05)))
+                    }
+                } else {
+                    if categoryParser.onlyWomens {
+                        if #available(iOS 16.0, *) {
+                            RoundedRectangle(cornerRadius: 8)
+                                .strokeBorder(.pinkUTMlight, lineWidth: 2)
+                                .background(RoundedRectangle(cornerRadius: 8).fill(.pinkUTMlight.gradient))
+                        } else {
+                            RoundedRectangle(cornerRadius: 8)
+                                .strokeBorder(.pinkUTMlight, lineWidth: 2)
+                                .background(RoundedRectangle(cornerRadius: 8).fill(.pinkUTMlight))
+                        }
+                    } else {
+                        RoundedRectangle(cornerRadius: 8)
+                            .strokeBorder(.pinkUTMlight, lineWidth: 2)
+                            .background(RoundedRectangle(cornerRadius: 8).fill(.white))
+                    }
+                }
+            }
+        }
+            .buttonStyle(.plain)
+    }
+}
+
+struct PrideOnlyButton: View {
+    @Environment(\.colorScheme) private var colorScheme
+    @EnvironmentObject var categoryParser: CategoryParser
+    var body: some View {
+        Button(action: {
+            withAnimation(.interactiveSpring) {
+                categoryParser.onlyLGBT.toggle()
+            }
+            categoryParser.updateDisplayEvents(maxEvents: 50)
+        }) {
+            HStack {
+                Text("LGBT+ Only")
+                if #available(iOS 17.0, *) {
+                    Image(systemName: categoryParser.onlyLGBT ? "checkmark.square" : "square")
+                        .contentTransition(.symbolEffect(.replace.offUp))
+                } else {
+                    Image(systemName: categoryParser.onlyLGBT ? "checkmark.square" : "square")
+                }
+            }
+            .foregroundStyle(categoryParser.onlyLGBT ? .black : (colorScheme == .dark ? .white : .black))
+            .padding(.horizontal, 14)
+            .padding(.vertical, 8)
+            .background {
+                if categoryParser.onlyLGBT {
+                    RoundedRectangle(cornerRadius: 8)
+                        .strokeBorder(AngularGradient(colors: [.red, .orange, .yellow, .green, .blue, .purple, .red], center: .center), lineWidth: 2)
+                        .background(
+                            RoundedRectangle(cornerRadius: 8)
+                                .fill(AngularGradient(colors: [.red, .orange, .yellow, .green, .blue, .purple, .red], center: .center))
+                        )
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 8)
+                                .fill(.white)
+                                .opacity(colorScheme == .dark ? 0.4 : 0.65)
+                        }
+                } else {
+                    RoundedRectangle(cornerRadius: 8)
+                        .strokeBorder(AngularGradient(colors: [.red, .orange, .yellow, .green, .blue, .purple, .red], center: .center), lineWidth: colorScheme == .dark ? 1 : 2)
+                        .background(
+                            RoundedRectangle(cornerRadius: 8)
+                                .fill(colorScheme == .dark ? .white.opacity(0.05) : .white)
+                        )
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 8)
+                                .strokeBorder(.white, lineWidth: colorScheme == .dark ? 1 : 2)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .fill(.clear)
+                                )
+                                .opacity(colorScheme == .dark ? 0.3 : 0.6)
+                        }
+                }
+            }
+        }
+            .buttonStyle(.plain)
     }
 }
 

@@ -8,13 +8,21 @@
 import SwiftUI
 
 struct EventHeader: View {
+    @Environment(\.colorScheme) private var colorScheme
     var event: Event
     var body: some View {
         HStack(alignment: .center) {
-            if #available (iOS 17.0, *) {
-                Image(systemName: event.symbol)
+            if event.lgbt {
+                Image(event.symbol)
                     .font(.largeTitle)
-                    .foregroundStyle(event.womens ? .pinkUTM : .blueUTM)
+                    .foregroundStyle(AngularGradient(colors: [.red, .orange, .yellow, .green, .blue, .purple, .red], center: .center))
+                    .overlay {
+                        Image(event.symbol)
+                            .font(.largeTitle)
+                            .foregroundStyle(colorScheme == .dark ? .white : .black)
+                            .opacity(colorScheme == .dark ? 0.25 : 0.15)
+                        
+                    }
             } else {
                 Image(event.symbol)
                     .font(.largeTitle)

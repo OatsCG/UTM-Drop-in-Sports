@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct EventBody: View {
+    @Environment(\.colorScheme) private var colorScheme
     @EnvironmentObject var categoryParser: CategoryParser
     @EnvironmentObject var notificationManager: NotificationManager
     var event: Event
@@ -19,7 +20,24 @@ struct EventBody: View {
                 HStack(alignment: .top) {
                     Image("figure.stand.dress")
                         .foregroundStyle(.pinkUTM)
-                    Text("This session is reserved for female-identifying students only.")
+                    Text("This session is designed for female-identifying students.")
+                        .multilineTextAlignment(.leading)
+                        .foregroundStyle(.secondary)
+                }
+                    .font(.footnote)
+                    .padding(.bottom, 10)
+            }
+            if event.lgbt {
+                HStack(alignment: .top) {
+                    Image(systemName: "star.fill")
+                        .foregroundStyle(AngularGradient(colors: [.red, .orange, .yellow, .green, .blue, .purple, .red], center: .center))
+                        .overlay {
+                            Image(systemName: "star.fill")
+                                .foregroundStyle(colorScheme == .dark ? .white : .black)
+                                .opacity(colorScheme == .dark ? 0.25 : 0.15)
+                            
+                        }
+                    Text("This session is designed for 2SLGBTQ+ students.")
                         .multilineTextAlignment(.leading)
                         .foregroundStyle(.secondary)
                 }

@@ -120,6 +120,7 @@ class Event: ObservableObject, Decodable, Hashable {
         womens = try values.decode(Bool.self, forKey: .womens)
         relativeTimeDate = formatDateRange(startDate: start_date, endDate: end_date)
         saved = false
+        lgbt = self.description.contains("LGBT") || self.description.contains("LGTB") || self.description.contains("2SL")
     }
     
     private enum CodingKeys: String, CodingKey {
@@ -153,6 +154,7 @@ class Event: ObservableObject, Decodable, Hashable {
     let sortCategory: String
     let symbol: String
     let womens: Bool
+    let lgbt: Bool
 }
 
 
