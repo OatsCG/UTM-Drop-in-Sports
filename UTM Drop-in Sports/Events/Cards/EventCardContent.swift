@@ -14,19 +14,18 @@ struct EventCardContent: View {
         VStack(alignment: .leading) {
             HStack(alignment: .center) {
                 if event.lgbt {
-//                    Image(uiImage: UIImage(systemName: "\(number).square.fill") ?? UIImage(systemName: "questionmark.square.fill")!)
-                    Image(event.symbol)
+                    SymbolImage(event.symbol)
                         .font(.title)
                         .foregroundStyle(AngularGradient(colors: [.red, .orange, .yellow, .green, .blue, .purple, .red], center: .center))
                         .overlay {
-                            Image(event.symbol)
+                            SymbolImage(event.symbol)
                                 .font(.title)
                                 .foregroundStyle(colorScheme == .dark ? .white : .black)
                                 .opacity(colorScheme == .dark ? 0.25 : 0.15)
                             
                         }
                 } else {
-                    Image(event.symbol)
+                    SymbolImage(event.symbol)
                         .font(.title)
                         .foregroundStyle(event.womens ? .pinkUTM : .blueUTM)
                 }

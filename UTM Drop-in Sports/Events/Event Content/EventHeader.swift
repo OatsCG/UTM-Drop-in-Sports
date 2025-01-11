@@ -13,18 +13,18 @@ struct EventHeader: View {
     var body: some View {
         HStack(alignment: .center) {
             if event.lgbt {
-                Image(event.symbol)
+                SymbolImage(event.symbol)
                     .font(.largeTitle)
                     .foregroundStyle(AngularGradient(colors: [.red, .orange, .yellow, .green, .blue, .purple, .red], center: .center))
                     .overlay {
-                        Image(event.symbol)
+                        SymbolImage(event.symbol)
                             .font(.largeTitle)
                             .foregroundStyle(colorScheme == .dark ? .white : .black)
                             .opacity(colorScheme == .dark ? 0.25 : 0.15)
                         
                     }
             } else {
-                Image(event.symbol)
+                SymbolImage(event.symbol)
                     .font(.largeTitle)
                     .foregroundStyle(event.womens ? .pinkUTM : .blueUTM)
             }

@@ -146,7 +146,7 @@ struct DynamicGridForEach: View {
     var body: some View {
         // TODO: CRASH HERE - LazyVStack crashes (NO ERROR CODE), but VStack causes lag!?
         // Crash happens rarely, but lag happens everywhere (window size change, category change, etc). Which do I prioritize??
-        LazyVStack(alignment: .leading, spacing: 10) {
+        VStack(alignment: .leading, spacing: 10) {
             ForEach($day.rows, id: \.id) { $row in
                 DGFERow(row: $row, cellWidth: $cellWidth)
                     .transition(.blurReplace)

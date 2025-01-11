@@ -110,7 +110,7 @@ struct EventBody: View {
         HStack {
             if let url = URL(string: event.url) {
                 Link(destination: url) {
-                    Text("\(Image(systemName: "arrow.up.right.square")) Open")
+                    Text("Open \(Image(systemName: "arrow.up.right.square"))")
                 }
             }
             Spacer()

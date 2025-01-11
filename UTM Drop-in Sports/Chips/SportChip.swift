@@ -21,10 +21,10 @@ struct SportChip: View {
         }) {
             HStack {
                 if #available(iOS 17.0, *) {
-                    Image(systemName: category.symbol)
+                    SymbolImage(category.symbol)
                         .symbolEffect(.bounce, value: category.selected)
                 } else {
-                    Image(category.symbol)
+                    SymbolImage(category.symbol)
                 }
                 Text(category.title)
                     .fixedSize(horizontal: false, vertical: true)

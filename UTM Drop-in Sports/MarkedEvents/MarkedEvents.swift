@@ -177,13 +177,8 @@ struct EventCardContentActiveBody: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack(alignment: .center) {
-                if #available (iOS 17.0, *) {
-                    Image(systemName: event.symbol)
-                        .font(.title)
-                } else {
-                    Image(event.symbol)
-                        .font(.title)
-                }
+                SymbolImage(event.symbol)
+                    .font(.title)
                 Text(event.title)
                     .font(.title3 .bold())
                 Spacer()
