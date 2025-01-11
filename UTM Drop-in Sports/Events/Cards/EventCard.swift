@@ -44,13 +44,27 @@ struct EventCardSiri: View {
 
 @available(iOS 16.0, *)
 struct EventCardContentSiri: View {
+    @Environment(\.colorScheme) private var colorScheme
     var event: Event
     var body: some View {
         VStack(alignment: .leading) {
             HStack(alignment: .center) {
-                SymbolImage(event.symbol)
-                    .font(.title)
-                    .foregroundStyle(event.womens ? .pinkUTM : .blueUTM)
+                if event.lgbt {
+                    SymbolImage(event.symbol)
+                        .font(.title)
+                        .foregroundStyle(AngularGradient(colors: [.red, .orange, .yellow, .green, .blue, .purple, .red], center: .center))
+                        .overlay {
+                            SymbolImage(event.symbol)
+                                .font(.title)
+                                .foregroundStyle(colorScheme == .dark ? .white : .black)
+                                .opacity(colorScheme == .dark ? 0.25 : 0.15)
+                            
+                        }
+                } else {
+                    SymbolImage(event.symbol)
+                        .font(.title)
+                        .foregroundStyle(event.womens ? .pinkUTM : .blueUTM)
+                }
                 Text(event.title)
                     .font(.title3 .bold())
                     .foregroundStyle(.blueUTM)

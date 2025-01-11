@@ -93,9 +93,10 @@ class CategoryParser: ObservableObject {
         if let eventJSON = eventJSON {
             self.categories = eventJSON.categories
             self.allEvents = eventJSON.events
+            print(self.allEvents.count)
             self.lastUpdated = Date()
             self.updateSavedEvents()
-            self.updateDisplayEvents(maxEvents: 50)
+            await self.updateDisplayEventsAsync()
             self.updateMedalsCollected()
             self.isUpdatingPrivate = false
         }
@@ -186,6 +187,53 @@ class CategoryParser: ObservableObject {
         }
     }
 
+    func updateDisplayEventsAsync() async {
+        print("UPDATING DISPLAY EVENTS")
+        let udeID: UUID = UUID()
+        self.updateDisplayEventsID = udeID
+        let notOverEvents: [Event] = self.allEvents.filter { $0.relativeTimeDate.isEventOver == false }
+        let savedRespectedEvents: [Event] = self.onlySaved ? self.savedEvents : notOverEvents
+        let lgbtRespectedEvents: [Event] = savedRespectedEvents.filter { !self.onlyLGBT || $0.lgbt }
+        let womensRespectedEvents: [Event] = lgbtRespectedEvents.filter { !self.onlyWomens || $0.womens }
+        var searchedEvents: [Event] = []
+        for event in womensRespectedEvents {
+            if event.title.lowercased().contains(self.searchField.lowercased()) ||
+                event.description.lowercased().contains(self.searchField.lowercased()) ||
+                event.venue.lowercased().contains(self.searchField.lowercased()) ||
+                self.searchField == "" {
+                
+                searchedEvents.append(event)
+            }
+        }
+        
+        var selectedCategories: [Category] = []
+        for category in self.categories {
+            if category.selected {
+                selectedCategories.append(category)
+            }
+        }
+        let selfevents: [Event]
+        if selectedCategories.count == 0 {
+            selfevents = searchedEvents
+        } else {
+            var allowedEvents: [Event] = []
+            for event in searchedEvents {
+                if selectedCategories.contains(where: { $0.title == event.sortCategory }) {
+                    allowedEvents.append(event)
+                }
+            }
+            selfevents = allowedEvents
+        }
+        if self.updateDisplayEventsID == udeID {
+            withAnimation(.easeOut) {
+                self.events = selfevents
+                self.isUpdating = false
+                self.groupedEvents = AllEvents(events: self.events, maxEvents: nil, columnCount: self.columnCount)
+                self.isEventsExpandedToMax = true
+            }
+            print("done!")
+        }
+    }
     
     func updateDisplayEvents(maxEvents: Int?) {
         print("UPDATING DISPLAY EVENTS")
