@@ -28,6 +28,7 @@ func loadEventJSON() -> EventJSON? {
 class EventJSON: Decodable {
     let categories: [Category]
     let events: [Event]
+    let featured: [Event]
     let announcements: [Announcement]
 }
 

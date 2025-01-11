@@ -14,6 +14,7 @@ struct EventCardContent: View {
         VStack(alignment: .leading) {
             HStack(alignment: .center) {
                 if event.lgbt {
+//                    Image(uiImage: UIImage(systemName: "\(number).square.fill") ?? UIImage(systemName: "questionmark.square.fill")!)
                     Image(event.symbol)
                         .font(.title)
                         .foregroundStyle(AngularGradient(colors: [.red, .orange, .yellow, .green, .blue, .purple, .red], center: .center))

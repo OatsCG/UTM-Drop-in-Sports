@@ -10,8 +10,8 @@ import SwiftUI
 class CategoryParser: ObservableObject {
     private var allEvents: [Event] = []
     
+    @Published var featuredEvents: [Event] = []
     @Published var announcements: [Announcement] = []
-    
     @Published var categories: [Category] = []
     
     @Published var events: [Event] = []
@@ -59,6 +59,7 @@ class CategoryParser: ObservableObject {
             let eventJSON: EventJSON? = loadEventJSON()
             if let eventJSON = eventJSON {
                 await MainActor.run {
+                    self.featuredEvents = eventJSON.featured
                     self.announcements = eventJSON.announcements
                     if self.categories.isEmpty {
                         withAnimation {

@@ -234,6 +234,7 @@ struct MainScrollContentView: View {
         } else {
             VStack {
                 Announcements()
+                FeaturedEvents()
                 SportChips()
                     .padding(.vertical, 10)
                 EventList()
