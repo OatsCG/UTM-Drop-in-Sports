@@ -37,27 +37,9 @@ struct SportChip: View {
                 .padding(.horizontal, 14)
                 .padding(.vertical, 8)
                 .background {
-                    if colorScheme == .dark {
-                        if category.selected {
-                            Capsule(style: .circular)
-                                .strokeBorder(.quaternary, lineWidth: 2)
-                                .background(Capsule(style: .circular).fill(.primaryUTM))
-                        } else {
-                            Capsule(style: .circular)
-                                .strokeBorder(.quaternary, lineWidth: 1)
-                                .background(Capsule(style: .circular).fill(.white.opacity(0.05)))
-                        }
-                    } else {
-                        if category.selected {
-                            Capsule(style: .circular)
-                                .strokeBorder(.quaternary, lineWidth: 2)
-                                .background(Capsule(style: .circular).fill(.primaryUTM))
-                        } else {
-                            Capsule(style: .circular)
-                                .strokeBorder(.quaternary, lineWidth: 2)
-                                .background(Capsule(style: .circular).fill(.white))
-                        }
-                    }
+                    Capsule(style: .circular)
+                        .strokeBorder(.quaternary, lineWidth: (colorScheme == .dark && !category.selected) ? 1 : 2)
+                        .background(Capsule(style: .circular).fill(category.selected ? .primaryUTM : (colorScheme == .dark ? .white.opacity(0.05) : .white)))
                 }
         }
         .buttonStyle(.plain)

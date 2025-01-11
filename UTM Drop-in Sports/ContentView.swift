@@ -71,7 +71,7 @@ struct MainNavigationView: View {
             if #available(iOS 17.0, *) {
                 MainScrollView(showNetworkAlert: $showNetworkAlert)
                     .safeAreaPadding(.horizontal)
-                    .navigationTitle(Text("UTM Drop-Ins"))
+                    .navigationTitle(Text("UTM Sports"))
 //                    .navigationBarTitleDisplayMode(.inline)
                     .toolbar {
 //                        ToolbarTitleMenu {
@@ -90,7 +90,7 @@ struct MainNavigationView: View {
                     }
             } else {
                 MainScrollView(showNetworkAlert: $showNetworkAlert)
-                    .navigationTitle(Text("UTM Drop-Ins"))
+                    .navigationTitle(Text("UTM Sports"))
                     .toolbar {
                         ToolbarItem(placement: .navigationBarTrailing) {
                             NavigationLink(destination: DisplayCase()) {
@@ -170,7 +170,7 @@ struct MainNavigationViewLegacy: View {
     var body: some View {
         NavigationView {
             MainScrollView(showNetworkAlert: $showNetworkAlert)
-                .navigationTitle(Text("UTM Drop-Ins"))
+                .navigationTitle(Text("UTM Sports"))
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         NavigationLink(destination: DisplayCase()) {

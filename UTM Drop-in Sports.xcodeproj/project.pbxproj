@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E53560AD2CB78B1600D334C5 /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = E53560AC2CB78B1600D334C5 /* ConfettiSwiftUI */; };
+		E55C32E42D2DCF5E0006309B /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = E55C32E32D2DCF5E0006309B /* GoogleMobileAds */; };
 		E57085B82CAAF9FF00CE03AE /* Intent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57085B72CAAF9FF00CE03AE /* Intent.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E55C32E42D2DCF5E0006309B /* GoogleMobileAds in Frameworks */,
 				E53560AD2CB78B1600D334C5 /* ConfettiSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -121,6 +123,7 @@
 			name = "UTM Drop-in Sports";
 			packageProductDependencies = (
 				E53560AC2CB78B1600D334C5 /* ConfettiSwiftUI */,
+				E55C32E32D2DCF5E0006309B /* GoogleMobileAds */,
 			);
 			productName = "UTM Drop-in Sports";
 			productReference = E5FF24342C8964B500AFCCE9 /* UTM Drop-in Sports.app */;
@@ -206,6 +209,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				E53560AB2CB78B1600D334C5 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
+				E55C32E22D2DCF5E0006309B /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = E5FF24352C8964B500AFCCE9 /* Products */;
@@ -430,7 +434,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "charliegiannis.UTM-Drop-in-Sports";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -476,7 +480,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "charliegiannis.UTM-Drop-in-Sports";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -634,6 +638,14 @@
 				minimumVersion = 1.1.0;
 			};
 		};
+		E55C32E22D2DCF5E0006309B /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.13.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -641,6 +653,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E53560AB2CB78B1600D334C5 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */;
 			productName = ConfettiSwiftUI;
+		};
+		E55C32E32D2DCF5E0006309B /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E55C32E22D2DCF5E0006309B /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

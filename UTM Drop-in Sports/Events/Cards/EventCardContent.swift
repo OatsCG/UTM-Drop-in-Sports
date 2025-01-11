@@ -59,7 +59,6 @@ struct EventCardContent: View {
                         HStack {
                             if #available(iOS 18.0, *) {
                                 Image(systemName: event.relativeTimeDate.daySymbol)
-                                    //.symbolVariant(.fill)
                                     .foregroundStyle(event.relativeTimeDate.daySymbolColor.mix(with: .primary, by: 0.1))
                             } else {
                                 if #available(iOS 16.0, *) {

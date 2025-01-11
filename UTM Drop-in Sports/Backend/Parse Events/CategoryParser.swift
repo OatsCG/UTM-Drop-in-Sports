@@ -227,7 +227,7 @@ class CategoryParser: ObservableObject {
             }
             await MainActor.run {
                 if self.updateDisplayEventsID == udeID {
-                    withAnimation {
+                    withAnimation(.easeOut) {
                         self.events = selfevents
                         self.isUpdating = false
                         if let maxEvents = maxEvents {

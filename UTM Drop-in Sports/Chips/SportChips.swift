@@ -48,43 +48,24 @@ struct SportChips: View {
                             .padding(.horizontal, 14)
                             .padding(.vertical, 8)
                             .background {
-                                if colorScheme == .dark {
-                                    if categoryParser.onlySaved {
-                                        if #available(iOS 16.0, *) {
-                                            RoundedRectangle(cornerRadius: 8)
-                                                .strokeBorder(.blueUTMlight, lineWidth: 2)
-                                                .background(RoundedRectangle(cornerRadius: 8).fill(.blueUTMlight.gradient))
-                                        } else {
-                                            RoundedRectangle(cornerRadius: 8)
-                                                .strokeBorder(.blueUTMlight, lineWidth: 2)
-                                                .background(RoundedRectangle(cornerRadius: 8).fill(.blueUTMlight))
-                                        }
-                                    } else {
+                                if categoryParser.onlySaved {
+                                    if #available(iOS 16.0, *) {
                                         RoundedRectangle(cornerRadius: 8)
-                                            .strokeBorder(.blueUTMlight, lineWidth: 1)
-                                            .background(RoundedRectangle(cornerRadius: 8).fill(.white.opacity(0.05)))
-                                    }
-                                } else {
-                                    if categoryParser.onlySaved {
-                                        if #available(iOS 16.0, *) {
-                                            RoundedRectangle(cornerRadius: 8)
-                                                .strokeBorder(.blueUTMlight, lineWidth: 2)
-                                                .background(RoundedRectangle(cornerRadius: 8).fill(.blueUTMlight.gradient))
-                                        } else {
-                                            RoundedRectangle(cornerRadius: 8)
-                                                .strokeBorder(.blueUTMlight, lineWidth: 2)
-                                                .background(RoundedRectangle(cornerRadius: 8).fill(.blueUTMlight))
-                                        }
+                                            .strokeBorder(.blueUTMlight, lineWidth: 2)
+                                            .background(RoundedRectangle(cornerRadius: 8).fill(.blueUTMlight.gradient))
                                     } else {
                                         RoundedRectangle(cornerRadius: 8)
                                             .strokeBorder(.blueUTMlight, lineWidth: 2)
-                                            .background(RoundedRectangle(cornerRadius: 8).fill(.white))
+                                            .background(RoundedRectangle(cornerRadius: 8).fill(.blueUTMlight))
                                     }
+                                } else {
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .strokeBorder(.blueUTMlight, lineWidth: colorScheme == .dark ? 1 : 2)
+                                        .background(RoundedRectangle(cornerRadius: 8).fill(colorScheme == .dark ? .white.opacity(0.05) : .white))
                                 }
                             }
                         }
                             .buttonStyle(.plain)
-//                        Spacer()
                     }
                 }
                 HStack {
@@ -118,6 +99,16 @@ struct SportChips: View {
                                 if (categoryParser.onlyWomens) {
                                     Image("figure.stand.dress")
                                         .foregroundStyle(.pinkUTM)
+                                }
+                                if (categoryParser.onlyLGBT) {
+                                    Image(systemName: "star.fill")
+                                        .foregroundStyle(AngularGradient(colors: [.red, .orange, .yellow, .green, .blue, .purple, .red], center: .center))
+                                        .overlay {
+                                            Image(systemName: "star.fill")
+                                                .foregroundStyle(colorScheme == .dark ? .white : .black)
+                                                .opacity(colorScheme == .dark ? 0.25 : 0.15)
+                                            
+                                        }
                                 }
                                 if (categoryParser.onlySaved) {
                                     Image(systemName: "bookmark.fill")
@@ -157,38 +148,20 @@ struct WomensOnlyButton: View {
             .padding(.horizontal, 14)
             .padding(.vertical, 8)
             .background {
-                if colorScheme == .dark {
-                    if categoryParser.onlyWomens {
-                        if #available(iOS 16.0, *) {
-                            RoundedRectangle(cornerRadius: 8)
-                                .strokeBorder(.pinkUTMlight, lineWidth: 2)
-                                .background(RoundedRectangle(cornerRadius: 8).fill(.pinkUTMlight.gradient))
-                        } else {
-                            RoundedRectangle(cornerRadius: 8)
-                                .strokeBorder(.pinkUTMlight, lineWidth: 2)
-                                .background(RoundedRectangle(cornerRadius: 8).fill(.pinkUTMlight))
-                        }
-                    } else {
+                if categoryParser.onlyWomens {
+                    if #available(iOS 16.0, *) {
                         RoundedRectangle(cornerRadius: 8)
-                            .strokeBorder(.pinkUTMlight, lineWidth: 1)
-                            .background(RoundedRectangle(cornerRadius: 8).fill(.white.opacity(0.05)))
-                    }
-                } else {
-                    if categoryParser.onlyWomens {
-                        if #available(iOS 16.0, *) {
-                            RoundedRectangle(cornerRadius: 8)
-                                .strokeBorder(.pinkUTMlight, lineWidth: 2)
-                                .background(RoundedRectangle(cornerRadius: 8).fill(.pinkUTMlight.gradient))
-                        } else {
-                            RoundedRectangle(cornerRadius: 8)
-                                .strokeBorder(.pinkUTMlight, lineWidth: 2)
-                                .background(RoundedRectangle(cornerRadius: 8).fill(.pinkUTMlight))
-                        }
+                            .strokeBorder(.pinkUTMlight, lineWidth: 2)
+                            .background(RoundedRectangle(cornerRadius: 8).fill(.pinkUTMlight.gradient))
                     } else {
                         RoundedRectangle(cornerRadius: 8)
                             .strokeBorder(.pinkUTMlight, lineWidth: 2)
-                            .background(RoundedRectangle(cornerRadius: 8).fill(.white))
+                            .background(RoundedRectangle(cornerRadius: 8).fill(.pinkUTMlight))
                     }
+                } else {
+                    RoundedRectangle(cornerRadius: 8)
+                        .strokeBorder(.pinkUTMlight, lineWidth: colorScheme == .dark ? 1 : 2)
+                        .background(RoundedRectangle(cornerRadius: 8).fill(colorScheme == .dark ? .white.opacity(0.05) : .white))
                 }
             }
         }

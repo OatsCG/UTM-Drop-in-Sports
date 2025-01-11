@@ -109,6 +109,33 @@ struct EventHeader: View {
     }
 }
 
+func repetitionString(_ reps: [String]) -> String {
+    var toreturn: [String] = []
+    if reps.contains("su") {
+        toreturn.append("Sunday")
+    }
+    if reps.contains("mo") {
+        toreturn.append("Monday")
+    }
+    if reps.contains("tu") {
+        toreturn.append("Tuesday")
+    }
+    if reps.contains("we") {
+        toreturn.append("Wednesday")
+    }
+    if reps.contains("th") {
+        toreturn.append( "Thursday")
+    }
+    if reps.contains("fr") {
+        toreturn.append("Friday")
+    }
+    if reps.contains("sa") {
+        toreturn.append("Saturday")
+    }
+    
+    return toreturn.joined(separator: ", ")
+}
+
 #Preview {
     ContentView()
 }

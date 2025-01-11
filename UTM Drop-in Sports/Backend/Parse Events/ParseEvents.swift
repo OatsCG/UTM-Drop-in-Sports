@@ -118,6 +118,7 @@ class Event: ObservableObject, Decodable, Hashable {
         sortCategory = try values.decode(String.self, forKey: .sortCategory)
         symbol = try values.decode(String.self, forKey: .symbol)
         womens = try values.decode(Bool.self, forKey: .womens)
+        weeklyRepetitions = try values.decode([String].self, forKey: .weeklyRepetitions)
         relativeTimeDate = formatDateRange(startDate: start_date, endDate: end_date)
         saved = false
         lgbt = self.description.contains("LGBT") || self.description.contains("LGTB") || self.description.contains("2SL")
@@ -137,6 +138,7 @@ class Event: ObservableObject, Decodable, Hashable {
         case sortCategory
         case symbol
         case womens
+        case weeklyRepetitions
     }
   
     @Published var relativeTimeDate: RelativeTimeDate
@@ -154,6 +156,7 @@ class Event: ObservableObject, Decodable, Hashable {
     let sortCategory: String
     let symbol: String
     let womens: Bool
+    let weeklyRepetitions: [String]
     let lgbt: Bool
 }
 

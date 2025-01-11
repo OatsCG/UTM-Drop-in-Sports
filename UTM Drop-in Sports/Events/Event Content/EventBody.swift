@@ -14,8 +14,22 @@ struct EventBody: View {
     var event: Event
     var body: some View {
         VStack(alignment: .leading) {
-            Text(event.description)
-                .padding(.bottom, 10)
+            if event.weeklyRepetitions.count > 0 {
+                HStack {
+                    Image(systemName: "arrow.clockwise")
+                    Text("Repeats every \(repetitionString(event.weeklyRepetitions))")
+                        .multilineTextAlignment(.leading)
+                    Spacer()
+                }
+                .font(.footnote)
+                .foregroundStyle(.secondary)
+                .padding(.bottom, 15)
+                .padding(.top, 0)
+            }
+            if event.description != "" {
+                Text(event.description)
+                    .padding(.bottom, 16)
+            }
             if event.womens {
                 HStack(alignment: .top) {
                     Image("figure.stand.dress")
@@ -96,7 +110,7 @@ struct EventBody: View {
         HStack {
             if let url = URL(string: event.url) {
                 Link(destination: url) {
-                    Text("View Session in Browser")
+                    Text("\(Image(systemName: "arrow.up.right.square")) Open")
                 }
             }
             Spacer()
