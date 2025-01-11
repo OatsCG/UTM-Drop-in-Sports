@@ -59,7 +59,7 @@ class CategoryParser: ObservableObject {
             let eventJSON: EventJSON? = loadEventJSON()
             if let eventJSON = eventJSON {
                 await MainActor.run {
-                    self.featuredEvents = eventJSON.featured
+                    self.featuredEvents = self.parseFeatured(eventJSON.featured)
                     self.announcements = eventJSON.announcements
                     if self.categories.isEmpty {
                         withAnimation {
@@ -185,6 +185,10 @@ class CategoryParser: ObservableObject {
         } catch {
             print("Error fetching data: \(error)")
         }
+    }
+    
+    func parseFeatured(_ featured: [Event]) -> [Event] {
+        return featured.filter { $0.relativeTimeDate.isEventOver == false }
     }
 
     func updateDisplayEventsAsync() async {
