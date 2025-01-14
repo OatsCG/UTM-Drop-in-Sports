@@ -12,6 +12,7 @@ struct ContentView: View {
     @Environment(\.scenePhase) var scenePhase
     @EnvironmentObject var categoryParser: CategoryParser
     @EnvironmentObject var notificationManager: NotificationManager
+    @AppStorage("prefersDarkMode") var prefersDarkMode: String = "auto"
     @State var searchField: String = ""
     @State var showNetworkAlert: Bool = false
     var body: some View {
@@ -22,6 +23,7 @@ struct ContentView: View {
                 MainNavigationViewLegacy(showNetworkAlert: $showNetworkAlert)
             }
         }
+        .preferredColorScheme(prefersDarkMode == "auto" ? .none : (prefersDarkMode == "dark" ? .dark : .light))
         .searchable(text: $searchField)
         .onChange(of: searchField) { _ in
             categoryParser.searchField = searchField
@@ -63,6 +65,7 @@ enum ScheduleSchool: String, CaseIterable {
 
 @available(iOS 16.0, *)
 struct MainNavigationView: View {
+    @AppStorage("prefersDarkMode") var prefersDarkMode: String = "auto" // dark, light, auto
     @AppStorage("scheduleSchool") var scheduleSchool: String = "Mississauga"
     @State var path: NavigationPath = NavigationPath()
     @Binding var showNetworkAlert: Bool
@@ -72,18 +75,26 @@ struct MainNavigationView: View {
                 MainScrollView(showNetworkAlert: $showNetworkAlert)
                     .safeAreaPadding(.horizontal)
                     .navigationTitle(Text("UTM Sports"))
-//                    .navigationBarTitleDisplayMode(.inline)
                     .toolbar {
-//                        ToolbarTitleMenu {
-//                            Picker("Picker", selection: $scheduleSchool) {
-//                                ForEach(ScheduleSchool.allCases, id: \.self) { school in
-//                                    Text(school.rawValue)
-//                                }
-//                            }
-//                        }
                         ToolbarItem(placement: .navigationBarTrailing) {
                             NavigationLink(destination: DisplayCase()) {
                                 Image(.medal)
+                                    .foregroundColor(.primary)
+                            }
+                        }
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            Button(action: {
+                                withAnimation {
+                                    if prefersDarkMode == "auto" {
+                                        prefersDarkMode = "dark"
+                                    } else if prefersDarkMode == "dark" {
+                                        prefersDarkMode = "light"
+                                    } else {
+                                        prefersDarkMode = "auto"
+                                    }
+                                }
+                            }) {
+                                Image(systemName: prefersDarkMode == "auto" ? "moon" : (prefersDarkMode == "dark" ? "moon.fill" : "sun.max.fill"))
                                     .foregroundColor(.primary)
                             }
                         }
