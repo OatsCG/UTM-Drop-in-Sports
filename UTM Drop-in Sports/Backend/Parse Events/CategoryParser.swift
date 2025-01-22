@@ -13,6 +13,7 @@ class CategoryParser: ObservableObject {
     @Published var featuredEvents: [Event] = []
     @Published var announcements: [Announcement] = []
     @Published var categories: [Category] = []
+    @Published var allCategories: [Category] = []
     
     @Published var events: [Event] = []
     @Published var savedEvents: [Event] = []
@@ -61,6 +62,7 @@ class CategoryParser: ObservableObject {
                 await MainActor.run {
                     self.featuredEvents = self.parseFeatured(eventJSON.featured)
                     self.announcements = eventJSON.announcements
+                    self.allCategories = eventJSON.allCategories
                     if self.categories.isEmpty {
                         withAnimation {
                             self.categories = eventJSON.categories

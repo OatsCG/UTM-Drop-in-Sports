@@ -36,7 +36,7 @@ struct GetNextSportInfo: AppIntent {
             sportToRun = sport
         } else {
             // Handle disambiguation request with await and try outside of the assignment
-            let categories = categoryParser.categories.map { $0.title }
+            let categories = categoryParser.allCategories.map { $0.title }
             sportToRun = try await $sport.requestDisambiguation(
                 among: categories,
                 dialog: IntentDialog("What session would you like?")

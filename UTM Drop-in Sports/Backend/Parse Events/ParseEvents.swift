@@ -30,6 +30,7 @@ class EventJSON: Decodable {
     let events: [Event]
     let featured: [Event]
     let announcements: [Announcement]
+    let allCategories: [Category]
 }
 
 
