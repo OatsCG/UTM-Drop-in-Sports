@@ -23,7 +23,7 @@ struct ContentView: View {
                 MainNavigationViewLegacy(showNetworkAlert: $showNetworkAlert)
             }
         }
-        .preferredColorScheme(prefersDarkMode == "auto" ? .none : (prefersDarkMode == "dark" ? .dark : .light))
+//        .preferredColorScheme(prefersDarkMode == "auto" ? .none : (prefersDarkMode == "dark" ? .dark : .light))
         .searchable(text: $searchField)
         .onChange(of: searchField) { _ in
             categoryParser.searchField = searchField
@@ -82,22 +82,22 @@ struct MainNavigationView: View {
                                     .foregroundColor(.primary)
                             }
                         }
-                        ToolbarItem(placement: .navigationBarLeading) {
-                            Button(action: {
-                                withAnimation {
-                                    if prefersDarkMode == "auto" {
-                                        prefersDarkMode = "dark"
-                                    } else if prefersDarkMode == "dark" {
-                                        prefersDarkMode = "light"
-                                    } else {
-                                        prefersDarkMode = "auto"
-                                    }
-                                }
-                            }) {
-                                Image(systemName: prefersDarkMode == "auto" ? "moon" : (prefersDarkMode == "dark" ? "moon.fill" : "sun.max.fill"))
-                                    .foregroundColor(.primary)
-                            }
-                        }
+//                        ToolbarItem(placement: .navigationBarLeading) {
+//                            Button(action: {
+//                                withAnimation {
+//                                    if prefersDarkMode == "auto" {
+//                                        prefersDarkMode = "dark"
+//                                    } else if prefersDarkMode == "dark" {
+//                                        prefersDarkMode = "light"
+//                                    } else {
+//                                        prefersDarkMode = "auto"
+//                                    }
+//                                }
+//                            }) {
+//                                Image(systemName: prefersDarkMode == "auto" ? "moon" : (prefersDarkMode == "dark" ? "moon.fill" : "sun.max.fill"))
+//                                    .foregroundColor(.primary)
+//                            }
+//                        }
                     }
             } else {
                 MainScrollView(showNetworkAlert: $showNetworkAlert)
