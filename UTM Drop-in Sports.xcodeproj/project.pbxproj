@@ -8,11 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		E53560AD2CB78B1600D334C5 /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = E53560AC2CB78B1600D334C5 /* ConfettiSwiftUI */; };
+		E5461BAA2D40C2C7006E79CD /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5461BA92D40C2C7006E79CD /* WidgetKit.framework */; };
+		E5461BAC2D40C2C7006E79CD /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5461BAB2D40C2C7006E79CD /* SwiftUI.framework */; };
+		E5461BBD2D40C2C9006E79CD /* NextSessionWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E5461BA72D40C2C7006E79CD /* NextSessionWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E55C32E42D2DCF5E0006309B /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = E55C32E32D2DCF5E0006309B /* GoogleMobileAds */; };
 		E57085B82CAAF9FF00CE03AE /* Intent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57085B72CAAF9FF00CE03AE /* Intent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		E5461BBB2D40C2C9006E79CD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E5FF242C2C8964B500AFCCE9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E5461BA62D40C2C7006E79CD;
+			remoteInfo = NextSessionWidgetExtension;
+		};
 		E5FF24462C8964B700AFCCE9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E5FF242C2C8964B500AFCCE9 /* Project object */;
@@ -29,16 +39,66 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		E5461BC22D40C2C9006E79CD /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				E5461BBD2D40C2C9006E79CD /* NextSessionWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		E5461BA72D40C2C7006E79CD /* NextSessionWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NextSessionWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5461BA92D40C2C7006E79CD /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		E5461BAB2D40C2C7006E79CD /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		E57085B72CAAF9FF00CE03AE /* Intent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intent.swift; sourceTree = "<group>"; };
 		E5FF24342C8964B500AFCCE9 /* UTM Drop-in Sports.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UTM Drop-in Sports.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5FF24452C8964B700AFCCE9 /* UTM Drop-in SportsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UTM Drop-in SportsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5FF244F2C8964B700AFCCE9 /* UTM Drop-in SportsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UTM Drop-in SportsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		E5461BBE2D40C2C9006E79CD /* Exceptions for "NextSessionWidget" folder in "NextSessionWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = E5461BA62D40C2C7006E79CD /* NextSessionWidgetExtension */;
+		};
+		E5461BC42D40C8CE006E79CD /* Exceptions for "UTM Drop-in Sports" folder in "NextSessionWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Assets.xcassets,
+				Backend/Images/SymbolImage.swift,
+				"Backend/Parse Events/CategoryParser.swift",
+				"Backend/Parse Events/Objects.swift",
+				"Backend/Parse Events/ParseEvents.swift",
+				Badges/Medal.swift,
+			);
+			target = E5461BA62D40C2C7006E79CD /* NextSessionWidgetExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		E5461BAD2D40C2C7006E79CD /* NextSessionWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				E5461BBE2D40C2C9006E79CD /* Exceptions for "NextSessionWidget" folder in "NextSessionWidgetExtension" target */,
+			);
+			path = NextSessionWidget;
+			sourceTree = "<group>";
+		};
 		E5FF24362C8964B500AFCCE9 /* UTM Drop-in Sports */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				E5461BC42D40C8CE006E79CD /* Exceptions for "UTM Drop-in Sports" folder in "NextSessionWidgetExtension" target */,
+			);
 			path = "UTM Drop-in Sports";
 			sourceTree = "<group>";
 		};
@@ -55,6 +115,15 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		E5461BA42D40C2C7006E79CD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5461BAC2D40C2C7006E79CD /* SwiftUI.framework in Frameworks */,
+				E5461BAA2D40C2C7006E79CD /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E5FF24312C8964B500AFCCE9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -81,6 +150,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E5461BA82D40C2C7006E79CD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E5461BA92D40C2C7006E79CD /* WidgetKit.framework */,
+				E5461BAB2D40C2C7006E79CD /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E5FF242B2C8964B500AFCCE9 = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +166,8 @@
 				E5FF24362C8964B500AFCCE9 /* UTM Drop-in Sports */,
 				E5FF24482C8964B700AFCCE9 /* UTM Drop-in SportsTests */,
 				E5FF24522C8964B700AFCCE9 /* UTM Drop-in SportsUITests */,
+				E5461BAD2D40C2C7006E79CD /* NextSessionWidget */,
+				E5461BA82D40C2C7006E79CD /* Frameworks */,
 				E5FF24352C8964B500AFCCE9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -98,6 +178,7 @@
 				E5FF24342C8964B500AFCCE9 /* UTM Drop-in Sports.app */,
 				E5FF24452C8964B700AFCCE9 /* UTM Drop-in SportsTests.xctest */,
 				E5FF244F2C8964B700AFCCE9 /* UTM Drop-in SportsUITests.xctest */,
+				E5461BA72D40C2C7006E79CD /* NextSessionWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -105,6 +186,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		E5461BA62D40C2C7006E79CD /* NextSessionWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E5461BBF2D40C2C9006E79CD /* Build configuration list for PBXNativeTarget "NextSessionWidgetExtension" */;
+			buildPhases = (
+				E5461BA32D40C2C7006E79CD /* Sources */,
+				E5461BA42D40C2C7006E79CD /* Frameworks */,
+				E5461BA52D40C2C7006E79CD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				E5461BAD2D40C2C7006E79CD /* NextSessionWidget */,
+			);
+			name = NextSessionWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = NextSessionWidgetExtension;
+			productReference = E5461BA72D40C2C7006E79CD /* NextSessionWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		E5FF24332C8964B500AFCCE9 /* UTM Drop-in Sports */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E5FF24592C8964B700AFCCE9 /* Build configuration list for PBXNativeTarget "UTM Drop-in Sports" */;
@@ -112,10 +215,12 @@
 				E5FF24302C8964B500AFCCE9 /* Sources */,
 				E5FF24312C8964B500AFCCE9 /* Frameworks */,
 				E5FF24322C8964B500AFCCE9 /* Resources */,
+				E5461BC22D40C2C9006E79CD /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				E5461BBC2D40C2C9006E79CD /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				E5FF24362C8964B500AFCCE9 /* UTM Drop-in Sports */,
@@ -182,9 +287,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1600;
+				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1610;
 				TargetAttributes = {
+					E5461BA62D40C2C7006E79CD = {
+						CreatedOnToolsVersion = 16.2;
+					};
 					E5FF24332C8964B500AFCCE9 = {
 						CreatedOnToolsVersion = 16.0;
 					};
@@ -219,11 +327,19 @@
 				E5FF24332C8964B500AFCCE9 /* UTM Drop-in Sports */,
 				E5FF24442C8964B700AFCCE9 /* UTM Drop-in SportsTests */,
 				E5FF244E2C8964B700AFCCE9 /* UTM Drop-in SportsUITests */,
+				E5461BA62D40C2C7006E79CD /* NextSessionWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		E5461BA52D40C2C7006E79CD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E5FF24322C8964B500AFCCE9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -248,6 +364,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		E5461BA32D40C2C7006E79CD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E5FF24302C8964B500AFCCE9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -273,6 +396,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		E5461BBC2D40C2C9006E79CD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E5461BA62D40C2C7006E79CD /* NextSessionWidgetExtension */;
+			targetProxy = E5461BBB2D40C2C9006E79CD /* PBXContainerItemProxy */;
+		};
 		E5FF24472C8964B700AFCCE9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E5FF24332C8964B500AFCCE9 /* UTM Drop-in Sports */;
@@ -286,6 +414,65 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		E5461BC02D40C2C9006E79CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9FHFSG84SL;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NextSessionWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NextSessionWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.2.2;
+				PRODUCT_BUNDLE_IDENTIFIER = "charliegiannis.UTM-Drop-in-Sports.NextSessionWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E5461BC12D40C2C9006E79CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9FHFSG84SL;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NextSessionWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NextSessionWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.2.2;
+				PRODUCT_BUNDLE_IDENTIFIER = "charliegiannis.UTM-Drop-in-Sports.NextSessionWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		E5FF24572C8964B700AFCCE9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -434,7 +621,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 1.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "charliegiannis.UTM-Drop-in-Sports";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -480,7 +667,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 1.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "charliegiannis.UTM-Drop-in-Sports";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -591,6 +778,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		E5461BBF2D40C2C9006E79CD /* Build configuration list for PBXNativeTarget "NextSessionWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E5461BC02D40C2C9006E79CD /* Debug */,
+				E5461BC12D40C2C9006E79CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E5FF242F2C8964B500AFCCE9 /* Build configuration list for PBXProject "UTM Drop-in Sports" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

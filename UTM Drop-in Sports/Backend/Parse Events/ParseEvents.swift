@@ -167,6 +167,7 @@ import Foundation
 
 struct RelativeTimeDate {
     let startDate: Date
+    let endDate: Date
     let timeString: String
     let dateString: String
     let daysLeftString: String
@@ -183,7 +184,7 @@ func formatDateRange(startDate: String, endDate: String) -> RelativeTimeDate {
     
     guard let start = dateFormatter.date(from: startDate),
           let end = dateFormatter.date(from: endDate) else {
-        return RelativeTimeDate(startDate: Date(), timeString: "", dateString: "", daysLeftString: "", timeLeftString: "", isOngoing: false, isEventOver: false, daySymbol: "", daySymbolColor: .primary)
+        return RelativeTimeDate(startDate: Date(), endDate: Date(), timeString: "", dateString: "", daysLeftString: "", timeLeftString: "", isOngoing: false, isEventOver: false, daySymbol: "", daySymbolColor: .primary)
     }
     
     let now = Date()
@@ -228,7 +229,7 @@ func formatDateRange(startDate: String, endDate: String) -> RelativeTimeDate {
     // isEventOver
     let isEventOver = now > end
     
-    return RelativeTimeDate(startDate: start, timeString: timeString, dateString: dateString, daysLeftString: daysLeftString, timeLeftString: timeLeftString, isOngoing: isOngoing, isEventOver: isEventOver, daySymbol: getDaySection(start, end), daySymbolColor: getDayColor(start, end))
+    return RelativeTimeDate(startDate: start, endDate: end, timeString: timeString, dateString: dateString, daysLeftString: daysLeftString, timeLeftString: timeLeftString, isOngoing: isOngoing, isEventOver: isEventOver, daySymbol: getDaySection(start, end), daySymbolColor: getDayColor(start, end))
 }
 
 func getDaySection(_ startDate: Date, _ endDate: Date) -> String {
@@ -261,10 +262,4 @@ func getDayColor(_ startDate: Date, _ endDate: Date) -> Color {
     default:
         return .blue
     }
-}
-
-
-
-#Preview {
-    ContentView()
 }
