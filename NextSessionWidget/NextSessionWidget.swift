@@ -93,7 +93,7 @@ struct NSWView: View {
                 }
                 Spacer()
             }
-            Text(event.sortCategory)
+            Text(CategoryToDisplayRepresentation(event.sortCategory))
                 .font(.title3 .bold())
                 .foregroundStyle(.blueUTM)
                 .lineLimit(1)

@@ -30,8 +30,6 @@ class EventJSON: Decodable {
     let events: [Event]
     let featured: [Event]
     let announcements: [Announcement]
-    let allCategories: [Category]
-    let medalCategories: [Category]
 }
 
 
@@ -83,16 +81,22 @@ class Category: Decodable, Hashable, ObservableObject {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         title = try values.decode(String.self, forKey: .title)
         symbol = try values.decode(String.self, forKey: .symbol)
+        isMedal = try values.decode(Bool.self, forKey: .isMedal)
+        isChip = try values.decode(Bool.self, forKey: .isChip)
     }
     
     private enum CodingKeys: String, CodingKey {
         case title
         case symbol
+        case isMedal
+        case isChip
     }
     
     var id: UUID = UUID()
     let title: String
     let symbol: String
+    let isMedal: Bool
+    let isChip: Bool
     @Published var selected: Bool = false
     @Published var shown: Bool = false
 }

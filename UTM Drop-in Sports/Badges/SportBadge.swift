@@ -224,14 +224,14 @@ struct SportMedallionDisplay: View {
                                 .opacity(colorScheme == .dark ? 1 : 0.35)
                             }
                     }
-                    Text(medal.category)
+                    Text(CategoryToDisplayRepresentation(medal.category))
                         .font(.body .bold())
                 }
                 .matchedTransitionSource(id: medal.category, in: animation)
             } else {
                 VStack(alignment: .center) {
                     SportMedalMedallion(size: $size, symbol: ImageResource(name: medal.icon, bundle: .main), colorPrimary: medal.colorPrimary, colorSecondary: medal.colorSecondary)
-                    Text(medal.category)
+                    Text(CategoryToDisplayRepresentation(medal.category))
                         .font(.body .bold())
                 }
             }
@@ -303,16 +303,16 @@ struct SportMedalSheet: View {
                         if medal.type == .none {
                             SportMedalEmpty(size: $size, medal: medal)
                                 .padding(.bottom, 15)
-                            Text(medal.category)
+                            Text(CategoryToDisplayRepresentation(medal.category))
                                 .font(.largeTitle .bold())
                             Text("Sessions: \(medal.events.count)")
                                 .font(.title2 .bold())
                                 .padding(.bottom, 25)
-                            Text("Participate in a \(medal.category) session to earn this medal.\n**Save \(Image(systemName: "bookmark"))**  a future session to participate.")
+                            Text("Participate in a \(CategoryToDisplayRepresentation(medal.category)) session to earn this medal.\n**Save \(Image(systemName: "bookmark"))** a future session to participate.")
                         } else {
                             SportMedalRotation(size: $size, rotation: $rotation, symbol: ImageResource(name: medal.icon, bundle: .main), colorPrimary: colorPrimary, colorSecondary: colorSecondary)
                                 .padding(.bottom, 15)
-                            Text(medal.category)
+                            Text(CategoryToDisplayRepresentation(medal.category))
                                 .font(.largeTitle .bold())
                             Text("Sessions: \(medal.events.count)")
                                 .font(.title2 .bold())

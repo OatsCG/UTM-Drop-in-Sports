@@ -35,20 +35,3 @@ struct EventImage: View {
         }
     }
 }
-
-
-#Preview {
-    VStack {
-        Text("1")
-        HStack {
-            Text("3")
-            Color.clear
-                .overlay {
-                    ProgressView()
-                }
-                .aspectRatio(1494/674, contentMode: .fit)
-            Text("4")
-        }
-        Text("2")
-    }
-}

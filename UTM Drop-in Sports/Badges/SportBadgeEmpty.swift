@@ -59,14 +59,14 @@ struct SportMedallionEmptyDisplay: View {
                                 .opacity(colorScheme == .dark ? 1 : 0.35)
                             }
                     }
-                    Text(medal.category)
+                    Text(CategoryToDisplayRepresentation(medal.category))
                         .font(.body .bold())
                 }
                 .matchedTransitionSource(id: medal.category, in: animation)
             } else {
                 VStack(alignment: .center) {
                     SportMedalEmpty(size: $size, medal: medal)
-                    Text(medal.category)
+                    Text(CategoryToDisplayRepresentation(medal.category))
                         .font(.body .bold())
                 }
             }

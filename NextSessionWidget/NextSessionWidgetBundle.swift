@@ -12,7 +12,5 @@ import SwiftUI
 struct NextSessionWidgetBundle: WidgetBundle {
     var body: some Widget {
         NextSessionWidget()
-        NextSessionWidgetControl()
-        NextSessionWidgetLiveActivity()
     }
 }

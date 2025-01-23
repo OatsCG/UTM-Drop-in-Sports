@@ -4,9 +4,6 @@
     "%@" : {
 
     },
-    "A an example control that runs a timer." : {
-
-    },
     "Accept Medal" : {
 
     },
@@ -28,9 +25,6 @@
     "Basketball" : {
 
     },
-    "Bottom %@" : {
-
-    },
     "Cancel" : {
 
     },
@@ -45,6 +39,16 @@
     },
     "Close Session..." : {
 
+    },
+    "Combat" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "oasnd"
+          }
+        }
+      }
     },
     "Complete 5 sessions to earn a **Silver** medal." : {
 
@@ -79,7 +83,7 @@
     "Have Fun!" : {
 
     },
-    "Hello %@" : {
+    "Hockey" : {
 
     },
     "I couldn't find any upcoming sessions for %@." : {
@@ -92,12 +96,6 @@
 
     },
     "Keep it up!" : {
-
-    },
-    "L" : {
-
-    },
-    "Leading" : {
 
     },
     "LGBT+ Only" : {
@@ -124,16 +122,10 @@
     "No, Cancel" : {
 
     },
-    "Off" : {
-
-    },
     "Ok, this failed." : {
 
     },
     "Ok, this succeeded." : {
-
-    },
-    "On" : {
 
     },
     "Ongoing" : {
@@ -142,12 +134,12 @@
     "Open %@" : {
 
     },
-    "Participate in a %@ session to earn this medal.\n**Save %@**  a future session to participate." : {
+    "Participate in a %@ session to earn this medal.\n**Save %@** a future session to participate." : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Participate in a %1$@ session to earn this medal.\n**Save %2$@**  a future session to participate."
+            "value" : "Participate in a %1$@ session to earn this medal.\n**Save %2$@** a future session to participate."
           }
         }
       }
@@ -221,20 +213,21 @@
     "Squash" : {
 
     },
-    "Start a timer" : {
-
-    },
-    "Start Timer" : {
-
-    },
-    "T %@" : {
-
-    },
     "Table Tennis" : {
 
     },
     "Tennis" : {
 
+    },
+    "The next %@ session is %@ at %@." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "The next %1$@ session is %2$@ at %3$@."
+          }
+        }
+      }
     },
     "There are %lld options matching ‘%@’." : {
       "localizations" : {
@@ -256,21 +249,6 @@
 
     },
     "This will clear all your progress. This cannot be undone." : {
-
-    },
-    "Timer" : {
-
-    },
-    "Timer is running" : {
-
-    },
-    "Timer Name" : {
-
-    },
-    "Timer Name Configuration" : {
-
-    },
-    "Trailing" : {
 
     },
     "Try selecting less filters." : {

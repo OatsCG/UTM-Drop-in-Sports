@@ -86,12 +86,20 @@
 			);
 			target = E5461BA62D40C2C7006E79CD /* NextSessionWidgetExtension */;
 		};
+		E5461C392D42D37B006E79CD /* Exceptions for "NextSessionWidget" folder in "UTM Drop-in Sports" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				AppIntent.swift,
+			);
+			target = E5FF24332C8964B500AFCCE9 /* UTM Drop-in Sports */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		E5461BAD2D40C2C7006E79CD /* NextSessionWidget */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
+				E5461C392D42D37B006E79CD /* Exceptions for "NextSessionWidget" folder in "UTM Drop-in Sports" target */,
 				E5461BBE2D40C2C9006E79CD /* Exceptions for "NextSessionWidget" folder in "NextSessionWidgetExtension" target */,
 			);
 			path = NextSessionWidget;

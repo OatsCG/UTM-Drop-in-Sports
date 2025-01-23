@@ -36,7 +36,7 @@ struct GetNextSportInfo: AppIntent {
             sportToRun = sport
         } else {
             // Handle disambiguation request with await and try outside of the assignment
-            let categories = categoryParser.allCategories.map { $0.title }
+            let categories = categoryParser.categories.map { $0.title }
             sportToRun = try await $sport.requestDisambiguation(
                 among: categories,
                 dialog: IntentDialog("What session would you like?")
@@ -46,10 +46,8 @@ struct GetNextSportInfo: AppIntent {
         // Find the first event where the sport name matches
         if let event = events.first(where: { $0.sortCategory == sportToRun }) {
             // Siri will speak the event name
-            let speech = "The next \(sportToRun) session is \(formattedDateString(from: event.start_date)) at \(formattedTimeString(from: event.start_date))."
-
             // Return the event in a view (EventCardView)
-            return .result(dialog: "\(speech)", view: EventCardSiri(event: event))
+            return .result(dialog: "The next \(sportToRun) session is \(formattedDateString(from: event.start_date)) at \(formattedTimeString(from: event.start_date)).", view: EventCardSiri(event: event))
         } else {
             // Handle case where no event is found
             return .result(dialog: "I couldn't find any upcoming sessions for \(sportToRun).")

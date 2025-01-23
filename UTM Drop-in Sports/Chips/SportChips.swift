@@ -10,7 +10,6 @@ import SwiftUI
 struct SportChips: View {
     @Environment(\.colorScheme) private var colorScheme
     @EnvironmentObject var categoryParser: CategoryParser
-    @State var organizedCategories: [[Category]] = []
     @State var maxRows: Int = 3
     @State var isExpanded: Bool = false
     @State var maxWidth: CGFloat = 300

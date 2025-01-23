@@ -412,7 +412,7 @@ struct MedalAcceptanceSheet: View {
                     PickRotatingMedalType(size: $size, rotation: $rotation, medal: $medal)
                         .padding(.bottom, 15)
                         .id(confettiCount)
-                    Text(medal.category)
+                    Text(CategoryToDisplayRepresentation(medal.category))
                         .font(.largeTitle .bold())
                     if #available(iOS 16.0, *) {
                         Text("Sessions: \(medal.events.count)")

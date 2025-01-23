@@ -12,9 +12,8 @@ class CategoryParser: ObservableObject {
     
     @Published var featuredEvents: [Event] = []
     @Published var announcements: [Announcement] = []
-    @Published var categories: [Category] = []
     @Published var allCategories: [Category] = []
-    @Published var medalCategories: [Category] = []
+    @Published var categories: [Category] = []
     
     @Published var events: [Event] = []
     @Published var savedEvents: [Event] = []
@@ -63,11 +62,11 @@ class CategoryParser: ObservableObject {
                 await MainActor.run {
                     self.featuredEvents = self.parseFeatured(eventJSON.featured)
                     self.announcements = eventJSON.announcements
-                    self.allCategories = eventJSON.allCategories
-                    self.medalCategories = eventJSON.medalCategories
                     if self.categories.isEmpty {
                         withAnimation {
-                            self.categories = eventJSON.categories
+                            self.allCategories = eventJSON.categories
+                            self.categories = eventJSON.categories.filter({ $0.isChip })
+                            
                         }
                     }
                     self.allEvents = eventJSON.events
@@ -379,7 +378,7 @@ class CategoryParser: ObservableObject {
             }
             // add all medals
             var medals: [Medal] = []
-            for i in self.medalCategories {
+            for i in self.allCategories.filter({ $0.isMedal }) {
                 medals.append(Medal(category: i.title, icon: i.symbol, possibleEvents: completedEvents))
             }
             DispatchQueue.main.async {

@@ -26,7 +26,7 @@ struct SportChip: View {
                 } else {
                     SymbolImage(category.symbol)
                 }
-                Text(category.title)
+                Text(CategoryToDisplayRepresentation(category.title))
                     .fixedSize(horizontal: false, vertical: true)
                 if favourited {
                     Image(systemName: "star.fill")
