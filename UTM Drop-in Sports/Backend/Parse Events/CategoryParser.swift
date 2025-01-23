@@ -14,6 +14,7 @@ class CategoryParser: ObservableObject {
     @Published var announcements: [Announcement] = []
     @Published var categories: [Category] = []
     @Published var allCategories: [Category] = []
+    @Published var medalCategories: [Category] = []
     
     @Published var events: [Event] = []
     @Published var savedEvents: [Event] = []
@@ -63,6 +64,7 @@ class CategoryParser: ObservableObject {
                     self.featuredEvents = self.parseFeatured(eventJSON.featured)
                     self.announcements = eventJSON.announcements
                     self.allCategories = eventJSON.allCategories
+                    self.medalCategories = eventJSON.medalCategories
                     if self.categories.isEmpty {
                         withAnimation {
                             self.categories = eventJSON.categories
@@ -377,7 +379,7 @@ class CategoryParser: ObservableObject {
             }
             // add all medals
             var medals: [Medal] = []
-            for i in self.categories {
+            for i in self.medalCategories {
                 medals.append(Medal(category: i.title, icon: i.symbol, possibleEvents: completedEvents))
             }
             DispatchQueue.main.async {

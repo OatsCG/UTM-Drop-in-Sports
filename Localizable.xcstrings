@@ -1,0 +1,314 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%@" : {
+
+    },
+    "A an example control that runs a timer." : {
+
+    },
+    "Accept Medal" : {
+
+    },
+    "Active Sessions" : {
+
+    },
+    "Active Sessions will show here. When a saved session ends, mark it as complete to collect your medal." : {
+
+    },
+    "Announcements" : {
+
+    },
+    "Are you sure you want to remove all progress?" : {
+
+    },
+    "Badminton" : {
+
+    },
+    "Basketball" : {
+
+    },
+    "Bottom %@" : {
+
+    },
+    "Cancel" : {
+
+    },
+    "Cardio" : {
+
+    },
+    "Category Options" : {
+
+    },
+    "Check your network connection to update the schedule." : {
+
+    },
+    "Close Session..." : {
+
+    },
+    "Complete 5 sessions to earn a **Silver** medal." : {
+
+    },
+    "Complete 10 sessions to earn a **Gold** medal." : {
+
+    },
+    "Configuration" : {
+
+    },
+    "Cricket" : {
+
+    },
+    "Cycling" : {
+
+    },
+    "Dance" : {
+
+    },
+    "Delete..." : {
+
+    },
+    "Featured Events" : {
+
+    },
+    "Field Sports" : {
+
+    },
+    "Get Drop In Information" : {
+
+    },
+    "Have Fun!" : {
+
+    },
+    "Hello %@" : {
+
+    },
+    "I couldn't find any upcoming sessions for %@." : {
+
+    },
+    "I Participated!" : {
+
+    },
+    "Just to confirm, you wanted ‘%@’?" : {
+
+    },
+    "Keep it up!" : {
+
+    },
+    "L" : {
+
+    },
+    "Leading" : {
+
+    },
+    "LGBT+ Only" : {
+
+    },
+    "Load More Events..." : {
+
+    },
+    "Medals" : {
+
+    },
+    "Mind & Body" : {
+
+    },
+    "No events found." : {
+
+    },
+    "No medals collected." : {
+
+    },
+    "No sessions to show." : {
+
+    },
+    "No, Cancel" : {
+
+    },
+    "Off" : {
+
+    },
+    "Ok, this failed." : {
+
+    },
+    "Ok, this succeeded." : {
+
+    },
+    "On" : {
+
+    },
+    "Ongoing" : {
+
+    },
+    "Open %@" : {
+
+    },
+    "Participate in a %@ session to earn this medal.\n**Save %@**  a future session to participate." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Participate in a %1$@ session to earn this medal.\n**Save %2$@**  a future session to participate."
+          }
+        }
+      }
+    },
+    "Participate in events to earn more medals!" : {
+
+    },
+    "Pickleball" : {
+
+    },
+    "Pool" : {
+
+    },
+    "Provides details on a drop-in sport or activity." : {
+
+    },
+    "Remove" : {
+
+    },
+    "Remove all medals?" : {
+
+    },
+    "Repeats every %@" : {
+
+    },
+    "Rowfit" : {
+
+    },
+    "Save events and participate to earn medals." : {
+
+    },
+    "Save sessions to participate and earn medals!" : {
+
+    },
+    "Save This Session" : {
+
+    },
+    "Saved" : {
+
+    },
+    "Schedule Version: %@" : {
+
+    },
+    "Session Over" : {
+
+    },
+    "Session Saved" : {
+
+    },
+    "Sessions: %lld" : {
+
+    },
+    "Show Less..." : {
+
+    },
+    "Show More..." : {
+
+    },
+    "Soccer" : {
+
+    },
+    "Sport" : {
+
+    },
+    "Sport Category" : {
+
+    },
+    "Sport Name" : {
+
+    },
+    "Squash" : {
+
+    },
+    "Start a timer" : {
+
+    },
+    "Start Timer" : {
+
+    },
+    "T %@" : {
+
+    },
+    "Table Tennis" : {
+
+    },
+    "Tennis" : {
+
+    },
+    "There are %lld options matching ‘%@’." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "There are %1$lld options matching ‘%2$@’."
+          }
+        }
+      }
+    },
+    "This is an example widget." : {
+
+    },
+    "This session is designed for 2SLGBTQ+ students." : {
+
+    },
+    "This session is designed for female-identifying students." : {
+
+    },
+    "This will clear all your progress. This cannot be undone." : {
+
+    },
+    "Timer" : {
+
+    },
+    "Timer is running" : {
+
+    },
+    "Timer Name" : {
+
+    },
+    "Timer Name Configuration" : {
+
+    },
+    "Trailing" : {
+
+    },
+    "Try selecting less filters." : {
+
+    },
+    "UTM Sports" : {
+
+    },
+    "UTM Walks" : {
+
+    },
+    "View Next %@ Drop-In" : {
+
+    },
+    "View Next ${sport} Drop-In" : {
+
+    },
+    "Volleyball" : {
+
+    },
+    "We'll notify you 30 minutes before it starts" : {
+
+    },
+    "What session would you like?" : {
+
+    },
+    "Which sport are you looking for?" : {
+
+    },
+    "Women's Only" : {
+
+    },
+    "Workout" : {
+
+    },
+    "Yes, Delete" : {
+
+    }
+  },
+  "version" : "1.0"
+}
