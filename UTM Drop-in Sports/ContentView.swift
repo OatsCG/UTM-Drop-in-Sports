@@ -267,7 +267,7 @@ struct LoadMoreEventsButton: View {
                     categoryParser.updateDisplayEvents(maxEvents: nil)
                 }) {
                     VStack {
-                        Text("Load More Events...")
+                        Text("Load More Events")
                         Text("Schedule Version: \(UserDefaults.standard.string(forKey: "version.txt") ?? "Unknown")")
                             .font(.caption2)
                     }

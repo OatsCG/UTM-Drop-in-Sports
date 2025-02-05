@@ -83,9 +83,9 @@ struct SportChips: View {
                     }) {
                         HStack {
                             if isExpanded {
-                                Text("Show Less...")
+                                Text("Show Less")
                             } else {
-                                Text("Show More...")
+                                Text("Show More")
                                 ForEach(categoryParser.categories.filter({ $0.selected }), id: \.id) { category in
                                     SymbolImage(category.symbol)
                                         .foregroundStyle(.blueUTM)

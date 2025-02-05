@@ -18,46 +18,45 @@ struct EventBody: View {
                 Text(event.description)
                     .padding(.bottom, 16)
             }
-            if event.womens {
-                HStack(alignment: .top) {
-                    Image("figure.stand.dress")
-                        .foregroundStyle(.pinkUTM)
-                    Text("This session is designed for female-identifying students.")
-                        .multilineTextAlignment(.leading)
-                        .foregroundStyle(.secondary)
+            VStack(alignment: .leading) {
+                if event.womens {
+                    HStack(alignment: .top) {
+                        Image("figure.stand.dress")
+                            .foregroundStyle(.pinkUTM)
+                        Text("This session is designed for female-identifying students.")
+                            .multilineTextAlignment(.leading)
+                            .foregroundStyle(.secondary)
+                    }
+                        .font(.footnote)
                 }
+                if event.lgbt {
+                    HStack(alignment: .top) {
+                        Image(systemName: "star.fill")
+                            .foregroundStyle(AngularGradient(colors: [.red, .orange, .yellow, .green, .blue, .purple, .red], center: .center))
+                            .overlay {
+                                Image(systemName: "star.fill")
+                                    .foregroundStyle(colorScheme == .dark ? .white : .black)
+                                    .opacity(colorScheme == .dark ? 0.25 : 0.15)
+                                
+                            }
+                        Text("This session is designed for 2SLGBTQ+ students.")
+                            .multilineTextAlignment(.leading)
+                            .foregroundStyle(.secondary)
+                    }
+                        .font(.footnote)
+                }
+                if event.weeklyRepetitions.count > 0 {
+                    HStack {
+                        Image(systemName: "arrow.clockwise")
+                        Text("Repeats every \(repetitionString(event.weeklyRepetitions))")
+                            .multilineTextAlignment(.leading)
+                        Spacer()
+                    }
                     .font(.footnote)
-                    .padding(.bottom, 10)
-            }
-            if event.lgbt {
-                HStack(alignment: .top) {
-                    Image(systemName: "star.fill")
-                        .foregroundStyle(AngularGradient(colors: [.red, .orange, .yellow, .green, .blue, .purple, .red], center: .center))
-                        .overlay {
-                            Image(systemName: "star.fill")
-                                .foregroundStyle(colorScheme == .dark ? .white : .black)
-                                .opacity(colorScheme == .dark ? 0.25 : 0.15)
-                            
-                        }
-                    Text("This session is designed for 2SLGBTQ+ students.")
-                        .multilineTextAlignment(.leading)
-                        .foregroundStyle(.secondary)
+                    .foregroundStyle(.secondary)
                 }
-                    .font(.footnote)
-                    .padding(.bottom, 10)
             }
-            if event.weeklyRepetitions.count > 0 {
-                HStack {
-                    Image(systemName: "arrow.clockwise")
-                    Text("Repeats every \(repetitionString(event.weeklyRepetitions))")
-                        .multilineTextAlignment(.leading)
-                    Spacer()
-                }
-                .font(.footnote)
-                .foregroundStyle(.secondary)
-                .padding(.bottom, 15)
-                .padding(.top, 0)
-            }
+            .padding(.bottom, 10)
         }
         
         if event.saved {

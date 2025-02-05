@@ -2,7 +2,7 @@
   "sourceLanguage" : "en",
   "strings" : {
     "%@" : {
-
+      "shouldTranslate" : false
     },
     "Accept Medal" : {
       "comment" : "CTA accept medal"
