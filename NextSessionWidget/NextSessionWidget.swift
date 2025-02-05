@@ -58,7 +58,7 @@ struct NextSessionWidgetEntryView: View {
     var body: some View {
         Group {
             if let event = entry.event {
-                NSWView(event: event)
+                NSWView(event: event, entryDate: entry.date)
             } else {
                 Text("No sessions to show.")
                     .foregroundStyle(.blueUTM.secondary)
@@ -71,6 +71,7 @@ struct NextSessionWidgetEntryView: View {
 struct NSWView: View {
     @Environment(\.colorScheme) private var colorScheme
     @State var event: Event
+    @State var entryDate: Date
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -135,7 +136,7 @@ struct NSWView: View {
                                 Image(systemName: event.relativeTimeDate.daySymbol)
                                     .foregroundStyle(event.relativeTimeDate.daySymbolColor)
                             }
-                            Text(relativeDaysUntilString(event.relativeTimeDate.startDate))
+                            Text(relativeDaysUntilString(event.relativeTimeDate.startDate, startingFrom: entryDate))
                                 .foregroundStyle(.secondary)
                         }
                     } else {
@@ -150,9 +151,9 @@ struct NSWView: View {
     }
 }
 
-func relativeDaysUntilString(_ date: Date) -> String {
+func relativeDaysUntilString(_ date: Date, startingFrom: Date) -> String {
     let calendar = Calendar.current
-    let today = calendar.startOfDay(for: Date())
+    let today = calendar.startOfDay(for: startingFrom)
     let targetDate = calendar.startOfDay(for: date)
     
     guard let daysDifference = calendar.dateComponents([.day], from: today, to: targetDate).day else {

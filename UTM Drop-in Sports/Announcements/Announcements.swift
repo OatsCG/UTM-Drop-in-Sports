@@ -107,7 +107,17 @@ struct AnnouncementView: View {
                 .font(.callout.bold())
                 .padding(.horizontal, 8)
                 .padding(.vertical, 8)
-                .background(.red.opacity(colorScheme == .dark ? 0.6 : 0.7))
+                .background {
+                    if announcement.type == 0 {
+                        Color.blue.opacity(colorScheme == .dark ? 0.6 : 0.7)
+                    } else if announcement.type == 1 {
+                        Color.red.opacity(colorScheme == .dark ? 0.6 : 0.7)
+                    } else if announcement.type == 2 {
+                        Color.green.opacity(colorScheme == .dark ? 0.6 : 0.7)
+                    } else {
+                        Color.secondary.opacity(colorScheme == .dark ? 0.6 : 0.7)
+                    }
+                }
                 Text(body)
                     .font(.body)
                     .padding(.horizontal, 10)

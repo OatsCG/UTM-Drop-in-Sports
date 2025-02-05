@@ -89,8 +89,8 @@ func CategoryToDisplayRepresentation(_ category: String) -> String {
 
 @available(iOS 17.0, *)
 struct ConfigurationAppIntent: WidgetConfigurationIntent {
-    static var title: LocalizedStringResource { "Configuration" }
-    static var description: IntentDescription { "This is an example widget." }
+    static var title: LocalizedStringResource { "Next Session" }
+    static var description: IntentDescription { "See the next session for your favourite sport." }
 
     // An example configurable parameter.
     @Parameter(title: "Sport Category", default: CategoryOption.soccer)

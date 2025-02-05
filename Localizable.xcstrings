@@ -5,136 +5,130 @@
 
     },
     "Accept Medal" : {
-
+      "comment" : "CTA accept medal"
     },
     "Active Sessions" : {
-
+      "comment" : "Shelf title"
     },
     "Active Sessions will show here. When a saved session ends, mark it as complete to collect your medal." : {
-
+      "comment" : "Home page secondary body"
     },
     "Announcements" : {
-
+      "comment" : "Shelf title"
     },
     "Are you sure you want to remove all progress?" : {
-
+      "comment" : "CTA alert description"
     },
     "Badminton" : {
-
+      "comment" : "Sport"
     },
     "Basketball" : {
-
+      "comment" : "Sport"
     },
     "Cancel" : {
-
+      "comment" : "CTA cancel"
     },
     "Cardio" : {
-
+      "comment" : "Sport"
     },
     "Category Options" : {
-
+      "comment" : "Enum description"
     },
     "Check your network connection to update the schedule." : {
-
+      "comment" : "Home page body"
     },
     "Close Session..." : {
-
+      "comment" : "Button action"
     },
     "Combat" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "oasnd"
-          }
-        }
-      }
+      "comment" : "Sport"
     },
     "Complete 5 sessions to earn a **Silver** medal." : {
-
+      "comment" : "Award body"
     },
     "Complete 10 sessions to earn a **Gold** medal." : {
-
-    },
-    "Configuration" : {
-
+      "comment" : "Award body"
     },
     "Cricket" : {
-
+      "comment" : "Sport"
     },
     "Cycling" : {
-
+      "comment" : "Sport"
     },
     "Dance" : {
-
+      "comment" : "Sport"
     },
     "Delete..." : {
-
+      "comment" : "CTA delete medals"
     },
     "Featured Events" : {
-
+      "comment" : "Shelf title"
     },
     "Field Sports" : {
-
+      "comment" : "Sport"
     },
     "Get Drop In Information" : {
-
+      "comment" : "Siri Intent title"
     },
     "Have Fun!" : {
-
+      "comment" : "Session body"
     },
     "Hockey" : {
-
+      "comment" : "Sport"
     },
     "I couldn't find any upcoming sessions for %@." : {
-
+      "comment" : "Siri body"
     },
     "I Participated!" : {
-
+      "comment" : "CTA accept medal"
     },
     "Just to confirm, you wanted ‘%@’?" : {
-
+      "comment" : "Siri asking to confirm"
     },
     "Keep it up!" : {
-
+      "comment" : "Session body"
     },
     "LGBT+ Only" : {
-
+      "comment" : "Filter button"
     },
     "Load More Events..." : {
-
+      "comment" : "Home page button"
     },
     "Medals" : {
-
+      "comment" : "Page title"
     },
     "Mind & Body" : {
-
+      "comment" : "Sport"
+    },
+    "Next Session" : {
+      "comment" : "Widget title"
     },
     "No events found." : {
-
+      "comment" : "Home page warning"
     },
     "No medals collected." : {
-
+      "comment" : "Medals page warning"
     },
     "No sessions to show." : {
-
+      "comment" : "Widget warning"
     },
     "No, Cancel" : {
-
+      "comment" : "CTA cancel"
     },
     "Ok, this failed." : {
-
+      "comment" : "Siri response"
     },
     "Ok, this succeeded." : {
-
+      "comment" : "Siri response"
     },
     "Ongoing" : {
-
+      "comment" : "Session body"
     },
     "Open %@" : {
-
+      "comment" : "Session body"
     },
     "Participate in a %@ session to earn this medal.\n**Save %@** a future session to participate." : {
+      "comment" : "Medal body",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -145,34 +139,34 @@
       }
     },
     "Participate in events to earn more medals!" : {
-
+      "comment" : "Medal page body"
     },
     "Pickleball" : {
-
+      "comment" : "Sport"
     },
     "Pool" : {
-
+      "comment" : "Sport"
     },
     "Provides details on a drop-in sport or activity." : {
-
+      "comment" : "Siri description"
     },
     "Remove" : {
-
+      "comment" : "Remove session from \"Saved\""
     },
     "Remove all medals?" : {
-
+      "comment" : "CTA delete medals"
     },
     "Repeats every %@" : {
-
+      "comment" : "Session body"
     },
     "Rowfit" : {
-
+      "comment" : "Sport"
     },
     "Save events and participate to earn medals." : {
-
+      "comment" : "Medals page body"
     },
     "Save sessions to participate and earn medals!" : {
-
+      "comment" : "Home page secondary body"
     },
     "Save This Session" : {
 
@@ -181,6 +175,9 @@
 
     },
     "Schedule Version: %@" : {
+
+    },
+    "See the next session for your favourite sport." : {
 
     },
     "Session Over" : {
@@ -199,7 +196,7 @@
 
     },
     "Soccer" : {
-
+      "comment" : "Sport"
     },
     "Sport" : {
 
@@ -211,13 +208,13 @@
 
     },
     "Squash" : {
-
+      "comment" : "Sport"
     },
     "Table Tennis" : {
-
+      "comment" : "Sport"
     },
     "Tennis" : {
-
+      "comment" : "Sport"
     },
     "The next %@ session is %@ at %@." : {
       "localizations" : {
@@ -239,9 +236,6 @@
         }
       }
     },
-    "This is an example widget." : {
-
-    },
     "This session is designed for 2SLGBTQ+ students." : {
 
     },
@@ -258,7 +252,7 @@
 
     },
     "UTM Walks" : {
-
+      "comment" : "Sport"
     },
     "View Next %@ Drop-In" : {
 
@@ -267,7 +261,7 @@
 
     },
     "Volleyball" : {
-
+      "comment" : "Sport"
     },
     "We'll notify you 30 minutes before it starts" : {
 
@@ -279,10 +273,10 @@
 
     },
     "Women's Only" : {
-
+      "comment" : "Filter button"
     },
     "Workout" : {
-
+      "comment" : "Sport"
     },
     "Yes, Delete" : {
 

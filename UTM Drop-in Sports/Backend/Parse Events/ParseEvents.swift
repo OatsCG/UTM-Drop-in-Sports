@@ -37,6 +37,7 @@ class Announcement: Decodable, Hashable, ObservableObject {
     var id: Int
     var title: String
     var body: String
+    var type: Int
     var seen: Bool
     
     static func == (lhs: Announcement, rhs: Announcement) -> Bool {
@@ -51,6 +52,7 @@ class Announcement: Decodable, Hashable, ObservableObject {
         id = try values.decode(Int.self, forKey: .id)
         title = try values.decode(String.self, forKey: .title)
         body = try values.decode(String.self, forKey: .body)
+        type = try values.decode(Int.self, forKey: .type)
         seen = false
         if UserDefaults.standard.bool(forKey: "\(id)") {
             seen = true
@@ -61,6 +63,7 @@ class Announcement: Decodable, Hashable, ObservableObject {
         case id
         case title
         case body
+        case type
     }
     
     func markAsSeen() {
