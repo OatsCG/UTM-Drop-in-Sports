@@ -268,10 +268,13 @@ struct LoadMoreEventsButton: View {
                 }) {
                     VStack {
                         Text("Load More Events")
+                            .foregroundStyle(.blue)
                         Text("Schedule Version: \(UserDefaults.standard.string(forKey: "version.txt") ?? "Unknown")")
                             .font(.caption2)
+                            .foregroundStyle(.tertiary)
                     }
                 }
+                .buttonStyle(.plain)
                 Spacer()
             }
         }

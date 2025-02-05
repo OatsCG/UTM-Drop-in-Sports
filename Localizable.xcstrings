@@ -91,8 +91,8 @@
     "LGBT+ Only" : {
       "comment" : "Filter button"
     },
-    "Load More Events..." : {
-      "comment" : "Home page button"
+    "Load More Events" : {
+
     },
     "Medals" : {
       "comment" : "Page title"
@@ -189,10 +189,10 @@
     "Sessions: %lld" : {
 
     },
-    "Show Less..." : {
+    "Show Less" : {
 
     },
-    "Show More..." : {
+    "Show More" : {
 
     },
     "Soccer" : {
