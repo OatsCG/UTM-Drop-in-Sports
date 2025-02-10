@@ -23,18 +23,10 @@ struct Provider: AppIntentTimelineProvider {
         let events: [Event] = categoryParser.events
         let sportToRun: String? = configuration.category?.rawValue
         
-        let nextEvent: Event? = events.first(where: { $0.sortCategory == sportToRun })
-        if let nextEvent {
-            // add entries every hour until the event end date
-            let end_date: Date = nextEvent.relativeTimeDate.endDate
-            let hours_until_end_date: Int = Calendar.current.dateComponents([.hour], from: Date(), to: end_date).hour!
-            for hourOffset in 0 ... max(hours_until_end_date, 10) {
-                let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: Date())!
-                let entry = SimpleEntry(date: entryDate, configuration: configuration, event: nextEvent)
-                entries.append(entry)
-            }
-        } else {
-            let entry = SimpleEntry(date: Date(), configuration: configuration, event: nil)
+        let satisfiedEvents: [Event] = events.filter { $0.sortCategory == sportToRun }
+        
+        for event in satisfiedEvents.prefix(5) {
+            let entry = SimpleEntry(date: event.relativeTimeDate.startDate, configuration: configuration, event: event)
             entries.append(entry)
         }
 
@@ -111,42 +103,12 @@ struct NSWView: View {
                 .font(.caption .bold())
                 .padding(.bottom, 1)
 
-            if event.relativeTimeDate.isOngoing {
-                HStack {
-                    if #available(iOS 18.0, *) {
-                        Image(systemName: "record.circle")
-                            .font(.caption2)
-                            .symbolEffect(.pulse .byLayer, options: .repeat(.continuous))
-                    } else {
-                        Image(systemName: "record.circle")
-                            .font(.caption2)
-                    }
-                    Text("Ongoing")
-                }
-                .font(.caption)
-                .foregroundStyle(.green)
-            } else {
-                HStack {
-                    if event.relativeTimeDate.timeLeftString == "" {
-                        HStack {
-                            if #available(iOS 16.0, *) {
-                                Image(systemName: event.relativeTimeDate.daySymbol)
-                                    .foregroundStyle(event.relativeTimeDate.daySymbolColor.gradient)
-                            } else {
-                                Image(systemName: event.relativeTimeDate.daySymbol)
-                                    .foregroundStyle(event.relativeTimeDate.daySymbolColor)
-                            }
-                            Text(relativeDaysUntilString(event.relativeTimeDate.startDate, startingFrom: entryDate))
-                                .foregroundStyle(.secondary)
-                        }
-                    } else {
-                        Text(event.relativeTimeDate.timeLeftString)
-                            .foregroundStyle(event.relativeTimeDate.timeLeftString == "Soon" ? .orange : .secondary)
-                    }
-                }
-                .font(.caption2)
-                .foregroundStyle(.primary)
+            HStack {
+                Image(systemName: "calendar")
+                Text(event.relativeTimeDate.timedateStringShort)
             }
+            .font(.caption2)
+            .foregroundStyle(.secondary)
         }
     }
 }

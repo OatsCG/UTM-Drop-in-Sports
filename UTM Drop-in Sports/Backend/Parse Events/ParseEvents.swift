@@ -178,6 +178,7 @@ struct RelativeTimeDate {
     let endDate: Date
     let timeString: String
     let dateString: String
+    let timedateStringShort: String
     let daysLeftString: String
     let timeLeftString: String
     let isOngoing: Bool
@@ -192,7 +193,7 @@ func formatDateRange(startDate: String, endDate: String) -> RelativeTimeDate {
     
     guard let start = dateFormatter.date(from: startDate),
           let end = dateFormatter.date(from: endDate) else {
-        return RelativeTimeDate(startDate: Date(), endDate: Date(), timeString: "", dateString: "", daysLeftString: "", timeLeftString: "", isOngoing: false, isEventOver: false, daySymbol: "", daySymbolColor: .primary)
+        return RelativeTimeDate(startDate: Date(), endDate: Date(), timeString: "", dateString: "", timedateStringShort: "", daysLeftString: "", timeLeftString: "", isOngoing: false, isEventOver: false, daySymbol: "", daySymbolColor: .primary)
     }
     
     let now = Date()
@@ -207,6 +208,14 @@ func formatDateRange(startDate: String, endDate: String) -> RelativeTimeDate {
     let dateFormatterForDateString = DateFormatter()
     dateFormatterForDateString.dateFormat = "EEEE MMM d"
     let dateString = dateFormatterForDateString.string(from: start)
+    
+    // Time/Date String Short (e.g., "Sept 2, 5pm")
+    let timedateShortFormatter = DateFormatter()
+    timedateShortFormatter.dateFormat = "MMM d, h:mma"
+    timedateShortFormatter.amSymbol = "am"
+    timedateShortFormatter.pmSymbol = "pm"
+    var timedateStringShort = timedateShortFormatter.string(from: start)
+    timedateStringShort = timedateStringShort.replacingOccurrences(of: ":00", with: "")
     
     // Days Left String (e.g., "Today", "Tomorrow", "")
     let calendar = Calendar.current
@@ -237,7 +246,7 @@ func formatDateRange(startDate: String, endDate: String) -> RelativeTimeDate {
     // isEventOver
     let isEventOver = now > end
     
-    return RelativeTimeDate(startDate: start, endDate: end, timeString: timeString, dateString: dateString, daysLeftString: daysLeftString, timeLeftString: timeLeftString, isOngoing: isOngoing, isEventOver: isEventOver, daySymbol: getDaySection(start, end), daySymbolColor: getDayColor(start, end))
+    return RelativeTimeDate(startDate: start, endDate: end, timeString: timeString, dateString: dateString, timedateStringShort: timedateStringShort, daysLeftString: daysLeftString, timeLeftString: timeLeftString, isOngoing: isOngoing, isEventOver: isEventOver, daySymbol: getDaySection(start, end), daySymbolColor: getDayColor(start, end))
 }
 
 func getDaySection(_ startDate: Date, _ endDate: Date) -> String {
