@@ -48,11 +48,11 @@ class Announcement: Decodable, Hashable, ObservableObject {
     }
     
     required init(from decoder:Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        id = try values.decode(Int.self, forKey: .id)
-        title = try values.decode(String.self, forKey: .title)
-        body = try values.decode(String.self, forKey: .body)
-        type = try values.decode(Int.self, forKey: .type)
+        let values = try? decoder.container(keyedBy: CodingKeys.self)
+        id = (try? values?.decode(Int.self, forKey: .id)) ?? UUID().hashValue
+        title = (try? values?.decode(String.self, forKey: .title)) ?? ""
+        body = (try? values?.decode(String.self, forKey: .body)) ?? ""
+        type = (try? values?.decode(Int.self, forKey: .type)) ?? 0 // 0=normal, 1=closure, 2=update, other=grey
         seen = false
         if UserDefaults.standard.bool(forKey: "\(id)") {
             seen = true
@@ -81,11 +81,11 @@ class Category: Decodable, Hashable, ObservableObject {
     }
     
     required init(from decoder:Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        title = try values.decode(String.self, forKey: .title)
-        symbol = try values.decode(String.self, forKey: .symbol)
-        isMedal = try values.decode(Bool.self, forKey: .isMedal)
-        isChip = try values.decode(Bool.self, forKey: .isChip)
+        let values = try? decoder.container(keyedBy: CodingKeys.self)
+        title = (try? values?.decode(String.self, forKey: .title)) ?? ""
+        symbol = (try? values?.decode(String.self, forKey: .symbol)) ?? ""
+        isMedal = (try? values?.decode(Bool.self, forKey: .isMedal)) ?? true
+        isChip = (try? values?.decode(Bool.self, forKey: .isChip)) ?? true
     }
     
     private enum CodingKeys: String, CodingKey {
@@ -114,21 +114,21 @@ class Event: ObservableObject, Decodable, Hashable {
     }
     
     required init(from decoder:Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        id = try values.decode(Int.self, forKey: .id)
-        url = try values.decode(String.self, forKey: .url)
-        title = try values.decode(String.self, forKey: .title)
-        description = try values.decode(String.self, forKey: .description)
-        image = try values.decode(String.self, forKey: .image)
-        start_date = try values.decode(String.self, forKey: .start_date)
-        end_date = try values.decode(String.self, forKey: .end_date)
-        venue = try values.decode(String.self, forKey: .venue)
-        ticket_label = try values.decode(String.self, forKey: .ticket_label)
-        ticket_url = try values.decode(String.self, forKey: .ticket_url)
-        sortCategory = try values.decode(String.self, forKey: .sortCategory)
-        symbol = try values.decode(String.self, forKey: .symbol)
-        womens = try values.decode(Bool.self, forKey: .womens)
-        weeklyRepetitions = try values.decode([String].self, forKey: .weeklyRepetitions)
+        let values = try? decoder.container(keyedBy: CodingKeys.self)
+        id = (try? values?.decode(Int.self, forKey: .id)) ?? UUID().hashValue
+        url = (try? values?.decode(String.self, forKey: .url)) ?? ""
+        title = (try? values?.decode(String.self, forKey: .title)) ?? ""
+        description = (try? values?.decode(String.self, forKey: .description)) ?? ""
+        image = (try? values?.decode(String.self, forKey: .image)) ?? ""
+        start_date = (try? values?.decode(String.self, forKey: .start_date)) ?? ""
+        end_date = (try? values?.decode(String.self, forKey: .end_date)) ?? ""
+        venue = (try? values?.decode(String.self, forKey: .venue)) ?? ""
+        ticket_label = (try? values?.decode(String.self, forKey: .ticket_label)) ?? ""
+        ticket_url = (try? values?.decode(String.self, forKey: .ticket_url)) ?? ""
+        sortCategory = (try? values?.decode(String.self, forKey: .sortCategory)) ?? ""
+        symbol = (try? values?.decode(String.self, forKey: .symbol)) ?? ""
+        womens = (try? values?.decode(Bool.self, forKey: .womens)) ?? false
+        weeklyRepetitions = (try? values?.decode([String].self, forKey: .weeklyRepetitions)) ?? []
         relativeTimeDate = formatDateRange(startDate: start_date, endDate: end_date)
         saved = false
         lgbt = self.description.contains("LGBT") || self.description.contains("LGTB") || self.description.contains("2SL")
