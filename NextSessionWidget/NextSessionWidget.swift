@@ -140,6 +140,10 @@ struct NextSessionWidget: Widget {
             NextSessionWidgetEntryView(entry: entry)
                 .containerBackground(.fill.tertiary, for: .widget)
         }
+        .configurationDisplayName(LocalizedStringKey("Next Session"))
+        .description(LocalizedStringKey("See the next session for your favourite sport."))
+        .supportedFamilies([.systemSmall])
+        .containerBackgroundRemovable()
     }
 }
 
