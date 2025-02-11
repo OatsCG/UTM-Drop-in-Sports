@@ -65,12 +65,12 @@ struct FeaturedEventsList: View {
     var body: some View {
         VStack {
             ForEach($categoryParser.featuredEvents, id: \.id) { $event in
-                if #available(iOS 17.0, *) {
-                    EventCard(event: $event)
-                        .transition(.blurReplace)
-                } else {
-                    EventCard(event: $event)
-                }
+                EventCard(event: $event)
+                    .apply {
+                        if #available(iOS 17.0, *) {
+                            $0.transition(.blurReplace)
+                        }
+                    }
             }
         }
         .padding(.vertical, 10)

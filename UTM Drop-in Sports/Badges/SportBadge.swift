@@ -238,12 +238,12 @@ struct SportMedallionDisplay: View {
         }
         .buttonStyle(.plain)
         .sheet(isPresented: $showingSheet) {
-            if #available(iOS 18.0, *) {
-                SportMedalSheet(medal: medal, colorPrimary: medal.colorPrimary, colorSecondary: medal.colorSecondary, showingSheet: $showingSheet)
-                    .navigationTransition(.zoom(sourceID: medal.category, in: animation))
-            } else {
-                SportMedalSheet(medal: medal, colorPrimary: medal.colorPrimary, colorSecondary: medal.colorSecondary, showingSheet: $showingSheet)
-            }
+            SportMedalSheet(medal: medal, colorPrimary: medal.colorPrimary, colorSecondary: medal.colorSecondary, showingSheet: $showingSheet)
+                .apply {
+                    if #available(iOS 18.0, *) {
+                        $0.navigationTransition(.zoom(sourceID: medal.category, in: animation))
+                    }
+                }
         }
     }
 }

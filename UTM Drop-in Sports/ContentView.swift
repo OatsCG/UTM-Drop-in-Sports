@@ -41,11 +41,7 @@ struct ContentView: View {
         }
         .onAppear {
             Task {
-                if #available(iOS 16.0, *) {
-                    try? await Task.sleep(for: .seconds(5))
-                } else {
-                    try? await Task.sleep(nanoseconds: 5_000_000_000)
-                }
+                try? await Task.sleep(nanoseconds: 5_000_000_000)
                 await MainActor.run {
                     if (categoryParser.isUpdating) {
                         withAnimation {
@@ -71,46 +67,21 @@ struct MainNavigationView: View {
     @Binding var showNetworkAlert: Bool
     var body: some View {
         NavigationStack(path: $path) {
-            if #available(iOS 17.0, *) {
-                MainScrollView(showNetworkAlert: $showNetworkAlert)
-                    .safeAreaPadding(.horizontal)
-                    .navigationTitle(Text("UTM Sports"))
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            NavigationLink(destination: DisplayCase()) {
-                                Image(.medal)
-                                    .foregroundColor(.primary)
-                            }
-                        }
-//                        ToolbarItem(placement: .navigationBarLeading) {
-//                            Button(action: {
-//                                withAnimation {
-//                                    if prefersDarkMode == "auto" {
-//                                        prefersDarkMode = "dark"
-//                                    } else if prefersDarkMode == "dark" {
-//                                        prefersDarkMode = "light"
-//                                    } else {
-//                                        prefersDarkMode = "auto"
-//                                    }
-//                                }
-//                            }) {
-//                                Image(systemName: prefersDarkMode == "auto" ? "moon" : (prefersDarkMode == "dark" ? "moon.fill" : "sun.max.fill"))
-//                                    .foregroundColor(.primary)
-//                            }
-//                        }
+            MainScrollView(showNetworkAlert: $showNetworkAlert)
+                .apply {
+                    if #available(iOS 17.0, *) {
+                        $0.safeAreaPadding(.horizontal)
                     }
-            } else {
-                MainScrollView(showNetworkAlert: $showNetworkAlert)
-                    .navigationTitle(Text("UTM Sports"))
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            NavigationLink(destination: DisplayCase()) {
-                                Image(.medal)
-                                    .foregroundColor(.primary)
-                            }
+                }
+                .navigationTitle(Text("UTM Sports"))
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        NavigationLink(destination: DisplayCase()) {
+                            Image(.medal)
+                                .foregroundColor(.primary)
                         }
                     }
-            }
+                }
         }
     }
 }
@@ -206,12 +177,12 @@ struct MainScrollView: View {
                 SiriTipView(intent: GetNextSportInfo(), isVisible: $isTipVisible)
                     .siriTipViewStyle(.automatic)
             }
-            if #available(iOS 17.0, *) {
-                MainScrollContentView(showNetworkAlert: $showNetworkAlert)
-            } else {
-                MainScrollContentView(showNetworkAlert: $showNetworkAlert)
-                    .padding(.horizontal)
-            }
+            MainScrollContentView(showNetworkAlert: $showNetworkAlert)
+                .apply {
+                    if #available(iOS 17.0, *) {
+                        $0.padding(.horizontal)
+                    }
+                }
         }
     }
 }
@@ -279,4 +250,9 @@ struct LoadMoreEventsButton: View {
             }
         }
     }
+}
+
+
+extension View {
+    func apply<V: View>(@ViewBuilder _ block: (Self) -> V) -> V { block(self) }
 }

@@ -36,12 +36,12 @@ struct SportChips: View {
                         }) {
                             HStack {
                                 Text("Saved")
-                                if #available(iOS 17.0, *) {
-                                    Image(systemName: categoryParser.onlySaved ? "bookmark.fill" : "bookmark")
-                                        .contentTransition(.symbolEffect(.replace.offUp))
-                                } else {
-                                    Image(systemName: categoryParser.onlySaved ? "bookmark.fill" : "bookmark")
-                                }
+                                Image(systemName: categoryParser.onlySaved ? "bookmark.fill" : "bookmark")
+                                    .apply {
+                                        if #available(iOS 17.0, *) {
+                                            $0.contentTransition(.symbolEffect(.replace.offUp))
+                                        }
+                                    }
                             }
                             .foregroundStyle(categoryParser.onlySaved ? .black : (colorScheme == .dark ? .white : .black))
                             .padding(.horizontal, 14)
@@ -131,12 +131,12 @@ struct WomensOnlyButton: View {
         }) {
             HStack {
                 Text("Women's Only")
-                if #available(iOS 17.0, *) {
-                    Image(systemName: categoryParser.onlyWomens ? "checkmark.square" : "square")
-                        .contentTransition(.symbolEffect(.replace.offUp))
-                } else {
-                    Image(systemName: categoryParser.onlyWomens ? "checkmark.square" : "square")
-                }
+                Image(systemName: categoryParser.onlyWomens ? "checkmark.square" : "square")
+                    .apply {
+                        if #available(iOS 17.0, *) {
+                            $0.contentTransition(.symbolEffect(.replace.offUp))
+                        }
+                    }
             }
             .foregroundStyle(categoryParser.onlyWomens ? .black : (colorScheme == .dark ? .white : .black))
             .padding(.horizontal, 14)
@@ -175,12 +175,12 @@ struct PrideOnlyButton: View {
         }) {
             HStack {
                 Text("LGBT+ Only")
-                if #available(iOS 17.0, *) {
-                    Image(systemName: categoryParser.onlyLGBT ? "checkmark.square" : "square")
-                        .contentTransition(.symbolEffect(.replace.offUp))
-                } else {
-                    Image(systemName: categoryParser.onlyLGBT ? "checkmark.square" : "square")
-                }
+                Image(systemName: categoryParser.onlyLGBT ? "checkmark.square" : "square")
+                    .apply {
+                        if #available(iOS 17.0, *) {
+                            $0.contentTransition(.symbolEffect(.replace.offUp))
+                        }
+                    }
             }
             .foregroundStyle(categoryParser.onlyLGBT ? .black : (colorScheme == .dark ? .white : .black))
             .padding(.horizontal, 14)

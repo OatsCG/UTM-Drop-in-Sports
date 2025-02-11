@@ -73,14 +73,13 @@ struct EventCardContent: View {
                         }
                         if event.relativeTimeDate.isOngoing {
                             HStack {
-                                if #available(iOS 18.0, *) {
-                                    Image(systemName: "record.circle")
-                                        .font(.caption2)
-                                        .symbolEffect(.pulse .byLayer, options: .repeat(.continuous))
-                                } else {
-                                    Image(systemName: "record.circle")
-                                        .font(.caption2)
-                                }
+                                Image(systemName: "record.circle")
+                                    .font(.caption2)
+                                    .apply {
+                                        if #available(iOS 18.0, *) {
+                                            $0.symbolEffect(.pulse .byLayer, options: .repeat(.continuous))
+                                        }
+                                    }
                                 Text("Ongoing")
                             }
                             .foregroundStyle(.green)
@@ -108,28 +107,32 @@ struct EventCardContent: View {
         }
         .padding(15)
         .background {
-            if #available(iOS 17.0, *) {
-                if event.saved && event.relativeTimeDate.isOngoing {
-                    RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous)
-                        .fill(
-                            .blueUTMbg.gradient.opacity(0.3)
-                        )
-                        .stroke(.tertiary, lineWidth: 2)
-                } else {
-                    RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous)
-                        .fill(.white.opacity(0.05))
-                        .stroke(.tertiary, lineWidth: 2)
-                }
+            if event.saved && event.relativeTimeDate.isOngoing {
+                RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous)
+                    .apply {
+                        if #available(iOS 17.0, *) {
+                            $0
+                                .fill(.blueUTMbg.gradient.opacity(0.3))
+                                .stroke(.tertiary, lineWidth: 2)
+                        } else {
+                            $0
+                                .strokeBorder(.tertiary, lineWidth: 2)
+                                .background(RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous).fill(.blueUTMbg.opacity(0.3)))
+                        }
+                    }
             } else {
-                if event.saved && event.relativeTimeDate.isOngoing {
-                    RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous)
-                        .strokeBorder(.tertiary, lineWidth: 2)
-                        .background(RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous).fill(.blueUTMbg.opacity(0.3)))
-                } else {
-                    RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous)
-                        .strokeBorder(.tertiary, lineWidth: 2)
-                        .background(RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous).fill(.white.opacity(0.05)))
-                }
+                RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous)
+                    .apply {
+                        if #available(iOS 17.0, *) {
+                            $0
+                                .fill(.white.opacity(0.05))
+                                .stroke(.tertiary, lineWidth: 2)
+                        } else {
+                            $0
+                                .strokeBorder(.tertiary, lineWidth: 2)
+                                .background(RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous).fill(.white.opacity(0.05)))
+                        }
+                    }
             }
         }
         .contentShape(RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous))

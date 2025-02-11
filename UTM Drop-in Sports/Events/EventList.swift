@@ -89,7 +89,6 @@ struct EventDaySection: View {
     var body: some View {
         if #available(iOS 17.0, *) {
             Section(isExpanded: $isExpanded) {
-//                DynamicGridViewEC(day: $day, columnCount: $columnCount, columns: $columns, cellWidth: $cellWidth)
                 ForEach($day.events, id: \.id) { $event in
                     EventCard(event: $event)
                         .transition(.blurReplace)

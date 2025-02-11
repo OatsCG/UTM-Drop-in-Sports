@@ -118,21 +118,21 @@ struct EventCardActive: View {
         Button(action: {
             showingSheet = true
         }) {
-            if #available(iOS 18.0, *) {
-                EventCardContentActive(event: $event)
-                    .matchedTransitionSource(id: event.id, in: animation)
-            } else {
-                EventCardContentActive(event: $event)
-            }
+            EventCardContentActive(event: $event)
+                .apply {
+                    if #available(iOS 18.0, *) {
+                        $0.matchedTransitionSource(id: event.id, in: animation)
+                    }
+                }
         }
         .buttonStyle(PlainButtonStyle())
         .sheet(isPresented: $showingSheet) {
-            if #available(iOS 18.0, *) {
-                EventContentActive(showingSheet: $showingSheet, event: $event)
-                    .navigationTransition(.zoom(sourceID: event.id, in: animation))
-            } else {
-                EventContentActive(showingSheet: $showingSheet, event: $event)
-            }
+            EventContentActive(showingSheet: $showingSheet, event: $event)
+                .apply {
+                    if #available(iOS 18.0, *) {
+                        $0.navigationTransition(.zoom(sourceID: event.id, in: animation))
+                    }
+                }
         }
     }
 }
@@ -304,14 +304,13 @@ struct EventCardContentActiveBody: View {
                             }
                             if event.relativeTimeDate.isOngoing {
                                 HStack {
-                                    if #available(iOS 18.0, *) {
-                                        Image(systemName: "record.circle")
-                                            .font(.caption2)
-                                            .symbolEffect(.pulse .byLayer, options: .repeat(.continuous))
-                                    } else {
-                                        Image(systemName: "record.circle")
-                                            .font(.caption2)
-                                    }
+                                    Image(systemName: "record.circle")
+                                        .font(.caption2)
+                                        .apply {
+                                            if #available(iOS 18.0, *) {
+                                                $0.symbolEffect(.pulse .byLayer, options: .repeat(.continuous))
+                                            }
+                                        }
                                     Text("Ongoing")
                                 }
                                 .foregroundStyle(.green)
@@ -414,16 +413,14 @@ struct MedalAcceptanceSheet: View {
                         .id(confettiCount)
                     Text(CategoryToDisplayRepresentation(medal.category))
                         .font(.largeTitle .bold())
-                    if #available(iOS 16.0, *) {
-                        Text("Sessions: \(medal.events.count)")
-                            .font(.title2 .bold())
-                            .padding(.bottom, 25)
-                            .contentTransition(.numericText())
-                    } else {
-                        Text("Sessions: \(medal.events.count)")
-                            .font(.title2 .bold())
-                            .padding(.bottom, 25)
-                    }
+                    Text("Sessions: \(medal.events.count)")
+                        .font(.title2 .bold())
+                        .padding(.bottom, 25)
+                        .apply {
+                            if #available(iOS 16.0, *) {
+                                $0.contentTransition(.numericText())
+                            }
+                        }
                     Button(action: {
                         acceptMedal()
                     }) {

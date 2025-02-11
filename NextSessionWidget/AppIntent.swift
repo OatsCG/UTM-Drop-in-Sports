@@ -60,13 +60,6 @@ enum CategoryOption: String, AppEnum {
             .walks: "UTM Walks"
         ]
     }
-    
-//    var displayRepresentation: String {
-//        if #available(iOS 16, *), let representation = Self.caseDisplayRepresentations[self] {
-//            return representation.title
-//        }
-//        return rawValue // Fallback for iOS versions below 16.0
-//    }
 }
 
 func CategoryToDisplayRepresentation(_ category: String) -> String {

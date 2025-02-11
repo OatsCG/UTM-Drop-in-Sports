@@ -15,21 +15,21 @@ struct EventCard: View {
         Button(action: {
             showingSheet = true
         }) {
-            if #available(iOS 18.0, *) {
-                EventCardContent(event: $event)
-                    .matchedTransitionSource(id: event.id, in: animation)
-            } else {
-                EventCardContent(event: $event)
-            }
+            EventCardContent(event: $event)
+                .apply {
+                    if #available(iOS 18.0, *) {
+                        $0.matchedTransitionSource(id: event.id, in: animation)
+                    }
+                }
         }
         .buttonStyle(PlainButtonStyle())
         .sheet(isPresented: $showingSheet) {
-            if #available(iOS 18.0, *) {
-                EventContent(showingSheet: $showingSheet, event: $event)
-                    .navigationTransition(.zoom(sourceID: event.id, in: animation))
-            } else {
-                EventContent(showingSheet: $showingSheet, event: $event)
-            }
+            EventContent(showingSheet: $showingSheet, event: $event)
+                .apply {
+                    if #available(iOS 18.0, *) {
+                        $0.navigationTransition(.zoom(sourceID: event.id, in: animation))
+                    }
+                }
         }
     }
 }
@@ -87,7 +87,6 @@ struct EventCardContentSiri: View {
                         HStack {
                             if #available(iOS 18.0, *) {
                                 Image(systemName: event.relativeTimeDate.daySymbol)
-                                    //.symbolVariant(.fill)
                                     .foregroundStyle(event.relativeTimeDate.daySymbolColor.mix(with: .primary, by: 0.1))
                             } else {
                                 if #available(iOS 16.0, *) {
@@ -102,14 +101,13 @@ struct EventCardContentSiri: View {
                         }
                         if event.relativeTimeDate.isOngoing {
                             HStack {
-                                if #available(iOS 18.0, *) {
-                                    Image(systemName: "record.circle")
-                                        .font(.caption2)
-                                        .symbolEffect(.pulse .byLayer, options: .repeat(.continuous))
-                                } else {
-                                    Image(systemName: "record.circle")
-                                        .font(.caption2)
-                                }
+                                Image(systemName: "record.circle")
+                                    .font(.caption2)
+                                    .apply {
+                                        if #available(iOS 18.0, *) {
+                                            $0.symbolEffect(.pulse .byLayer, options: .repeat(.continuous))
+                                        }
+                                    }
                                 Text("Ongoing")
                             }
                             .foregroundStyle(.green)
@@ -137,17 +135,6 @@ struct EventCardContentSiri: View {
         }
         .padding(15)
         .background(.regularMaterial)
-//        .background {
-//            if #available(iOS 17.0, *) {
-//                RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous)
-//                    .fill(.white.opacity(0.05))
-//                    .stroke(.tertiary, lineWidth: 2)
-//            } else {
-//                RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous)
-//                    .strokeBorder(.tertiary, lineWidth: 2)
-//                    .background(RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous).fill(.white.opacity(0.05)))
-//            }
-//        }
         .contentShape(RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous))
         .clipShape(RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous))
     }
