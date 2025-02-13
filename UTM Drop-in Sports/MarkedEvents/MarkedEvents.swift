@@ -29,6 +29,13 @@ struct SavedEvents: View {
                         ForEach($categoryParser.savedOngoingEvents, id: \.id) { $event in
                             EventCardActive(event: $event)
                         }
+                        .apply {
+                            if #available(iOS 17.0, *) {
+                                $0
+                            } else {
+                                $0.padding(.horizontal)
+                            }
+                        }
                     } header: {
                         SavedEventsHeader(isExpanded: $isExpanded)
                     }
@@ -122,6 +129,8 @@ struct EventCardActive: View {
                 .apply {
                     if #available(iOS 18.0, *) {
                         $0.matchedTransitionSource(id: event.id, in: animation)
+                    } else {
+                        $0
                     }
                 }
         }
@@ -131,6 +140,8 @@ struct EventCardActive: View {
                 .apply {
                     if #available(iOS 18.0, *) {
                         $0.navigationTransition(.zoom(sourceID: event.id, in: animation))
+                    } else {
+                        $0
                     }
                 }
         }
@@ -309,6 +320,8 @@ struct EventCardContentActiveBody: View {
                                         .apply {
                                             if #available(iOS 18.0, *) {
                                                 $0.symbolEffect(.pulse .byLayer, options: .repeat(.continuous))
+                                            } else {
+                                                $0
                                             }
                                         }
                                     Text("Ongoing")
@@ -419,6 +432,8 @@ struct MedalAcceptanceSheet: View {
                         .apply {
                             if #available(iOS 16.0, *) {
                                 $0.contentTransition(.numericText())
+                            } else {
+                                $0
                             }
                         }
                     Button(action: {

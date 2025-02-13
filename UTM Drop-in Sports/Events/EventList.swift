@@ -44,12 +44,6 @@ struct EventList: View {
                 }
                 GeometryReader { geometry in
                     Rectangle().fill(.clear)
-                        .onAppear {
-//                            updateColumns(geometry.size.width)
-                        }
-//                        .onChange(of: geometry.size.width) { newValue in
-//                            updateColumns(geometry.size.width)
-//                        }
                 }
             }
         }
@@ -100,6 +94,13 @@ struct EventDaySection: View {
             Section(header: EventDayHeader(isExpanded: $isExpanded, day: day)) {
                 ForEach($day.events, id: \.id) { $event in
                     EventCard(event: $event)
+                }
+                .apply {
+                    if #available(iOS 17.0, *) {
+                        $0
+                    } else {
+                        $0.padding(.horizontal)
+                    }
                 }
             }
         }
@@ -208,6 +209,13 @@ struct EventDayHeader: View {
                 }
             }
             .padding(.vertical, 10)
+            .apply {
+                if #available(iOS 17.0, *) {
+                    $0
+                } else {
+                    $0.padding(.horizontal)
+                }
+            }
         }
         .background {
             Group {

@@ -19,6 +19,8 @@ struct EventCard: View {
                 .apply {
                     if #available(iOS 18.0, *) {
                         $0.matchedTransitionSource(id: event.id, in: animation)
+                    } else {
+                        $0
                     }
                 }
         }
@@ -28,6 +30,8 @@ struct EventCard: View {
                 .apply {
                     if #available(iOS 18.0, *) {
                         $0.navigationTransition(.zoom(sourceID: event.id, in: animation))
+                    } else {
+                        $0
                     }
                 }
         }
@@ -106,6 +110,8 @@ struct EventCardContentSiri: View {
                                     .apply {
                                         if #available(iOS 18.0, *) {
                                             $0.symbolEffect(.pulse .byLayer, options: .repeat(.continuous))
+                                        } else {
+                                            $0
                                         }
                                     }
                                 Text("Ongoing")

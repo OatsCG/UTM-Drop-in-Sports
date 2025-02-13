@@ -78,6 +78,8 @@ struct EventCardContent: View {
                                     .apply {
                                         if #available(iOS 18.0, *) {
                                             $0.symbolEffect(.pulse .byLayer, options: .repeat(.continuous))
+                                        } else {
+                                            $0
                                         }
                                     }
                                 Text("Ongoing")

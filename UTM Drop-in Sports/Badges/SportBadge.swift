@@ -242,6 +242,8 @@ struct SportMedallionDisplay: View {
                 .apply {
                     if #available(iOS 18.0, *) {
                         $0.navigationTransition(.zoom(sourceID: medal.category, in: animation))
+                    } else {
+                        $0
                     }
                 }
         }

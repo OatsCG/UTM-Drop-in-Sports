@@ -40,6 +40,8 @@ struct SportChips: View {
                                     .apply {
                                         if #available(iOS 17.0, *) {
                                             $0.contentTransition(.symbolEffect(.replace.offUp))
+                                        } else {
+                                            $0
                                         }
                                     }
                             }
@@ -135,6 +137,8 @@ struct WomensOnlyButton: View {
                     .apply {
                         if #available(iOS 17.0, *) {
                             $0.contentTransition(.symbolEffect(.replace.offUp))
+                        } else {
+                            $0
                         }
                     }
             }
@@ -179,6 +183,8 @@ struct PrideOnlyButton: View {
                     .apply {
                         if #available(iOS 17.0, *) {
                             $0.contentTransition(.symbolEffect(.replace.offUp))
+                        } else {
+                            $0
                         }
                     }
             }

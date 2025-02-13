@@ -24,6 +24,8 @@ struct SportChip: View {
                     .apply {
                         if #available(iOS 17.0, *) {
                             $0.symbolEffect(.bounce, value: category.selected)
+                        } else {
+                            $0
                         }
                     }
                 Text(CategoryToDisplayRepresentation(category.title))

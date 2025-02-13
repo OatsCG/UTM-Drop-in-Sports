@@ -71,6 +71,8 @@ struct MainNavigationView: View {
                 .apply {
                     if #available(iOS 17.0, *) {
                         $0.safeAreaPadding(.horizontal)
+                    } else {
+                        $0
                     }
                 }
                 .navigationTitle(Text("UTM Sports"))
@@ -178,11 +180,7 @@ struct MainScrollView: View {
                     .siriTipViewStyle(.automatic)
             }
             MainScrollContentView(showNetworkAlert: $showNetworkAlert)
-                .apply {
-                    if #available(iOS 17.0, *) {
-                        $0.padding(.horizontal)
-                    }
-                }
+                
         }
     }
 }
@@ -216,9 +214,30 @@ struct MainScrollContentView: View {
         } else {
             VStack {
                 Announcements()
+                    .apply {
+                        if #available(iOS 17.0, *) {
+                            $0
+                        } else {
+                            $0.padding(.horizontal)
+                        }
+                    }
                 FeaturedEvents()
+                    .apply {
+                        if #available(iOS 17.0, *) {
+                            $0
+                        } else {
+                            $0.padding(.horizontal)
+                        }
+                    }
                 SportChips()
                     .padding(.vertical, 10)
+                    .apply {
+                        if #available(iOS 17.0, *) {
+                            $0
+                        } else {
+                            $0.padding(.horizontal)
+                        }
+                    }
                 EventList()
                 LoadMoreEventsButton()
                     .padding(.top, 10)

@@ -69,6 +69,8 @@ struct FeaturedEventsList: View {
                     .apply {
                         if #available(iOS 17.0, *) {
                             $0.transition(.blurReplace)
+                        } else {
+                            $0
                         }
                     }
             }
