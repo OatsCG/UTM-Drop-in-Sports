@@ -131,7 +131,7 @@ struct EventCardContent: View {
                                 .stroke(.tertiary, lineWidth: 2)
                         } else {
                             $0
-                                .strokeBorder(.tertiary, lineWidth: 2)
+                                .strokeBorder(.tertiary.opacity(0.5), lineWidth: 2)
                                 .background(RoundedRectangle(cornerSize: .init(width: 15, height: 15), style: .continuous).fill(.white.opacity(0.05)))
                         }
                     }

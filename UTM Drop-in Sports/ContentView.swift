@@ -68,13 +68,7 @@ struct MainNavigationView: View {
     var body: some View {
         NavigationStack(path: $path) {
             MainScrollView(showNetworkAlert: $showNetworkAlert)
-                .apply {
-                    if #available(iOS 17.0, *) {
-                        $0.safeAreaPadding(.horizontal)
-                    } else {
-                        $0
-                    }
-                }
+                
                 .navigationTitle(Text("UTM Sports"))
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
@@ -178,9 +172,22 @@ struct MainScrollView: View {
             if #available(iOS 16.0, *) {
                 SiriTipView(intent: GetNextSportInfo(), isVisible: $isTipVisible)
                     .siriTipViewStyle(.automatic)
+                    .apply {
+                        if #available(iOS 17.0, *) {
+                            $0
+                        } else {
+                            $0.padding(.horizontal)
+                        }
+                    }
             }
             MainScrollContentView(showNetworkAlert: $showNetworkAlert)
-                
+                .apply {
+                    if #available(iOS 17.0, *) {
+                        $0.safeAreaPadding(.horizontal)
+                    } else {
+                        $0
+                    }
+                }
         }
     }
 }
