@@ -128,10 +128,11 @@ class Event: ObservableObject, Decodable, Hashable {
         sortCategory = (try? values?.decode(String.self, forKey: .sortCategory)) ?? ""
         symbol = (try? values?.decode(String.self, forKey: .symbol)) ?? ""
         womens = (try? values?.decode(Bool.self, forKey: .womens)) ?? false
+        lgbt = (try? values?.decode(Bool.self, forKey: .lgbt)) ?? false
+        bipoc = (try? values?.decode(Bool.self, forKey: .bipoc)) ?? false
         weeklyRepetitions = (try? values?.decode([String].self, forKey: .weeklyRepetitions)) ?? []
         relativeTimeDate = formatDateRange(startDate: start_date, endDate: end_date)
         saved = false
-        lgbt = self.description.contains("LGBT") || self.description.contains("LGTB") || self.description.contains("2SL")
     }
     
     private enum CodingKeys: String, CodingKey {
@@ -148,6 +149,8 @@ class Event: ObservableObject, Decodable, Hashable {
         case sortCategory
         case symbol
         case womens
+        case lgbt
+        case bipoc
         case weeklyRepetitions
     }
   
@@ -166,8 +169,9 @@ class Event: ObservableObject, Decodable, Hashable {
     let sortCategory: String
     let symbol: String
     let womens: Bool
-    let weeklyRepetitions: [String]
     let lgbt: Bool
+    let bipoc: Bool
+    let weeklyRepetitions: [String]
 }
 
 
