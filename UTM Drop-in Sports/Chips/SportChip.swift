@@ -40,7 +40,7 @@ struct SportChip: View {
                 .padding(.vertical, 8)
                 .background {
                     Capsule(style: .circular)
-                        .strokeBorder(.quaternary, lineWidth: (colorScheme == .dark && !category.selected) ? 1 : 2)
+                        .strokeBorder(.quaternary, lineWidth: (colorScheme == .dark && !category.selected) ? 1 : 1)
                         .background(Capsule(style: .circular).fill(category.selected ? .primaryUTM : (colorScheme == .dark ? .white.opacity(0.05) : .white)))
                 }
         }

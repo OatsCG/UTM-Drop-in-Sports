@@ -192,7 +192,7 @@ struct EventDayHeader: View {
                             if #available(iOS 17.0, *) {
                                 Image(systemName: isExpanded ? "chevron.up.circle" : "chevron.down.circle")
                                     .font(.title2)
-                                    .foregroundStyle(.secondary)
+                                    .foregroundStyle(.tertiary)
                             }
                         }
                         .contentShape(Rectangle())

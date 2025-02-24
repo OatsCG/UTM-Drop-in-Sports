@@ -10,7 +10,7 @@ import SwiftUI
 struct FeaturedEvents: View {
     @Environment(\.colorScheme) private var colorScheme
     @EnvironmentObject var categoryParser: CategoryParser
-    @State var isExpanded: Bool = true
+    @State var isExpanded: Bool = false
     
     var body: some View {
         if !categoryParser.featuredEvents.isEmpty {
