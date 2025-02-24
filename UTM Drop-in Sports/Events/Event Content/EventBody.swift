@@ -23,7 +23,7 @@ struct EventBody: View {
                     HStack(alignment: .top) {
                         Image("figure.stand.dress")
                             .foregroundStyle(.pinkUTM)
-                        Text("This session is designed for female-identifying students.")
+                        Text("This is a **Women's Only** session.")
                             .multilineTextAlignment(.leading)
                             .foregroundStyle(.secondary)
                     }
@@ -39,7 +39,23 @@ struct EventBody: View {
                                     .opacity(colorScheme == .dark ? 0.25 : 0.15)
                                 
                             }
-                        Text("This session is designed for 2SLGBTQ+ students.")
+                        Text("This is a **Pride Sports** session.")
+                            .multilineTextAlignment(.leading)
+                            .foregroundStyle(.secondary)
+                    }
+                        .font(.footnote)
+                }
+                if event.bipoc {
+                    HStack(alignment: .top) {
+                        Image(systemName: "star.fill")
+                            .foregroundStyle(AngularGradient(colors: [.red, .orange, .brown, .orange, .red], center: .center))
+                            .overlay {
+                                Image(systemName: "star.fill")
+                                    .foregroundStyle(colorScheme == .dark ? .white : .black)
+                                    .opacity(colorScheme == .dark ? 0.25 : 0.15)
+                                
+                            }
+                        Text("This is a **BIPOC Sports** session.")
                             .multilineTextAlignment(.leading)
                             .foregroundStyle(.secondary)
                     }

@@ -236,10 +236,13 @@
         }
       }
     },
-    "This session is designed for 2SLGBTQ+ students." : {
+    "This is a **BIPOC Sports** session." : {
 
     },
-    "This session is designed for female-identifying students." : {
+    "This is a **Pride Sports** session." : {
+
+    },
+    "This is a **Women's Only** session." : {
 
     },
     "This will clear all your progress. This cannot be undone." : {
