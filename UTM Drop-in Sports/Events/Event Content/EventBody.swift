@@ -47,7 +47,9 @@ struct EventBody: View {
                 }
                 if event.bipoc {
                     HStack(alignment: .top) {
-                        Image(systemName: "star.fill")
+                        Image(.handsbipoc)
+                            .resizable()
+                            .frame(width: 14, height: 14)
                             .foregroundStyle(AngularGradient(colors: [.brown], center: .center))
                             .overlay {
                                 Image(systemName: "star.fill")
