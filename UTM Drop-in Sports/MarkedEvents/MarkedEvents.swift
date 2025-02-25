@@ -466,15 +466,22 @@ struct MedalAcceptanceSheet: View {
     var body: some View {
         VStack {
             GeometryReader { geo in
-                Color.clear
+                VStack {
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        Color.clear
+                        Spacer()
+                    }
+                    Spacer()
+                }
                     .onAppear {
-                        self.size = min(geo.size.width, geo.size.height)
+                        self.size = min(abs(geo.size.width * 0.8), abs(geo.size.height * 0.4))
                     }
                     .onChange(of: geo.size) { _ in
-                        self.size = min(geo.size.width, geo.size.height)
+                        self.size = min(abs(geo.size.width * 0.8), abs(geo.size.height * 0.4))
                     }
             }
-            .padding(50)
             .overlay {
                 VStack {
                     PickRotatingMedalType(size: $size, rotation: $rotation, medal: $medal)
