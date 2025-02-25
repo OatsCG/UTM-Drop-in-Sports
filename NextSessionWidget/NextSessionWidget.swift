@@ -24,10 +24,17 @@ struct Provider: AppIntentTimelineProvider {
         let sportToRun: String? = configuration.category?.rawValue
         
         let satisfiedEvents: [Event] = events.filter { $0.sortCategory == sportToRun }
-        
+        var lastEndDate: Date = Date()
         for event in satisfiedEvents.prefix(5) {
-            let entry = SimpleEntry(date: event.relativeTimeDate.startDate, configuration: configuration, event: event)
+            let entry = SimpleEntry(date: lastEndDate, configuration: configuration, event: event)
+            let entry2 = SimpleEntry(date: event.relativeTimeDate.startDate, configuration: configuration, event: event)
             entries.append(entry)
+            entries.append(entry2)
+            if let soonDate = Calendar.current.date(byAdding: .hour, value: -1, to: event.relativeTimeDate.startDate) {
+                let entry3 = SimpleEntry(date: soonDate, configuration: configuration, event: event)
+                entries.append(entry3)
+            }
+            lastEndDate = event.relativeTimeDate.endDate
         }
 
         return Timeline(entries: entries, policy: .atEnd)

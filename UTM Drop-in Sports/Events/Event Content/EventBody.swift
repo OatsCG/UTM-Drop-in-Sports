@@ -23,7 +23,7 @@ struct EventBody: View {
                     HStack(alignment: .top) {
                         Image("figure.stand.dress")
                             .foregroundStyle(.pinkUTM)
-                        Text("This is a **Women's Only** session.")
+                        Text("This is a **Women's Only** session")
                             .multilineTextAlignment(.leading)
                             .foregroundStyle(.secondary)
                     }
@@ -39,7 +39,7 @@ struct EventBody: View {
                                     .opacity(colorScheme == .dark ? 0.25 : 0.15)
                                 
                             }
-                        Text("This is a **Pride Sports** session.")
+                        Text("This is a **Pride Sports** session")
                             .multilineTextAlignment(.leading)
                             .foregroundStyle(.secondary)
                     }
@@ -48,14 +48,14 @@ struct EventBody: View {
                 if event.bipoc {
                     HStack(alignment: .top) {
                         Image(systemName: "star.fill")
-                            .foregroundStyle(AngularGradient(colors: [.red, .orange, .brown, .orange, .red], center: .center))
+                            .foregroundStyle(AngularGradient(colors: [.brown], center: .center))
                             .overlay {
                                 Image(systemName: "star.fill")
                                     .foregroundStyle(colorScheme == .dark ? .white : .black)
                                     .opacity(colorScheme == .dark ? 0.25 : 0.15)
                                 
                             }
-                        Text("This is a **BIPOC Sports** session.")
+                        Text("This is a **BIPOC Sports** session")
                             .multilineTextAlignment(.leading)
                             .foregroundStyle(.secondary)
                     }
@@ -64,6 +64,7 @@ struct EventBody: View {
                 if event.weeklyRepetitions.count > 0 {
                     HStack {
                         Image(systemName: "arrow.clockwise")
+                            .font(.footnote .bold())
                         Text("Repeats every \(repetitionString(event.weeklyRepetitions))")
                             .multilineTextAlignment(.leading)
                         Spacer()
@@ -74,6 +75,22 @@ struct EventBody: View {
             }
             .padding(.bottom, 10)
         }
+        
+        // PUT HSTACK HERE
+        HStack {
+            if let url = URL(string: event.url) {
+                Link(destination: url) {
+                    Text("Open \(Image(systemName: "arrow.up.right.square"))")
+                }
+            }
+            Spacer()
+            if let url = URL(string: event.ticket_url) {
+                Link(destination: url) {
+                    Text(event.ticket_label)
+                }
+            }
+        }
+        .padding(.bottom, 25)
         
         if event.saved {
             Button(action: {
@@ -104,36 +121,31 @@ struct EventBody: View {
             }
             .padding(.bottom, 30)
         } else {
-            Button(action: {
-                categoryParser.saveEvent(event: event)
-                notificationManager.scheduleNotification(event: event)
-            }) {
-                HStack {
-                    Text("Save This Session")
-                    Image(systemName: "bookmark")
+            VStack(alignment: .center) {
+                Button(action: {
+                    categoryParser.saveEvent(event: event)
+                    notificationManager.scheduleNotification(event: event)
+                }) {
+                    HStack {
+                        Text("Save This Session")
+                        Image(systemName: "bookmark")
+                    }
+                        .foregroundStyle(.black)
+                        .padding(.vertical, 6)
+                        .padding(.horizontal, 12)
+                        .background(.blueUTMlight)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
                 }
-                    .foregroundStyle(.black)
-                    .padding(.vertical, 6)
-                    .padding(.horizontal, 12)
-                    .background(.blueUTMlight)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                .padding(.bottom, 10)
+                if !categoryParser.allCategories.filter({ $0.isMedal && $0.title == event.sortCategory }).isEmpty {
+                    Text("Save this session to earn a **\(event.sortCategory)** medal after participating")
+                        .foregroundStyle(.tertiary)
+                        .font(.caption)
+                        .lineLimit(2)
+                        .multilineTextAlignment(.center)
+                }
             }
             .padding(.bottom, 30)
-        }
-        
-        
-        HStack {
-            if let url = URL(string: event.url) {
-                Link(destination: url) {
-                    Text("Open \(Image(systemName: "arrow.up.right.square"))")
-                }
-            }
-            Spacer()
-            if let url = URL(string: event.ticket_url) {
-                Link(destination: url) {
-                    Text(event.ticket_label)
-                }
-            }
         }
     }
 }
