@@ -60,28 +60,39 @@ struct SavedEvents: View {
                                     }
                                 }) {
                                     Image(systemName: "xmark")
-                                        .foregroundStyle(.secondary)
+                                        .foregroundStyle(.tertiary)
                                 }
                                 .buttonStyle(.plain)
                             }
-                            .padding(.bottom, 8)
+                            .padding(.top, 8)
                             .font(.callout)
                             Text("Save sessions to participate and earn medals!")
                                 .foregroundStyle(.secondary)
                                 .multilineTextAlignment(.center)
                                 .font(.callout)
                                 .padding(.bottom, 5)
-                                .padding(.horizontal, 8)
+                                .padding(.horizontal, 30)
                             Text("Active Sessions will show here. When a saved session ends, mark it as complete to collect your medal.")
                                 .foregroundStyle(.secondary)
                                 .multilineTextAlignment(.center)
                                 .font(.caption)
-                                .padding(.horizontal, 8)
+                                .padding(.horizontal, 30)
                         }
                         Spacer()
                     }
-                    .padding(.horizontal, 15)
-                    .padding(.vertical, 15)
+                    .padding(.bottom, 15)
+                    .background {
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.gray.opacity(0.2), lineWidth: 1)
+                    }
+                    .padding(.bottom, 15)
+                    .apply {
+                        if #available(iOS 17.0, *) {
+                            $0
+                        } else {
+                            $0.padding(.horizontal)
+                        }
+                    }
                 }
             }
         }
@@ -89,29 +100,74 @@ struct SavedEvents: View {
 }
 
 struct SavedEventsHeader: View {
+    @Environment(\.colorScheme) private var colorScheme
     @Binding var isExpanded: Bool
     var body: some View {
-        Button(action: {
-            withAnimation {
-                isExpanded.toggle()
-            }
-        }) {
-            HStack {
+        VStack {
+            VStack {
                 HStack {
-                    Image(systemName: "bookmark")
-                    Text("Active Sessions")
-                }
-                .font(.title .bold())
-                Spacer()
-                if #available(iOS 17.0, *) {
-                    Image(systemName: isExpanded ? "chevron.up.circle" : "chevron.down.circle")
-                        .font(.title2)
-                        .foregroundStyle(.secondary)
+                    Button(action: {
+                        withAnimation {
+                            isExpanded.toggle()
+                        }
+                    }) {
+                        HStack {
+                            HStack {
+                                Image(systemName: "bookmark")
+                                Text("Active Sessions")
+                            }
+                            .font(.title.bold())
+                            Spacer()
+                            if #available(iOS 17.0, *) {
+                                Image(systemName: isExpanded ? "chevron.up.circle" : "chevron.down.circle")
+                                    .font(.title2)
+                                    .foregroundStyle(.tertiary)
+                            }
+                        }
+                        .contentShape(Rectangle())
+                    }
+                    .buttonStyle(.plain)
                 }
             }
-            .contentShape(Rectangle())
+            .padding(.vertical, 10)
+            .apply {
+                if #available(iOS 17.0, *) {
+                    $0
+                } else {
+                    $0.padding(.horizontal)
+                }
+            }
         }
-        .buttonStyle(.plain)
+        .background {
+            Group {
+                if colorScheme == .dark {
+                    Rectangle()
+                        .fill(
+                            LinearGradient(
+                                colors: [
+                                    .white.opacity(0.08),
+                                    .white.opacity(0.05),
+                                    .white.opacity(0.03),
+                                ],
+                                startPoint: .top,
+                                endPoint: .bottom
+                            )
+                        )
+//                        .fill(.white.opacity(0.08))
+                } else {
+                    if #available(iOS 17.0, *) {
+                        Rectangle()
+                            .strokeBorder(.quinary, lineWidth: 1)
+                    } else {
+                        Rectangle()
+                            .strokeBorder(.clear, lineWidth: 1)
+                    }
+                }
+            }
+                .background(Rectangle().fill(.background))
+                .ignoresSafeArea()
+                .shadow(color: .black.opacity(0.05), radius: 5, y: -5)
+        }
     }
 }
 

@@ -174,7 +174,7 @@ struct MainScrollView: View {
                     .siriTipViewStyle(.automatic)
                     .apply {
                         if #available(iOS 17.0, *) {
-                            $0
+                            $0.safeAreaPadding(.horizontal)
                         } else {
                             $0.padding(.horizontal)
                         }
