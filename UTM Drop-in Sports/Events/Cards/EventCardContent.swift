@@ -88,7 +88,7 @@ struct EventCardContent: View {
                                     .font(.caption2)
                                     .apply {
                                         if #available(iOS 18.0, *) {
-                                            $0.symbolEffect(.pulse .byLayer, options: .repeat(.continuous))
+                                            $0/*.symbolEffect(.pulse .byLayer, options: .repeat(.continuous))*/
                                         } else {
                                             $0
                                         }
