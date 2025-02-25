@@ -25,6 +25,9 @@
     "Basketball" : {
       "comment" : "Sport"
     },
+    "BIPOC Only" : {
+
+    },
     "Cancel" : {
       "comment" : "CTA cancel"
     },

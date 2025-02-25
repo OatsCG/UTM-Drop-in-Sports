@@ -21,6 +21,15 @@ struct SymbolImage: View {
     }
 }
 
+let bipocColors: [Color] = [
+    Color(red: 120/255, green: 77/255, blue: 59/255),   // <--- START; dark
+    Color(red: 167/255, green: 104/255, blue: 75/255), // mid dark
+    Color(red: 188/255, green: 135/255, blue: 83/255), // mid
+    Color(red: 231/255, green: 196/255, blue: 182/255), // mid light light
+    Color(red: 120/255, green: 77/255, blue: 59/255),   // dark
+    Color(red: 120/255, green: 77/255, blue: 59/255),   // dark
+]
+
 #Preview {
     SymbolImage("tv")
 }

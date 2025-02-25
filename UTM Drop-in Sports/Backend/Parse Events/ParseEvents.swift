@@ -88,6 +88,13 @@ class Category: Decodable, Hashable, ObservableObject {
         isChip = (try? values?.decode(Bool.self, forKey: .isChip)) ?? true
     }
     
+    init(title: String) {
+        self.title = title
+        self.symbol = ""
+        self.isMedal = false
+        self.isChip = false
+    }
+    
     private enum CodingKeys: String, CodingKey {
         case title
         case symbol

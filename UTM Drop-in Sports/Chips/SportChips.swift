@@ -22,51 +22,18 @@ struct SportChips: View {
                 .padding(.bottom, 2)
                 if isExpanded {
                     VStack(alignment: .leading) {
-                        HStack {
-                            WomensOnlyButton()
-                            PrideOnlyButton()
-                            Spacer()
-                        }
-                        
-                        Button(action: {
-                            withAnimation(.interactiveSpring) {
-                                categoryParser.onlySaved.toggle()
-                            }
-                            categoryParser.updateDisplayEvents(maxEvents: 50)
-                        }) {
-                            HStack {
-                                Text("Saved")
-                                Image(systemName: categoryParser.onlySaved ? "bookmark.fill" : "bookmark")
-                                    .apply {
-                                        if #available(iOS 17.0, *) {
-                                            $0.contentTransition(.symbolEffect(.replace.offUp))
-                                        } else {
-                                            $0
-                                        }
-                                    }
-                            }
-                            .foregroundStyle(categoryParser.onlySaved ? .black : (colorScheme == .dark ? .white : .black))
-                            .padding(.horizontal, 14)
-                            .padding(.vertical, 8)
-                            .background {
-                                if categoryParser.onlySaved {
-                                    if #available(iOS 16.0, *) {
-                                        RoundedRectangle(cornerRadius: 8)
-                                            .strokeBorder(.blueUTMlight, lineWidth: 2)
-                                            .background(RoundedRectangle(cornerRadius: 8).fill(.blueUTMlight.gradient))
-                                    } else {
-                                        RoundedRectangle(cornerRadius: 8)
-                                            .strokeBorder(.blueUTMlight, lineWidth: 2)
-                                            .background(RoundedRectangle(cornerRadius: 8).fill(.blueUTMlight))
-                                    }
-                                } else {
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .strokeBorder(.blueUTMlight, lineWidth: colorScheme == .dark ? 1 : 2)
-                                        .background(RoundedRectangle(cornerRadius: 8).fill(colorScheme == .dark ? .white.opacity(0.05) : .white))
+                        FlexView(data: .constant([Category(title: "w"), Category(title: "p"), Category(title: "b")]), maxRows: .constant(3)) { category in
+                            Group {
+                                if category.title == "w" {
+                                    WomensOnlyButton()
+                                } else if category.title == "p" {
+                                    PrideOnlyButton()
+                                } else if category.title == "b" {
+                                    BIPOCOnlyButton()
                                 }
                             }
                         }
-                            .buttonStyle(.plain)
+                        SavedButton()
                     }
                 }
                 HStack {
@@ -106,6 +73,16 @@ struct SportChips: View {
                                             
                                         }
                                 }
+                                if (categoryParser.onlyBIPOC) {
+                                    Image(systemName: "hand.raised")
+                                        .foregroundStyle(AngularGradient(colors: bipocColors, center: .center))
+                                        .overlay {
+                                            Image(systemName: "hand.raised")
+                                                .foregroundStyle(colorScheme == .dark ? .white : .black)
+                                                .opacity(colorScheme == .dark ? 0.25 : 0.15)
+                                            
+                                        }
+                                }
                                 if (categoryParser.onlySaved) {
                                     Image(systemName: "bookmark.fill")
                                         .foregroundStyle(.blueUTM)
@@ -118,6 +95,53 @@ struct SportChips: View {
                 }
             }
         }
+    }
+}
+
+
+struct SavedButton: View {
+    @Environment(\.colorScheme) private var colorScheme
+    @EnvironmentObject var categoryParser: CategoryParser
+    var body: some View {
+        Button(action: {
+            withAnimation(.interactiveSpring) {
+                categoryParser.onlySaved.toggle()
+            }
+            categoryParser.updateDisplayEvents(maxEvents: 50)
+        }) {
+            HStack {
+                Text("Saved")
+                Image(systemName: categoryParser.onlySaved ? "bookmark.fill" : "bookmark")
+                    .apply {
+                        if #available(iOS 17.0, *) {
+                            $0.contentTransition(.symbolEffect(.replace.offUp))
+                        } else {
+                            $0
+                        }
+                    }
+            }
+            .foregroundStyle(categoryParser.onlySaved ? .black : (colorScheme == .dark ? .white : .black))
+            .padding(.horizontal, 14)
+            .padding(.vertical, 8)
+            .background {
+                if categoryParser.onlySaved {
+                    if #available(iOS 16.0, *) {
+                        RoundedRectangle(cornerRadius: 8)
+                            .strokeBorder(.blueUTMlight, lineWidth: 2)
+                            .background(RoundedRectangle(cornerRadius: 8).fill(.blueUTMlight.gradient))
+                    } else {
+                        RoundedRectangle(cornerRadius: 8)
+                            .strokeBorder(.blueUTMlight, lineWidth: 2)
+                            .background(RoundedRectangle(cornerRadius: 8).fill(.blueUTMlight))
+                    }
+                } else {
+                    RoundedRectangle(cornerRadius: 8)
+                        .strokeBorder(.blueUTMlight, lineWidth: colorScheme == .dark ? 1 : 2)
+                        .background(RoundedRectangle(cornerRadius: 8).fill(colorScheme == .dark ? .white.opacity(0.05) : .white))
+                }
+            }
+        }
+            .buttonStyle(.plain)
     }
 }
 
@@ -194,7 +218,7 @@ struct PrideOnlyButton: View {
             .background {
                 if categoryParser.onlyLGBT {
                     RoundedRectangle(cornerRadius: 8)
-                        .strokeBorder(AngularGradient(colors: [.red, .orange, .yellow, .green, .blue, .purple, .red], center: .center), lineWidth: 2)
+                        .strokeBorder(AngularGradient(colors: [.red, .orange, .yellow, .green, .blue, .purple, .red].reversed(), center: .center), lineWidth: 2)
                         .background(
                             RoundedRectangle(cornerRadius: 8)
                                 .fill(AngularGradient(colors: [.red, .orange, .yellow, .green, .blue, .purple, .red], center: .center))
@@ -207,6 +231,66 @@ struct PrideOnlyButton: View {
                 } else {
                     RoundedRectangle(cornerRadius: 8)
                         .strokeBorder(AngularGradient(colors: [.red, .orange, .yellow, .green, .blue, .purple, .red], center: .center), lineWidth: colorScheme == .dark ? 1 : 2)
+                        .background(
+                            RoundedRectangle(cornerRadius: 8)
+                                .fill(colorScheme == .dark ? .white.opacity(0.05) : .white)
+                        )
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 8)
+                                .strokeBorder(.white, lineWidth: colorScheme == .dark ? 1 : 2)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .fill(.clear)
+                                )
+                                .opacity(colorScheme == .dark ? 0.3 : 0.6)
+                        }
+                }
+            }
+        }
+            .buttonStyle(.plain)
+    }
+}
+
+struct BIPOCOnlyButton: View {
+    @Environment(\.colorScheme) private var colorScheme
+    @EnvironmentObject var categoryParser: CategoryParser
+    var body: some View {
+        Button(action: {
+            withAnimation(.interactiveSpring) {
+                categoryParser.onlyBIPOC.toggle()
+            }
+            categoryParser.updateDisplayEvents(maxEvents: 50)
+        }) {
+            HStack {
+                Text("BIPOC Only")
+                Image(systemName: categoryParser.onlyBIPOC ? "checkmark.square" : "square")
+                    .apply {
+                        if #available(iOS 17.0, *) {
+                            $0.contentTransition(.symbolEffect(.replace.offUp))
+                        } else {
+                            $0
+                        }
+                    }
+            }
+            .foregroundStyle(categoryParser.onlyBIPOC ? .black : (colorScheme == .dark ? .white : .black))
+            .padding(.horizontal, 14)
+            .padding(.vertical, 8)
+            .background {
+                if categoryParser.onlyBIPOC {
+                    RoundedRectangle(cornerRadius: 8)
+                        .strokeBorder(AngularGradient(colors: bipocColors.reversed(), center: .center), lineWidth: 2)
+                        .background(
+                            RoundedRectangle(cornerRadius: 8)
+                                .fill(AngularGradient(colors: bipocColors, center: .center))
+                        )
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 8)
+                                .fill(.white)
+                                .opacity(colorScheme == .dark ? 0.35 : 0.6)
+                        }
+                } else {
+                    RoundedRectangle(cornerRadius: 8)
+                        .strokeBorder(AngularGradient(colors: bipocColors, center: .center), lineWidth: colorScheme == .dark ? 1 : 2)
                         .background(
                             RoundedRectangle(cornerRadius: 8)
                                 .fill(colorScheme == .dark ? .white.opacity(0.05) : .white)

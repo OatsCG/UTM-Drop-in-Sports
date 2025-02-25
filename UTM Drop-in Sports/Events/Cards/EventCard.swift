@@ -64,6 +64,17 @@ struct EventCardContentSiri: View {
                                 .opacity(colorScheme == .dark ? 0.25 : 0.15)
                             
                         }
+                } else if event.bipoc {
+                    SymbolImage(event.symbol)
+                        .font(.title)
+                        .foregroundStyle(AngularGradient(colors: bipocColors, center: .center))
+                        .overlay {
+                            SymbolImage(event.symbol)
+                                .font(.title)
+                                .foregroundStyle(colorScheme == .dark ? .white : .black)
+                                .opacity(colorScheme == .dark ? 0.25 : 0.15)
+                            
+                        }
                 } else {
                     SymbolImage(event.symbol)
                         .font(.title)

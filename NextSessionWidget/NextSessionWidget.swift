@@ -86,6 +86,17 @@ struct NSWView: View {
                                 .opacity(colorScheme == .dark ? 0.25 : 0.15)
                             
                         }
+                } else if event.bipoc {
+                    SymbolImage(event.symbol)
+                        .font(.largeTitle.weight(.regular))
+                        .foregroundStyle(AngularGradient(colors: bipocColors, center: .center))
+                        .overlay {
+                            SymbolImage(event.symbol)
+                                .font(.largeTitle.weight(.regular))
+                                .foregroundStyle(colorScheme == .dark ? .white : .black)
+                                .opacity(colorScheme == .dark ? 0.25 : 0.15)
+                            
+                        }
                 } else {
                     SymbolImage(event.symbol)
                         .font(.largeTitle.weight(.regular))

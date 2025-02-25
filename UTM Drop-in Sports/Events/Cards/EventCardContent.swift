@@ -27,7 +27,7 @@ struct EventCardContent: View {
                 } else if event.bipoc {
                     SymbolImage(event.symbol)
                         .font(.title)
-                        .foregroundStyle(AngularGradient(colors: [.brown], center: .center))
+                        .foregroundStyle(AngularGradient(colors: bipocColors, center: .center))
                         .overlay {
                             SymbolImage(event.symbol)
                                 .font(.title)

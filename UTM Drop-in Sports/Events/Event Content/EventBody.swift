@@ -47,12 +47,10 @@ struct EventBody: View {
                 }
                 if event.bipoc {
                     HStack(alignment: .top) {
-                        Image(.handsbipoc)
-                            .resizable()
-                            .frame(width: 14, height: 14)
-                            .foregroundStyle(AngularGradient(colors: [.brown], center: .center))
+                        Image(systemName: "hand.raised")
+                            .foregroundStyle(AngularGradient(colors: bipocColors, center: .center))
                             .overlay {
-                                Image(systemName: "star.fill")
+                                Image(systemName: "hand.raised")
                                     .foregroundStyle(colorScheme == .dark ? .white : .black)
                                     .opacity(colorScheme == .dark ? 0.25 : 0.15)
                                 
@@ -121,7 +119,7 @@ struct EventBody: View {
                     .background(.blueUTMdark)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
             }
-            .padding(.bottom, 30)
+            .padding(.bottom, 60)
         } else {
             VStack(alignment: .center) {
                 Button(action: {
