@@ -1,5 +1,9 @@
 # UTM Drop-In Sports
 
+<img src="UTM Drop-in Sports/Assets.xcassets/AppIcon.appiconset/1024.png" width="200" height="200"/>
+
+### https://apps.apple.com/us/app/utm-sports/id6670776453
+
 ### Sort and discover drop-in sports at the University of Toronto Mississauga campus!
 
 See all sports, workouts, recreational walks, and pool activities happening right now or in the future. view information about events, and how to register or book tickets.
