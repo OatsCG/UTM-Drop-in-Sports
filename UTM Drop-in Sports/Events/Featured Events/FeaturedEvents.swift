@@ -24,7 +24,7 @@ struct FeaturedEvents: View {
                         Image(systemName: "star.fill")
                             .foregroundStyle(.yellow)
                             .font(.headline)
-                        Text("Featured Events")
+                        Text("Featured Sessions")
                             .font(.headline)
                         Spacer()
                         Image(systemName: isExpanded ? "chevron.up.circle.fill" : "chevron.down.circle.fill")

@@ -5,82 +5,82 @@
       "shouldTranslate" : false
     },
     "Accept Medal" : {
-      "comment" : "CTA accept medal"
+      "comment" : "Call to action: accepts the offered medal"
     },
     "Active Sessions" : {
-      "comment" : "Shelf title"
+      "comment" : "Section title: list of sessions that are currently ongoing"
     },
     "Active Sessions will show here. When a saved session ends, mark it as complete to collect your medal." : {
-      "comment" : "Home page secondary body"
+      "comment" : "Section body: subtitle explaining the purpose of the \"Active Sessions\" list"
     },
     "Announcements" : {
-      "comment" : "Shelf title"
+      "comment" : "Section title: list of posted announcements"
     },
     "Are you sure you want to remove all progress?" : {
-      "comment" : "CTA alert description"
+      "comment" : "Call to action: Removes progress made by the user"
     },
     "Badminton" : {
-      "comment" : "Sport"
+      "comment" : "Sport category title"
     },
     "Basketball" : {
-      "comment" : "Sport"
+      "comment" : "Sport category title"
     },
     "BIPOC Only" : {
 
     },
     "Cancel" : {
-      "comment" : "CTA cancel"
+      "comment" : "Call to action: cancel the requested action"
     },
     "Cardio" : {
-      "comment" : "Sport"
+      "comment" : "Sport category title"
     },
     "Category Options" : {
-      "comment" : "Enum description"
+      "comment" : "Section title: list of sport categories that the user can select from"
     },
     "Check your network connection to update the schedule." : {
-      "comment" : "Home page body"
+      "comment" : "Home page body: Alert the user that a network connection is required"
     },
     "Close Session..." : {
-      "comment" : "Button action"
+      "comment" : "Button: Mark a saved session as finished"
     },
     "Combat" : {
-      "comment" : "Sport"
+      "comment" : "Sport category title"
     },
     "Complete 5 sessions to earn a **Silver** medal." : {
-      "comment" : "Award body"
+      "comment" : "Award body: Instruct the user how to earn a silver medal"
     },
     "Complete 10 sessions to earn a **Gold** medal." : {
-      "comment" : "Award body"
+      "comment" : "Award body: Instruct the user how to earn a gold medal"
     },
     "Cricket" : {
-      "comment" : "Sport"
+      "comment" : "Sport category title"
     },
     "Cycling" : {
-      "comment" : "Sport"
+      "comment" : "Sport category title"
     },
     "Dance" : {
-      "comment" : "Sport"
+      "comment" : "Sport category title"
     },
     "Delete..." : {
-      "comment" : "CTA delete medals"
+      "comment" : "Call to action: delete all medals earned by the user"
     },
-    "Featured Events" : {
-      "comment" : "Shelf title"
+    "Featured Sessions" : {
+
     },
     "Field Sports" : {
-      "comment" : "Sport"
+      "comment" : "Sport category title"
     },
     "Get Drop In Information" : {
-      "comment" : "Siri Intent title"
+      "comment" : "Siri Intent title: the name of an action Siri can run"
     },
     "Have Fun!" : {
-      "comment" : "Session body"
+      "comment" : "Session body: Words of encouragement for the user"
     },
     "Hockey" : {
-      "comment" : "Sport"
+      "comment" : "Sport category title"
     },
     "I couldn't find any upcoming sessions for %@." : {
-      "comment" : "Siri body"
+      "comment" : "Siri body: Alert shown after Siri fails to find events "
     },
     "I Participated!" : {
       "comment" : "CTA accept medal"
@@ -101,7 +101,7 @@
       "comment" : "Page title"
     },
     "Mind & Body" : {
-      "comment" : "Sport"
+      "comment" : "Sport category title"
     },
     "Next Session" : {
       "comment" : "Widget title"
@@ -145,7 +145,7 @@
       "comment" : "Medal page body"
     },
     "Pickleball" : {
-      "comment" : "Sport"
+      "comment" : "Sport category title"
     },
     "Provides details on a drop-in sport or activity." : {
       "comment" : "Siri description"
@@ -160,7 +160,7 @@
       "comment" : "Session body"
     },
     "Rowfit" : {
-      "comment" : "Sport"
+      "comment" : "Sport category title"
     },
     "Save events and participate to earn medals." : {
       "comment" : "Medals page body"
@@ -199,7 +199,7 @@
 
     },
     "Soccer" : {
-      "comment" : "Sport"
+      "comment" : "Sport category title"
     },
     "Sport" : {
 
@@ -211,16 +211,16 @@
 
     },
     "Squash" : {
-      "comment" : "Sport"
+      "comment" : "Sport category title"
     },
     "Swim" : {
-
+      "comment" : "Sport category title"
     },
     "Table Tennis" : {
-      "comment" : "Sport"
+      "comment" : "Sport category title"
     },
     "Tennis" : {
-      "comment" : "Sport"
+      "comment" : "Sport category title"
     },
     "The next %@ session is %@ at %@." : {
       "localizations" : {
