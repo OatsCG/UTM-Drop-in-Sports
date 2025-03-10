@@ -21,8 +21,8 @@ struct MyAppShortcuts: AppShortcutsProvider {
 
 @available(iOS 16.0, *)
 struct GetNextSportInfo: AppIntent {
-    static var title: LocalizedStringResource = "Get Drop In Information"
-    static var description = IntentDescription("Provides details on a drop-in sport or activity.")
+    static var title: LocalizedStringResource = "Get Session Information"
+    static var description = IntentDescription("Provides details on a sport or activity.")
     
     @Parameter(title: "Sport Name")
     var sport: String?

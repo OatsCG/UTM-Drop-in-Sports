@@ -4,9 +4,6 @@
     "%@" : {
       "shouldTranslate" : false
     },
-    "Accept Medal" : {
-      "comment" : "Call to action: accepts the offered medal"
-    },
     "Active Sessions" : {
       "comment" : "Section title: list of sessions that are currently ongoing"
     },
@@ -26,7 +23,7 @@
       "comment" : "Sport category title"
     },
     "BIPOC Only" : {
-
+      "comment" : "Search filter: search for BIPOC sport sessions"
     },
     "Cancel" : {
       "comment" : "Call to action: cancel the requested action"
@@ -39,6 +36,9 @@
     },
     "Check your network connection to update the schedule." : {
       "comment" : "Home page body: Alert the user that a network connection is required"
+    },
+    "Claim Medal" : {
+      "comment" : "Call to action: claim the offered medal"
     },
     "Close Session..." : {
       "comment" : "Button: Mark a saved session as finished"
@@ -65,73 +65,73 @@
       "comment" : "Call to action: delete all medals earned by the user"
     },
     "Featured Sessions" : {
-
+      "comment" : "Section title: list of special featured sessions"
     },
     "Field Sports" : {
       "comment" : "Sport category title"
     },
-    "Get Drop In Information" : {
-      "comment" : "Siri Intent title: the name of an action Siri can run"
+    "Get Session Information" : {
+
     },
     "Have Fun!" : {
-      "comment" : "Session body: Words of encouragement for the user"
+      "comment" : "Session body: Words of encouragement, shown when a saved session begins"
     },
     "Hockey" : {
       "comment" : "Sport category title"
     },
     "I couldn't find any upcoming sessions for %@." : {
-      "comment" : "Siri body: Alert shown after Siri fails to find events "
+      "comment" : "Siri body: Alert shown after Siri fails to find sessions matching the inputted sport category"
     },
     "I Participated!" : {
-      "comment" : "CTA accept medal"
+      "comment" : "Call to action: acknowledge that the user has participated in the session"
     },
     "Just to confirm, you wanted ‘%@’?" : {
-      "comment" : "Siri asking to confirm"
+      "comment" : "Siri body: Siri asking to confirm the inputted sport category"
     },
     "Keep it up!" : {
-      "comment" : "Session body"
+      "comment" : "Session body: words of encouragement, shown after claiming a medal"
     },
     "LGBT+ Only" : {
-      "comment" : "Filter button"
+      "comment" : "Search filter: search for LGBT+ sport sessions"
     },
     "Load More Events" : {
-
+      "comment" : "Button title: Expand the list of searched events"
     },
     "Medals" : {
-      "comment" : "Page title"
+      "comment" : "Section title: list of earned medals"
     },
     "Mind & Body" : {
       "comment" : "Sport category title"
     },
     "Next Session" : {
-      "comment" : "Widget title"
+      "comment" : "Widget title: name of a home screen widget that shows the next upcoming session"
     },
     "No events found." : {
-      "comment" : "Home page warning"
+      "comment" : "Home page body: shown when no sessions match the search filters"
     },
     "No medals collected." : {
-      "comment" : "Medals page warning"
+      "comment" : "Medals body: shown if no medals have been claimed"
     },
     "No sessions to show." : {
-      "comment" : "Widget warning"
+      "comment" : "Widget body: shown on the widget if there are no upcoming sessions"
     },
     "No, Cancel" : {
-      "comment" : "CTA cancel"
+      "comment" : "Call to action: decline an action and cancel all secondary actions"
     },
     "Ok, this failed." : {
-      "comment" : "Siri response"
+      "comment" : "Siri body: Siri informing the user that the action failed"
     },
     "Ok, this succeeded." : {
-      "comment" : "Siri response"
+      "comment" : "Siri body: Siri informing the user that the action succeeded"
     },
     "Ongoing" : {
-      "comment" : "Session body"
+      "comment" : "Session body: Indicates that the session is currently ongoing"
     },
     "Open %@" : {
-      "comment" : "Session body"
+      "comment" : "Button: Open the session in the web"
     },
     "Participate in a %@ session to earn this medal.\n**Save %@** a future session to participate." : {
-      "comment" : "Medal body",
+      "comment" : "Medal body: Instructions to the user of how to earn a medal for a specific sport category",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -142,73 +142,73 @@
       }
     },
     "Participate in events to earn more medals!" : {
-      "comment" : "Medal page body"
+      "comment" : "Medal body: Instructions to the user of how to earn more medals"
     },
     "Pickleball" : {
       "comment" : "Sport category title"
     },
-    "Provides details on a drop-in sport or activity." : {
-      "comment" : "Siri description"
+    "Provides details on a sport or activity." : {
+      "comment" : "Siri description: description of an action Siri can run"
     },
     "Remove" : {
-      "comment" : "Remove session from \"Saved\""
+      "comment" : "Button: remove the session from the \"Saved\" section"
     },
     "Remove all medals?" : {
-      "comment" : "CTA delete medals"
+      "comment" : "Alert: asks the user if they want to delete all earned medals"
     },
     "Repeats every %@" : {
-      "comment" : "Session body"
+      "comment" : "Session body: Indicates that the session repeats on a specific weekday"
     },
     "Rowfit" : {
       "comment" : "Sport category title"
     },
     "Save events and participate to earn medals." : {
-      "comment" : "Medals page body"
+      "comment" : "Medals page body: Instructions on how to earn medals"
     },
     "Save sessions to participate and earn medals!" : {
-      "comment" : "Home page secondary body"
+      "comment" : "Home page body: tip instructing the user how to earn medals"
     },
     "Save This Session" : {
-
+      "comment" : "Session button: save the session"
     },
     "Save this session to earn a **%@** medal after participating" : {
-
+      "comment" : "Session body: Instructions of how to earn a medal"
     },
     "Saved" : {
-
+      "comment" : "Search filter: search for saved sport sessions"
     },
     "Schedule Version: %@" : {
-
+      "comment" : "Home page body: indicates the current schedule version"
     },
     "See the next session for your favourite sport." : {
-
+      "comment" : "Widget subtitle: subtitle describing what the widget does"
     },
     "Session Over" : {
-
+      "comment" : "Session body: indicates that the session has ended"
     },
     "Session Saved" : {
-
+      "comment" : "Session body: indicates that the session was saved by the user"
     },
     "Sessions: %lld" : {
-
+      "comment" : "Medal body: shows the number of sessions the user has participated in"
     },
     "Show Less" : {
-
+      "comment" : "Home page body: shrink the list of search filters"
     },
     "Show More" : {
-
+      "comment" : "Home page body: expand the list of search filters"
     },
     "Soccer" : {
       "comment" : "Sport category title"
     },
     "Sport" : {
-
+      "comment" : "Siri option: parameter accepting a sport category"
     },
     "Sport Category" : {
-
+      "comment" : "Widget option: parameter accepting a sport category"
     },
     "Sport Name" : {
-
+      "comment" : "Widget option: parameter accepting a sport category"
     },
     "Squash" : {
       "comment" : "Sport category title"
@@ -223,6 +223,7 @@
       "comment" : "Sport category title"
     },
     "The next %@ session is %@ at %@." : {
+      "comment" : "Siri body: Siri informing the user about an upcoming session. Example: \"The next Soccer session is tomorrow at 3pm\"",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -233,6 +234,7 @@
       }
     },
     "There are %lld options matching ‘%@’." : {
+      "comment" : "Siri body: Siri informing the user how many options match the users ambiguous search term",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -243,52 +245,52 @@
       }
     },
     "This is a **BIPOC Sports** session" : {
-
+      "comment" : "Session body: indicates that this session has the \"BIPOC Sports\" label"
     },
     "This is a **Pride Sports** session" : {
-
+      "comment" : "Session body: indicates that this session has the \"Pride Sports\" label"
     },
     "This is a **Women's Only** session" : {
-
+      "comment" : "Session body: indicates that this session has the \"Women's Only\" label"
     },
     "This will clear all your progress. This cannot be undone." : {
-
+      "comment" : "Medal body: Alerts the user that the requested action will clear all progress"
     },
     "Try selecting less filters." : {
-
+      "comment" : "Home page body: shown when no sessions match the search filters"
     },
     "UTM Moves" : {
-
+      "comment" : "Sport category title"
     },
     "UTM Sports" : {
-
+      "comment" : "App title"
     },
-    "View Next %@ Drop-In" : {
-
+    "View Next %@ Session" : {
+      "comment" : "Siri intent title: the name of an action Siri can run; show the next session is a sport category"
     },
-    "View Next ${sport} Drop-In" : {
+    "View Next ${sport} Session" : {
 
     },
     "Volleyball" : {
-      "comment" : "Sport"
+      "comment" : "Sport category title"
     },
     "We'll notify you 30 minutes before it starts" : {
-
+      "comment" : "Session body: informs the user that they will receive a notification 30 minutes before the session begins"
     },
     "What session would you like?" : {
-
+      "comment" : "Siri body: Siri asking the user which sport category they want to search for"
     },
     "Which sport are you looking for?" : {
-
+      "comment" : "Siri body: Siri asking the user which sport category they want to search for"
     },
     "Women's Only" : {
-      "comment" : "Filter button"
+      "comment" : "Search filter: search for \"women's only\" sport sessions"
     },
     "Workout" : {
-      "comment" : "Sport"
+      "comment" : "Sport category title"
     },
     "Yes, Delete" : {
-
+      "comment" : "Call to action: accepts a deletion action"
     }
   },
   "version" : "1.0"

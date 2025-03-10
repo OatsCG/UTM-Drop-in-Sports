@@ -12,21 +12,21 @@ import AppIntents
 struct Intent: AppIntent, CustomIntentMigratedAppIntent, PredictableIntent {
     static let intentClassName = "IntentIntent"
 
-    static var title: LocalizedStringResource = "Get Drop In Information"
-    static var description = IntentDescription("Provides details on a drop-in sport or activity.")
+    static var title: LocalizedStringResource = "Get Session Information"
+    static var description = IntentDescription("Provides details on a sport or activity.")
 
     @Parameter(title: "Sport")
     var sport: String?
 
     static var parameterSummary: some ParameterSummary {
-        Summary("View Next \(\.$sport) Drop-In")
+        Summary("View Next \(\.$sport) Session")
     }
 
     static var predictionConfiguration: some IntentPredictionConfiguration {
         IntentPrediction(parameters: (\.$sport)) { sport in
             DisplayRepresentation(
-                title: "View Next \(sport!) Drop-In",
-                subtitle: "Provides details on a drop-in sport or activity."
+                title: "View Next \(sport!) Session",
+                subtitle: "Provides details on a sport or activity."
             )
         }
     }

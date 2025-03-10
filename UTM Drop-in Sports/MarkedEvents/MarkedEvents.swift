@@ -504,7 +504,7 @@ struct MedalAcceptanceSheet: View {
                     }) {
                         HStack {
                             Spacer()
-                            Text(didAccept ? "Keep it up!" : "Accept Medal")
+                            Text(didAccept ? "Keep it up!" : "Claim Medal")
                             Spacer()
                         }
                         .font(.title3 .bold())
