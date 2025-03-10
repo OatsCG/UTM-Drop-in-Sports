@@ -147,9 +147,6 @@
     "Pickleball" : {
       "comment" : "Sport"
     },
-    "Pool" : {
-      "comment" : "Sport"
-    },
     "Provides details on a drop-in sport or activity." : {
       "comment" : "Siri description"
     },
@@ -216,6 +213,9 @@
     "Squash" : {
       "comment" : "Sport"
     },
+    "Swim" : {
+
+    },
     "Table Tennis" : {
       "comment" : "Sport"
     },
@@ -257,11 +257,11 @@
     "Try selecting less filters." : {
 
     },
-    "UTM Sports" : {
+    "UTM Moves" : {
 
     },
-    "UTM Walks" : {
-      "comment" : "Sport"
+    "UTM Sports" : {
+
     },
     "View Next %@ Drop-In" : {
 

@@ -22,13 +22,13 @@ enum CategoryOption: String, AppEnum {
     case pickleball = "Pickleball"
     case fieldsports = "Field Sports"
     case hockey = "Hockey"
-    case pool = "Pool"
+    case swim = "Swim"
     case rowfit = "Rowfit"
     case workout = "Workout"
     case cardio = "Cardio"
     case mindbody = "Mind & Body"
     case dance = "Dance"
-    case walks = "UTM Walks"
+    case moves = "UTM Moves"
 
     @available(iOS 16.0, *)
     static var typeDisplayRepresentation: TypeDisplayRepresentation {
@@ -51,13 +51,13 @@ enum CategoryOption: String, AppEnum {
             .pickleball: "Pickleball",
             .fieldsports: "Field Sports",
             .hockey: "Hockey",
-            .pool: "Pool",
+            .swim: "Swim",
             .rowfit: "Rowfit",
             .workout: "Workout",
             .cardio: "Cardio",
             .mindbody: "Mind & Body",
             .dance: "Dance",
-            .walks: "UTM Walks"
+            .moves: "UTM Moves"
         ]
     }
 }
