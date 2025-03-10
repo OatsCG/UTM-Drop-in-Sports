@@ -9,8 +9,50 @@
 			"localizations": {
 				"ar": {
 					"stringUnit": {
-						"state": "needs_review",
-						"value": "Active Sessions"
+						"state": "translated",
+						"value": "الجلسات النشطة"
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Sessions actives"
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "सक्रिय सत्र"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "アクティブセッション"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "활성 세션"
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Phiên hoạt động"
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "活跃会话"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "活躍會話"
 					}
 				}
 			}
@@ -282,11 +324,109 @@
 		},
 		"BIPOC Only": {
 			"comment": "Search filter: search for BIPOC sport sessions",
-			"localizations": {}
+			"localizations": {
+				"ar": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "فقط BIPOC"
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Réservé aux BIPOC"
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "केवल BIPOC"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "BIPOC専用"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "BIPOC 전용"
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Chỉ dành cho BIPOC"
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "仅限BIPOC"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "僅限BIPOC"
+					}
+				}
+			}
 		},
 		"Cancel": {
 			"comment": "Call to action: cancel the requested action",
-			"localizations": {}
+			"localizations": {
+				"ar": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "إلغاء"
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Annuler"
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "रद्द करें"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "キャンセル"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "취소"
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Hủy bỏ"
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "取消"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "取消"
+					}
+				}
+			}
 		},
 		"Cardio": {
 			"comment": "Sport category title",
@@ -1031,7 +1171,57 @@
 			}
 		},
 		"Get Session Information": {
-
+			"comment": "Siri title: the name of a Siri action",
+			"localizations": {
+				"ar": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "الحصول على معلومات الجلسة"
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Obtenir les informations de la session"
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "सत्र जानकारी प्राप्त करें"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "セッション情報を取得"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "세션 정보 가져오기"
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Lấy thông tin phiên"
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "获取会话信息"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "獲取會話資訊"
+					}
+				}
+			}
 		},
 		"Have Fun!": {
 			"comment": "Session body: Words of encouragement, shown when a saved session begins",
@@ -1565,54 +1755,586 @@
 		},
 		"Next Session": {
 			"comment": "Widget title: name of a home screen widget that shows the next upcoming session",
-			"localizations": {}
+			"localizations": {
+				"ar": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "الجلسة القادمة"
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Prochaine session"
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "अगला सत्र"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "次のセッション"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "다음 세션"
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Phiên tiếp theo"
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "下一个会话"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "下一個會話"
+					}
+				}
+			}
 		},
 		"No events found.": {
 			"comment": "Home page body: shown when no sessions match the search filters",
-			"localizations": {}
+			"localizations": {
+				"ar": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "لم يتم العثور على أي فعاليات."
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Aucun événement trouvé."
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "कोई कार्यक्रम नहीं मिला।"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "イベントが見つかりませんでした。"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "이벤트를 찾을 수 없습니다."
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Không tìm thấy sự kiện nào."
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "未找到任何活动。"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "未找到任何活動。"
+					}
+				}
+			}
 		},
 		"No medals collected.": {
 			"comment": "Medals body: shown if no medals have been claimed",
-			"localizations": {}
+			"localizations": {
+				"ar": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "لم يتم جمع أي ميداليات."
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Aucune médaille collectée."
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "कोई मेडल एकत्र नहीं किया गया।"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "メダルはまだ獲得されていません。"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "수집된 메달이 없습니다."
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Chưa thu thập huy chương nào."
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "尚未收集任何奖牌。"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "尚未收集任何獎牌。"
+					}
+				}
+			}
 		},
 		"No sessions to show.": {
 			"comment": "Widget body: shown on the widget if there are no upcoming sessions",
-			"localizations": {}
+			"localizations": {
+				"ar": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "لا توجد جلسات لعرضها."
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Aucune session à afficher."
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "दिखाने के लिए कोई सत्र नहीं है।"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "表示するセッションがありません。"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "표시할 세션이 없습니다."
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Không có phiên nào để hiển thị."
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "没有可显示的会话。"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "沒有可顯示的會話。"
+					}
+				}
+			}
 		},
 		"No, Cancel": {
 			"comment": "Call to action: decline an action and cancel all secondary actions",
-			"localizations": {}
+			"localizations": {
+				"ar": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "لا، إلغاء"
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Non, Annuler"
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "नहीं, रद्द करें"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "いいえ、キャンセル"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "아니요, 취소"
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Không, Hủy"
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "否，取消"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "否，取消"
+					}
+				}
+			}
 		},
 		"Ok, this failed.": {
 			"comment": "Siri body: Siri informing the user that the action failed",
-			"localizations": {}
+			"localizations": {
+				"ar": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "حسنًا، هذا فشل."
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "D'accord, cela a échoué."
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "ठीक है, यह विफल हो गया।"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "わかりました、失敗しました。"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "알겠습니다. 실패했습니다."
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Được rồi, thao tác này đã thất bại."
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "好的，操作失败了。"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "好的，操作失敗了。"
+					}
+				}
+			}
 		},
 		"Ok, this succeeded.": {
 			"comment": "Siri body: Siri informing the user that the action succeeded",
-			"localizations": {}
+			"localizations": {
+				"ar": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "حسنًا، تم بنجاح."
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "D'accord, cela a réussi."
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "ठीक है, यह सफल रहा।"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "OK、成功しました。"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "확인, 성공했습니다."
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Ok, thao tác đã thành công."
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "好的，成功了。"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "好的，成功了。"
+					}
+				}
+			}
 		},
 		"Ongoing": {
 			"comment": "Session body: Indicates that the session is currently ongoing",
-			"localizations": {}
+			"localizations": {
+				"ar": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "جارية"
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "En cours"
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "चालू है"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "進行中"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "진행 중"
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Đang diễn ra"
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "进行中"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "進行中"
+					}
+				}
+			}
 		},
 		"Open %@": {
 			"comment": "Button: Open the session in the web",
-			"localizations": {}
+			"localizations": {
+				"ar": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "افتح %@"
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Ouvrir %@"
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "%@ खोलें"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "%@ を開く"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "%@ 열기"
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Mở %@"
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "打开 %@"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "打開 %@"
+					}
+				}
+			}
 		},
 		"Participate in a %@ session to earn this medal.\n**Save %@** a future session to participate.": {
 			"comment": "Medal body: Instructions to the user of how to earn a medal for a specific sport category",
 			"localizations": {
-				"en": {
+				"ar": {
 					"stringUnit": {
-						"state": "new",
-						"value": "Participate in a %1$@ session to earn this medal.\n**Save %2$@** a future session to participate."
+						"state": "translated",
+						"value": "شارك في جلسة %1$@ للحصول على هذه الميدالية.\n**احفظ %2$@** جلسة مستقبلية للمشاركة."
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Participez à une session %1$@ pour gagner cette médaille.\n**Enregistrez %2$@** une session future pour participer."
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "%1$@ सत्र में भाग लें ताकि आप यह मेडल कमा सकें।\n**भविष्य में %2$@** एक सत्र सहेजें ताकि आप भाग ले सकें।"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "%1$@ セッションに参加してこのメダルを獲得しましょう。\n**%2$@** の将来のセッションを保存して参加してください。"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "%1$@ 세션에 참여하여 이 메달을 획득하세요.\n**%2$@** 미래 세션을 저장하여 참여하세요."
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Tham gia một phiên %1$@ để nhận huy chương này.\n**Lưu %2$@** một phiên trong tương lai để tham gia."
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "参加一个 %1$@ 会话以获得此奖牌。\n**保存 %2$@** 一个未来的会话以便参加。"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "參加一個 %1$@ 會話以獲得此獎牌。\n**保存 %2$@** 一個未來的會話以便參加。"
 					}
 				}
 			}
 		},
 		"Participate in events to earn more medals!": {
 			"comment": "Medal body: Instructions to the user of how to earn more medals",
-			"localizations": {}
+			"localizations": {
+				"ar": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "شارك في الفعاليات لكسب المزيد من الميداليات!"
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Participez aux événements pour gagner plus de médailles !"
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "अधिक मेडल कमाने के लिए आयोजनों में भाग लें!"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "イベントに参加して、さらに多くのメダルを獲得しましょう！"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "이벤트에 참여하여 더 많은 메달을 획득하세요!"
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Tham gia các sự kiện để nhận thêm huy chương!"
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "参加活动以获得更多奖牌！"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "參加活動以獲得更多獎牌！"
+					}
+				}
+			}
 		},
 		"Pickleball": {
 			"comment": "Sport category title",
@@ -1669,71 +2391,855 @@
 		},
 		"Provides details on a sport or activity.": {
 			"comment": "Siri description: description of an action Siri can run",
-			"localizations": {}
+			"localizations": {
+				"ar": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "يقدم تفاصيل عن رياضة أو نشاط."
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Fournit des détails sur un sport ou une activité."
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "किसी खेल या गतिविधि के विवरण प्रदान करता है।"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "スポーツやアクティビティの詳細を提供します。"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "스포츠 또는 활동에 대한 세부 정보를 제공합니다."
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Cung cấp thông tin chi tiết về một môn thể thao hoặc hoạt động."
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "提供有关运动或活动的详细信息。"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "提供有關運動或活動的詳細資訊。"
+					}
+				}
+			}
 		},
 		"Remove": {
 			"comment": "Button: remove the session from the \"Saved\" section",
-			"localizations": {}
+			"localizations": {
+				"ar": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "إزالة"
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Supprimer"
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "हटाएँ"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "削除"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "제거"
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Xóa"
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "移除"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "移除"
+					}
+				}
+			}
 		},
 		"Remove all medals?": {
 			"comment": "Alert: asks the user if they want to delete all earned medals",
-			"localizations": {}
+			"localizations": {
+				"ar": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "حذف جميع الميداليات؟"
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Supprimer toutes les médailles ?"
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "सभी मेडल हटाएँ?"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "すべてのメダルを削除しますか？"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "모든 메달을 삭제하시겠습니까?"
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Xóa tất cả huy chương?"
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "删除所有奖牌？"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "刪除所有獎牌？"
+					}
+				}
+			}
 		},
 		"Repeats every %@": {
 			"comment": "Session body: Indicates that the session repeats on a specific weekday",
-			"localizations": {}
+			"localizations": {
+				"ar": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "يتكرر كل %@"
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Répété chaque %@"
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "हर %@ को दोहराया जाता है"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "毎%@に繰り返します"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "매 %@ 반복됨"
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Lặp lại vào mỗi %@"
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "每%@重复"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "每%@重複"
+					}
+				}
+			}
 		},
 		"Rowfit": {
 			"comment": "Sport category title",
-			"localizations": {}
+			"shouldTranslate": false
 		},
 		"Save events and participate to earn medals.": {
 			"comment": "Medals page body: Instructions on how to earn medals",
-			"localizations": {}
+			"localizations": {
+				"ar": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "احفظ الفعاليات وشارك فيها لكسب الميداليات."
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Enregistrez des événements et participez pour gagner des médailles."
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "इवेंट सहेजें और भाग लें ताकि मेडल कमा सकें।"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "イベントを保存して参加し、メダルを獲得しましょう。"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "이벤트를 저장하고 참여하여 메달을 획득하세요."
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Lưu sự kiện và tham gia để nhận huy chương."
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "保存活动并参与，以获取奖牌。"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "保存活動並參與，以獲取獎牌。"
+					}
+				}
+			}
 		},
 		"Save sessions to participate and earn medals!": {
 			"comment": "Home page body: tip instructing the user how to earn medals",
-			"localizations": {}
+			"localizations": {
+				"ar": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "احفظ الجلسات للمشاركة وكسب الميداليات!"
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Enregistrez des sessions pour participer et gagner des médailles !"
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "भाग लेने और मेडल कमाने के लिए सत्र सहेजें!"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "セッションを保存して参加し、メダルを獲得しましょう！"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "세션을 저장하여 참여하고 메달을 획득하세요!"
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Lưu phiên để tham gia và nhận huy chương!"
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "保存会话以参与并赢取奖牌！"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "儲存會話以參與並贏取獎牌！"
+					}
+				}
+			}
 		},
 		"Save This Session": {
 			"comment": "Session button: save the session",
-			"localizations": {}
+			"localizations": {
+				"ar": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "احفظ هذه الجلسة"
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Enregistrer cette session"
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "इस सत्र को सहेजें"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "このセッションを保存"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "이 세션 저장"
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Lưu phiên này"
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "保存此会话"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "儲存此會話"
+					}
+				}
+			}
 		},
 		"Save this session to earn a **%@** medal after participating": {
 			"comment": "Session body: Instructions of how to earn a medal",
-			"localizations": {}
+			"localizations": {
+				"ar": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "احفظ هذه الجلسة لتحصل على ميدالية **%@** بعد المشاركة."
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Enregistrez cette session pour gagner une médaille **%@** après votre participation."
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "इस सत्र को सहेजें ताकि भाग लेने के बाद आपको **%@** मेडल मिल सके।"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "このセッションを保存して、参加後に**%@**メダルを獲得しましょう。"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "이 세션을 저장하고 참여 후 **%@** 메달을 획득하세요."
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Lưu phiên này để nhận huy chương **%@** sau khi tham gia."
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "保存此会话，在参与后获得**%@**奖牌。"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "儲存此會話，在參與後獲得**%@**獎牌。"
+					}
+				}
+			}
 		},
 		"Saved": {
 			"comment": "Search filter: search for saved sport sessions",
-			"localizations": {}
+			"localizations": {
+				"ar": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "محفوظ"
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Enregistré"
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "सहेजा गया"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "保存済み"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "저장됨"
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Đã lưu"
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "已保存"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "已儲存"
+					}
+				}
+			}
 		},
 		"Schedule Version: %@": {
 			"comment": "Home page body: indicates the current schedule version",
-			"localizations": {}
+			"localizations": {
+				"ar": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "إصدار الجدول: %@"
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Version du programme : %@"
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "अनुसूची संस्करण: %@"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "スケジュールバージョン: %@"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "일정 버전: %@"
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Phiên bản lịch trình: %@"
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "日程版本：%@"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "日程版本：%@"
+					}
+				}
+			}
 		},
 		"See the next session for your favourite sport.": {
 			"comment": "Widget subtitle: subtitle describing what the widget does",
-			"localizations": {}
+			"localizations": {
+				"ar": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "شاهد الجلسة القادمة لرياضتك المفضلة."
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Voir la prochaine session de votre sport préféré."
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "अपने पसंदीदा खेल के लिए अगला सत्र देखें।"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "お気に入りのスポーツの次のセッションを確認しましょう。"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "좋아하는 스포츠의 다음 세션을 확인하세요."
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Xem phiên tiếp theo của môn thể thao yêu thích của bạn."
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "查看您喜爱的运动的下一个会话。"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "查看您喜愛的運動的下一個會話。"
+					}
+				}
+			}
 		},
 		"Session Over": {
 			"comment": "Session body: indicates that the session has ended",
-			"localizations": {}
+			"localizations": {
+				"ar": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "انتهت الجلسة"
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Session terminée"
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "सत्र समाप्त"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "セッション終了"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "세션 종료"
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Phiên đã kết thúc"
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "会话结束"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "會話結束"
+					}
+				}
+			}
 		},
 		"Session Saved": {
 			"comment": "Session body: indicates that the session was saved by the user",
-			"localizations": {}
+			"localizations": {
+				"ar": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "تم حفظ الجلسة"
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Session enregistrée"
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "सत्र सहेजा गया"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "セッションが保存されました"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "세션이 저장되었습니다"
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Phiên đã được lưu"
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "会话已保存"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "會話已儲存"
+					}
+				}
+			}
 		},
 		"Sessions: %lld": {
 			"comment": "Medal body: shows the number of sessions the user has participated in",
-			"localizations": {}
+			"localizations": {
+				"ar": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "الجلسات: %lld"
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Sessions : %lld"
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "सत्र: %lld"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "セッション: %lld"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "세션: %lld"
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Phiên: %lld"
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "会话: %lld"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "會話: %lld"
+					}
+				}
+			}
 		},
 		"Show Less": {
 			"comment": "Home page body: shrink the list of search filters",
-			"localizations": {}
+			"localizations": {
+				"ar": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "إظهار أقل"
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Afficher moins"
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "कम दिखाएँ"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "表示を減らす"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "간략히 보기"
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Hiển thị ít hơn"
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "显示更少"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "顯示較少"
+					}
+				}
+			}
 		},
 		"Show More": {
 			"comment": "Home page body: expand the list of search filters",
-			"localizations": {}
+			"localizations": {
+				"ar": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "عرض المزيد"
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Afficher plus"
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "और दिखाएँ"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "さらに表示"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "더 보기"
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Hiển thị thêm"
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "显示更多"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "顯示更多"
+					}
+				}
+			}
 		},
 		"Soccer": {
 			"comment": "Sport category title",
@@ -1790,15 +3296,162 @@
 		},
 		"Sport": {
 			"comment": "Siri option: parameter accepting a sport category",
-			"localizations": {}
+			"localizations": {
+				"ar": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "رياضة"
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Sport"
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "खेल"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "スポーツ"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "스포츠"
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Thể thao"
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "运动"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "運動"
+					}
+				}
+			}
 		},
 		"Sport Category": {
 			"comment": "Widget option: parameter accepting a sport category",
-			"localizations": {}
+			"localizations": {
+				"ar": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "فئة الرياضة"
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Catégorie de sport"
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "खेल श्रेणी"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "スポーツカテゴリー"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "스포츠 카테고리"
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Danh mục thể thao"
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "运动类别"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "運動類別"
+					}
+				}
+			}
 		},
 		"Sport Name": {
 			"comment": "Widget option: parameter accepting a sport category",
-			"localizations": {}
+			"localizations": {
+				"ar": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "اسم الرياضة"
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Nom du sport"
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "खेल का नाम"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "スポーツ名"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "스포츠 이름"
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Tên môn thể thao"
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "运动名称"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "運動名稱"
+					}
+				}
+			}
 		},
 		"Squash": {
 			"comment": "Sport category title",
@@ -1905,7 +3558,6 @@
 					}
 				}
 			}
-
 		},
 		"Table Tennis": {
 			"comment": "Sport category title",
@@ -2016,10 +3668,52 @@
 		"The next %@ session is %@ at %@.": {
 			"comment": "Siri body: Siri informing the user about an upcoming session. Example: \"The next Soccer session is tomorrow at 3pm\"",
 			"localizations": {
-				"en": {
+				"ar": {
 					"stringUnit": {
-						"state": "new",
-						"value": "The next %1$@ session is %2$@ at %3$@."
+						"state": "translated",
+						"value": "الجلسة التالية لـ %1$@ هي %2$@ في %3$@."
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "La prochaine session de %1$@ est %2$@ à %3$@."
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "अगला %1$@ सत्र %2$@ को %3$@ बजे है।"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "次の %1$@ セッションは %2$@ に %3$@ で行われます。"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "다음 %1$@ 세션은 %2$@에 %3$@에서 진행됩니다."
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Phiên %1$@ tiếp theo là vào %2$@ lúc %3$@."
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "下一个 %1$@ 会话是 %2$@ 在 %3$@。"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "下一個 %1$@ 會話是 %2$@ 在 %3$@。"
 					}
 				}
 			}
@@ -2027,48 +3721,384 @@
 		"There are %lld options matching ‘%@’.": {
 			"comment": "Siri body: Siri informing the user how many options match the users ambiguous search term",
 			"localizations": {
-				"en": {
+				"ar": {
 					"stringUnit": {
-						"state": "new",
-						"value": "There are %1$lld options matching ‘%2$@’."
+						"state": "translated",
+						"value": "هناك %lld خيار يتطابق مع ‘%@’."
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Il y a %lld options correspondant à ‘%@’."
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "‘%2$@’ से मेल खाते %1$lld विकल्प हैं।"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "‘%2$@’ に一致するオプションが %1$lld 件あります。"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "‘%2$@’에 맞는 옵션이 %1$lld개 있습니다."
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Có %lld tùy chọn phù hợp với ‘%@’."
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "有 %lld 个选项匹配 ‘%@’。"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "有 %lld 個選項匹配 ‘%@’。"
 					}
 				}
 			}
 		},
 		"This is a **BIPOC Sports** session": {
 			"comment": "Session body: indicates that this session has the \"BIPOC Sports\" label",
-			"localizations": {}
+			"localizations": {
+				"ar": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "هذه جلسة **للرياضات الخاصة بـ BIPOC**"
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Ceci est une session de **sports BIPOC**"
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "यह **BIPOC खेल** सत्र है"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "これは**BIPOCスポーツ**のセッションです"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "이것은 **BIPOC 스포츠** 세션입니다"
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Đây là một phiên **Thể thao BIPOC**"
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "这是一个**BIPOC 体育**课程"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "這是一個**BIPOC 體育**課程"
+					}
+				}
+			}
 		},
 		"This is a **Pride Sports** session": {
 			"comment": "Session body: indicates that this session has the \"Pride Sports\" label",
-			"localizations": {}
+			"localizations": {
+				"ar": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "هذه جلسة **رياضة الفخر**"
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Ceci est une session de **Pride Sports**"
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "यह एक **प्राइड स्पोर्ट्स** सत्र है"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "これは**プライドスポーツ**のセッションです"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "이것은 **프라이드 스포츠** 세션입니다"
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Đây là một phiên **Pride Sports**"
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "这是一个**Pride Sports**会话"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "這是一個**Pride Sports**會話"
+					}
+				}
+			}
 		},
 		"This is a **Women's Only** session": {
 			"comment": "Session body: indicates that this session has the \"Women's Only\" label",
-			"localizations": {}
+			"localizations": {
+				"ar": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "هذه جلسة **للنساء فقط**."
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Ceci est une session **réservée aux femmes**."
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "यह **सिर्फ़ महिलाओं के लिए** सत्र है।"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "これは**女性限定**のセッションです。"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "이것은 **여성 전용** 세션입니다."
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Đây là một phiên **dành riêng cho nữ**."
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "这是一个**仅限女性**的会话。"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "這是一個**僅限女性**的會話。"
+					}
+				}
+			}
 		},
 		"This will clear all your progress. This cannot be undone.": {
 			"comment": "Medal body: Alerts the user that the requested action will clear all progress",
-			"localizations": {}
+			"localizations": {
+				"ar": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "سيؤدي هذا إلى مسح جميع تقدمك. لا يمكن التراجع عن هذا الإجراء."
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Cela effacera toute votre progression. Cette action est irréversible."
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "यह आपकी सारी प्रगति को मिटा देगा। इसे वापस नहीं किया जा सकता।"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "これにより、すべての進行状況がクリアされます。この操作は元に戻せません。"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "이 작업을 수행하면 모든 진행 상태가 초기화됩니다. 되돌릴 수 없습니다."
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Điều này sẽ xóa toàn bộ tiến trình của bạn. Hành động này không thể hoàn tác."
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "这将清除您的所有进度。此操作无法撤销。"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "這將清除您的所有進度。此操作無法撤銷。"
+					}
+				}
+			}
 		},
 		"Try selecting less filters.": {
 			"comment": "Home page body: shown when no sessions match the search filters",
-			"localizations": {}
+			"localizations": {
+				"ar": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "حاول تحديد عدد أقل من الفلاتر."
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Essayez de sélectionner moins de filtres."
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "कम फ़िल्टर चुनने का प्रयास करें।"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "フィルターを減らしてみてください。"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "필터 수를 줄여보세요."
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Thử chọn ít bộ lọc hơn."
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "尝试选择更少的筛选条件。"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "嘗試選擇更少的篩選條件。"
+					}
+				}
+			}
 		},
 		"UTM Moves": {
 			"comment": "Sport category title",
-			"localizations": {}
+			"shouldTranslate": false
 		},
 		"UTM Sports": {
 			"comment": "App title",
-			"localizations": {}
+			"shouldTranslate": false
 		},
 		"View Next %@ Session": {
 			"comment": "Siri intent title: the name of an action Siri can run; show the next session is a sport category",
-			"localizations": {}
+			"localizations": {
+				"ar": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "عرض الجلسة التالية لـ %@"
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Voir la prochaine session %@"
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "अगला %@ सत्र देखें"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "%@ の次のセッションを見る"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "다음 %@ 세션 보기"
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Xem phiên %@ tiếp theo"
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "查看下一个 %@ 会话"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "查看下一個 %@ 會話"
+					}
+				}
+			}
 		},
 		"View Next ${sport} Session": {
-
+			"shouldTranslate": false
 		},
 		"Volleyball": {
 			"comment": "Sport category title",
@@ -2125,19 +4155,215 @@
 		},
 		"We'll notify you 30 minutes before it starts": {
 			"comment": "Session body: informs the user that they will receive a notification 30 minutes before the session begins",
-			"localizations": {}
+			"localizations": {
+				"ar": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "سنقوم بإعلامك قبل 30 دقيقة من بدء الجلسة."
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Nous vous notifierons 30 minutes avant le début."
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "हम आपको शुरू होने से 30 मिनट पहले सूचित करेंगे।"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "開始の30分前にお知らせします。"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "시작 30분 전에 알림을 드립니다."
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Chúng tôi sẽ thông báo cho bạn 30 phút trước khi bắt đầu."
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "我们将在开始前30分钟通知您。"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "我們將在開始前30分鐘通知您。"
+					}
+				}
+			}
 		},
 		"What session would you like?": {
 			"comment": "Siri body: Siri asking the user which sport category they want to search for",
-			"localizations": {}
+			"localizations": {
+				"ar": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "ما هو السجل الذي ترغب فيه؟"
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Quelle session souhaitez-vous ?"
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "आप कौन सा सत्र चाहते हैं?"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "どのセッションをお探しですか？"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "어떤 세션을 원하시나요?"
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Bạn muốn tìm phiên nào?"
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "您想要什么样的会话？"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "您想要什麼樣的會話？"
+					}
+				}
+			}
 		},
 		"Which sport are you looking for?": {
 			"comment": "Siri body: Siri asking the user which sport category they want to search for",
-			"localizations": {}
+			"localizations": {
+				"ar": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "أي رياضة تبحث عنها؟"
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Quelle activité recherchez-vous ?"
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "आप किस खेल की तलाश कर रहे हैं?"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "どのスポーツを探していますか？"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "어떤 스포츠를 찾고 있습니까?"
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Bạn đang tìm kiếm môn thể thao nào?"
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "您在寻找哪项运动？"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "您在尋找哪項運動？"
+					}
+				}
+			}
 		},
 		"Women's Only": {
 			"comment": "Search filter: search for \"women's only\" sport sessions",
-			"localizations": {}
+			"localizations": {
+				"ar": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "للنساء فقط"
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Réservé aux femmes"
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "केवल महिलाएँ"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "女性専用"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "여성 전용"
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Dành cho phụ nữ"
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "女性专属"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "女性專屬"
+					}
+				}
+			}
 		},
 		"Workout": {
 			"comment": "Sport category title",
@@ -2194,7 +4420,56 @@
 		},
 		"Yes, Delete": {
 			"comment": "Call to action: accepts a deletion action",
-			"localizations": {}
+			"localizations": {
+				"ar": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "نعم، احذف"
+					}
+				},
+				"fr": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Oui, Supprimer"
+					}
+				},
+				"hi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "हां, हटाएं"
+					}
+				},
+				"ja": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "はい、削除"
+					}
+				},
+				"ko": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "네, 삭제"
+					}
+				},
+				"vi": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "Có, Xóa"
+					}
+				},
+				"zh-Hans": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "是的，删除"
+					}
+				},
+				"zh-Hant": {
+					"stringUnit": {
+						"state": "translated",
+						"value": "是的，刪除"
+					}
+				}
+			}
 		}
 	},
 	"version": "1.0"
