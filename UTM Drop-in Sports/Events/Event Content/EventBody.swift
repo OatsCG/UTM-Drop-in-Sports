@@ -138,7 +138,7 @@ struct EventBody: View {
                 }
                 .padding(.bottom, 10)
                 if !categoryParser.allCategories.filter({ $0.isMedal && $0.title == event.sortCategory }).isEmpty {
-                    Text("Save this session to earn a **\(event.sortCategory)** medal after participating")
+                    Text("Save this session to earn a **\(CategoryToDisplayRepresentation(event.sortCategory))** medal after participating")
                         .foregroundStyle(.tertiary)
                         .font(.caption)
                         .lineLimit(2)
