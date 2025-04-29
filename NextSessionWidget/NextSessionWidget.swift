@@ -36,7 +36,9 @@ struct Provider: AppIntentTimelineProvider {
             }
             lastEndDate = event.relativeTimeDate.endDate
         }
-
+        if entries.isEmpty {
+            entries.append(.init(date: Date(), configuration: configuration, event: nil))
+        }
         return Timeline(entries: entries, policy: .atEnd)
     }
 
